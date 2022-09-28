@@ -1,4 +1,4 @@
-import { useContext, useEffect, useReducer } from 'react';
+import { useContext, useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../App';
@@ -7,27 +7,27 @@ import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
 const LogIn = () => {
   // State Hooks and Variables
   // ===========================================================================
-  const [loginInfo, dispatch] = useReducer(axiosReducer, { username: '', password: '' })
+  const isMounted = useRef(false)
   const { loggedInUser, dispatchUser } = useContext(Context)
   const navigate = useNavigate()
 
   // Functions
   // ===========================================================================
   function changeHandler(e) {
-    dispatch({
+    dispatchUser({
       key: e.target.classList[0],
       value: e.target.value
     })
+    console.log(loggedInUser)
   }
 
   function submitHandler(e) {
     e.preventDefault()
-    axiosAll('POST', `/users/signin`, null, dispatchUser, loginInfo)
+    axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
   }
 
   useEffect(() => {
-    dispatchUser({ key: 'username', value: loginInfo.username })
-    loggedInUser.token && navigate('/home')
+    isMounted.current ? navigate('/home') : isMounted.current = true
   },[loggedInUser.token])
 
   // Return
@@ -46,7 +46,7 @@ const LogIn = () => {
               type='text' 
               placeholder='Username'
               onChange={changeHandler}
-              value={loginInfo.username}
+              value={loggedInUser.username}
             ></input>
             <input 
               className='password'
@@ -54,7 +54,7 @@ const LogIn = () => {
               type='password' 
               placeholder='Password'
               onChange={changeHandler}
-              value={loginInfo.password}
+              value={loggedInUser.password}
             ></input>
             <Button 
               style={{borderRadius:'5px', backgroundColor:'#D6300F', color:'white', borderColor:'#D6300F'}} 

@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useReducer} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../App'
 import { Link } from 'react-router-dom'
 import {Card, Button, Container, Image, Col, Row, ButtonGroup, ToggleButton} from 'react-bootstrap/'
@@ -6,28 +6,21 @@ import { axiosReducer, axiosAll } from '../data-and-functions/axiosAll';
 
 
 const RestaurantCard = ({ restaurant }) => {
-    const { colorTemplate, loggedInUser }  = useContext(Context)
-    const initialState = {
-        likedrestaurants: ''
-    }
+    const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
     const [buttonIcon, setButtonIcon] = useState('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png')
+    const { name, image_url, display_phone, price } = restaurant
+    const { city, state } = restaurant.location
     const categories = []
-    const [usersLikedRestaurant, dispatch] = useReducer(axiosReducer, initialState)
-    const [currentUser, dispatchUser] = useReducer(axiosReducer, { response: null })
-    const { name, image_url, display_phone, price  } = restaurant
-    const city = restaurant.location.city
-    const state = restaurant.location.state
-
     restaurant.categories.forEach(category => categories.push(category.title))
 
-    useEffect(() => {
-        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
-    }, [])
-
     function likeHandler() {
-        axiosAll('POST', `/users/${currentUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatch);
-        setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
+        loggedInUser.response.likedrestaurants.find(restaurant._id) ?
+        axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token)
+        && setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
+        : axiosAll('DELETE', `users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token)
     }
+
+    useEffect()
     
     if (categories) {
         return (
