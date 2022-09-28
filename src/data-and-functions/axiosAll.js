@@ -1,6 +1,7 @@
 import axios from "axios"
 
 export async function axiosAll(method, path, authToken, dispatch, body) {
+   const baseURL = 'http://localhost:8000'
    const headers = { 
       headers: { 
          'Authorization': `Bearer ${authToken}`,
@@ -10,7 +11,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
    let res
    switch(method) {
       case 'GET':
-         res = await axios.get(`https://limitless-island-06670.herokuapp.com${path}`, headers)
+         res = await axios.get(`${baseURL}${path}`, headers)
                dispatch({
                   key: 'response',
                   value: res.data
@@ -18,17 +19,17 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
          break
       
       case 'PUT':
-         res = await axios.put(`https://limitless-island-06670.herokuapp.com${path}`,body, headers)
+         res = await axios.put(`${baseURL}${path}`,body, headers)
          break
 
       case 'POST':
-         res = await axios.post(`https://limitless-island-06670.herokuapp.com${path}`,body, headers)
+         res = await axios.post(`${baseURL}${path}`,body, headers)
          !authToken ? dispatch({ key: 'token', value: res.data.token})
                : dispatch({ key: 'response', value: res.data })
          break
 
       case 'DELETE':
-         res = await axios.delete(`https://limitless-island-06670.herokuapp.com${path}`, headers)
+         res = await axios.delete(`${baseURL}${path}`, headers)
          break
 
       default:
