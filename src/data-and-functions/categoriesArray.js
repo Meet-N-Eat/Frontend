@@ -1,0 +1,1 @@
+export const categoriesArray = ['None', 'Italian', 'Korean', 'Mediterranean', 'Indian', 'Breakfast', 'Sushi', 'Hawaiian', 'Desserts', 'Barbeque', 'Seafood']

@@ -1,0 +1,1 @@
+export const citiesArray = ['None', 'Fresno', 'Garden Grove', 'Long Beach', 'Los Angeles', 'Oakland', 'Sacramento', 'San Diego', 'San Francisco', 'San Jose', 'Santa Ana']
