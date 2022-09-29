@@ -28,7 +28,7 @@ const SearchResults = () => {
         // Update user state
         axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
     },[])
-
+    console.log(loggedInUser)
     if (typeof restaurantsData.response === 'string') {
         return <h1>Loading restaurants...</h1>
     } else {

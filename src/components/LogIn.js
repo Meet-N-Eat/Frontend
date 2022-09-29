@@ -23,6 +23,10 @@ const LogIn = () => {
   function submitHandler(e) {
     e.preventDefault()
     axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
+    dispatchUser({ 
+      key: 'password',
+      value: ''
+    })
   }
 
   useEffect(() => {
