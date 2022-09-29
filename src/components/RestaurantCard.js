@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect, useReducer} from 'react';
+import React, { useContext, useState, useEffect } from 'react';
 import { Context } from '../App'
 import { Link } from 'react-router-dom'
 import {Card, Button, Container, Image, Col, Row, ButtonGroup, ToggleButton} from 'react-bootstrap/'
@@ -6,30 +6,22 @@ import { axiosReducer, axiosAll } from '../data-and-functions/axiosAll';
 
 
 const RestaurantCard = ({ restaurant }) => {
-    const { colorTemplate, loggedInUser }  = useContext(Context)
-    const initialState = {
-        likedrestaurants: ''
-    }
-    const [buttonIcon, setButtonIcon] = useState('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png')
-    const [categories, setCategories] = useState()
-    const [usersLikedRestaurant, dispatch] = useReducer(axiosReducer, initialState)
-    const [currentUser, dispatchUser] = useReducer(axiosReducer, { response: null })
-    const { name, image_url, display_phone, price  } = restaurant
-    const city = restaurant.location.city
-    const state = restaurant.location.state
-    const categoriesArr = []
-    for (let i=0; i < restaurant.categories.length; i++) {
-        categoriesArr.push(restaurant.categories[i].title)
-    }
-    useEffect(() => {
-        setCategories(categoriesArr)
-        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
-    }, [])
+    const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
+    const [buttonIcon, setButtonIcon] = useState(
+        !(loggedInUser.response.likedrestaurants.find(id => id === restaurant._id)) ? 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
+        : 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
+    const { name, image_url, display_phone, price } = restaurant
+    const { city, state } = restaurant.location
+    const categories = []
+    restaurant.categories.forEach(category => categories.push(category.title))
+
     function likeHandler() {
-        axiosAll('POST', `/users/${currentUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatch, usersLikedRestaurant);
-        setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
+        !(loggedInUser.response.likedrestaurants.find(id => id === restaurant._id)) ?
+        axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+        && setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
+        : axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+        && setButtonIcon('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png')
     }
-    
     
     if (categories) {
         return (
@@ -75,9 +67,11 @@ const RestaurantCard = ({ restaurant }) => {
                                     <p>{display_phone}</p>
                                 </Col>
                             </Row>
-                            <Row style={{ display:'flex', alignItems:'center', justifyContent:'center' }}>
-                            {categories[0]}
-                            </Row>
+                            {categories.map(category => 
+                                <Row>
+                                    {category}
+                                </Row>
+                            )}
                         </Card.Body>
                     </Col>
                 </Row>

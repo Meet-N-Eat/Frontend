@@ -110,7 +110,6 @@
  - [ ] about?
  - [ ] contact?
 
-
 # Stretch
  - [ ] Report restaurant/users option 
  - [ ] Implementing Google Maps API or other location API (get recommendations of nearby restaurants)
@@ -127,4 +126,5 @@
  - [ ] Use pagination for search results
  - [ ] Flesh out navbar links (navbar/carousel/modal/tabs on profile page)
  - [ ] Clean up/figure out react router
+ - [ ] Look into file uploads for profile pic
  

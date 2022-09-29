@@ -15,7 +15,7 @@ export const Context = createContext()
 
 function App() {
   // Context variables
-  const [loggedInUser, dispatchUser] = useReducer(axiosReducer, { username: '' })
+  const [loggedInUser, dispatchUser] = useReducer(axiosReducer, { username: '', password: ''})
   const defaultImage = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
   const colorTemplate = {
     darkColor: '#D6300F',
