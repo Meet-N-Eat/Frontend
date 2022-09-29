@@ -26,7 +26,9 @@ const LogIn = () => {
   }
 
   useEffect(() => {
-    isMounted.current ? navigate('/home') : isMounted.current = true
+    isMounted.current ?
+      axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser) && navigate('/home') 
+      : isMounted.current = true
   },[loggedInUser.token])
 
   // Return

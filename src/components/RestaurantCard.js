@@ -1,14 +1,14 @@
-import React, { useContext, useState, useEffect } from 'react';
-import { Context } from '../App'
+import React, { useContext, useState } from 'react';
 import { Link } from 'react-router-dom'
-import {Card, Button, Container, Image, Col, Row, ButtonGroup, ToggleButton} from 'react-bootstrap/'
-import { axiosReducer, axiosAll } from '../data-and-functions/axiosAll';
+import {Card, Button, Container, Image, Col, Row, ButtonGroup} from 'react-bootstrap/'
+import { Context } from '../App'
+import { axiosAll } from '../data-and-functions/axiosAll';
 
 
 const RestaurantCard = ({ restaurant }) => {
     const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
     const [buttonIcon, setButtonIcon] = useState(
-        !(loggedInUser.response.likedrestaurants.find(id => id === restaurant._id)) ? 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
+        !(loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) ? 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
         : 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
     const { name, image_url, display_phone, price } = restaurant
     const { city, state } = restaurant.location
@@ -16,11 +16,11 @@ const RestaurantCard = ({ restaurant }) => {
     restaurant.categories.forEach(category => categories.push(category.title))
 
     function likeHandler() {
-        !(loggedInUser.response.likedrestaurants.find(id => id === restaurant._id)) ?
-        axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
-        && setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
-        : axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
-        && setButtonIcon('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png')
+        !(loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) ?
+        (axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+        && setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png'))
+        : (axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+        && setButtonIcon('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'))
     }
     
     if (categories) {
@@ -37,7 +37,7 @@ const RestaurantCard = ({ restaurant }) => {
                         </Button>
                     </ButtonGroup>
                 </div>
-        <Card style={{border:'none', border:"none", padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
+        <Card style={{border:'none', padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
             <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant._id}`}>
             <Card
             style={{ display:'flex', flexDirection:'column'}}

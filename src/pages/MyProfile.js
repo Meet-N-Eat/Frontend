@@ -11,15 +11,14 @@ import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 import { Context } from '../App'
 
 const MyProfile = () => {
-const [profile, dispatch] = useReducer(axiosReducer, { response: null })
-const { loggedInUser } = useContext(Context)
+const { loggedInUser, dispatchUser } = useContext(Context)
 
 useEffect(() => {
-    axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
+    axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
 },[])
 
 
-if(!profile.response){
+if(!loggedInUser.response){
     return <Container>Loading...</Container>
 }
 
@@ -46,7 +45,7 @@ return (
             }} 
             className='container-lg mx-auto me-lg-2 mb-sm-3 mb-lg-0'>
 
-            <ProfileCard profile={profile.response}/>
+            <ProfileCard profile={loggedInUser.response}/>
             
         </div>
 
@@ -70,7 +69,7 @@ return (
                 }} 
                 className=''>
 
-                <LikedRestaurant likedrestaurants={profile.response.likedrestaurants} />
+                <LikedRestaurant likedrestaurants={loggedInUser.response.likedrestaurants} />
             </div>
 
             <div style={{ 
@@ -83,7 +82,7 @@ return (
                 }} 
                 className='friends-block'>
 
-                <Friends friends={profile.response.friends} />           
+                <Friends friends={loggedInUser.response.friends} />           
 
             </div>
             <div style={{ 
@@ -94,7 +93,7 @@ return (
                 borderRadius:'10px'}}
                 className=''>
 
-                <CoordinateMeetup profile={profile.response}/>
+                <CoordinateMeetup profile={loggedInUser.response}/>
                 
             </div>
         </div>
@@ -104,7 +103,7 @@ return (
             borderRadius:'10px', 
             border:'1px solid #D6300F'}}
              className='mx-sm-auto mx-md-auto'>
-              <Itinerary profile={profile.response}/>                      
+              <Itinerary profile={loggedInUser.response}/>                      
         </div>
     </div>
 )

@@ -3,7 +3,7 @@ import { InputGroup, Form } from 'react-bootstrap'
 import { useState } from 'react'
 import RestaurantCard from './RestaurantCard';
 
-const LikedRestaurant = ( {likedrestaurants} ) => {
+const LikedRestaurant = ({ likedrestaurants }) => {
 
     const [searchCharacters, setSearchCharacters] = useState('')
     const [show, setShow] = useState(false);
@@ -24,12 +24,12 @@ return (
             style={{ padding:'5%', overflow:'scroll', overflowX:'hidden', maxHeight:'76%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:"center" }}
         >
             {likedrestaurants && likedrestaurants.filter((restaurant) => {
-            if (searchCharacters == ''){
-                return restaurant
-            } else if (restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase())) {
-                return restaurant
-            }   
-        }).map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/> )}
+                if (searchCharacters == ''){
+                    return restaurant
+                } else if (restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase())) {
+                    return restaurant
+                }   
+                }).map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/> )}
         </div>
     </div>
 )
