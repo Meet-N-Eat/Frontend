@@ -12,7 +12,7 @@ const SearchResults = () => {
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
     const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: '', searchString: '' })
-    const { loggedInUser } = useContext(Context)
+    const { loggedInUser, dispatchUser } = useContext(Context)
 
     useEffect(() => {
         let params = [], values = []
@@ -23,7 +23,11 @@ const SearchResults = () => {
             params.push(param)
             values.push(value)
         }
+        // Get restaurants that match search criteria
         axiosAll('GET', `/restaurants/results/${searchString}${buildSearchParams(params, values)}`, loggedInUser.token, dispatch)
+
+        // Update user state
+        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
     },[])
 
     if (typeof restaurantsData.response === 'string') {

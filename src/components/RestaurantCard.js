@@ -14,13 +14,12 @@ const RestaurantCard = ({ restaurant }) => {
     restaurant.categories.forEach(category => categories.push(category.title))
 
     function likeHandler() {
-        loggedInUser.response.likedrestaurants.find(restaurant._id) ?
-        axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token)
+        !(loggedInUser.response.likedrestaurants.find(id => id === restaurant._id)) ?
+        axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
         && setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
-        : axiosAll('DELETE', `users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token)
+        : axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+        && setButtonIcon('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png')
     }
-
-    useEffect()
     
     if (categories) {
         return (

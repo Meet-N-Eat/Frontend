@@ -18,7 +18,6 @@ const LogIn = () => {
       key: e.target.classList[0],
       value: e.target.value
     })
-    console.log(loggedInUser)
   }
 
   function submitHandler(e) {
