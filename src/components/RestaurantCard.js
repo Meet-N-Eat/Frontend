@@ -7,7 +7,9 @@ import { axiosReducer, axiosAll } from '../data-and-functions/axiosAll';
 
 const RestaurantCard = ({ restaurant }) => {
     const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
-    const [buttonIcon, setButtonIcon] = useState('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png')
+    const [buttonIcon, setButtonIcon] = useState(
+        !(loggedInUser.response.likedrestaurants.find(id => id === restaurant._id)) ? 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
+        : 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
     const { name, image_url, display_phone, price } = restaurant
     const { city, state } = restaurant.location
     const categories = []
