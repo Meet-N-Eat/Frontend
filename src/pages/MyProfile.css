@@ -1,0 +1,14 @@
+.friend-like-container {
+   height: fit-content;
+}
+
+.friends-likes {
+   max-height: 60vh;
+   overflow: hidden;
+}
+
+.likedRestaurants, .friends {
+   max-height: 60vh;
+   overflow-y: auto;
+   overflow-x: hidden;
+}

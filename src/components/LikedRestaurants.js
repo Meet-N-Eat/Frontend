@@ -3,7 +3,7 @@ import { InputGroup, Form } from 'react-bootstrap'
 import { useState } from 'react'
 import RestaurantCard from './RestaurantCard';
 
-const LikedRestaurant = ({ likedrestaurants }) => {
+const LikedRestaurants = ({ likedrestaurants }) => {
 
     const [searchCharacters, setSearchCharacters] = useState('')
     const [show, setShow] = useState(false);
@@ -12,7 +12,7 @@ const LikedRestaurant = ({ likedrestaurants }) => {
     const handleShow = () => setShow(true);
 
 return (
-    <div style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
+    <div className='likedRestaurants' style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
         <InputGroup style={{ margin:'6%', width:'90%', marginTop:'10%'}} className="mb-3">
         <InputGroup.Text style={{backgroundColor:'#D6300F', color:'white'}} id="basic-addon2">enter name</InputGroup.Text>
             <Form.Control style={{border:'1px solid #D6300F'}} onChange={e => {
@@ -35,4 +35,4 @@ return (
 )
 }
 
-export default LikedRestaurant
+export default LikedRestaurants
