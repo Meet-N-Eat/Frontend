@@ -17,8 +17,6 @@ const CoordinateMeetup = ( {profile} ) => {
     const { loggedInUser } = useContext(Context)
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
-    console.log(meetup)
-    console.log(profile)
     
     useEffect(() => {
         dispatch({

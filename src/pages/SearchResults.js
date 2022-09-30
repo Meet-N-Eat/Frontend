@@ -1,7 +1,6 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react';
+import React, { useContext, useEffect, useReducer } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import RestaurantCard from '../components/RestaurantCard'
-import Search from '../components/Search'
 import { Container, Row } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
 import { buildSearchParams } from '../data-and-functions/searchParams';
@@ -11,8 +10,8 @@ import { Context } from '../App';
 const SearchResults = () => {
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
-    const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: '', searchString: '' })
     const { loggedInUser, dispatchUser } = useContext(Context)
+    const [restaurantsData, dispatch] = useReducer(axiosReducer, { response: '', searchString: '' })
 
     useEffect(() => {
         let params = [], values = []
@@ -29,7 +28,7 @@ const SearchResults = () => {
         // Update user state
         axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
     },[])
-
+    console.log(loggedInUser)
     if (typeof restaurantsData.response === 'string') {
         return <h1>Loading restaurants...</h1>
     } else {
@@ -39,7 +38,7 @@ const SearchResults = () => {
                     {/* <Search /> */}
                 </Container>
                 <Container style={{ display:'flex', flexDirection:'row', flexWrap:'wrap', width:'90%', alignItems:'center', justifyContent:'center'}}>
-                    <Row xs='3'>{restaurantsData.response.map(restaurantData => <RestaurantCard restaurant={restaurantData} key={restaurantData._id}/>)}</Row>
+                    <Row xs='3'>{restaurantsData.response.map(restaurant => <RestaurantCard restaurant={restaurant} key={restaurant._id}/>)}</Row>
                 </Container>
             </Container>
         )
