@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import RestaurantCard from '../components/RestaurantCard'
+import RestaurantCard from './RestaurantCard'
 import Search from '../components/Search'
 import { Container, Row } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';

@@ -1,14 +1,14 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import FAQ from './pages/FAQ';
-import Home from './pages/Home';
-import LogInSignUp from './pages/LogInSignUp';
-import MessageCenter from './pages/MessageCenter';
+import Home from './Home/Home';
+import LogInSignUp from './LoginSignUp/LogInSignUp';
+import MessageCenter from './MessageCenter/MessageCenter';
 import MyProfile from './pages/MyProfile';
-import NavBar from './components/NavBar';
-import RestaurantDetail from './pages/RestaurantDetail';
-import SearchResults from './pages/SearchResults';
+import NavBar from './Navigation/NavBar';
+import RestaurantDetail from './RestaurantDetail/RestaurantDetail';
+import SearchResults from './SearchResults/SearchResults';
 import { createContext, useReducer, useState } from 'react';
-import ProfileSettings from './pages/ProfileSettings';
+import ProfileSettings from './ProfileSettings/ProfileSettings';
 import { axiosReducer } from './data-and-functions/axiosAll';
 
 export const Context = createContext()

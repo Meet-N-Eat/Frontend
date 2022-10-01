@@ -1,6 +1,6 @@
 import React from 'react';
-import Login from '../components/LogIn';
-import SignUp from '../components/SignUp';
+import Login from './LogIn';
+import SignUp from './SignUp';
 import { useState, useEffect } from 'react';
 import { useParams } from 'react-router-dom';
 import { Nav } from 'react-bootstrap'
