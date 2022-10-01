@@ -13,20 +13,24 @@ const RestaurantDetail = () => {
     // State hooks and variable declarations
     // ===========================================================================
     const [resDetails, dispatch] = useReducer(axiosReducer, { response: null })
-    const { colorTemplate, loggedInUser } = useContext(Context)
+    const { colorTemplate, loggedInUser, dispatchUser } = useContext(Context)
     const { restaurantId } = useParams()
     const [modalShow, setModalShow] = useState(false)
     
     // Getting restaurant data by restaurantId
     // ===========================================================================
     useEffect(() => {
+        // Get restaurant state
         axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatch)
+
+        // Update user state
+        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
         }, [])
     // Event Handler
     async function handleShow() {
         setModalShow(!modalShow) 
     }
-
+console.log(resDetails)
  // conditional rendering & once resDetails is rendered, address variable declaration   
 if (resDetails.response) {
 const address = `${resDetails.response.location.address1}, ${resDetails.response.location.city}, ${resDetails.response.location.state}` 
@@ -41,22 +45,28 @@ return (
             </Col>
         </Row>
         <Row>
+            {resDetails.response.userLikes && resDetails.response.userLikes.map(user => {
+                return (
+                    <div style={{ width: '80%'}}>
+                        <img src={user.profileimg || 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT9JkaBnJ5fFI-FIGVM21jmBfS1HWlxWaAUDyaJQedJt2rc_RyW'} type="thumb" alt="" width="50px" style={{borderRadius: '50%'}}/>
+                        <span>{user.username}</span>
+                    </div>
+                )
+            })}
+        </Row>
+        <Row>
             <Col>
                 <Row>
                     <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
                         <h4>reviews</h4>
                     </div>
-                    <Col>
-                    </Col>
-                    <Col>
-                    </Col>
                 </Row>
                 <Reviews restaurantId={resDetails.response._id} />
                 <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
                     <button 
-                    style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
-                    type="submit"
-                    onClick={handleShow}
+                        style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
+                        type="submit"
+                        onClick={handleShow}
                     >write a review
                     </button>
                     <Modal 
@@ -66,8 +76,8 @@ return (
                         aria-labelledby="likedrestaurants-modal"
                         centered
                     > 
-                    <ReviewForm restaurantId={resDetails.response._id} handleShow={handleShow} />
-                </Modal>
+                        <ReviewForm restaurantId={resDetails.response._id} handleShow={handleShow} />
+                    </Modal>
                 </div>
             </Col>
         </Row>
