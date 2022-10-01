@@ -5,8 +5,8 @@ import { Context } from '../App'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 import LikedRestaurants from '../components/LikedRestaurants'
 import Friends from '../components/Friends'
-import CoordinateMeetup from '../components/CoordinateMeetup'
-import ProfileCard from '../components/ProfileCard'
+import CoordinateMeetup from './CoordinateMeetup'
+import ProfileCard from '../ProfileCard'
 import Itinerary from '../components/Itinerary'
 
 const MyProfile = () => {

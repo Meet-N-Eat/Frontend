@@ -3,7 +3,7 @@ import { useContext, useEffect, useReducer } from 'react'
 import {  Card, Container } from 'react-bootstrap'
 import { Context } from '../App'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
-import Review from './Review'
+import Review from '../RestaurantDetail/Review'
 
 
 const Reviews = ({ restaurantId }) => {

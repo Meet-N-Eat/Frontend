@@ -1,8 +1,8 @@
 import { useState, useContext, useEffect } from 'react'
 import { Button, Form, InputGroup } from 'react-bootstrap'
 import { Context } from '../App'
-import Message from '../components/Message'
-import FriendRequest from '../components/FriendRequest'
+import Message from './Message'
+import FriendRequest from './FriendRequest'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 
 const dummyFriendRequest = [{
