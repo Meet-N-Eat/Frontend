@@ -8,7 +8,7 @@ import { axiosReducer, axiosAll } from '../data-and-functions/axiosAll';
 const RestaurantCard = ({ restaurant }) => {
     const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
     const [buttonIcon, setButtonIcon] = useState(
-        !(loggedInUser.response.likedrestaurants.find(id => id === restaurant._id)) ? 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
+        !(loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) ? 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
         : 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
     const { name, image_url, display_phone, price } = restaurant
     const { city, state } = restaurant.location
@@ -16,7 +16,7 @@ const RestaurantCard = ({ restaurant }) => {
     restaurant.categories.forEach(category => categories.push(category.title))
 
     function likeHandler() {
-        !(loggedInUser.response.likedrestaurants.find(id => id === restaurant._id)) ?
+        !(loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) ?
         axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
         && setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
         : axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)

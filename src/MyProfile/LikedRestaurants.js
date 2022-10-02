@@ -1,7 +1,7 @@
 import React from 'react'
 import { InputGroup, Form } from 'react-bootstrap'
 import { useState } from 'react'
-import RestaurantCard from './RestaurantCard';
+import RestaurantCard from '../SearchResults/RestaurantCard';
 
 const LikedRestaurants = ({ likedrestaurants }) => {
 
