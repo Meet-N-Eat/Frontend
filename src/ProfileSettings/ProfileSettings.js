@@ -47,9 +47,7 @@ const ProfileSettings = () => {
     function onDelete(e) {
         e.preventDefault()
         axiosAll('DELETE', `/users/${userData.response._id}/likedrestaurants/${e.target.classList[0]}`, loggedInUser.token)
-        console.log('iz deleted')
         const likedrestaurants = userData.likedrestaurants
-        console.log("- likedrestaurants", likedrestaurants)
         likedrestaurants.map(restaurant => {
             if(restaurant._id === e.target.classList[0]) return
             return restaurant
@@ -67,7 +65,6 @@ const ProfileSettings = () => {
 
     function onSubmit(e) {
         e.preventDefault()
-        console.log(userData)
         axiosAll('PUT', `/users/${userData.response._id}`, loggedInUser.token, dispatch, userData)
     }
     
@@ -77,9 +74,6 @@ const ProfileSettings = () => {
     // function uploadHandler(imageList) {
     //     setImage(imageList)
     //   }
-
-    console.log(userData.likedrestaurants)
-    console.log(userData)
 
     
 // Conditional Rendering
