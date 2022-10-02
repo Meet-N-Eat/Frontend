@@ -1,5 +1,5 @@
 import { Container, Row } from 'react-bootstrap'
-import Search from '../components/Search'
+import Search from './Search'
 import CuisineCategory from './CuisineCategory'
 
 const Home = () => {
