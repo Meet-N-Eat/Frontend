@@ -1,9 +1,9 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
-import FAQ from './pages/FAQ';
+import FAQ from './FAQ/FAQ';
 import Home from './Home/Home';
-import LogInSignUp from './LogInSignUp/LogInSignUp';
+import LogInSignUp from './LoginSignUp/LogInSignUp';
 import MessageCenter from './MessageCenter/MessageCenter';
-import MyProfile from './pages/MyProfile';
+import MyProfile from './MyProfile/MyProfile';
 import NavBar from './Navigation/NavBar';
 import RestaurantDetail from './RestaurantDetail/RestaurantDetail';
 import SearchResults from './SearchResults/SearchResults';
