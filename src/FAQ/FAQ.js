@@ -1,10 +1,10 @@
 import React from 'react';
 import { Col, Row, Nav, Tab } from 'react-bootstrap';
 import { useState } from 'react';
-import PersonalInfo from '../FAQ/PersonalInfo';
-import Troubleshooting from '../FAQ/Troubleshooting';
-import SearchQuestions from '../FAQ/SearchQuestions';
-import UserInteractions from '../FAQ/UserInteractions';
+import PersonalInfo from './PersonalInfo';
+import Troubleshooting from './Troubleshooting';
+import SearchQuestions from './SearchQuestions';
+import UserInteractions from './UserInteractions';
 
 const FAQ = () => {
   // All static info?

@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Card, OverlayTrigger, Popover, Button, Modal, ListGroup } from 'react-bootstrap'
+import { Card, OverlayTrigger, Popover, Button, ListGroup } from 'react-bootstrap'
 
 const Event = ({ event }) => {
     const [modalState, setModalState] = useState(false)

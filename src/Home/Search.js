@@ -3,7 +3,7 @@ import { Button, ButtonGroup, Col, Container,  Form, Row } from "react-bootstrap
 import { useNavigate } from "react-router-dom"
 import { getSearchParams } from "../data-and-functions/searchParams"
 import { searchCriteriaReducer } from "../data-and-functions/searchCriteriaReducer"
-import SearchFilters from "./SearchFilters"
+import SearchFilters from './SearchFilters'
 
 const Search = () => {
     // Initial state for searchCriteria

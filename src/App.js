@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from 'react-router-dom'
 import FAQ from './pages/FAQ';
 import Home from './Home/Home';
-import LogInSignUp from './LoginSignUp/LogInSignUp';
+import LogInSignUp from './LogInSignUp/LogInSignUp';
 import MessageCenter from './MessageCenter/MessageCenter';
 import MyProfile from './pages/MyProfile';
 import NavBar from './Navigation/NavBar';

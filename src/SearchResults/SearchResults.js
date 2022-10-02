@@ -1,7 +1,6 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
 import RestaurantCard from './RestaurantCard'
-import Search from '../components/Search'
 import { Container, Row } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
 import { buildSearchParams } from '../data-and-functions/searchParams';
@@ -35,9 +34,6 @@ const SearchResults = () => {
     } else {
         return (
             <Container>
-                <Container>
-                    {/* <Search /> */}
-                </Container>
                 <Container style={{ display:'flex', flexDirection:'row', flexWrap:'wrap', width:'90%', alignItems:'center', justifyContent:'center'}}>
                     <Row xs='3'>{restaurantsData.response.map(restaurantData => <RestaurantCard restaurant={restaurantData} key={restaurantData._id}/>)}</Row>
                 </Container>

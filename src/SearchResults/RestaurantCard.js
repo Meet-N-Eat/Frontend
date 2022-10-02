@@ -1,7 +1,7 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { Context } from '../App'
 import { Link } from 'react-router-dom'
-import {Card, Button, Container, Image, Col, Row, ButtonGroup, ToggleButton} from 'react-bootstrap/'
+import {Card, Button, Container, Image, Col, Row, ButtonGroup } from 'react-bootstrap/'
 import { axiosReducer, axiosAll } from '../data-and-functions/axiosAll';
 
 
