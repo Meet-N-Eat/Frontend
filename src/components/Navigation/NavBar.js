@@ -27,6 +27,10 @@ function userAuthClick(e) {
     }
 }
 
+function handleLogOut(){
+    loggedInUser.token = null;
+ }
+
 return (
     <Navbar expand='lg' >
         <Container style={{borderBottom: '1px solid black' }}>
@@ -43,7 +47,10 @@ return (
 
                         {loggedInUser.token ?
 
-                            <NavLink to='/profile' style={{color: '#EB3510'}}><CgProfile size={40}/></NavLink>
+                                <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile style={{color:'#D6300F'}} size={40}/>}>
+                                    <NavLink to='/profile'>My Profile</NavLink><br></br>
+                                    <NavLink to='/home' onClick={handleLogOut}>Log Out</NavLink>
+                                </NavDropdown>
                             : (
 
                                 <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile style={{color:'#D6300F'}} size={40}/>}>
