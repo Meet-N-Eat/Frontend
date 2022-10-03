@@ -1,4 +1,4 @@
-import React, { useContext } from 'react'
+import React, { useContext, useState } from 'react'
 import { Context } from '../..App'
 import { Container, Row } from 'react-bootstrap'
 import Search from './Search'
@@ -10,10 +10,11 @@ const Home = () => {
 // ===========================================================================
 const categories = ['Italian', 'Southern', 'American (Traditional)']
 const { loggedInUser } = useContext(Context)
-
+const [signUpShow, setSignUpShow] = useState(false)
 
 // Event handlers
 // ===========================================================================
+
 
 return (
     <Container style={{height:'90vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
