@@ -1,11 +1,18 @@
+import React, { useContext } from 'react'
 import { Container, Row } from 'react-bootstrap'
 import Search from './Search'
 import CuisineCategory from './CuisineCategory'
 
+
 const Home = () => {
-// State
+// States and Variables
+// ===========================================================================
 const categories = ['Italian', 'Southern', 'American (Traditional)']
 
+
+
+// Event handlers
+// ===========================================================================
 
 return (
     <Container style={{height:'90vh', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
