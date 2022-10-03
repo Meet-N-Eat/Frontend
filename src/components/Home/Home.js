@@ -1,6 +1,6 @@
 import React, { useContext, useState } from 'react'
-import { Context } from '../..App'
-import { Container, Row } from 'react-bootstrap'
+import { Context } from '../../App'
+import { Row } from 'react-bootstrap'
 import Search from './Search'
 import CuisineCategory from './CuisineCategory'
 import SignUp from '../LoginSignUp/SignUp'
@@ -22,8 +22,7 @@ function signUpShowHandler () {
 return (
     
     <div>
-        {loggedInUser.token 
-        ? 
+        { loggedInUser.token ? 
         <div id="loggedin-user-home">
             <Row>
                 <Search />
@@ -38,11 +37,13 @@ return (
                 <Row>
                     <button 
                     id="signup-button"
+                    onClick={signUpShowHandler}
                     >
                         Create an account
                     </button>
                 </Row>
             </div>
+            { signUpShow ? <SignUp /> : null }
         </div>
         }
     </div>
