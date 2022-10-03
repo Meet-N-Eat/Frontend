@@ -1,13 +1,13 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
-import { Context } from '../App'
-import RestaurantCard from '../SearchResults/RestaurantCard'
+import { Context } from '../../App'
+import RestaurantCard from '../RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
-import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
-import { reviewStars } from '../data-and-functions/reviewStars'
-import UserLikes from './UserLikes'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
+import { reviewStars } from '../../data-and-functions/reviewStars'
+import UserLike from './UserLike'
 
 
 const RestaurantDetail = () => {
@@ -46,7 +46,7 @@ return (
             </Col>
         </Row>
         <Row>
-            {resDetails.response.userLikes && resDetails.response.userLikes.map(user => <UserLikes key={user._id} user={user} />)}
+            {resDetails.response.userLikes && resDetails.response.userLikes.map(user => <UserLike key={user._id} user={user} />)}
         </Row>
         <Row>
             <Col>

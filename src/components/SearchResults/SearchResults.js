@@ -1,10 +1,10 @@
 import React, { useContext, useEffect, useReducer } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import RestaurantCard from './RestaurantCard'
+import RestaurantCard from '../RestaurantCard'
 import { Container, Row } from 'react-bootstrap'
-import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
-import { buildSearchParams } from '../data-and-functions/searchParams';
-import { Context } from '../App';
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
+import { buildSearchParams } from '../../data-and-functions/searchParams';
+import { Context } from '../../App';
 
 
 const SearchResults = () => {

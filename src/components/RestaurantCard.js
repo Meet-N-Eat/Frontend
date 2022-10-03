@@ -2,25 +2,32 @@ import React, { useContext, useState } from 'react';
 import { Context } from '../App'
 import { Link } from 'react-router-dom'
 import {Card, Button, Container, Image, Col, Row, ButtonGroup } from 'react-bootstrap/'
-import { axiosReducer, axiosAll } from '../data-and-functions/axiosAll';
+import { axiosAll } from '../data-and-functions/axiosAll';
 
 
 const RestaurantCard = ({ restaurant }) => {
+    const likedImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png'
+    const notLikedImage = 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
     const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
-    const [buttonIcon, setButtonIcon] = useState(
-        !(loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) ? 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
-        : 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
+    const [buttonIcon, setButtonIcon] = useState(liked() ? likedImage : notLikedImage)
     const { name, image_url, display_phone, price } = restaurant
     const { city, state } = restaurant.location
     const categories = []
     restaurant.categories.forEach(category => categories.push(category.title))
 
+    function liked() {
+        if(loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) return true
+        else return false
+    }
+
     function likeHandler() {
-        !(loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) ?
-        axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
-        && setButtonIcon('https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png')
-        : axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
-        && setButtonIcon('https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png')
+        liked() ?
+            // axiosAll(method, path, authToken, dispatch, body)
+            axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+            && setButtonIcon(notLikedImage)
+            // axiosAll(method, path, authToken, dispatch, body)
+            : axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+            && setButtonIcon(likedImage)
     }
     
     if (categories) {

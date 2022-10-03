@@ -1,8 +1,8 @@
 import { useReducer, useEffect, useContext, useState } from 'react'
-import { Context } from '../App'
 import { Container, Card, Form, Row, Col, Image, Modal, Button, ListGroup } from 'react-bootstrap'
+import { Context } from '../../App'
 import { BsFillTrashFill } from "react-icons/bs"
-import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 
 
 const ProfileSettings = () => {

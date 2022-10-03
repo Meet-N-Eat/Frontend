@@ -1,7 +1,7 @@
 import { useContext, useEffect, useState } from "react"
 import { Card, Button, Row, Col, Container } from "react-bootstrap"
-import { Context } from "../App"
-import { formatDateTime } from "../data-and-functions/formatDateTime"
+import { Context } from "../../App"
+import { formatDateTime } from "../../data-and-functions/formatDateTime"
 
 
 const FriendRequest = ({ request, noImage }) => {

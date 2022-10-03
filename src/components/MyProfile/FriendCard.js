@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 import { Card, Row, Col } from 'react-bootstrap';
-import { Context } from '../App';
+import { Context } from '../../App';
 
 const FriendCard = ({ friend }) => {
   const { defaultImage } = useContext(Context);

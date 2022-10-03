@@ -1,14 +1,14 @@
-import { Routes, Route, Navigate } from 'react-router-dom'
-import FAQ from './FAQ/FAQ';
-import Home from './Home/Home';
-import LogInSignUp from './LoginSignUp/LogInSignUp';
-import MessageCenter from './MessageCenter/MessageCenter';
-import MyProfile from './MyProfile/MyProfile';
-import NavBar from './Navigation/NavBar';
-import RestaurantDetail from './RestaurantDetail/RestaurantDetail';
-import SearchResults from './SearchResults/SearchResults';
 import { createContext, useReducer, useState } from 'react';
-import ProfileSettings from './ProfileSettings/ProfileSettings';
+import { Routes, Route, Navigate } from 'react-router-dom'
+import FAQ from './components/FAQ/FAQ';
+import Home from './components/Home/Home';
+import LogInSignUp from './components/LoginSignUp/LogInSignUp';
+import MessageCenter from './components/MessageCenter/MessageCenter';
+import MyProfile from './components/MyProfile/MyProfile';
+import NavBar from './components/Navigation/NavBar';
+import RestaurantDetail from './components/RestaurantDetail/RestaurantDetail';
+import SearchResults from './components/SearchResults/SearchResults';
+import ProfileSettings from './components/ProfileSettings/ProfileSettings';
 import { axiosReducer } from './data-and-functions/axiosAll';
 
 export const Context = createContext()

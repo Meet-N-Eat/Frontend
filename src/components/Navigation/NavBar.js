@@ -3,7 +3,7 @@ import { NavDropdown, Navbar, Container } from "react-bootstrap"
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { HiMail, HiCog } from 'react-icons/hi'
 import { CgProfile } from 'react-icons/cg'
-import { Context } from "../App"
+import { Context } from "../../App"
 
 const NavBar = () => {
 const { loggedInUser } = useContext(Context)
