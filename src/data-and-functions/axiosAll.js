@@ -85,8 +85,8 @@ export function axiosReducer (state, object) {
       case 'restaurant':
          return {...state, restaurant: object.value}      
       
-      case 'participant':
-         return {...state, participant: object.value}      
+      case 'participants':
+         return {...state, participants: object.value}      
       
       case 'loadProfile':
          return {

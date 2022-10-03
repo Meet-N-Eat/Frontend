@@ -1,49 +1,53 @@
-import React, { useContext, useEffect, useReducer } from 'react'
+import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { Card, Dropdown, Button } from 'react-bootstrap'
-import { useState } from 'react'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 import { Context } from '../App'
 
-const CoordinateMeetup = ( {profile} ) => {
+const CoordinateMeetup = ({ profile }) => {
+    const { loggedInUser } = useContext(Context)
+
     const initialState = {
         friend: null,
-        participant: null,
+        participants: [loggedInUser.response._id],
         restaurant: null,
         location: null,
         date: null
     }
     
     const [meetup, dispatch] = useReducer(axiosReducer, initialState)
-    const { loggedInUser } = useContext(Context)
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
-    
+    console.log(meetup)
     useEffect(() => {
         dispatch({
             key: 'date',
             value: combineDate(date, time)
         })
-    }, [time])
+    }, [date, time])
     
     function combineDate(date, time) {
         const dateArr = date.split('-')
         const timeArr = time.split(':')
-        const newDate = new Date(dateArr[0], dateArr[1], dateArr[2], timeArr[0], timeArr[1])
+        const newDate = new Date(dateArr[0], dateArr[1]-1, dateArr[2], timeArr[0], timeArr[1])
         
         return newDate
     }
     
     const friendSelect = (e) => {
+        const friend = profile.friends.find(friend => friend.username === e)
+
         dispatch({
             key: 'friend',
-            value: profile.friends.filter(friend => friend.username === e)[0].username
-            })
-        dispatch({
-            key: 'participant',
-            value: profile.friends.filter(friend => friend.username === e)[0]._id
+            value: friend.username
             })
 
+        !(meetup.participants.find(participant => participant == friend._id))
+            && dispatch({
+                key: 'participants',
+                value: [...meetup.participants, friend._id]
+                })
     }
+
     const restaurantSelect = (e) => {
         dispatch({
             key: 'location',
@@ -54,17 +58,18 @@ const CoordinateMeetup = ( {profile} ) => {
             value: profile.likedrestaurants.filter(restaurant => restaurant.name === e)[0].name
         })
     }
+
     const dateSelect = (e) => {
         setDate(e.target.value)
     }
+
     const timeSelect = (e) => {
         setTime(e.target.value)
     }
 
     const inviteHandler = () => {
-        axiosAll('POST', `/users/events/sender/${profile._id}/restaurant/${meetup.location}`, loggedInUser.token, dispatch, { participants: meetup.participant })
+        axiosAll('POST', `/users/events/sender/${profile._id}/restaurant/${meetup.location}`, loggedInUser.token, dispatch, { participants: meetup.participants })
     }
-
 
 return (
     <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>
