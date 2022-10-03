@@ -1,5 +1,5 @@
 import { Card, ListGroup } from "react-bootstrap"
-import { formatDateTime } from "../data-and-functions/formatDateTime"
+import { formatDateTime } from "../../data-and-functions/formatDateTime"
 
 const Message = ({ message, noImage }) => {
     const [date, time] = formatDateTime(message.createdAt)

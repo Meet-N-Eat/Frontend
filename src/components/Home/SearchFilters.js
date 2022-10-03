@@ -1,9 +1,9 @@
 import { Modal, Dropdown, Row } from 'react-bootstrap'
 import DropdownItem from 'react-bootstrap/esm/DropdownItem'
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle'
-import { categoriesArray } from '../data-and-functions/categoriesArray'
-import { citiesArray } from '../data-and-functions/citiesArray'
-import { priceRangeArray } from '../data-and-functions/priceRangeArray'
+import { categoriesArray } from '../../data-and-functions/categoriesArray'
+import { citiesArray } from '../../data-and-functions/citiesArray'
+import { priceRangeArray } from '../../data-and-functions/priceRangeArray'
 
 const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) => {
     const { city, category, price } = searchCriteria

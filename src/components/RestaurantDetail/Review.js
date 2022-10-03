@@ -1,8 +1,8 @@
 import React, { useContext, useEffect, useReducer } from 'react'
 import { Container, ListGroup } from 'react-bootstrap'
-import { Context } from '../App'
-import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
-import { formatDateTime } from '../data-and-functions/formatDateTime'
+import { Context } from '../../App'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
+import { formatDateTime } from '../../data-and-functions/formatDateTime'
 
 const Review = ({ review }) => {
     const [reviewer, dispatch] = useReducer(axiosReducer, { response: null })
