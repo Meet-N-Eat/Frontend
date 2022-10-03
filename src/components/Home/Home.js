@@ -1,4 +1,5 @@
 import React, { useContext } from 'react'
+import { Context } from '../..App'
 import { Container, Row } from 'react-bootstrap'
 import Search from './Search'
 import CuisineCategory from './CuisineCategory'
@@ -8,7 +9,7 @@ const Home = () => {
 // States and Variables
 // ===========================================================================
 const categories = ['Italian', 'Southern', 'American (Traditional)']
-
+const { loggedInUser } = useContext(Context)
 
 
 // Event handlers
