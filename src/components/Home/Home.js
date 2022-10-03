@@ -2,16 +2,15 @@ import React, { useContext, useState } from 'react'
 import { Context } from '../../App'
 import { Row } from 'react-bootstrap'
 import Search from './Search'
-import CuisineCategory from './CuisineCategory'
 import SignUp from '../LoginSignUp/SignUp'
-
+// import CuisineCategory from './CuisineCategory'
 
 const Home = () => {
 // State hooks and Variables
 // ===========================================================================
-const categories = ['Italian', 'Southern', 'American (Traditional)']
 const { loggedInUser } = useContext(Context)
 const [signUpShow, setSignUpShow] = useState(false)
+// const categories = ['Italian', 'Southern', 'American (Traditional)']
 
 // Event handlers
 // ===========================================================================
