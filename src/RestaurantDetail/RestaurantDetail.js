@@ -1,12 +1,13 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { useParams } from 'react-router-dom'
+import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
 import { Context } from '../App'
 import RestaurantCard from '../SearchResults/RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
-import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
 import { reviewStars } from '../data-and-functions/reviewStars'
+import UserLikes from './UserLikes'
 
 
 const RestaurantDetail = () => {
@@ -45,15 +46,7 @@ return (
             </Col>
         </Row>
         <Row>
-            {resDetails.response.userLikes && resDetails.response.userLikes.map(user => {
-                console.log(user)
-                return (
-                    <div style={{ width: '80%'}}>
-                        <img src={user.profileimg || 'https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcT9JkaBnJ5fFI-FIGVM21jmBfS1HWlxWaAUDyaJQedJt2rc_RyW'} alt="" width="50px" style={{borderRadius: '50%', aspectRatio: '1'}}/>
-                        <span>{user.username}</span>
-                    </div>
-                )
-            })}
+            {resDetails.response.userLikes && resDetails.response.userLikes.map(user => <UserLikes key={user._id} user={user} />)}
         </Row>
         <Row>
             <Col>
