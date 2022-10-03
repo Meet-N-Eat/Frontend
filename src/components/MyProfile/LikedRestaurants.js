@@ -23,13 +23,10 @@ return (
         <div 
             style={{ padding:'5%', overflow:'scroll', overflowX:'hidden', maxHeight:'76%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:"center" }}
         >
-            {likedrestaurants && likedrestaurants.filter((restaurant) => {
-                if (searchCharacters == ''){
-                    return restaurant
-                } else if (restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase())) {
-                    return restaurant
-                }   
-                }).map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/> )}
+            {likedrestaurants && likedrestaurants
+                .filter(restaurant => searchCharacters == '' || restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
+                    .map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/> 
+            )}
         </div>
     </div>
 )

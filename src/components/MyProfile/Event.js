@@ -8,6 +8,8 @@ const Event = ({ event }) => {
         setModalState(!modalState)
     }
 
+    console.log(event.restaurant)
+
 return (
 <Card style={{ width:'80%', marginBottom:'2%', border:"1px solid #D6300F" }}>
     <Card.Header style={{backgroundColor:'#D6300F', color:'white'}}>date <span style={{float:'right'}}>hour</span></Card.Header>
@@ -15,6 +17,8 @@ return (
 
         <Card.Title>{event.restaurant.name}</Card.Title>
         <Card.Text>{event.restaurant.display_phone}</Card.Text>
+        <Card.Text>{event.restaurant.location.address1}</Card.Text>
+        <Card.Text>{event.restaurant.location.city}</Card.Text>
         {['bottom'].map((placement) => (
             <OverlayTrigger
             trigger="click"
