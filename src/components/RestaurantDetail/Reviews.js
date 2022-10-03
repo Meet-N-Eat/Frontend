@@ -14,7 +14,7 @@ const Reviews = ({ restaurantId }) => {
     console.log(restaurantId)
     useEffect(() => {
         axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatch)
-    }, [])
+    }, [reviews])
 
     console.log(reviews.response)
 if(!reviews.response) {
