@@ -17,7 +17,7 @@ const CoordinateMeetup = ({ profile }) => {
     const [meetup, dispatch] = useReducer(axiosReducer, initialState)
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
-    console.log(meetup)
+
     useEffect(() => {
         dispatch({
             key: 'date',

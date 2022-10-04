@@ -21,7 +21,6 @@ function App() {
     darkColor: '#D6300F',
     mediumColor: '#F7EEE6',
     lightColor: '#F0704E'
-    
   }
   
   return (
