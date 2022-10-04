@@ -1,11 +1,11 @@
 import React, { useContext, useState } from 'react';
-import { Context } from '../App'
 import { Link } from 'react-router-dom'
 import {Card, Button, Container, Image, Col, Row, ButtonGroup } from 'react-bootstrap/'
+import { Context } from '../App'
 import { axiosAll } from '../data-and-functions/axiosAll';
 
 
-const RestaurantCard = ({ restaurant }) => {
+const RestaurantCard = ({ restaurant, likeRefresh, setLikeRefresh }) => {
     const likedImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png'
     const notLikedImage = 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
     const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
@@ -21,13 +21,17 @@ const RestaurantCard = ({ restaurant }) => {
     }
 
     function likeHandler() {
-        liked() ?
+        if(liked()) {
             // axiosAll(method, path, authToken, dispatch, body)
             axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
-            && setButtonIcon(notLikedImage)
+                .then(() => setLikeRefresh && setLikeRefresh(!likeRefresh))
+            setButtonIcon(notLikedImage)
+        } else {
             // axiosAll(method, path, authToken, dispatch, body)
-            : axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
-            && setButtonIcon(likedImage)
+            axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+                .then(() => setLikeRefresh && setLikeRefresh(!likeRefresh))
+            setButtonIcon(likedImage)
+        }
     }
     
     if (categories) {

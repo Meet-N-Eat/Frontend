@@ -17,21 +17,25 @@ const RestaurantDetail = () => {
     const { colorTemplate, loggedInUser, dispatchUser } = useContext(Context)
     const { restaurantId } = useParams()
     const [modalShow, setModalShow] = useState(false)
+    const [likeRefresh, setLikeRefresh] = useState(false)
     
     // Getting restaurant data by restaurantId
     // ===========================================================================
     useEffect(() => {
-        // Get restaurant state
-        axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatch)
-
         // Update user state
         axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
-        }, [])
+    }, [])
+    
+    useEffect(() => {
+        // Get restaurant state
+        axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatch)
+    }, [likeRefresh])
+
     // Event Handler
-    async function handleShow() {
+    function handleShow() {
         setModalShow(!modalShow) 
     }
-console.log(resDetails)
+
  // conditional rendering & once resDetails is rendered, address variable declaration   
 if (resDetails.response) {
 const address = `${resDetails.response.location.address1}, ${resDetails.response.location.city}, ${resDetails.response.location.state}` 
@@ -41,7 +45,7 @@ return (
     <Card style={{padding:'1%', borderColor:`${colorTemplate.darkColor}`, boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}}>
         <Row>
             <Col style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
-                <RestaurantCard restaurant={resDetails.response} />
+                <RestaurantCard restaurant={resDetails.response} likeRefresh={likeRefresh} setLikeRefresh={setLikeRefresh} />
                 <p>{address}</p>
             </Col>
         </Row>
