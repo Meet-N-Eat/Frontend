@@ -8,8 +8,6 @@ const Event = ({ event }) => {
         setModalState(!modalState)
     }
 
-    console.log(event.restaurant)
-
 return (
 <Card style={{ width:'80%', marginBottom:'2%', border:"1px solid #D6300F" }}>
     <Card.Header style={{backgroundColor:'#D6300F', color:'white'}}>date <span style={{float:'right'}}>hour</span></Card.Header>

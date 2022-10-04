@@ -45,7 +45,7 @@ return (
     <Card style={{padding:'1%', borderColor:`${colorTemplate.darkColor}`, boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}}>
         <Row>
             <Col style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
-                <RestaurantCard restaurant={resDetails.response} likeRefresh={likeRefresh} setLikeRefresh={setLikeRefresh} />
+                <RestaurantCard restaurant={resDetails.response} setLikeRefresh={setLikeRefresh} />
                 <p>{address}</p>
             </Col>
         </Row>

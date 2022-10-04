@@ -14,7 +14,6 @@ useEffect(() => {
     axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
 },[])
 
-
 if(!loggedInUser.response){
     return <Container>Loading...</Container>
 }
