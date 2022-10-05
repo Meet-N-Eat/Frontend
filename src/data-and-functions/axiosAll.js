@@ -33,6 +33,8 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
       default:
          break
    }
+
+   return res
 }
 
 export function axiosReducer (state, object) {
