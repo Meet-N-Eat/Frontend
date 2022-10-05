@@ -104,6 +104,12 @@ export function axiosReducer (state, object) {
       case 'logout':
          return { username: '', password: ''}
 
+      case 'missingBody':
+         return {...state, missingBody: object.value}
+         
+      case 'missingStars':
+         return {...state, missingStars: object.value}
+         
       default:
          return state
    }
