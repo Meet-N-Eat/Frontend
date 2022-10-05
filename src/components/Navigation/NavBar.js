@@ -40,7 +40,9 @@ return (
     <Navbar expand='lg' >
         <Container style={{borderBottom: '1px solid black' }}>
 
-                        <Link  to='/home'><Navbar.Brand  style={{border: '1px solid black', backgroundColor:'#EB3510', color: 'white', paddingLeft: '2rem', paddingRight: '2rem', paddingTop: '1rem', paddingBottom: '0.7rem', float: 'left', marginLeft: '0px'}} className="nav-title">MEET 'N EAT</Navbar.Brand></Link>
+                        <Navbar.Brand as={Link} to='/home'>
+                            <h2>MEET N EAT</h2>
+                        </Navbar.Brand>
 
                         {loggedInUser.token ?
                                 <>
@@ -84,9 +86,7 @@ return (
                                 </>
                             )
                             
-                        }
-
-                        
+                        } 
         </Container>
         
     </Navbar>
