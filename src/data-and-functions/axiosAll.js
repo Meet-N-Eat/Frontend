@@ -7,7 +7,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
          'Authorization': `Bearer ${authToken}`,
       }
    }
-
+   console.log('method', method, 'path', path)
    let res
    switch(method) {
       case 'GET':

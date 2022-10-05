@@ -18,21 +18,23 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
     restaurant.categories.forEach(category => categories.push(category.title))
 
     function liked() {
-        if(loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) return true
+        if(loggedInUser.response && loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) return true
         else return false
     }
 
     function likeHandler() {
-        if(liked()) {
-            // axiosAll(method, path, authToken, dispatch, body)
-            axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
-                .then(() => setLikeRefresh && setLikeRefresh(prevState => !prevState))
-            setButtonIcon(notLikedImage)
-        } else {
-            // axiosAll(method, path, authToken, dispatch, body)
-            axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
-                .then(() => setLikeRefresh && setLikeRefresh(prevState => !prevState))
-            setButtonIcon(likedImage)
+        if(loggedInUser.token) {
+            if(liked()) {
+                // axiosAll(method, path, authToken, dispatch, body)
+                axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+                    .then(() => setLikeRefresh && setLikeRefresh(prevState => !prevState))
+                setButtonIcon(notLikedImage)
+            } else {
+                // axiosAll(method, path, authToken, dispatch, body)
+                axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+                    .then(() => setLikeRefresh && setLikeRefresh(prevState => !prevState))
+                setButtonIcon(likedImage)
+            }
         }
     }
 
