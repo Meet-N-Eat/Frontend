@@ -99,7 +99,10 @@ export function axiosReducer (state, object) {
             displayname: object.value.displayname,
             email: object.value.email,
             likedrestaurants: object.value.likedrestaurants
-         }      
+         }
+         
+      case 'logout':
+         return { username: '', password: ''}
 
       default:
          return state
