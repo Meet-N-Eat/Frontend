@@ -1,4 +1,4 @@
-import { createContext, useReducer, useState } from 'react';
+import { createContext, useReducer } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
@@ -9,7 +9,9 @@ import NavBar from './components/Navigation/NavBar';
 import RestaurantDetail from './components/RestaurantDetail/RestaurantDetail';
 import SearchResults from './components/SearchResults/SearchResults';
 import ProfileSettings from './components/ProfileSettings/ProfileSettings';
+import FriendRequest from './components/MessageCenter/FriendRequest';
 import { axiosReducer } from './data-and-functions/axiosAll';
+
 
 export const Context = createContext()
 
@@ -40,6 +42,7 @@ function App() {
             <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
             <Route path="/message-center" element={<MessageCenter />} />
             <Route path="/faq" element={<FAQ />} />
+            <Route path="/friendrequests" element={<FriendRequest />} />
           </Routes>
       </main>
         </Context.Provider>
