@@ -11,13 +11,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 
 
 const NavBar = () => {
+
+// State hooks and Variables
+// ===========================================================================
 const { loggedInUser, dispatchUser } = useContext(Context)
 const [option, setOption] = useState('')
 const navigate = useNavigate()
 
+
 useEffect(() => {
     navigate(`/users/authentication/${option}`)
 },[option])
+
 
 function userAuthClick(e) {
     switch(e.target.text) {
@@ -32,9 +37,13 @@ function userAuthClick(e) {
     }
 }
 
+// Event handlers
+// ===========================================================================
 function handleLogOut(){
     loggedInUser.token = null;
  }
+
+
 
 return (
     <Navbar expand='lg' >
@@ -44,12 +53,15 @@ return (
                             <h2>MEET N EAT</h2>
                         </Navbar.Brand>
 
-                        {loggedInUser.token ?
+                        {loggedInUser.token && loggedInUser.response ?
                                 <>
                                 <NavLink to='/profile'>
-                                    <CgProfile 
-                                    style={{color:'#D6300F'}} 
-                                    size={40}/>
+                                    <img 
+                                    src={loggedInUser.response.profileimg} 
+                                    alt="profile-icon"
+                                    class="rounded-full h-10 w-10"
+                                    id="nav-profile-icon"
+                                     />
                                 </NavLink>
                                 <NavLink to ='/friendrequests'>
                                     <FontAwesomeIcon icon="fa-solid fa-user-group" />
