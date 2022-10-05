@@ -3,9 +3,9 @@ import LikedRestaurants from './LikedRestaurants'
 import Friends from './Friends'
 import CoordinateMeetup from '../CoordinateMeetup'
 import Itinerary from './Itinerary'
-import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
+import { axiosAll } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
-import { Row, Col, Container } from 'react-bootstrap'
+import { Row, Col, Container, Carousel } from 'react-bootstrap'
 
 const MyProfile = () => {
 const { loggedInUser, dispatchUser } = useContext(Context)
@@ -19,30 +19,46 @@ if(!loggedInUser.response){
 }
 
 return (
-
-    <Container className='page-container'>
-        <Row>
-            {/* <Col>
-                <ProfileCard profile={loggedInUser.response}/>
-            </Col> */}
-            <Col xs={8}>
-                <Row>
-                    <Col className='friends-likes'>
-                        <LikedRestaurants likedrestaurants={loggedInUser.response.likedrestaurants} />
-                    </Col>
-                    <Col className='friends-likes'>
-                        <Friends friends={loggedInUser.response.friends} />
-                    </Col>
-                </Row>
-                <Row>
-                    <CoordinateMeetup profile={loggedInUser.response}/>
-                </Row>
-            </Col>
-            <Col>
+    <div>
+        <Carousel slide={false}>
+            <Carousel.Item className="carousel-item">
+                <CoordinateMeetup profile={loggedInUser.response}/>
+            </Carousel.Item>
+            <Carousel.Item className="carousel-item">
+                <Friends friends={loggedInUser.response.friends} />
+            </Carousel.Item>
+            <Carousel.Item className="carousel-item">
+                <LikedRestaurants likedrestaurants={loggedInUser.response.likedrestaurants} />
+            </Carousel.Item>
+            <Carousel.Item className="carousel-item">
                 <Itinerary profile={loggedInUser.response}/>
-            </Col>
-        </Row>
-    </Container>
+            </Carousel.Item>
+        </Carousel>
+
+    </div>
+    // <Container className='page-container'>
+    //     <Row>
+    //         {/* <Col>
+    //             <ProfileCard profile={loggedInUser.response}/>
+    //         </Col> */}
+    //         <Col xs={8}>
+    //             <Row>
+    //                 <Col className='friends-likes'>
+    //                     <LikedRestaurants likedrestaurants={loggedInUser.response.likedrestaurants} />
+    //                 </Col>
+    //                 <Col className='friends-likes'>
+    //                     <Friends friends={loggedInUser.response.friends} />
+    //                 </Col>
+    //             </Row>
+    //             <Row>
+    //                 <CoordinateMeetup profile={loggedInUser.response}/>
+    //             </Row>
+    //         </Col>
+    //         <Col>
+    //             <Itinerary profile={loggedInUser.response}/>
+    //         </Col>
+    //     </Row>
+    // </Container>
 
     // <div style={{
     //     marginLeft:'15%',
