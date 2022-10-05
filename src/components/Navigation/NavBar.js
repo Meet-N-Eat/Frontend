@@ -1,12 +1,14 @@
 import { useContext, useEffect, useState } from "react"
 import { NavDropdown, Navbar, Container, Row } from "react-bootstrap"
 import { Link, NavLink, useNavigate } from "react-router-dom"
+import { Context } from "../../App"
 import { HiMail, HiCog } from 'react-icons/hi'
 import { CgProfile } from 'react-icons/cg'
 import { GrCircleInformation} from 'react-icons/gr'
 import { FaUserFriends } from 'react-icons/fa'
 import { AiOutlineMessage } from 'react-icons/ai'
-import { Context } from "../../App"
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 const NavBar = () => {
 const { loggedInUser } = useContext(Context)
