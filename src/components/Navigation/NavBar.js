@@ -7,6 +7,7 @@ import { CgProfile } from 'react-icons/cg'
 import { GrCircleInformation} from 'react-icons/gr'
 import { AiOutlineMessage } from 'react-icons/ai'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faUserGroup } from '@fortawesome/free-solid-svg-icons'
 
 
 
@@ -14,7 +15,7 @@ const NavBar = () => {
 
 // State hooks and Variables
 // ===========================================================================
-const { loggedInUser, dispatchUser } = useContext(Context)
+const { loggedInUser } = useContext(Context)
 const [option, setOption] = useState('')
 const navigate = useNavigate()
 
@@ -63,8 +64,8 @@ return (
                                     id="nav-profile-icon"
                                      />
                                 </NavLink>
-                                <NavLink to ='/friendrequests'>
-                                    <FontAwesomeIcon icon="fa-solid fa-user-group" />
+                                <NavLink to='/friendrequests'>
+                                    <FontAwesomeIcon icon={faUserGroup} />
                                 </NavLink>
                                 <NavLink to='/message-center'>
                                     <AiOutlineMessage size={40}/>
