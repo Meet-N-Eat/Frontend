@@ -5,9 +5,9 @@ import { Context } from "../../App"
 import { HiMail, HiCog } from 'react-icons/hi'
 import { CgProfile } from 'react-icons/cg'
 import { GrCircleInformation} from 'react-icons/gr'
-import { FaUserFriends } from 'react-icons/fa'
 import { AiOutlineMessage } from 'react-icons/ai'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+
 
 
 const NavBar = () => {
@@ -49,10 +49,11 @@ return (
                                     style={{color:'#D6300F'}} 
                                     size={40}/>
                                 </NavLink>
-                                <NavLink 
-                                to='/message-center' 
-                                style={{color: '#EB3510'}}>
-                                    <HiMail size={40}/>
+                                <NavLink to ='/friendrequests'>
+                                    <FontAwesomeIcon icon="fa-solid fa-user-group" />
+                                </NavLink>
+                                <NavLink to='/message-center'>
+                                    <AiOutlineMessage size={40}/>
                                     </NavLink>
                                 <NavDropdown 
                                 className="nav-dropdown d-inline-block" 
