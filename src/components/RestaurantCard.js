@@ -106,7 +106,12 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
             </Card>
             </Card>
             <div>
-                { signUpShow ? <SignUp /> : null }
+                { signUpShow ?
+                <div>
+                    <h2>Create an account to unlock this feature!</h2>
+                    <SignUp /> 
+                </div>
+                : null }
             </div>
         </div>
     )
