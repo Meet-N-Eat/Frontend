@@ -7,7 +7,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
          'Authorization': `Bearer ${authToken}`,
       }
    }
-
+   console.log('method', method, 'path', path)
    let res
    switch(method) {
       case 'GET':
@@ -33,6 +33,8 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
       default:
          break
    }
+
+   return res
 }
 
 export function axiosReducer (state, object) {
@@ -97,7 +99,10 @@ export function axiosReducer (state, object) {
             displayname: object.value.displayname,
             email: object.value.email,
             likedrestaurants: object.value.likedrestaurants
-         }      
+         }
+         
+      case 'logout':
+         return { username: '', password: ''}
 
       default:
          return state

@@ -14,6 +14,7 @@ const SignUp = () => {
   // State Hooks and Variables
   // ===========================================================================
   const [signupInfo, dispatch] = useReducer(axiosReducer, initialState)
+  const [error, dispatchError] = useReducer(axiosReducer, { username: false, email: false })
   const navigate = useNavigate()
   
   // Functions
@@ -25,11 +26,22 @@ const SignUp = () => {
     })
   }
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault()
-    signupInfo.password === signupInfo.confirmPassword &&
-      axiosAll('POST', `/users/signup`, null, dispatch, signupInfo)
-    navigate('/users/authentication/login')
+    if(signupInfo.password === signupInfo.confirmPassword) {
+      const response = await axiosAll('POST', `/users/signup`, null, dispatch, signupInfo)
+
+      if (typeof(response.data) === 'string') {
+        response.data.indexOf('{ username:') != -1 ?
+          dispatchError({ key: 'username', value: true })
+          : dispatchError({ key: 'username', value: false })
+
+        response.data.indexOf('{ email:') != -1 ?
+          dispatchError({ key: 'email', value: true })
+          : dispatchError({ key: 'email', value: false })
+      }
+      else navigate('/users/authentication/login')
+    }
   }
 
   // Return
@@ -42,6 +54,7 @@ const SignUp = () => {
           action=''
           onSubmit={submitHandler}
         >
+          {error.username && <h1>Username already taken, please try another.</h1>}
           <input
             className='username' 
             style={{marginBottom:'2%', border:'1px solid #D6300F', borderRadius:'5px', padding:'4px'}} 
@@ -66,6 +79,7 @@ const SignUp = () => {
             onChange={changeHandler}
             value={signupInfo.confirmPassword}
           ></input>
+          {error.email && <h1>Email already taken, please try another.</h1>}
           <input
             className='email' 
             style={{marginBottom:'2%', border:'1px solid #D6300F', borderRadius:'5px', padding:'4px'}} 
