@@ -35,9 +35,9 @@ const LogIn = () => {
 
   async function submitHandler(e) {
     e.preventDefault()
-    const token = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
+    const response = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
 
-    token.data.token ? dispatch({
+    response.data.token ? dispatch({
       key: 'success',
       value: true
     })
