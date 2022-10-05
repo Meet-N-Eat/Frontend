@@ -60,7 +60,7 @@ return (
                                     <img 
                                     src={loggedInUser.response.profileimg} 
                                     alt="profile-icon"
-                                    class="rounded-full h-10 w-10"
+                                    className="rounded-full h-10 w-10"
                                     id="nav-profile-icon"
                                      />
                                 </NavLink>
