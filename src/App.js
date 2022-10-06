@@ -4,11 +4,11 @@ import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
 import LogInSignUp from './components/LoginSignUp/LogInSignUp';
 import MessageCenter from './components/MessageCenter/MessageCenter';
-import MyProfile from './components/MyPage/MyPage';
+import MyPage from './components/MyPage/MyPage';
 import NavBar from './components/Navigation/NavBar';
 import RestaurantDetail from './components/RestaurantDetail/RestaurantDetail';
 import SearchResults from './components/SearchResults/SearchResults';
-import ProfileSettings from './components/ProfileSettings/ProfileSettings';
+import UserProfile from './components/UserProfile/UserProfile';
 import FriendRequest from './components/MessageCenter/FriendRequest';
 import { axiosReducer } from './data-and-functions/axiosAll';
 
@@ -37,8 +37,8 @@ function App() {
             <Route path="/home" element={<Home />} />
             <Route path="/users/authentication/:option" element={<LogInSignUp />} />
             <Route path="/results/:searchString" element={<SearchResults />} />
-            <Route path="/profile" element={<MyProfile />} />
-            <Route path="/profile/settings" element={<ProfileSettings />} />
+            <Route path="/my-page" element={<MyPage />} />
+            <Route path="/profile" element={<UserProfile />} />
             <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
             <Route path="/message-center" element={<MessageCenter />} />
             <Route path="/faq" element={<FAQ />} />
