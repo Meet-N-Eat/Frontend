@@ -9,7 +9,7 @@ import NavBar from './components/Navigation/NavBar';
 import RestaurantDetail from './components/RestaurantDetail/RestaurantDetail';
 import SearchResults from './components/SearchResults/SearchResults';
 import UserProfile from './components/UserProfile/UserProfile';
-import FriendRequest from './components/MessageCenter/FriendRequest';
+import FriendRequest from './components/FriendRequests/FriendRequest';
 import { axiosReducer } from './data-and-functions/axiosAll';
 
 
