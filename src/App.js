@@ -4,7 +4,7 @@ import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
 import LogInSignUp from './components/LoginSignUp/LogInSignUp';
 import MessageCenter from './components/MessageCenter/MessageCenter';
-import MyProfile from './components/MyProfile/MyProfile';
+import MyProfile from './components/MyPage/MyPage';
 import NavBar from './components/Navigation/NavBar';
 import RestaurantDetail from './components/RestaurantDetail/RestaurantDetail';
 import SearchResults from './components/SearchResults/SearchResults';

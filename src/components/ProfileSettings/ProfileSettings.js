@@ -8,7 +8,7 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 const ProfileSettings = () => {
 // state hooks and variable declaration
 //===========================================================================
-    const { defaultImage, loggedInUser }  = useContext(Context)
+    const { defaultImage, loggedInUser } = useContext(Context)
     // Initial State for userSettings
     const initialState = {
         profileimg: '',
