@@ -49,19 +49,11 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
                     <div style={{width:'100%'}}>
                         <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
                             <Button type="checkbox" variant="outline-light">
-                            { loggedInUser.token ? 
                             <Image
                             width={50}
                             src={buttonIcon} 
-                            onClick={likeHandler}
+                            onClick={loggedInUser.token ? likeHandler : signUpShowHandler}
                             />
-                            : 
-                            <Image
-                            width={50}
-                            src={buttonIcon} 
-                            onClick={signUpShowHandler}
-                            />
-                            }
                             </Button>
                         </ButtonGroup>
                     </div>
