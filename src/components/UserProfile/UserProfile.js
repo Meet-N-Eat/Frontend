@@ -8,7 +8,7 @@ const UserProfile = () => {
 // state hooks and variable declaration
 //===========================================================================
     const { defaultImage, loggedInUser } = useContext(Context)
-    const [userData, dispatch] = useReducer(axiosReducer, loggedInUser.response)
+    const [userData, dispatch] = useReducer(axiosReducer, {})
 
 // Getting user data
 // ===========================================================================
@@ -16,6 +16,13 @@ const UserProfile = () => {
     useEffect(()=> {
         axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
     },[])
+
+    useEffect(() => {
+        dispatch({
+            key: 'loadProfile',
+            value: loggedInUser.response
+        })
+    },[loggedInUser.response])
 
 // Event Handler Functions
 //===========================================================================

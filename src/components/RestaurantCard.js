@@ -44,6 +44,7 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
     }
     
     if (categories) {
+        
         return (
             <div>
                 { signUpShow ?
