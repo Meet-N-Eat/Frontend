@@ -71,7 +71,7 @@ return (
             </Navbar>
         </div>
         <div class="grid place-items-center h-screen">
-            <Carousel slide={false} wrap={false} prevIcon="dark">
+            <Carousel slide={false} wrap={false}>
                 <Carousel.Item>
                     <div class="grid place-items-center h-screen">
                         <CoordinateMeetup profile={loggedInUser.response}/>
