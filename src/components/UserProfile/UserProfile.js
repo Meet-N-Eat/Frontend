@@ -5,7 +5,7 @@ import { BsFillTrashFill } from "react-icons/bs"
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 
 
-const ProfileSettings = () => {
+const UserProfile = () => {
 // state hooks and variable declaration
 //===========================================================================
     const { defaultImage, loggedInUser } = useContext(Context)
@@ -187,4 +187,4 @@ const ProfileSettings = () => {
     )
 }
 
-export default ProfileSettings
+export default UserProfile

@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import LikedRestaurants from './LikedRestaurants'
+import Favorites from './Favorites'
 import Friends from './Friends'
 import CoordinateMeetup from '../CoordinateMeetup'
 import Itinerary from './Itinerary'
@@ -7,7 +7,7 @@ import { axiosAll } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
 import { Row, Col, Container } from 'react-bootstrap'
 
-const MyProfile = () => {
+const MyPage = () => {
 const { loggedInUser, dispatchUser } = useContext(Context)
 
 useEffect(() => {
@@ -28,7 +28,7 @@ return (
             <Col xs={8}>
                 <Row>
                     <Col className='friends-likes'>
-                        <LikedRestaurants likedrestaurants={loggedInUser.response.likedrestaurants} />
+                        <Favorites favorites={loggedInUser.response.favorites} />
                     </Col>
                     <Col className='friends-likes'>
                         <Friends friends={loggedInUser.response.friends} />
@@ -129,4 +129,4 @@ return (
 )
 }
 
-export default MyProfile
+export default MyPage

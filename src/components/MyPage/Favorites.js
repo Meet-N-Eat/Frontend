@@ -3,7 +3,7 @@ import { InputGroup, Form } from 'react-bootstrap'
 import { useState } from 'react'
 import RestaurantCard from '../RestaurantCard';
 
-const LikedRestaurants = ({ likedrestaurants }) => {
+const Favorites = ({ favorites }) => {
 
     const [searchCharacters, setSearchCharacters] = useState('')
     const [show, setShow] = useState(false);
@@ -23,7 +23,7 @@ return (
         <div 
             style={{ padding:'5%', overflow:'scroll', overflowX:'hidden', maxHeight:'76%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:"center" }}
         >
-            {likedrestaurants && likedrestaurants
+            {favorites && favorites
                 .filter(restaurant => searchCharacters == '' || restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
                     .map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/> 
             )}
@@ -32,4 +32,4 @@ return (
 )
 }
 
-export default LikedRestaurants
+export default Favorites

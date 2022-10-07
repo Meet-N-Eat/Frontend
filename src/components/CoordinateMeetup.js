@@ -40,7 +40,8 @@ const CoordinateMeetup = ({ profile }) => {
             key: 'friend',
             value: friend.username
             })
-
+        
+        // If friend is not found in current participants list, add them to the participants list
         !(meetup.participants.find(participant => participant == friend._id))
             && dispatch({
                 key: 'participants',
@@ -68,7 +69,7 @@ const CoordinateMeetup = ({ profile }) => {
     }
 
     const inviteHandler = () => {
-        axiosAll('POST', `/users/events/sender/${profile._id}/restaurant/${meetup.location}`, loggedInUser.token, dispatch, { participants: meetup.participants })
+        axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatch, meetup)
     }
 
 return (
