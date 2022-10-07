@@ -1,4 +1,4 @@
-import React, { useReducer } from 'react';
+import React, { useReducer, useState } from 'react';
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
@@ -15,6 +15,7 @@ const SignUp = () => {
   // ===========================================================================
   const [signupInfo, dispatch] = useReducer(axiosReducer, initialState)
   const [error, dispatchError] = useReducer(axiosReducer, { username: false, email: false })
+  const [nextModal, setNextModal] = useState(false)
   const navigate = useNavigate()
   
   // Functions
@@ -32,11 +33,11 @@ const SignUp = () => {
       const response = await axiosAll('POST', `/users/signup`, null, dispatch, signupInfo)
 
       if (typeof(response.data) === 'string') {
-        response.data.indexOf('{ username:') != -1 ?
+        response.data.indexOf('{ username:') !== -1 ?
           dispatchError({ key: 'username', value: true })
           : dispatchError({ key: 'username', value: false })
 
-        response.data.indexOf('{ email:') != -1 ?
+        response.data.indexOf('{ email:') !== -1 ?
           dispatchError({ key: 'email', value: true })
           : dispatchError({ key: 'email', value: false })
       }
@@ -44,15 +45,23 @@ const SignUp = () => {
     }
   }
 
+  // Event Handler
+  // ===========================================================================
+    function nextModalHandler () {
+      setNextModal(true)
+    }
+
+
   // Return
   // ===========================================================================
   return (
     <div>
+
       <div className='container'>
         <form 
           style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center"}} 
           action=''
-          onSubmit={submitHandler}
+          onSubmit={submitHandler && nextModalHandler}
         >
           {error.username && <h1>Username already taken, please try another.</h1>}
           <input

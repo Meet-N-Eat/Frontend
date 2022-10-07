@@ -12,6 +12,8 @@ import { faUtensils, faUsers, faPeopleArrows, faCalendarDays } from '@fortawesom
 
 
 const MyPage = () => {
+// State Hooks and Variables
+// ===========================================================================
 const { loggedInUser, dispatchUser } = useContext(Context)
 
 useEffect(() => {

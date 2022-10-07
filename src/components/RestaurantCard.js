@@ -8,6 +8,9 @@ import LogIn from './LoginSignUp/LogIn';
 
 
 const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
+    // State Hooks and Variables
+  // ===========================================================================
+
     const likedImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png'
     const notLikedImage = 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
     const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
@@ -18,6 +21,8 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
     const categories = []
     restaurant.categories.forEach(category => categories.push(category.title))
 
+// Functions
+// ===========================================================================
     function liked() {
         if(loggedInUser.response && loggedInUser.response.favorites.find(favorite => favorite._id === restaurant._id)) return true
         else return false
@@ -43,6 +48,8 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
         setSignUpShow(true)
     }
     
+// Return 
+// ===========================================================================
     if (categories) {
         return (
             <div>
