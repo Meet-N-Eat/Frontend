@@ -37,7 +37,7 @@ const SearchResults = () => {
                 </Container>
             }
             {!restaurantsData.response && <Container><h1>Loading restaurants...</h1></Container>}
-            {restaurantsData.response && restaurantsData.response.length === 0 && <Container><h1>No restaurants matching restaurants were found.</h1></Container>}
+            {restaurantsData.response && restaurantsData.response.length === 0 && <Container><h1>No restaurants matching restaurants were found</h1></Container>}
         </Container>
     )
 }

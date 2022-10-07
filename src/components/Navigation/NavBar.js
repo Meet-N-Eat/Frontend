@@ -53,7 +53,7 @@ return (
 
                         {loggedInUser.token && loggedInUser.response ?
                                 <>
-                                <NavLink to='/profile'>
+                                <NavLink to='/my-page'>
                                     <img 
                                     src={loggedInUser.response.profileimg} 
                                     alt="profile-icon"
@@ -71,8 +71,8 @@ return (
                                 className="nav-dropdown d-inline-block" 
                                 title={<HiCog size={40}/>}>
                                     <Row>
-                                        <NavLink to='/profile/settings'>
-                                            Settings
+                                        <NavLink to='/profile'>
+                                            My Profile
                                         </NavLink>
                                     </Row>
                                     <Row>

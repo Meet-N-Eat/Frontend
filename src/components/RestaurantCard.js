@@ -18,7 +18,7 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
     restaurant.categories.forEach(category => categories.push(category.title))
 
     function liked() {
-        if(loggedInUser.response && loggedInUser.response.likedrestaurants.find(likedRestaurant => likedRestaurant._id === restaurant._id)) return true
+        if(loggedInUser.response && loggedInUser.response.favorites.find(favorite => favorite._id === restaurant._id)) return true
         else return false
     }
 
@@ -26,12 +26,12 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
         if(loggedInUser.token) {
             if(liked()) {
                 // axiosAll(method, path, authToken, dispatch, body)
-                axiosAll('DELETE', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+                axiosAll('DELETE', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`, loggedInUser.token, dispatchUser)
                     .then(() => setLikeRefresh && setLikeRefresh(prevState => !prevState))
                 setButtonIcon(notLikedImage)
             } else {
                 // axiosAll(method, path, authToken, dispatch, body)
-                axiosAll('POST', `/users/${loggedInUser.response._id}/likedrestaurants/${restaurant._id}`, loggedInUser.token, dispatchUser)
+                axiosAll('POST', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`, loggedInUser.token, dispatchUser)
                     .then(() => setLikeRefresh && setLikeRefresh(prevState => !prevState))
                 setButtonIcon(likedImage)
             }
@@ -49,19 +49,11 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
                     <div style={{width:'100%'}}>
                         <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
                             <Button type="checkbox" variant="outline-light">
-                            { loggedInUser.token ? 
                             <Image
                             width={50}
                             src={buttonIcon} 
-                            onClick={likeHandler}
+                            onClick={loggedInUser.token ? likeHandler : signUpShowHandler}
                             />
-                            : 
-                            <Image
-                            width={50}
-                            src={buttonIcon} 
-                            onClick={signUpShowHandler}
-                            />
-                            }
                             </Button>
                         </ButtonGroup>
                     </div>

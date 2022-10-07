@@ -38,58 +38,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
 }
 
 export function axiosReducer (state, object) {
-   switch(object.key) {
-      case 'response':
-         return {...state, response: object.value}
-      
-      case 'searchString':
-         return {...state, searchString: object.value}
-
-      case 'username':
-         return {...state, username: object.value}
-
-      case 'password':
-         return {...state, password: object.value}
-
-      case 'token':
-         return {...state, token: object.value}
-
-      case 'profileimg':
-         return {...state, profileimg: object.value}
-         
-      case 'location':
-         return {...state, location: object.value}
-
-      case 'displayname':
-         return {...state, displayname: object.value}
-
-      case 'email':
-         return {...state, email: object.value}
-         
-      case 'about':
-         return {...state, about: object.value}      
-      
-      case 'confirmPassword':
-         return {...state, confirmPassword: object.value}      
-      
-      case 'stars':
-         return {...state, stars: object.value}      
-      
-      case 'body':
-         return {...state, body: object.value}      
-      
-      case 'friend':
-         return {...state, friend: object.value}      
-      
-      case 'date':
-         return {...state, date: object.value}      
-      
-      case 'restaurant':
-         return {...state, restaurant: object.value}      
-      
-      case 'participants':
-         return {...state, participants: object.value}      
-      
+   switch(object.key) {           
       case 'loadProfile':
          return {
             ...state, 
@@ -104,13 +53,7 @@ export function axiosReducer (state, object) {
       case 'logout':
          return { username: '', password: ''}
 
-      case 'missingBody':
-         return {...state, missingBody: object.value}
-         
-      case 'missingStars':
-         return {...state, missingStars: object.value}
-         
       default:
-         return state
+         return {...state, [object.key]: object.value}
    }
 }
