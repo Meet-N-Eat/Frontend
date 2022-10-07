@@ -1,4 +1,4 @@
-import { useContext, useEffect, useState } from "react"
+import { useContext, useRef } from "react"
 import { NavDropdown, Navbar, Container, Row } from "react-bootstrap"
 import { Link, NavLink, useNavigate } from "react-router-dom"
 import { Context } from "../../App"
@@ -15,34 +15,31 @@ const NavBar = () => {
 
 // State hooks and Variables
 // ===========================================================================
-const { loggedInUser } = useContext(Context)
-const [option, setOption] = useState('')
+const { loggedInUser, dispatchUser } = useContext(Context)
+let option = useRef('')
 const navigate = useNavigate()
-
-
-useEffect(() => {
-    navigate(`/users/authentication/${option}`)
-},[option])
-
 
 function userAuthClick(e) {
     switch(e.target.text) {
         case 'Log In':
-            setOption('login')
+            option = 'login'
             break
         case 'Sign Up':
-            setOption('signup')
+            option = 'signup'
             break
         default:
             break
     }
+    navigate(`/users/authentication/${option}`)
 }
 
 // Event handlers
 // ===========================================================================
 function handleLogOut(){
-    loggedInUser.token = null;
- }
+    dispatchUser({
+        key: 'logout'
+    })
+}
 
 
 
@@ -56,7 +53,7 @@ return (
 
                         {loggedInUser.token && loggedInUser.response ?
                                 <>
-                                <NavLink to='/profile'>
+                                <NavLink to='/my-page'>
                                     <img 
                                     src={loggedInUser.response.profileimg} 
                                     alt="profile-icon"
@@ -74,8 +71,8 @@ return (
                                 className="nav-dropdown d-inline-block" 
                                 title={<HiCog size={40}/>}>
                                     <Row>
-                                        <NavLink to='/profile/settings'>
-                                            Settings
+                                        <NavLink to='/profile'>
+                                            My Profile
                                         </NavLink>
                                     </Row>
                                     <Row>

@@ -1,3 +1,4 @@
+import { useReducer, useState } from 'react';
 import { useContext, useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
@@ -7,7 +8,19 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 const LogIn = () => {
   // State Hooks and Variables
   // ===========================================================================
-  const isMounted = useRef(false)
+  const component = useRef({ isMounted: false })
+  const [login, dispatch] = useReducer((state, object) => {
+    switch(object.key) {
+      case 'success':
+        return {...state, success: object.value}
+
+      case 'badLogin':
+        return {...state, badLogin: object.value}
+
+      default:
+        return state
+    }
+  }, { success: false, badLogin: false})
   const { loggedInUser, dispatchUser } = useContext(Context)
   const navigate = useNavigate()
 
@@ -20,9 +33,19 @@ const LogIn = () => {
     })
   }
 
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault()
-    axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
+    const response = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
+
+    response.data.token ? dispatch({
+      key: 'success',
+      value: true
+    })
+    : dispatch({
+      key: 'badLogin',
+      value: true
+    })
+
     dispatchUser({ 
       key: 'password',
       value: ''
@@ -30,10 +53,10 @@ const LogIn = () => {
   }
 
   useEffect(() => {
-    isMounted.current ?
+    component.isMounted ?
       axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser) && navigate('/home') 
-      : isMounted.current = true
-  },[loggedInUser.token])
+      : component.isMounted = true
+  },[login.success])
 
   // Return
   // ===========================================================================
@@ -45,6 +68,7 @@ const LogIn = () => {
           action=''
           onSubmit={submitHandler}
         >
+            {login.badLogin && <h1>Bad username or password. Please try again.</h1>}
             <input 
               className='username'
               style={{marginBottom:'2%', border:'1px solid #D6300F', borderRadius:'5px', padding:'4px'}} 

@@ -14,7 +14,7 @@ const [signUpShow, setSignUpShow] = useState(false)
 
 // Event handlers
 // ===========================================================================
-function signUpShowHandler () {
+function signUpShowHandler() {
     setSignUpShow(true)
 }
 

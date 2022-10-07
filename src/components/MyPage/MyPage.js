@@ -1,5 +1,5 @@
 import { useContext, useEffect } from 'react'
-import LikedRestaurants from './LikedRestaurants'
+import Favorites from './Favorites'
 import Friends from './Friends'
 import CoordinateMeetup from '../CoordinateMeetup'
 import Itinerary from './Itinerary'
@@ -11,7 +11,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils, faUsers, faPeopleArrows, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
 
 
-const MyProfile = () => {
+const MyPage = () => {
 const { loggedInUser, dispatchUser } = useContext(Context)
 
 useEffect(() => {
@@ -84,7 +84,7 @@ return (
                 </Carousel.Item>
                 <Carousel.Item>
                     <div class="grid place-items-center h-screen">
-                        <LikedRestaurants likedrestaurants={loggedInUser.response.likedrestaurants} />
+                        <Favorites favorites={loggedInUser.response.favorites} />
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
@@ -207,4 +207,4 @@ return (
 )
 }
 
-export default MyProfile
+export default MyPage

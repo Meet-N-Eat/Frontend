@@ -1,24 +1,21 @@
+import { useState } from 'react'
 import { useContext, useEffect, useReducer } from 'react'
 import { Button, Container, Dropdown, Form } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 
 const ReviewForm = ({ restaurantId, handleShow }) => {
+    const { loggedInUser } = useContext(Context)
+
     const initialState = {
-        reviewer: '',
+        reviewer: loggedInUser.response._id,
         stars: '',
         body: ''
     }
-    console.log(restaurantId)
-    const [reviewState, dispatch] = useReducer(axiosReducer, initialState)
-    const navigate = useNavigate()
-    const { loggedInUser } = useContext(Context)
-    const starMenu = ['None', '1', '2', '3', '4', '5']
 
-    useEffect(() => {
-        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
-    },[])
+    const [review, dispatch] = useReducer(axiosReducer, initialState)
+    const [validate, dispatchValidate] = useReducer(axiosReducer, { valid: false })
+    const starMenu = ['None', '1', '2', '3', '4', '5']
 
     function starClick(e) {
         e.target.text !== 'None' ?
@@ -38,9 +35,18 @@ const ReviewForm = ({ restaurantId, handleShow }) => {
 
     function reviewSubmit(e) {
         e.preventDefault()
-        reviewState.stars !== '' && 
-            axiosAll('POST', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatch, { reviewer: reviewState.response._id, stars: reviewState.stars, body: reviewState.body})
+
+        review.stars == '' ? 
+            dispatchValidate({ key: 'missingStars', value: true}) 
+            : dispatchValidate({ key: 'missingStars', value: false})
+        review.body == '' ? 
+            dispatchValidate({ key: 'missingBody', value: true})
+            : dispatchValidate({ key: 'missingBody', value: false})
+
+        review.stars != '' && review.body != '' && (
+            axiosAll('POST', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatch, review) &&
             handleShow()
+        )
     }
 
 return (
@@ -48,21 +54,31 @@ return (
         <Form>
             <Form.Group style={{display:'flex', flexDirection:'column', alignItems:'center'}} controlId='reviewBody'>
                 <Dropdown style={{display:'flex', flexDirection:'column', marginBottom:'3%'}}>
-                    <Form.Label>Give it some stars</Form.Label>
+                    <Form.Label>
+                        {validate.missingStars ? 
+                            'Please add a star rating to this review' 
+                            : 'Give it some stars'
+                        }
+                    </Form.Label>
                     <Dropdown.Toggle style={{backgroundColor:'#D6300F', color:'white', border:'1px solid #D6300F'}}>
-                        {reviewState.stars || 'Stars'}
+                        {review.stars || 'Stars'}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         {starMenu.map((menuItem, index) => <Dropdown.Item className='stars' onClick={starClick} key={index}>{menuItem}</Dropdown.Item>)}
                     </Dropdown.Menu>
                 </Dropdown>
-                <Form.Label>Tell us your thoughts</Form.Label>
+                <Form.Label>
+                    {validate.missingBody ?
+                        'Please enter something about your experience'
+                        : 'Tell us your thoughts'
+                    }
+                </Form.Label>
                 <Form.Control 
                     style={{border:'1px solid #D6300F'}}
                     as='textarea' 
                     rows={3} 
                     onChange={reviewChange}
-                    value={reviewState.body}
+                    value={review.body}
                 />
                 <Button style={{marginTop:'3%', color:'white', border:'1px solid #D6300F', backgroundColor:'#D6300F'}} onClick={reviewSubmit}>Submit</Button>
             </Form.Group>

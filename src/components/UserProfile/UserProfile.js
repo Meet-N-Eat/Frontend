@@ -5,10 +5,10 @@ import { BsFillTrashFill } from "react-icons/bs"
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 
 
-const ProfileSettings = () => {
+const UserProfile = () => {
 // state hooks and variable declaration
 //===========================================================================
-    const { defaultImage, loggedInUser }  = useContext(Context)
+    const { defaultImage, loggedInUser } = useContext(Context)
     // Initial State for userSettings
     const initialState = {
         profileimg: '',
@@ -25,14 +25,7 @@ const ProfileSettings = () => {
     useEffect(() => {
         userData.response && dispatch({
             key: 'loadProfile',
-            value: {
-                profileimg: userData.response.profileimg,
-                about: userData.response.about,
-                location: userData.response.location,
-                displayname: userData.response.displayname,
-                email: userData.response.email,
-                likedrestaurants: userData.response.likedrestaurants
-            }
+            value: userData.response
         })
     },[userData.response])
 
@@ -44,15 +37,15 @@ const ProfileSettings = () => {
         axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
     },[reload])
 
-    function onDelete(e) {
-        e.preventDefault()
-        axiosAll('DELETE', `/users/${userData.response._id}/likedrestaurants/${e.target.classList[0]}`, loggedInUser.token)
-        const likedrestaurants = userData.likedrestaurants
-        likedrestaurants.map(restaurant => {
-            if(restaurant._id === e.target.classList[0]) return
-            return restaurant
-        })
-    }
+    // function onDelete(e) {
+    //     e.preventDefault()
+    //     axiosAll('DELETE', `/users/${userData.response._id}/likedrestaurants/${e.target.classList[0]}`, loggedInUser.token)
+    //     const likedrestaurants = userData.likedrestaurants
+    //     likedrestaurants.map(restaurant => {
+    //         if(restaurant._id === e.target.classList[0]) return
+    //         return restaurant
+    //     })
+    // }
 
 // Event Handler Functions
 //===========================================================================
@@ -68,9 +61,10 @@ const ProfileSettings = () => {
         axiosAll('PUT', `/users/${userData.response._id}`, loggedInUser.token, dispatch, userData)
     }
     
-    function handleShow() {
-        setModalShow(!modalShow)
-    }
+    // function handleShow() {
+    //     setModalShow(!modalShow)
+    // }
+
     // function uploadHandler(imageList) {
     //     setImage(imageList)
     //   }
@@ -156,7 +150,7 @@ const ProfileSettings = () => {
                             />
                         </Row>
                     </Form>
-                            <Button variant="danger" style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F', marginTop:'5rem'}} onClick={handleShow}>edit liked restaurants</Button>
+                            {/* <Button variant="danger" style={{width: 'auto', marginLeft:'2rem', backgroundColor:'#EB3510', borderColor: '#D6300F', marginTop:'5rem'}} onClick={handleShow}>edit liked restaurants</Button>
                             <Modal 
                                 show={modalShow}
                                 onHide={handleShow}
@@ -185,7 +179,7 @@ const ProfileSettings = () => {
                                         
                                     </ListGroup>
                                 </Modal.Body>
-                            </Modal>
+                            </Modal> */}
                 </Col>
             </Row>
         </Card>
@@ -193,4 +187,4 @@ const ProfileSettings = () => {
     )
 }
 
-export default ProfileSettings
+export default UserProfile
