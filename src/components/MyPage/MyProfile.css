@@ -1,3 +1,7 @@
+.carousel-item {
+   padding-bottom: 5px;
+   width: 300px;
+}
 .friend-like-container {
    height: fit-content;
 }
@@ -11,4 +15,19 @@
    max-height: 60vh;
    overflow-y: auto;
    overflow-x: hidden;
+}
+
+#mypage-bar {
+   background-color: darkred;
+   color: white;
+}
+
+
+.carousel-control-prev {
+   background-color: black;
+   height: 80px;
+}
+.carousel-control-next {
+   background-color: black;
+   height: 80px;
 }
