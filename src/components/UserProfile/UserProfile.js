@@ -41,12 +41,12 @@ const UserProfile = () => {
     return (
         <Container style={{ marginTop: '18vh', border: '1px solid #EB3510', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', borderRadius:'10px'}}>
             <Row>         
-                <Image 
-                    className="profileimg"
-                    src={userData.profileimg || defaultImage} 
-                    alt="profile-image"
-                    id="profile-image"
-                    />
+                <div className='profile-image'>
+                    <Image
+                        src={userData.profileimg || defaultImage}
+                        alt="profile-image"
+                        />
+                </div>
                 <Form> 
                     <Form.Control className="profileimg"
                         type="profile-image" 

@@ -45,8 +45,20 @@ body {
   letter-spacing: 3px;
 }
 
-#profile-image {
-  width: 200px;
-  height: 200px;
+/* Class name goes on wrapper div */
+.profile-image {
+  width: 150px;
+  height: 150px;
+  display: inline-block;
+  position: relative;
+  overflow: hidden;
+  object-fit: cover;
+  padding: 0px;
+  margin: auto;
+}
+/* Targets image inside wrapper div */
+.profile-image img {
   border-radius: 50%;
+  width: auto;
+  height: 100%;
 }
