@@ -2,14 +2,13 @@ import { createContext, useReducer } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom'
 import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
-import LogInSignUp from './components/LoginSignUp/LogInSignUp';
-import MessageCenter from './components/MessageCenter/MessageCenter';
+import Messages from './components/Messages/Messages'
 import MyPage from './components/MyPage/MyPage';
 import NavBar from './components/Navigation/NavBar';
 import RestaurantDetail from './components/RestaurantDetail/RestaurantDetail';
 import SearchResults from './components/SearchResults/SearchResults';
 import UserProfile from './components/UserProfile/UserProfile';
-import FriendRequest from './components/FriendRequests/FriendRequest';
+import FriendRequests from './components/FriendRequests/FriendRequests';
 import { axiosReducer } from './data-and-functions/axiosAll';
 
 
@@ -33,16 +32,15 @@ function App() {
       </header>
       <main>
           <Routes>
-            <Route path="*" element={<Navigate to="/home" />} />
-            <Route path="/home" element={<Home />} />
-            <Route path="/users/authentication/:option" element={<LogInSignUp />} />
+            {/* <Route path="*" element={<Navigate to="/home" />} /> */}
+            <Route path="/" element={<Home />} />
             <Route path="/results/:searchString" element={<SearchResults />} />
-            <Route path="/my-page" element={<MyPage />} />
+            <Route path="/mypage" element={<MyPage />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
-            <Route path="/message-center" element={<MessageCenter />} />
+            <Route path="/messages" element={<Messages />} />
             <Route path="/faq" element={<FAQ />} />
-            <Route path="/friendrequests" element={<FriendRequest />} />
+            <Route path="/friendrequests" element={<FriendRequests />} />
           </Routes>
       </main>
         </Context.Provider>
