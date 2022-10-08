@@ -16,7 +16,7 @@ const SignUp = () => {
   const [signupInfo, dispatch] = useReducer(axiosReducer, initialState)
   const [error, dispatchError] = useReducer(axiosReducer, { username: false, email: false })
   const [nextModal, setNextModal] = useState(false)
-  const navigate = useNavigate()
+  // const navigate = useNavigate()
   
   // Functions
   // ===========================================================================
@@ -41,15 +41,10 @@ const SignUp = () => {
           dispatchError({ key: 'email', value: true })
           : dispatchError({ key: 'email', value: false })
       }
-      else navigate('/users/authentication/login')
+      // else navigate('/users/authentication/login')
+      else setNextModal(true)
     }
   }
-
-  // Event Handler
-  // ===========================================================================
-    function nextModalHandler () {
-      setNextModal(true)
-    }
 
   // Return
   // ===========================================================================
@@ -76,7 +71,7 @@ const SignUp = () => {
         <form 
           style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center"}} 
           action=''
-          onSubmit={submitHandler && nextModalHandler}
+          onSubmit={submitHandler}
         >
           {error.username && <h1>Username already taken, please try another.</h1>}
           <input
