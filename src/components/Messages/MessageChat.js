@@ -1,14 +1,14 @@
 import React from 'react'
 
-function MessageForm() {
+function MessageChat() {
 
    
 
   return (
     <div>
-      Message Form
+      Message Chat
     </div>
   )
 }
 
-export default MessageForm
+export default MessageChat
