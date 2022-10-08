@@ -1,7 +1,9 @@
 import React, { useReducer, useState } from 'react';
-import { Button } from 'react-bootstrap'
-import { useNavigate } from 'react-router-dom';
+import { Button, Row } from 'react-bootstrap'
+import { useNavigate, Link } from 'react-router-dom';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
+import UserProfile from '../UserProfile/UserProfile';
+import Home from '../Home/Home';
 
 const SignUp = () => {
   const initialState = {
@@ -51,12 +53,22 @@ const SignUp = () => {
       setNextModal(true)
     }
 
-
   // Return
   // ===========================================================================
   return (
     <div>
-
+      <div>
+        <Row>
+          <h1>successfully registered!</h1>
+        </Row>
+        <Row>
+          <button>set up your profile</button>
+        </Row>
+        <Row>
+          <Link to='/'></Link>
+        </Row>
+       
+      </div>
       <div className='container'>
         <form 
           style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center"}} 
@@ -97,7 +109,12 @@ const SignUp = () => {
             onChange={changeHandler}
             value={signupInfo.email}
           ></input>
-          <Button style={{borderRadius:'5px', backgroundColor:'#D6300F', color:'white', borderColor:'#D6300F'}} type='submit' variant="primary">Submit</Button>{' '}
+          <Button 
+            style={{borderRadius:'5px', backgroundColor:'#D6300F', color:'white', borderColor:'#D6300F'}} 
+            type='submit'
+            variant="primary">
+              Submit
+          </Button>{' '}
         </form>
       </div>
       </div>
