@@ -3,6 +3,7 @@ import { Routes, Route, Navigate } from 'react-router-dom'
 import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
 import Messages from './components/Messages/Messages'
+import MessageChat from './components/Messages/MessageChat';
 import MyPage from './components/MyPage/MyPage';
 import NavBar from './components/Navigation/NavBar';
 import RestaurantDetail from './components/RestaurantDetail/RestaurantDetail';
@@ -39,6 +40,7 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
             <Route path="/messages" element={<Messages />} />
+            <Route path="/messages/chat/:friendId" element={<MessageChat />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/friendrequests" element={<FriendRequests />} />
           </Routes>
