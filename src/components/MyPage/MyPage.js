@@ -1,7 +1,7 @@
 import { useContext, useEffect } from 'react'
 import Favorites from './Favorites'
 import Friends from './Friends'
-import CoordinateMeetup from '../CoordinateMeetup'
+import CoordinateMeetup from './CoordinateMeetup'
 import Itinerary from './Itinerary'
 import { axiosAll } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
@@ -70,25 +70,25 @@ return (
                     </Container>
             </Navbar>
         </div>
-        <div class="grid place-items-center h-screen">
+        <div className="grid place-items-center h-screen">
             <Carousel slide={false} wrap={false}>
                 <Carousel.Item>
-                    <div class="grid place-items-center h-screen">
+                    <div className="grid place-items-center h-screen">
                         <CoordinateMeetup profile={loggedInUser.response}/>
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <div class="grid place-items-center h-screen">
+                    <div className="grid place-items-center h-screen">
                         <Friends friends={loggedInUser.response.friends} />
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <div class="grid place-items-center h-screen">
+                    <div className="grid place-items-center h-screen">
                         <Favorites favorites={loggedInUser.response.favorites} />
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
-                    <div class="grid place-items-center h-screen">
+                    <div className="grid place-items-center h-screen">
                         <Itinerary profile={loggedInUser.response}/>
                     </div>
                 </Carousel.Item>

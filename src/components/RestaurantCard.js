@@ -95,8 +95,8 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
                                                 <p>{display_phone}</p>
                                             </Col>
                                         </Row>
-                                        {categories.map(category => 
-                                            <Row>
+                                        {categories.map((category, index) => 
+                                            <Row key={index}>
                                                 {category}
                                             </Row>
                                         )}
