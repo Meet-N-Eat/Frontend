@@ -46,8 +46,7 @@ export function axiosReducer (state, object) {
             about: object.value.about,
             location: object.value.location,
             displayname: object.value.displayname,
-            email: object.value.email,
-            likedrestaurants: object.value.likedrestaurants
+            email: object.value.email
          }
          
       case 'logout':

@@ -52,7 +52,7 @@ return (
                         </Navbar.Brand>
 
                         {loggedInUser.token && loggedInUser.response ?
-                                <>
+                            <>
                                 <NavLink to='/my-page'>
                                     <img 
                                     src={loggedInUser.response.profileimg} 
@@ -66,19 +66,18 @@ return (
                                 </NavLink>
                                 <NavLink to='/message-center'>
                                     <AiOutlineMessage size={40}/>
-                                    </NavLink>
+                                </NavLink>
                                 <NavDropdown 
-                                className="nav-dropdown d-inline-block" 
-                                title={<HiCog size={40}/>}>
+                                    className="nav-dropdown d-inline-block" 
+                                    title={<HiCog size={40}/>}
+                                >
                                     <Row>
                                         <NavLink to='/profile'>
                                             My Profile
                                         </NavLink>
                                     </Row>
                                     <Row>
-                                        <NavLink 
-                                        to='/home' 
-                                        onClick={handleLogOut}>
+                                        <NavLink to='/home' onClick={handleLogOut}>
                                             Log Out
                                         </NavLink>
                                     </Row>
@@ -86,15 +85,15 @@ return (
                                  <NavLink to='/faq'>
                                     <GrCircleInformation size={40}/>
                                 </NavLink>
-                                 </>
-                            : (
-                                <>
+                            </>
+                            : 
+                            <>
                                 <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile style={{color:'#D6300F'}} size={40}/>}>
                                     {['Log In', 'Sign Up'].map((text, index) => <NavDropdown.Item onClick={userAuthClick} key={index}>{text}</NavDropdown.Item>)}
                                 </NavDropdown>
                                 <NavLink to='/faq'><GrCircleInformation size={40} /></NavLink>
-                                </>
-                            )
+                            </>
+                            
                             
                         } 
         </Container>

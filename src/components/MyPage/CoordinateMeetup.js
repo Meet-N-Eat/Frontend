@@ -1,7 +1,7 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { Card, Dropdown, Button } from 'react-bootstrap'
-import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll'
-import { Context } from '../App'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
+import { Context } from '../../App'
 
 const CoordinateMeetup = ({ profile }) => {
     const { loggedInUser } = useContext(Context)
@@ -52,11 +52,11 @@ const CoordinateMeetup = ({ profile }) => {
     const restaurantSelect = (e) => {
         dispatch({
             key: 'location',
-            value: profile.likedrestaurants.filter(restaurant => restaurant.name === e)[0]._id
+            value: profile.favorites.filter(restaurant => restaurant.name === e)[0]._id
         })
         dispatch({
             key: 'restaurant',
-            value: profile.likedrestaurants.filter(restaurant => restaurant.name === e)[0].name
+            value: profile.favorites.filter(restaurant => restaurant.name === e)[0].name
         })
     }
 
@@ -91,7 +91,14 @@ return (
                         {meetup.friend || 'choose friend'}
                     </Dropdown.Toggle>
                     <Dropdown.Menu >
-                        {profile && profile.friends.map(friend => <Dropdown.Item eventKey={friend.username} key={friend._id}>{friend.username}</Dropdown.Item>)}
+                        {profile && profile.friends.map(friend => 
+                            <Dropdown.Item
+                                key={friend._id}
+                                eventKey={friend.username}
+                            >
+                                {friend.username}
+                            </Dropdown.Item> )
+                        }
                     </Dropdown.Menu>
                 </Dropdown>
                 <Dropdown 
@@ -105,11 +112,12 @@ return (
                         { meetup.restaurant || 'choose restaurant' }
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        { profile && profile.likedrestaurants.map((rest) => 
+                        { profile && profile.favorites.map(restaurant => 
                             <Dropdown.Item 
-                                eventKey={rest.name} 
-                                key={rest._id}> 
-                                {rest.name} 
+                                key={restaurant._id}
+                                eventKey={restaurant.name} 
+                            > 
+                                {restaurant.name} 
                             </Dropdown.Item> )
                         }
                     </Dropdown.Menu>
