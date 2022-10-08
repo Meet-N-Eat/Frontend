@@ -48,68 +48,83 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
         return (
             <div>
                 { signUpShow ?
-                <div>
-                    <h2>Login to access this feature!</h2>
-                    <LogIn /> 
-                </div>
-                : 
-                <Card style={{marginBottom:'5%', fontSize:'70%', display:'flex', flexWrap:'wrap', justifyContent:'center', alignItems:'center', width:'100%', border:`1px solid ${colorTemplate.darkColor}`, margin:'1%', height:'100%'}} className="fluid">
-                    <div style={{width:'100%'}}>
-                        <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
-                            <Button type="checkbox" variant="outline-light">
-                            <Image
-                            width={50}
-                            src={buttonIcon} 
-                            onClick={loggedInUser.token ? likeHandler : signUpShowHandler}
-                            />
-                            </Button>
-                        </ButtonGroup>
+                    <div>
+                        <h2>Login to access this feature!</h2>
+                        <LogIn /> 
                     </div>
-                    <Card style={{border:'none', padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
-                        <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant._id}`}>
-                        <Card
-                        style={{ display:'flex', flexDirection:'column'}}
-                        className ="py-1 px-1 border-white ">
-                            <Row style={{padding:'5%', borderRadius:'10px', backgroundColor:"white"}}>
-                                <Col >
-                                    <Container style={{ textAlign:'center', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}} className="ml-1">
-                                        <Image 
-                                            style={{ borderRadius:'10px', border:'1px solid #D6300F', marginBottom:'5%'}}
-                                            src={image_url}
-                                            alt="restaurant-image"
-                                            width={170}
-                                            height={170}
-                                            />
-                                        <Card.Title>{name}</Card.Title>
-                                    </Container> 
-                                </Col>
-                                <Col>
-                                    <Card.Body>
-                                        <p>{price}</p>
-                                        <p>M - F 9:00 AM - 8:00 PM</p>
-                                        <Row>
-                                            <Col>
-                                                <p>{city}, {state}</p>
-                                            </Col>
-                                            <Col>
-                                                <p>{display_phone}</p>
-                                            </Col>
-                                        </Row>
-                                        {categories.map((category, index) => 
-                                            <Row key={index}>
-                                                {category}
-                                            </Row>
-                                        )}
-                                    </Card.Body>
-                                </Col>
-                            </Row>
+                    : 
+                    <Card 
+                        style={{
+                            marginBottom:'5%', 
+                            fontSize:'70%', 
+                            display:'flex', 
+                            flexWrap:'wrap', 
+                            justifyContent:'center', 
+                            alignItems:'center', 
+                            width:'100%', 
+                            border:`1px solid ${colorTemplate.darkColor}`, 
+                            margin:'1%', height:'100%'
+                        }} 
+                        className="fluid"
+                    >
+                        <div style={{width:'100%'}}>
+                            <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
+                                <Button type="checkbox" variant="outline-light">
+                                <Image
+                                    width={50}
+                                    src={buttonIcon} 
+                                    onClick={loggedInUser.token ? likeHandler : signUpShowHandler}
+                                />
+                                </Button>
+                            </ButtonGroup>
+                        </div>
+                        <Card style={{border:'none', padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
+                            <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant._id}`}>
+                                <Card
+                                    style={{ display:'flex', flexDirection:'column'}}
+                                    className ="py-1 px-1 border-white "
+                                >
+                                    <Row style={{padding:'5%', borderRadius:'10px', backgroundColor:"white"}}>
+                                        <Col >
+                                            <Container style={{ textAlign:'center', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}} className="ml-1">
+                                                <Image 
+                                                    style={{ borderRadius:'10px', border:'1px solid #D6300F', marginBottom:'5%'}}
+                                                    src={image_url}
+                                                    alt="restaurant-image"
+                                                    width={170}
+                                                    height={170}
+                                                />
+                                                <Card.Title>{name}</Card.Title>
+                                            </Container> 
+                                        </Col>
+                                        <Col>
+                                            <Card.Body>
+                                                <p>{price}</p>
+                                                <p>M - F 9:00 AM - 8:00 PM</p>
+                                                <Row>
+                                                    <Col>
+                                                        <p>{city}, {state}</p>
+                                                    </Col>
+                                                    <Col>
+                                                        <p>{display_phone}</p>
+                                                    </Col>
+                                                </Row>
+                                                {categories.map((category, index) => 
+                                                    <Row key={index}>
+                                                        {category}
+                                                    </Row>
+                                                )}
+                                            </Card.Body>
+                                        </Col>
+                                    </Row>
+                                </Card>
+                            </Link>
                         </Card>
-                        </Link>
                     </Card>
-                </Card>
-            }
-        </div>
-    )
-}}
+                }
+            </div>
+        )
+    }
+}
 
 export default RestaurantCard
