@@ -2,8 +2,6 @@ import React, { useReducer, useState } from 'react';
 import { Button, Row } from 'react-bootstrap'
 import { useNavigate, Link } from 'react-router-dom';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
-import UserProfile from '../UserProfile/UserProfile';
-import Home from '../Home/Home';
 
 const SignUp = () => {
   const initialState = {
@@ -57,18 +55,23 @@ const SignUp = () => {
   // ===========================================================================
   return (
     <div>
-      <div>
-        <Row>
-          <h1>successfully registered!</h1>
-        </Row>
-        <Row>
-          <button>set up your profile</button>
-        </Row>
-        <Row>
-          <Link to='/'></Link>
-        </Row>
-       
-      </div>
+        {nextModal ? 
+        <div>
+          <Row>
+            <h1>Successfully registered!</h1>
+          </Row>
+          <Row>
+            <Link to='/userprofile'>
+              <button>Set up your profile</button>
+            </Link>
+          </Row>
+          <Row>
+            <Link to='/'>Skip</Link>
+          </Row>
+        </div>
+        : 
+        null
+      }
       <div className='container'>
         <form 
           style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center"}} 
