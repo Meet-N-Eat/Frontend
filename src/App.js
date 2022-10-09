@@ -11,6 +11,7 @@ import SearchResults from './components/SearchResults/SearchResults';
 import UserProfile from './components/UserProfile/UserProfile';
 import FriendRequests from './components/FriendRequests/FriendRequests';
 import { axiosReducer } from './data-and-functions/axiosAll';
+import LogIn from './components/LoginSignUp/LogIn';
 
 
 export const Context = createContext()
@@ -35,9 +36,10 @@ function App() {
           <Routes>
             {/* <Route path="*" element={<Navigate to="/home" />} /> */}
             <Route path="/" element={<Home />} />
+            <Route path='users/authentication/login' element={<LogIn />} />
             <Route path="/results/:searchString" element={<SearchResults />} />
-            <Route path="/mypage" element={<MyPage />} />
-            <Route path="/profile" element={<UserProfile />} />
+            <Route path="/my-page" element={<MyPage />} />
+            <Route path="/userprofile" element={<UserProfile />} />
             <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/messages/chat/:friendId" element={<MessageChat />} />
