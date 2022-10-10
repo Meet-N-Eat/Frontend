@@ -12,7 +12,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
    switch(method) {
       case 'GET':
          res = await axios.get(`${baseURL}${path}`, headers)
-         dispatch({ key: 'response', value: res.data })
+         dispatch && dispatch({ key: 'response', value: res.data })
          break
       
       case 'PUT':

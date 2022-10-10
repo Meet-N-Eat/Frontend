@@ -1,52 +1,53 @@
-import { useContext, useEffect, useState } from "react"
+import { useEffect, useState, useContext, useReducer } from "react"
 import { Card, Button, Row, Col, Container } from "react-bootstrap"
-import { Context } from "../../App"
 import { formatDateTime } from "../../data-and-functions/formatDateTime"
+import { axiosAll, axiosReducer } from "../../data-and-functions/axiosAll"
+import { Context } from "../../App"
+import ProfileCard from "../ProfileCard"
 
-
-const FriendRequest = ({ request, noImage }) => {
+const FriendRequest = ({ friendRequest }) => {
     const [choice, setChoice] = useState('')
-    const [date, time] = formatDateTime(request.createdAt)
-    const { defaultImage } = useContext(Context)
-
+    const [sender, dispatch]  = useReducer(axiosReducer, {})
+    const { loggedInUser, dispatchUser } = useContext(Context)
+    const [date, time] = formatDateTime(friendRequest.createdAt)
 
     function clickHandler(e) {
         setChoice(e.target.classList[0])
     }
 
     useEffect(() => {
+        axiosAll('GET', `/users/${friendRequest.sender}`, loggedInUser.token, dispatch)
+    },[])
+
+    useEffect(() => {
         switch(choice) {
             case 'accept':
-                // axios.put(`${url}/users/${request.recipient._id}`, { newFriend: request.sender_id, removeRequest: request._id})
-                // setChoice('')
+                axiosAll('POST', `/users/${loggedInUser.response._id}/friends/${friendRequest.sender}`, loggedInUser.token, dispatchUser)
                 break
 
             case 'decline':
-                // axios.put(`${url}/users/${request.recipient._id}`, { removeRequest: request._id})
-                // setChoice('')
+                
                 break
 
             default:
                 break 
         }
+        
+        choice != '' && axiosAll('DELETE', `/users/${loggedInUser.response._id}/friendInvites/${friendRequest._id}`, loggedInUser.token, dispatchUser)
+
     }, [choice])
 
 return (
    
     <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '90%', padding:'1%', marginTop: '1rem', border:'1px solid #D6300F'}}>
         <div style={{ width:'30%', textAlign: 'center', border: '1px solid #eb350f', borderRadius: '6px', boxShadow: '1px 1px 7px -2px rgba(0,0,0,0.75)' }} >
-
-        
-                <Card.Img style={{ width:'100%', borderBottom: '1px solid #eb350f', padding: '0.5rem', borderRadius: '0px' }}  src={request.sender.profileimg || defaultImage} />
-            
-
-            <Card.Text >{request && request.sender.displayname}</Card.Text>
+            {sender.response && <ProfileCard user={sender.response} />}
         </div>
         
         <Card.Body className='friend-card'>
             <Row>
                 <Col>
-                    <Card.Text style={{ marginLeft: '1rem', width: '100%'}}>{request.message}</Card.Text>
+                    <Card.Text style={{ marginLeft: '1rem', width: '100%'}}>{friendRequest.body}</Card.Text>
                 </Col>
                 <Col>
                     <Container style={{marginTop: '0.3rem', display:'flex', flexDirection: 'column', justifyContent:'space-around', width:'80%', }} aria-label="Basic example">
