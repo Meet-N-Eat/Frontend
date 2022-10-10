@@ -1,7 +1,8 @@
-import React, { useReducer, useState } from 'react';
+import React, { useContext, useReducer, useState } from 'react';
 import { Button, Row } from 'react-bootstrap'
-import { useNavigate, Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
+import { Context } from '../../App';
 
 const SignUp = () => {
   const initialState = {
@@ -15,6 +16,7 @@ const SignUp = () => {
   // ===========================================================================
   const [signupInfo, dispatch] = useReducer(axiosReducer, initialState)
   const [error, dispatchError] = useReducer(axiosReducer, { username: false, email: false })
+  const { loggedInUser, dispatchUser } = useContext(Context)
   const [nextModal, setNextModal] = useState(false)
   // const navigate = useNavigate()
   
@@ -31,6 +33,7 @@ const SignUp = () => {
     e.preventDefault()
     if(signupInfo.password === signupInfo.confirmPassword) {
       const response = await axiosAll('POST', `/users/signup`, null, dispatch, signupInfo)
+      const response2 = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
 
       if (typeof(response.data) === 'string') {
         response.data.indexOf('{ username:') !== -1 ?
@@ -56,7 +59,7 @@ const SignUp = () => {
             <h1>Successfully registered!</h1>
           </Row>
           <Row>
-            <Link to='/userprofile'>
+            <Link to='/profile'>
               <button>Set up your profile</button>
             </Link>
           </Row>
