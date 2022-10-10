@@ -47,7 +47,7 @@ return (
     <Navbar expand='lg' >
         <Container style={{borderBottom: '1px solid black' }}>
 
-                        <Navbar.Brand as={Link} to='/home'>
+                        <Navbar.Brand as={Link} to='/'>
                             <h2>MEET N EAT</h2>
                         </Navbar.Brand>
 
@@ -77,7 +77,7 @@ return (
                                         </NavLink>
                                     </Row>
                                     <Row>
-                                        <NavLink to='/home' onClick={handleLogOut}>
+                                        <NavLink to='/' onClick={handleLogOut}>
                                             Log Out
                                         </NavLink>
                                     </Row>

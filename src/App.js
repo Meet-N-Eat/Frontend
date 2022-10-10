@@ -25,7 +25,7 @@ function App() {
     mediumColor: '#F7EEE6',
     lightColor: '#F0704E'
   }
-  console.log('App rendered')
+  
   return (
     <div className="App">
         <Context.Provider value={{'loggedInUser': loggedInUser, 'dispatchUser': dispatchUser, 'defaultImage': defaultImage, 'colorTemplate': colorTemplate}}>

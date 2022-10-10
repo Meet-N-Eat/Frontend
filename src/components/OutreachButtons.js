@@ -12,7 +12,7 @@ function OutreachButtons( {friends, user} ) {
 
   return (
     <div>
-      {friends && friends == true ?
+      {friends && friends === true ?
       <Button style={{color:'black'}} onClick={handleMessage}> Message {user.username}</Button>
       :
       <Button style={{color:'black'}}>Add {user.username} as friend</Button> 

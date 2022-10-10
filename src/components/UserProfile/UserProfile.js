@@ -1,5 +1,5 @@
 import { useReducer, useEffect, useContext } from 'react'
-import { Container, Card, Form, Row, Image, Button } from 'react-bootstrap'
+import { Container, Form, Row, Image, Button } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 

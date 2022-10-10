@@ -42,7 +42,7 @@ const CoordinateMeetup = ({ profile }) => {
             })
         
         // If friend is not found in current participants list, add them to the participants list
-        !(meetup.participants.find(participant => participant == friend._id))
+        !(meetup.participants.find(participant => participant === friend._id))
             && dispatch({
                 key: 'participants',
                 value: [...meetup.participants, friend._id]
