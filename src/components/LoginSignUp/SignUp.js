@@ -34,6 +34,7 @@ const SignUp = () => {
     if(signupInfo.password === signupInfo.confirmPassword) {
       const response = await axiosAll('POST', `/users/signup`, null, dispatch, signupInfo)
       const response2 = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
+      console.log(response2)
 
       if (typeof(response.data) === 'string') {
         response.data.indexOf('{ username:') !== -1 ?
@@ -44,7 +45,6 @@ const SignUp = () => {
           dispatchError({ key: 'email', value: true })
           : dispatchError({ key: 'email', value: false })
       }
-      // else navigate('/users/authentication/login')
       else setNextModal(true)
     }
   }
