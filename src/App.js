@@ -25,7 +25,7 @@ function App() {
     mediumColor: '#F7EEE6',
     lightColor: '#F0704E'
   }
-  
+  console.log('App rendered')
   return (
     <div className="App">
         <Context.Provider value={{'loggedInUser': loggedInUser, 'dispatchUser': dispatchUser, 'defaultImage': defaultImage, 'colorTemplate': colorTemplate}}>
@@ -39,7 +39,7 @@ function App() {
             <Route path='users/authentication/login' element={<LogIn />} />
             <Route path="/results/:searchString" element={<SearchResults />} />
             <Route path="/my-page" element={<MyPage />} />
-            <Route path="/userprofile" element={<UserProfile />} />
+            <Route path="/profile" element={<UserProfile />} />
             <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
             <Route path="/messages" element={<Messages />} />
             <Route path="/messages/chat/:friendId" element={<MessageChat />} />
