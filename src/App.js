@@ -1,5 +1,5 @@
 import { createContext, useReducer } from 'react';
-import { Routes, Route, Navigate } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
 import Messages from './components/Messages/Messages'
@@ -12,6 +12,7 @@ import UserProfile from './components/UserProfile/UserProfile';
 import FriendRequests from './components/FriendRequests/FriendRequests';
 import { axiosReducer } from './data-and-functions/axiosAll';
 import LogIn from './components/LoginSignUp/LogIn';
+import SignUp from './components/LoginSignUp/SignUp';
 
 
 export const Context = createContext()
@@ -36,12 +37,13 @@ function App() {
           <Routes>
             {/* <Route path="*" element={<Navigate to="/home" />} /> */}
             <Route path="/" element={<Home />} />
-            <Route path='users/authentication/login' element={<LogIn />} />
+            <Route path='/users/authentication/login' element={<LogIn />} />
+            <Route path='/users/authentication/signup' element={<SignUp />} />
             <Route path="/results/:searchString" element={<SearchResults />} />
             <Route path="/my-page" element={<MyPage />} />
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
-            <Route path="/message-center" element={<Messages />} />
+            <Route path="/messages" element={<Messages />} />
             <Route path="/messages/chat/:friendId" element={<MessageChat />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/friendrequests" element={<FriendRequests />} />

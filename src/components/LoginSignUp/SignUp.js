@@ -5,25 +5,26 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 import { Context } from '../../App';
 
 const SignUp = () => {
-  const initialState = {
-    username: '',
-    password: '',
-    confirmPassword: '',
-    email: ''
-  }
+  // const initialState = {
+  //   username: '',
+  //   password: '',
+  //   confirmPassword: '',
+  //   email: ''
+  // }
   
   // State Hooks and Variables
   // ===========================================================================
-  const [signupInfo, dispatch] = useReducer(axiosReducer, initialState)
+  const [loggedInUser, dispatchUser] = useReducer(axiosReducer, { username: '', password: ''})
+  // const [loggedInUser, dispatch] = useReducer(axiosReducer, initialState)
   const [error, dispatchError] = useReducer(axiosReducer, { username: false, email: false })
-  const { loggedInUser, dispatchUser } = useContext(Context)
+  // const { dispatchUser } = useContext(Context)
   const [nextModal, setNextModal] = useState(false)
   // const navigate = useNavigate()
   
   // Functions
   // ===========================================================================
   function changeHandler(e) {
-    dispatch({
+    dispatchUser({
       key: e.target.classList[0],
       value: e.target.value
     })
@@ -31,10 +32,10 @@ const SignUp = () => {
 
   async function submitHandler(e) {
     e.preventDefault()
-    if(signupInfo.password === signupInfo.confirmPassword) {
-      const response = await axiosAll('POST', `/users/signup`, null, dispatch, signupInfo)
+    if(loggedInUser.password === loggedInUser.confirmPassword) {
+      const response = await axiosAll('POST', `/users/signup`, null, dispatchUser, loggedInUser)
       const response2 = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
-
+      // console.log(response.data)
       if (typeof(response.data) === 'string') {
         response.data.indexOf('{ username:') !== -1 ?
           dispatchError({ key: 'username', value: true })
@@ -44,8 +45,10 @@ const SignUp = () => {
           dispatchError({ key: 'email', value: true })
           : dispatchError({ key: 'email', value: false })
       }
-      // else navigate('/users/authentication/login')
-      else setNextModal(true)
+      else { 
+        setNextModal(true)
+        axiosAll('GET', `/users/username/${response.data.username}`, response2.data.token, dispatchUser)
+      }
     }
   }
 
@@ -83,7 +86,7 @@ const SignUp = () => {
             type='text' 
             placeholder='Username'
             onChange={changeHandler}
-            value={signupInfo.username}
+            value={loggedInUser.username}
           ></input>
           <input
             className='password' 
@@ -91,7 +94,7 @@ const SignUp = () => {
             type='password' 
             placeholder='Password'
             onChange={changeHandler}
-            value={signupInfo.password}
+            value={loggedInUser.password}
           ></input>
           <input
             className='confirmPassword' 
@@ -99,7 +102,7 @@ const SignUp = () => {
             type='password' 
             placeholder='Confirm Password'
             onChange={changeHandler}
-            value={signupInfo.confirmPassword}
+            value={loggedInUser.confirmPassword}
           ></input>
           {error.email && <h1>Email already taken, please try another.</h1>}
           <input
@@ -108,7 +111,7 @@ const SignUp = () => {
             type='text' 
             placeholder='Email'
             onChange={changeHandler}
-            value={signupInfo.email}
+            value={loggedInUser.email}
           ></input>
           <Button 
             style={{borderRadius:'5px', backgroundColor:'#D6300F', color:'white', borderColor:'#D6300F'}} 

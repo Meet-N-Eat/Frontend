@@ -64,7 +64,7 @@ return (
                                 <NavLink to='/friendrequests'>
                                     <FontAwesomeIcon icon={faUserGroup} />
                                 </NavLink>
-                                <NavLink to='/message-center'>
+                                <NavLink to='/messages'>
                                     <AiOutlineMessage size={40}/>
                                 </NavLink>
                                 <NavDropdown 

@@ -41,7 +41,7 @@ useEffect ( () => {
 
 
 return (
-    <div style={{ border:'1px solid #eb350f', margin:'2%', height:'90vh', display:'flex', flexDirection:'row', borderRadius:'5px'}} className="message-center">
+    <div style={{ border:'1px solid #eb350f', margin:'2%', height:'90vh', display:'flex', flexDirection:'row', borderRadius:'5px'}} className="messages">
         <div style={{ border:'1px solid #eb350f', width:'55%', margin:'2%', display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'5px'}} className='message-section'>
             <InputGroup style={{ margin:'2%', width:'60%' }} className="mb-3">
                 <Form.Control style={{border:'1px solid #D6300F'}}  placeholder="search messages" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
