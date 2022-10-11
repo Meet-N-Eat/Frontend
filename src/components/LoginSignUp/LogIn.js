@@ -54,7 +54,7 @@ const LogIn = () => {
 
   useEffect(() => {
     component.isMounted ?
-      axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser) && navigate('/home') 
+      axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser) && navigate('/') 
       : component.isMounted = true
   },[login.success])
 
