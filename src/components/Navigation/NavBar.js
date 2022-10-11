@@ -8,6 +8,7 @@ import { GrCircleInformation} from 'react-icons/gr'
 import { AiOutlineMessage } from 'react-icons/ai'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUserGroup } from '@fortawesome/free-solid-svg-icons'
+import defaultImage from '../../assets/defaultImage.png'
 
 
 
@@ -19,6 +20,8 @@ const { loggedInUser, dispatchUser } = useContext(Context)
 let option = useRef('')
 const navigate = useNavigate()
 
+// Event handlers
+// ===========================================================================
 function userAuthClick(e) {
     switch(e.target.text) {
         case 'Log In':
@@ -33,16 +36,12 @@ function userAuthClick(e) {
     navigate(`/users/authentication/${option}`)
 }
 
-// Event handlers
-// ===========================================================================
 function handleLogOut(){
     dispatchUser({
         key: 'logout'
     })
 }
-
-
-
+console.log('token', loggedInUser.token, 'response', loggedInUser.response)
 return (
     <Navbar expand='lg' >
         <Container style={{borderBottom: '1px solid black' }}>
@@ -55,7 +54,7 @@ return (
                             <>
                                 <NavLink to='/my-page'>
                                     <img 
-                                    src={loggedInUser.response.profileimg} 
+                                    src={loggedInUser.response.profileimg || defaultImage} 
                                     alt="profile-icon"
                                     className="rounded-full h-10 w-10"
                                     id="nav-profile-icon"
@@ -64,7 +63,7 @@ return (
                                 <NavLink to='/friendrequests'>
                                     <FontAwesomeIcon icon={faUserGroup} />
                                 </NavLink>
-                                <NavLink to='/messages'>
+                                <NavLink to='/message'>
                                     <AiOutlineMessage size={40}/>
                                 </NavLink>
                                 <NavDropdown 

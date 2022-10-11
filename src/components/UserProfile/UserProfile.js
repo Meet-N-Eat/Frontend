@@ -7,21 +7,23 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 const UserProfile = () => {
 // state hooks and variable declaration
 //===========================================================================
-    const { defaultImage, loggedInUser } = useContext(Context)
+    const { defaultImage, loggedInUser, dispatchUser } = useContext(Context)
     const [userData, dispatch] = useReducer(axiosReducer, {})
 
 // Getting user data
 // ===========================================================================
 
     useEffect(()=> {
-        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatch)
+        axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
     },[])
 
     useEffect(() => {
-        dispatch({
-            key: 'loadProfile',
-            value: loggedInUser.response
-        })
+        loggedInUser.response && (
+            dispatch({
+                key: 'loadProfile',
+                value: loggedInUser.response
+            })
+        )
     },[loggedInUser.response])
 
 // Event Handler Functions
@@ -40,7 +42,7 @@ const UserProfile = () => {
 
     return (
         <Container style={{ marginTop: '18vh', border: '1px solid #EB3510', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', borderRadius:'10px'}}>
-            <Row>         
+            {userData && <Row>         
                 <div className='profile-image'>
                     <Image
                         src={userData.profileimg || defaultImage}
@@ -107,7 +109,7 @@ const UserProfile = () => {
                         style={{marginTop: '1rem',backgroundColor:'#EB3510', borderColor: '#D6300F'}}
                     >save changes</Button>
                 </Form>
-            </Row>
+            </Row>}
         </Container>
     )
 }

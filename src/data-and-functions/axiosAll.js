@@ -40,6 +40,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
 export function axiosReducer (state, object) {
    switch(object.key) {           
       case 'loadProfile':
+         console.log(object.value)
          return {
             ...state, 
             profileimg: object.value.profileimg,
