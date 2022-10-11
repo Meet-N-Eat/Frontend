@@ -7,7 +7,7 @@ import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { reviewStars } from '../../data-and-functions/reviewStars'
-import UserLike from './UserLike'
+import UserLike from './UserLikes'
 
 
 const RestaurantDetail = () => {
