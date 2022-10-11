@@ -23,7 +23,7 @@ function UserLike({ user }) {
          </div>
          <Modal show={show} onHide={modalHandler}>
             <Modal.Header closeButton>
-               <Modal.Title>{user.username}</Modal.Title>
+               <ProfileCard user={user} />
             </Modal.Header>
             <Modal.Body>{user.about}</Modal.Body>
             <Modal.Footer style={{display:"flex", flexDirection:'column', justifyContent:"center", alignItems:"center"}}>
