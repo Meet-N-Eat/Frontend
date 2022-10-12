@@ -3,11 +3,10 @@ import { Link } from 'react-router-dom'
 import {Card, Button, Container, Image, Col, Row, ButtonGroup } from 'react-bootstrap/'
 import { Context } from '../App'
 import { axiosAll } from '../data-and-functions/axiosAll';
-import SignUp from './LoginSignUp/SignUp';
 import LogIn from './LoginSignUp/LogIn';
 
 
-const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
+const RestaurantCard = ({ restaurant, setLikeRefresh, hideLikeButton }) => {
     // State Hooks and Variables
   // ===========================================================================
 
@@ -75,15 +74,18 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
                         className="fluid"
                     >
                         <div style={{width:'100%'}}>
-                            <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
-                                <Button type="checkbox" variant="outline-light">
-                                <Image
-                                    width={50}
-                                    src={buttonIcon} 
-                                    onClick={loggedInUser.token ? likeHandler : signUpShowHandler}
-                                />
-                                </Button>
-                            </ButtonGroup>
+                            {
+                                !hideLikeButton &&
+                                <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
+                                    <Button type="checkbox" variant="outline-light">
+                                    <Image
+                                        width={50}
+                                        src={buttonIcon} 
+                                        onClick={loggedInUser.token ? likeHandler : signUpShowHandler}
+                                    />
+                                    </Button>
+                                </ButtonGroup>
+                            }
                         </div>
                         <Card style={{border:'none', padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
                             <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant._id}`}>

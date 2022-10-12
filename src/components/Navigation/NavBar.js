@@ -37,7 +37,8 @@ function userAuthClick(e) {
 // ===========================================================================
 function handleLogOut(){
     dispatchUser({
-        key: 'logout'
+        key: 'initialize',
+        value: { username: '', password: ''}
     })
 }
 
