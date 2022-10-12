@@ -3,6 +3,7 @@ import { Card, Dropdown, Button, Modal, Form } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
 import ProfileCard from '../ProfileCard'
+import RestaurantCard from '../RestaurantCard'
 
 const CoordinateMeetup = ({ loggedInUser }) => {
     // const { loggedInUser } = useContext(Context)
@@ -50,7 +51,7 @@ const CoordinateMeetup = ({ loggedInUser }) => {
     }
 
     const modalHandler = (e) => {
-        // Close any open modals
+        // Close any open modals or open the appropriate modal
         if(showModal.invite === true || showModal.invited === true) {
             for(const key in showModal){
                 dispatchModal({
@@ -141,8 +142,14 @@ return (
                     <Dropdown.Toggle 
                         style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }} 
                         variant="secondary" 
-                        id="dropdown-basic">
-                        { loggedInUser.favorites.find(restaurant => restaurant._id === meetup.restaurant).name || 'choose restaurant' }
+                        id="dropdown-basic"
+                    >
+                        {   
+                            // Displays name of selected restaurant, or 'choose restaurant'
+                            meetup.restaurant 
+                            && loggedInUser.favorites.find(restaurant => restaurant._id === meetup.restaurant).name 
+                            || 'choose restaurant' 
+                        }
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         { loggedInUser && loggedInUser.favorites.map(restaurant => 
@@ -155,6 +162,13 @@ return (
                         }
                     </Dropdown.Menu>
                 </Dropdown>
+                {
+                    meetup.restaurant && 
+                    <RestaurantCard 
+                        restaurant={loggedInUser.favorites.find(favorite => favorite._id == meetup.restaurant)}
+                        hideLikeButton={true}
+                    />
+                }
                 <input 
                     style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
                     onChange={dateSelect} 
