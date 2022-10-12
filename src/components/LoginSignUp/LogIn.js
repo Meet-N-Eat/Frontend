@@ -1,9 +1,9 @@
-import { useReducer, useState } from 'react';
+import { useReducer } from 'react';
 import { useContext, useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom';
 import { Context } from '../../App';
-import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
+import { axiosAll } from '../../data-and-functions/axiosAll';
 
 const LogIn = () => {
   // State Hooks and Variables

@@ -14,7 +14,7 @@ const SignUp = () => {
   // Functions
   // ===========================================================================
   function modalHandler() {
-    setShow(!show)
+    setShow(prevState => !prevState)
   }
 
   function changeHandler(e) {
