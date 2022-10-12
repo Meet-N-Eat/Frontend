@@ -11,7 +11,7 @@ const CoordinateMeetup = ({ loggedInUser }) => {
         restaurant: null,
         participants: [loggedInUser._id],
         date: null,
-        createdBy: null
+        createdBy: loggedInUser._id
     }
     
     const [meetup, dispatchMeetup] = useReducer(axiosReducer, initialState)
@@ -19,7 +19,7 @@ const CoordinateMeetup = ({ loggedInUser }) => {
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
 
-    useEffect(() => console.log(meetup.participants))
+    useEffect(() => console.log(meetup.restaurant))
 
     useEffect(() => {
         dispatchMeetup({
@@ -37,15 +37,15 @@ const CoordinateMeetup = ({ loggedInUser }) => {
     }
     
     const inviteHandler = (friend) => {
-        // Get the target friend from the logged in user's friends list
-        // const friend = loggedInUser.friends.find(friend => friend.username === e.target.value)
         // Determine if the friend is already invited to the event
         const invited = meetup.participants.find(participant => participant === friend._id)
 
         // If friend is already invited, remove them from participants, otherwise add them to participants
         dispatchMeetup({
             key: 'participants',
-            value: invited ? meetup.participants.filter(participant => participant != friend._id) : [...meetup.participants, friend._id]
+            value: invited 
+                ? meetup.participants.filter(participant => participant != friend._id) 
+                : [...meetup.participants, friend._id]
         })
     }
 
@@ -68,12 +68,8 @@ const CoordinateMeetup = ({ loggedInUser }) => {
 
     const restaurantSelect = (e) => {
         dispatchMeetup({
-            key: 'location',
-            value: loggedInUser.favorites.filter(restaurant => restaurant.name === e)[0]._id
-        })
-        dispatchMeetup({
             key: 'restaurant',
-            value: loggedInUser.favorites.filter(restaurant => restaurant.name === e)[0].name
+            value: e
         })
     }
 
@@ -138,27 +134,6 @@ return (
             <div 
                 style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end' }} 
                 className="input-group justify-content-between">
-                {/* <Dropdown  
-                    onSelect={friendSelect}>
-                    <Dropdown.Toggle  
-                        style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }}  
-                        variant="secondary" 
-                        id="dropdown-basic">
-                        {meetup.friend || 'choose friend'}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu >
-                        {loggedInUser && loggedInUser.friends.map(friend => 
-                            <Dropdown.Item
-                                key={friend._id}
-                                eventKey={friend.username}
-                            >
-                                {friend.username}
-                            </Dropdown.Item> )
-                        }
-                    </Dropdown.Menu>
-                </Dropdown> */}
-                <p>who's invited:</p>
-
                 <Dropdown 
                     onSelect={restaurantSelect} 
                     style={{ marginTop:'5%'}}
@@ -167,13 +142,13 @@ return (
                         style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }} 
                         variant="secondary" 
                         id="dropdown-basic">
-                        { meetup.restaurant || 'choose restaurant' }
+                        { loggedInUser.favorites.find(restaurant => restaurant._id === meetup.restaurant).name || 'choose restaurant' }
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         { loggedInUser && loggedInUser.favorites.map(restaurant => 
                             <Dropdown.Item 
                                 key={restaurant._id}
-                                eventKey={restaurant.name} 
+                                eventKey={restaurant._id} 
                             > 
                                 {restaurant.name} 
                             </Dropdown.Item> )
