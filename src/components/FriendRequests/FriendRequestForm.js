@@ -1,31 +1,29 @@
-import React, { useState, useContext, useReducer } from 'react'
+import React, { useContext, useReducer } from 'react'
 import { Modal, Form, InputGroup, Button } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 import { Context } from '../../App'
 
-function FriendRequestForm( {user} ) {
+function FriendRequestForm( {user, modalHandler} ) {
   
-  const { loggedInUser, dispatchUser } = useContext(Context)
-  const [show, setShow] = useState(false);
+  const { loggedInUser } = useContext(Context)
 
   const initialState = {
-    sender: loggedInUser.response.username,
+    sender: loggedInUser.response._id,
     body: ''
 }
 
   const [request, dispatch] = useReducer(axiosReducer, initialState)
-  
+
   const handleChange = (e) => {
     dispatch({
       key: 'body',
       value: e.target.value
     })
-    console.log(request)
   }
   
   const handleSubmit = () => {
-    axiosAll('POST', `users/${user.id}/friendInvites`, loggedInUser.token, dispatch, request)
-    setShow(false)
+    axiosAll('POST', `/users/${user._id}/friendInvites`, loggedInUser.token, dispatch, request)
+    modalHandler()
   }
 
   return (
