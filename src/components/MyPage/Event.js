@@ -12,7 +12,7 @@ const Event = ({ event }) => {
     function toggleModal() {
         setModalState(!modalState)
     }
-
+console.log(event)
 return (
 <Card style={{ width:'80%', marginBottom:'2%', border:"1px solid #D6300F" }}>
     <Card.Header style={{backgroundColor:'#D6300F', color:'white'}}>

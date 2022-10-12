@@ -23,6 +23,8 @@ const CoordinateMeetup = ({ loggedInUser }) => {
     
     // Functions and Event Handlers
     // ===========================================================================================
+    
+    // Creates a date object from date and time inputs
     function combineDate(date, time) {
         const dateArr = date.split('-')
         const timeArr = time.split(':')
@@ -31,6 +33,7 @@ const CoordinateMeetup = ({ loggedInUser }) => {
         return newDate
     }
 
+    // Populates "who's invited?" modal
     function participantsList() {
         let participants = loggedInUser.response.friends
         .filter(friend => meetup.participants
@@ -102,18 +105,26 @@ const CoordinateMeetup = ({ loggedInUser }) => {
                     value:  meetup[key] === null ? true : false
                 })
         }
+        dispatchError({
+            key: 'submit',
+            value: true
+        })
     }
 
     useEffect(() => {
-        if(!error.mounted) {
-            dispatchError({
-                key: 'mounted',
-                value: true
-            })
+        if(error.submit) {
+            if(!error.date && !error.restaurant) {
+                axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchMeetup, meetup)
+                
+                dispatchMeetup({
+                    key: 'initialize',
+                    value: initialState
+                })
+            }
         } else {
-            !error.date && !error.restaurant && axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchMeetup, meetup)
+            error.submit = false
         }
-    },[error.date, error.restaurant])
+    },[error])
 
 return (
     <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>

@@ -18,9 +18,17 @@ const UserProfile = () => {
     },[])
 
     useEffect(() => {
+        const profileData = {
+            profileimg: loggedInUser.response.profileimg,
+            about: loggedInUser.response.about,
+            location: loggedInUser.response.location,
+            displayname: loggedInUser.response.displayname,
+            email: loggedInUser.response.email
+         }
+
         dispatch({
-            key: 'loadProfile',
-            value: loggedInUser.response
+            key: 'initialize',
+            value: profileData
         })
     },[loggedInUser.response])
 
