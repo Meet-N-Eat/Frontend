@@ -73,10 +73,10 @@ return (
             </Navbar>
         </div>
         <div className="grid place-items-center h-screen">
-            <Carousel slide={false} wrap={false}>
+            <Carousel slide={false} wrap={false} interval={null}>
                 <Carousel.Item>
                     <div className="grid place-items-center h-screen">
-                        <CoordinateMeetup profile={loggedInUser.response}/>
+                        <CoordinateMeetup loggedInUser={loggedInUser.response}/>
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>

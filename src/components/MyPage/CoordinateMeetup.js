@@ -1,25 +1,28 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
-import { Card, Dropdown, Button } from 'react-bootstrap'
+import { Card, Dropdown, Button, Modal, Form } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
+import ProfileCard from '../ProfileCard'
 
-const CoordinateMeetup = ({ profile }) => {
-    const { loggedInUser } = useContext(Context)
+const CoordinateMeetup = ({ loggedInUser }) => {
+    // const { loggedInUser } = useContext(Context)
 
     const initialState = {
-        friend: null,
-        participants: [loggedInUser.response._id],
         restaurant: null,
-        location: null,
-        date: null
+        participants: [loggedInUser._id],
+        date: null,
+        createdBy: null
     }
     
-    const [meetup, dispatch] = useReducer(axiosReducer, initialState)
+    const [meetup, dispatchMeetup] = useReducer(axiosReducer, initialState)
+    const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
     const [date, setDate] = useState('')
     const [time, setTime] = useState('')
 
+    useEffect(() => console.log(meetup.participants))
+
     useEffect(() => {
-        dispatch({
+        dispatchMeetup({
             key: 'date',
             value: combineDate(date, time)
         })
@@ -33,30 +36,44 @@ const CoordinateMeetup = ({ profile }) => {
         return newDate
     }
     
-    const friendSelect = (e) => {
-        const friend = profile.friends.find(friend => friend.username === e)
+    const inviteHandler = (friend) => {
+        // Get the target friend from the logged in user's friends list
+        // const friend = loggedInUser.friends.find(friend => friend.username === e.target.value)
+        // Determine if the friend is already invited to the event
+        const invited = meetup.participants.find(participant => participant === friend._id)
 
-        dispatch({
-            key: 'friend',
-            value: friend.username
-            })
-        
-        // If friend is not found in current participants list, add them to the participants list
-        !(meetup.participants.find(participant => participant === friend._id))
-            && dispatch({
-                key: 'participants',
-                value: [...meetup.participants, friend._id]
+        // If friend is already invited, remove them from participants, otherwise add them to participants
+        dispatchMeetup({
+            key: 'participants',
+            value: invited ? meetup.participants.filter(participant => participant != friend._id) : [...meetup.participants, friend._id]
+        })
+    }
+
+    const modalHandler = (e) => {
+        // Close any open modals
+        if(showModal.invite === true || showModal.invited === true) {
+            for(const key in showModal){
+                dispatchModal({
+                    key: key,
+                    value: false
                 })
+            }
+        } else {
+            dispatchModal({
+                key: e.target.classList[0],
+                value: !showModal[e.target.classList[0]]
+            })
+        }
     }
 
     const restaurantSelect = (e) => {
-        dispatch({
+        dispatchMeetup({
             key: 'location',
-            value: profile.favorites.filter(restaurant => restaurant.name === e)[0]._id
+            value: loggedInUser.favorites.filter(restaurant => restaurant.name === e)[0]._id
         })
-        dispatch({
+        dispatchMeetup({
             key: 'restaurant',
-            value: profile.favorites.filter(restaurant => restaurant.name === e)[0].name
+            value: loggedInUser.favorites.filter(restaurant => restaurant.name === e)[0].name
         })
     }
 
@@ -68,8 +85,8 @@ const CoordinateMeetup = ({ profile }) => {
         setTime(e.target.value)
     }
 
-    const inviteHandler = () => {
-        axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatch, meetup)
+    const createEventHandler = () => {
+        axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchMeetup, meetup)
     }
 
 return (
@@ -79,10 +96,49 @@ return (
                 style={{ textAlign:'center' }}>
                     coordinate meet 'n eat with friends
             </Card.Title>
+            <Button 
+                className='invite'
+                style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
+                onClick={modalHandler}
+            >
+                    invite friends
+            </Button>
+            <Modal show={showModal.invite} onHide={modalHandler}>
+                <Modal.Body>
+                    {loggedInUser.friends.map((friend, index) => 
+                        <>
+                            <ProfileCard key={friend._id} user={friend} />
+                            <Form.Check
+                                key={index}
+                                type='switch'
+                                id='invite-toggle'
+                                label='invite'
+                                defaultChecked={meetup.participants.find(participant => participant === friend._id)}
+                                onClick={() => inviteHandler(friend)}
+                            />
+                        </>
+                    )}
+                </Modal.Body>
+            </Modal>
+            <Button 
+                className='invited'
+                style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
+                onClick={modalHandler}
+            >
+                    who's invited?
+            </Button>
+            <Modal show={showModal.invited} onHide={modalHandler}>
+                <Modal.Body>
+                    {loggedInUser.friends
+                        .filter(friend => meetup.participants
+                            .find(participant => participant === friend._id))
+                        .map(friend => <ProfileCard key={friend._id} user={friend} />)}
+                </Modal.Body>
+            </Modal>
             <div 
                 style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end' }} 
                 className="input-group justify-content-between">
-                <Dropdown  
+                {/* <Dropdown  
                     onSelect={friendSelect}>
                     <Dropdown.Toggle  
                         style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }}  
@@ -91,7 +147,7 @@ return (
                         {meetup.friend || 'choose friend'}
                     </Dropdown.Toggle>
                     <Dropdown.Menu >
-                        {profile && profile.friends.map(friend => 
+                        {loggedInUser && loggedInUser.friends.map(friend => 
                             <Dropdown.Item
                                 key={friend._id}
                                 eventKey={friend.username}
@@ -100,7 +156,9 @@ return (
                             </Dropdown.Item> )
                         }
                     </Dropdown.Menu>
-                </Dropdown>
+                </Dropdown> */}
+                <p>who's invited:</p>
+
                 <Dropdown 
                     onSelect={restaurantSelect} 
                     style={{ marginTop:'5%'}}
@@ -112,7 +170,7 @@ return (
                         { meetup.restaurant || 'choose restaurant' }
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        { profile && profile.favorites.map(restaurant => 
+                        { loggedInUser && loggedInUser.favorites.map(restaurant => 
                             <Dropdown.Item 
                                 key={restaurant._id}
                                 eventKey={restaurant.name} 
@@ -132,11 +190,11 @@ return (
                     onChange={timeSelect} 
                     type='time'>
                 </input>
-                </div>
+            </div>
                 <Button 
                     style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                     id="button-addon2"
-                    onClick={inviteHandler}
+                    onClick={createEventHandler}
                 >
                         invite
                 </Button>
