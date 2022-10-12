@@ -1,34 +1,28 @@
-import React, { useContext, useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { Card, Dropdown, Button, Modal, Form } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
-import { Context } from '../../App'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
 
 const CoordinateMeetup = ({ loggedInUser }) => {
-    // const { loggedInUser } = useContext(Context)
-
+    // State Variables
+    // ===========================================================================================
     const initialState = {
         restaurant: null,
-        participants: [loggedInUser._id],
+        participants: [loggedInUser.response._id],
         date: null,
-        createdBy: loggedInUser._id
+        createdBy: loggedInUser.response._id
     }
     
     const [meetup, dispatchMeetup] = useReducer(axiosReducer, initialState)
     const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
-    const [date, setDate] = useState('')
-    const [time, setTime] = useState('')
+    const [date, dispatchDate] = useReducer(axiosReducer, {date: '', time: ''})
+    const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
-    useEffect(() => console.log(meetup.restaurant))
-
-    useEffect(() => {
-        dispatchMeetup({
-            key: 'date',
-            value: combineDate(date, time)
-        })
-    }, [date, time])
+    useEffect(() => console.log(error, meetup))
     
+    // Functions and Event Handlers
+    // ===========================================================================================
     function combineDate(date, time) {
         const dateArr = date.split('-')
         const timeArr = time.split(':')
@@ -36,18 +30,16 @@ const CoordinateMeetup = ({ loggedInUser }) => {
         
         return newDate
     }
-    
-    const inviteHandler = (friend) => {
-        // Determine if the friend is already invited to the event
-        const invited = meetup.participants.find(participant => participant === friend._id)
 
-        // If friend is already invited, remove them from participants, otherwise add them to participants
-        dispatchMeetup({
-            key: 'participants',
-            value: invited 
-                ? meetup.participants.filter(participant => participant != friend._id) 
-                : [...meetup.participants, friend._id]
-        })
+    function participantsList() {
+        let participants = loggedInUser.response.friends
+        .filter(friend => meetup.participants
+            .find(participant => participant === friend._id))
+        .map(friend => <ProfileCard key={friend._id} user={friend} />)
+
+        if(participants.length === 0) participants = (<h1>You're rollin' solo, invite some of your peeps!</h1>)
+
+        return participants
     }
 
     const modalHandler = (e) => {
@@ -67,6 +59,19 @@ const CoordinateMeetup = ({ loggedInUser }) => {
         }
     }
 
+    const inviteHandler = (friend) => {
+        // Determine if the friend is already invited to the event
+        const invited = meetup.participants.find(participant => participant === friend._id)
+
+        // If friend is already invited, remove them from participants, otherwise add them to participants
+        dispatchMeetup({
+            key: 'participants',
+            value: invited 
+                ? meetup.participants.filter(participant => participant !== friend._id) 
+                : [...meetup.participants, friend._id]
+        })
+    }
+
     const restaurantSelect = (e) => {
         dispatchMeetup({
             key: 'restaurant',
@@ -74,17 +79,41 @@ const CoordinateMeetup = ({ loggedInUser }) => {
         })
     }
 
-    const dateSelect = (e) => {
-        setDate(e.target.value)
+    
+    const dateSelect = (e, key) => {
+        dispatchDate({
+            key: key,
+            value: e.target.value
+        })
     }
 
-    const timeSelect = (e) => {
-        setTime(e.target.value)
-    }
+    useEffect(() => {
+        date.date && date.time &&
+        dispatchMeetup({
+            key: 'date',
+            value: combineDate(date.date, date.time)
+        })
+    }, [date])
 
     const createEventHandler = () => {
-        axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchMeetup, meetup)
+        for(const key in meetup) {
+                dispatchError({
+                    key: key,
+                    value:  meetup[key] === null ? true : false
+                })
+        }
     }
+
+    useEffect(() => {
+        if(!error.mounted) {
+            dispatchError({
+                key: 'mounted',
+                value: true
+            })
+        } else {
+            !error.date && !error.restaurant && axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchMeetup, meetup)
+        }
+    },[error.date, error.restaurant])
 
 return (
     <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>
@@ -93,6 +122,7 @@ return (
                 style={{ textAlign:'center' }}>
                     coordinate meet 'n eat with friends
             </Card.Title>
+
             <Button 
                 className='invite'
                 style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
@@ -102,7 +132,7 @@ return (
             </Button>
             <Modal show={showModal.invite} onHide={modalHandler}>
                 <Modal.Body>
-                    {loggedInUser.friends.map((friend, index) => 
+                    {loggedInUser.response.friends.map((friend, index) => 
                         <>
                             <ProfileCard key={friend._id} user={friend} />
                             <Form.Check
@@ -117,6 +147,7 @@ return (
                     )}
                 </Modal.Body>
             </Modal>
+
             <Button 
                 className='invited'
                 style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
@@ -126,15 +157,15 @@ return (
             </Button>
             <Modal show={showModal.invited} onHide={modalHandler}>
                 <Modal.Body>
-                    {loggedInUser.friends
-                        .filter(friend => meetup.participants
-                            .find(participant => participant === friend._id))
-                        .map(friend => <ProfileCard key={friend._id} user={friend} />)}
+                    {participantsList()}
                 </Modal.Body>
             </Modal>
+
             <div 
                 style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end' }} 
                 className="input-group justify-content-between">
+                
+                {error.restaurant && <h2>select a restaurant for this event</h2>}
                 <Dropdown 
                     onSelect={restaurantSelect} 
                     style={{ marginTop:'5%'}}
@@ -146,13 +177,12 @@ return (
                     >
                         {   
                             // Displays name of selected restaurant, or 'choose restaurant'
-                            meetup.restaurant 
-                            && loggedInUser.favorites.find(restaurant => restaurant._id === meetup.restaurant).name 
-                            || 'choose restaurant' 
+                            (meetup.restaurant && loggedInUser.response.favorites.find(restaurant => restaurant._id === meetup.restaurant).name )
+                            || 'choose restaurant'
                         }
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        { loggedInUser && loggedInUser.favorites.map(restaurant => 
+                        { loggedInUser.response && loggedInUser.response.favorites.map(restaurant => 
                             <Dropdown.Item 
                                 key={restaurant._id}
                                 eventKey={restaurant._id} 
@@ -165,18 +195,20 @@ return (
                 {
                     meetup.restaurant && 
                     <RestaurantCard 
-                        restaurant={loggedInUser.favorites.find(favorite => favorite._id == meetup.restaurant)}
+                        restaurant={loggedInUser.response.favorites.find(favorite => favorite._id === meetup.restaurant)}
                         hideLikeButton={true}
                     />
                 }
+
+                {error.date && <h2>pick a date and time for this event</h2>}
                 <input 
                     style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
-                    onChange={dateSelect} 
+                    onChange={(e) => dateSelect(e, 'date')} 
                     type='date'>
                 </input>
                 <input 
                     style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
-                    onChange={timeSelect} 
+                    onChange={(e) => dateSelect(e, 'time')} 
                     type='time'>
                 </input>
             </div>
@@ -185,7 +217,7 @@ return (
                     id="button-addon2"
                     onClick={createEventHandler}
                 >
-                        invite
+                        create event
                 </Button>
         </Card.Body>
     </Card>

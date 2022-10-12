@@ -3,7 +3,6 @@ import { Link } from 'react-router-dom'
 import {Card, Button, Container, Image, Col, Row, ButtonGroup } from 'react-bootstrap/'
 import { Context } from '../App'
 import { axiosAll } from '../data-and-functions/axiosAll';
-import SignUp from './LoginSignUp/SignUp';
 import LogIn from './LoginSignUp/LogIn';
 
 
