@@ -5,7 +5,7 @@ import { Context } from '../App'
 import { axiosAll } from '../data-and-functions/axiosAll';
 
 
-const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
+const RestaurantCard = ({ restaurant, setLikeRefresh, hideLikeButton }) => {
     // State Hooks and Variables
   // ===========================================================================
 

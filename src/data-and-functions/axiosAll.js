@@ -39,20 +39,10 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
 
 export function axiosReducer (state, object) {
    switch(object.key) {           
-      case 'loadProfile':
-         console.log(object.value)
-         return {
-            ...state, 
-            profileimg: object.value.profileimg,
-            about: object.value.about,
-            location: object.value.location,
-            displayname: object.value.displayname,
-            email: object.value.email
-         }
-         
-      case 'logout':
-         return { username: '', password: ''}
+      case 'initialize':
+         return object.value 
 
+  
       default:
          return {...state, [object.key]: object.value}
    }

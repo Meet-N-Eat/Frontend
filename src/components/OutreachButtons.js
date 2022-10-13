@@ -1,11 +1,9 @@
-import React from 'react'
 import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 
-function OutreachButtons( {friends, user} ) {
-
+function OutreachButtons( {friends, user, friendRequestHandler} ) {
   const navigate = useNavigate()
-
+  
   const handleMessage = () => {
     navigate(`/messages/chat/${user.id}`)
   }
@@ -15,7 +13,7 @@ function OutreachButtons( {friends, user} ) {
       {friends && friends === true ?
       <Button style={{color:'black'}} onClick={handleMessage}> Message {user.username}</Button>
       :
-      <Button style={{color:'black'}}>Add {user.username} as friend</Button> 
+      <Button style={{color:'black'}} onClick={friendRequestHandler}>Add {user.username} as friend</Button> 
      }
     </div>
   )
