@@ -20,7 +20,6 @@ export const Context = createContext()
 function App() {
   // Context variables
   const [loggedInUser, dispatchUser] = useReducer(axiosReducer, { username: '', password: ''})
-  let logInMessage = false
   const defaultImage = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
   const colorTemplate = {
     darkColor: '#D6300F',
@@ -30,13 +29,12 @@ function App() {
   
   return (
     <div className="App">
-        <Context.Provider value={{'loggedInUser': loggedInUser, 'dispatchUser': dispatchUser, 'defaultImage': defaultImage, 'colorTemplate': colorTemplate, 'logInMessage': logInMessage }}>
+        <Context.Provider value={{'loggedInUser': loggedInUser, 'dispatchUser': dispatchUser, 'defaultImage': defaultImage, 'colorTemplate': colorTemplate }}>
       <header>
         <NavBar />
       </header>
       <main>
           <Routes>
-            {/* <Route path="*" element={<Navigate to="/home" />} /> */}
             <Route path="/" element={<Home />} />
             <Route path='/users/authentication/login' element={<LogIn />} />
             <Route path='/users/authentication/signup' element={<SignUp />} />

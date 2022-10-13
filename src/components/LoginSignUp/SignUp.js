@@ -66,6 +66,7 @@ const SignUp = () => {
         </Modal.Body>
       </Modal>
       <div className='container'>
+        <h1>SIGN UP</h1>
         <form 
           style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center"}} 
           action=''
