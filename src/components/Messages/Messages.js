@@ -10,10 +10,25 @@ function Messages() {
   useEffect(() => {
     axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
   },[])
-  
+
+  function groupThreads() {
+    const threads = {}
+    const threadArray = []
+
+    loggedInUser.response.messages.forEach(message => {
+      // if(!threads[message.sender]) threads[message.sender] = message
+      // else if(threads[message.sender].createdAt < message.createdAt) threads[message.sender] = message
+      threads[message.sender] = message
+    })
+
+    for(const thread in threads) threadArray.push(threads[thread])
+    console.log(threadArray)
+    return threadArray
+  }
+  groupThreads()
   return (
     <Container>
-      {loggedInUser.token && loggedInUser.response.messages.map(message => <Message key={message._id} message={message} />)}
+      {loggedInUser.token && groupThreads().map(message => <Message key={message._id} message={message} />)}
     </Container>
   )
 }
