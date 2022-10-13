@@ -1,4 +1,4 @@
-import { createContext, useReducer } from 'react';
+import { createContext, useReducer, useRef } from 'react';
 import { Routes, Route } from 'react-router-dom'
 import FAQ from './components/FAQ/FAQ';
 import Home from './components/Home/Home';
@@ -20,6 +20,7 @@ export const Context = createContext()
 function App() {
   // Context variables
   const [loggedInUser, dispatchUser] = useReducer(axiosReducer, { username: '', password: ''})
+  let logInMessage = false
   const defaultImage = 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png'
   const colorTemplate = {
     darkColor: '#D6300F',
@@ -29,7 +30,7 @@ function App() {
   
   return (
     <div className="App">
-        <Context.Provider value={{'loggedInUser': loggedInUser, 'dispatchUser': dispatchUser, 'defaultImage': defaultImage, 'colorTemplate': colorTemplate}}>
+        <Context.Provider value={{'loggedInUser': loggedInUser, 'dispatchUser': dispatchUser, 'defaultImage': defaultImage, 'colorTemplate': colorTemplate, 'logInMessage': logInMessage }}>
       <header>
         <NavBar />
       </header>

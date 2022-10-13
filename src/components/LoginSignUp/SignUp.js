@@ -1,28 +1,22 @@
-import React, { useContext, useReducer, useState } from 'react';
-import { Button, Row } from 'react-bootstrap'
+import React, {  useContext, useReducer, useState } from 'react';
+import { Button, Row, Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 import { Context } from '../../App';
 
 const SignUp = () => {
-  // const initialState = {
-  //   username: '',
-  //   password: '',
-  //   confirmPassword: '',
-  //   email: ''
-  // }
-  
   // State Hooks and Variables
   // ===========================================================================
-  const [loggedInUser, dispatchUser] = useReducer(axiosReducer, { username: '', password: ''})
-  // const [loggedInUser, dispatch] = useReducer(axiosReducer, initialState)
+  const { dispatchUser, loggedInUser } = useContext(Context)
   const [error, dispatchError] = useReducer(axiosReducer, { username: false, email: false })
-  // const { dispatchUser } = useContext(Context)
-  const [nextModal, setNextModal] = useState(false)
-  // const navigate = useNavigate()
+  const [show, setShow] = useState(false)
   
   // Functions
   // ===========================================================================
+  function modalHandler() {
+    setShow(prevState => !prevState)
+  }
+
   function changeHandler(e) {
     dispatchUser({
       key: e.target.classList[0],
@@ -35,7 +29,8 @@ const SignUp = () => {
     if(loggedInUser.password === loggedInUser.confirmPassword) {
       const response = await axiosAll('POST', `/users/signup`, null, dispatchUser, loggedInUser)
       const response2 = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
-      // console.log(response.data)
+      
+
       if (typeof(response.data) === 'string') {
         response.data.indexOf('{ username:') !== -1 ?
           dispatchError({ key: 'username', value: true })
@@ -45,22 +40,21 @@ const SignUp = () => {
           dispatchError({ key: 'email', value: true })
           : dispatchError({ key: 'email', value: false })
       }
-      else { 
-        setNextModal(true)
-        axiosAll('GET', `/users/username/${response.data.username}`, response2.data.token, dispatchUser)
-      }
+      else 
+        setShow(!show)
     }
   }
+
 
   // Return
   // ===========================================================================
   return (
     <div>
-        {nextModal ? 
-        <div>
-          <Row>
-            <h1>Successfully registered!</h1>
-          </Row>
+      <Modal show={show} onHide={modalHandler}>
+        <Modal.Header closeButton>
+          <Modal.Title>Successfully registered!</Modal.Title>
+        </Modal.Header>
+        <Modal.Body>
           <Row>
             <Link to='/profile'>
               <button>Set up your profile</button>
@@ -69,10 +63,8 @@ const SignUp = () => {
           <Row>
             <Link to='/'>Skip</Link>
           </Row>
-        </div>
-        : 
-        null
-      }
+        </Modal.Body>
+      </Modal>
       <div className='container'>
         <form 
           style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center"}} 
