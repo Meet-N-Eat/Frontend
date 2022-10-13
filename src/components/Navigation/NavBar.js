@@ -41,7 +41,7 @@ function handleLogOut(){
         key: 'logout'
     })
 }
-console.log('token', loggedInUser.token, 'response', loggedInUser.response)
+
 return (
     <Navbar expand='lg' >
         <Container style={{borderBottom: '1px solid black' }}>
@@ -92,8 +92,6 @@ return (
                                 </NavDropdown>
                                 <NavLink to='/faq'><GrCircleInformation size={40} /></NavLink>
                             </>
-                            
-                            
                         } 
         </Container>
         

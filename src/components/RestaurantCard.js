@@ -11,7 +11,7 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
 
     const likedImage = 'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png'
     const notLikedImage = 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
-    const { colorTemplate, loggedInUser, dispatchUser, signUpMessage }  = useContext(Context)
+    const { colorTemplate, loggedInUser, dispatchUser, logInMessage }  = useContext(Context)
     const navigate = useNavigate()
     const [buttonIcon, setButtonIcon] = useState(liked() ? likedImage : notLikedImage)
     const { name, image_url, display_phone, price } = restaurant
@@ -40,8 +40,7 @@ const RestaurantCard = ({ restaurant, setLikeRefresh }) => {
                 setButtonIcon(likedImage)
             }
         } else {
-            navigate('/users/authentication/login')
-            
+            navigate('/users/authentication/login', { state: { logInMessage: true }})
         }
     }
     
