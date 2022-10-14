@@ -1,6 +1,6 @@
 import { useReducer, useContext, useEffect, useRef } from 'react';
 import { Button } from 'react-bootstrap'
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { Context } from '../../App';
 import { axiosAll } from '../../data-and-functions/axiosAll';
 
@@ -62,6 +62,7 @@ const LogIn = () => {
   return (
     <div>
       <div className='container'>
+        <h1>LOG IN</h1>
         { location.state !== null && <h2>You'll need to log in to access this feature!</h2> }
         <form 
           style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center"}} 
@@ -92,6 +93,9 @@ const LogIn = () => {
           >Submit</Button>{' '}
       </form>
     </div>
+    <Link to='/users/authentication/signup'>
+      Not registered? Sign up here
+    </Link>
   </div>
   );
 };
