@@ -1,12 +1,15 @@
-import React, { useEffect, useReducer } from 'react'
+import React, { useEffect, useReducer, useContext } from 'react'
 import { Card, Dropdown, Button, Modal, Form } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
+import { Context } from '../../App'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
 
-const CoordinateMeetup = ({ loggedInUser }) => {
+const CoordinateMeetup = () => {
     // State Variables
     // ===========================================================================================
+    const { loggedInUser, dispatchUser } = useContext(Context)
+console.log(loggedInUser)
     const initialState = {
         restaurant: null,
         participants: [loggedInUser.response._id],
@@ -19,9 +22,7 @@ const CoordinateMeetup = ({ loggedInUser }) => {
     const [date, dispatchDate] = useReducer(axiosReducer, {date: '', time: ''})
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
-    useEffect(() => {
-        console.log(error, meetup)
-    })
+    useEffect(() => console.log(loggedInUser.response))
     
     // Functions and Event Handlers
     // ===========================================================================================
@@ -116,7 +117,7 @@ const CoordinateMeetup = ({ loggedInUser }) => {
     useEffect(() => {
         if(error.submit) {
             if(!error.date && !error.restaurant) {
-                axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchMeetup, meetup)
+                axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchUser, meetup)
                 
                 dispatchMeetup({
                     key: 'initialize',

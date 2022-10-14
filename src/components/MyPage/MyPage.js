@@ -76,7 +76,7 @@ return (
             <Carousel slide={false} wrap={false} interval={null}>
                 <Carousel.Item>
                     <div className="grid place-items-center h-screen">
-                        <CoordinateMeetup loggedInUser={loggedInUser}/>
+                        <CoordinateMeetup />
                     </div>
                 </Carousel.Item>
                 <Carousel.Item>
