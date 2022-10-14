@@ -65,15 +65,19 @@ const RestaurantCard = ({ restaurant, setLikeRefresh, hideLikeButton }) => {
                     className="fluid"
                 >
                     <div style={{width:'100%'}}>
-                        <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
-                            <Button type="checkbox" variant="outline-light">
-                            <Image
-                                width={50}
-                                src={buttonIcon} 
-                                onClick={likeHandler}
-                            />
-                            </Button>
-                        </ButtonGroup>
+                        {
+                            // Hide like button if hideLikeButton is true
+                            !hideLikeButton &&
+                            <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
+                                <Button type="checkbox" variant="outline-light">
+                                <Image
+                                    width={50}
+                                    src={buttonIcon} 
+                                    onClick={likeHandler}
+                                />
+                                </Button>
+                            </ButtonGroup>
+                        }
                     </div>
                     <Card style={{border:'none', padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
                         <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant._id}`}>
