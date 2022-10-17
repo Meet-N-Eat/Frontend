@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { Card, OverlayTrigger, Popover, Button, ListGroup, Modal, NavDropdown } from 'react-bootstrap'
 import { BiDotsVertical } from 'react-icons/bi'
 import { Context } from '../../App'
@@ -12,10 +12,7 @@ const Event = ({ event }) => {
  
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-    const editClose = () => setShowEdit(false)
-    const editShow = () => setShowEdit(true)
-
+    useEffect(() => console.log('Event Rendered'))
     function toggleModal() {
         setModalState(!modalState)
     }

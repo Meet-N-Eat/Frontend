@@ -1,8 +1,8 @@
-import React from 'react'
+import { useEffect } from 'react'
 import Event from './Event'
 
 const Itinerary = ({ profile }) => {
-
+useEffect(() => console.log("Itinerary Rendered"))
 let today = new Date().toLocaleDateString()
 
 return (
