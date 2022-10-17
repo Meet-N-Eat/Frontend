@@ -4,7 +4,7 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
 
-const CoordinateMeetup = ({ loggedInUser }) => {
+const CoordinateMeetup = ({ loggedInUser, dispatchUser }) => {
     // State Variables
     // ===========================================================================================
     const initialState = {
@@ -13,15 +13,13 @@ const CoordinateMeetup = ({ loggedInUser }) => {
         date: null,
         createdBy: loggedInUser.response._id
     }
-    
+
     const [meetup, dispatchMeetup] = useReducer(axiosReducer, initialState)
     const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
     const [date, dispatchDate] = useReducer(axiosReducer, {date: '', time: ''})
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
-    useEffect(() => {
-        console.log(error, meetup)
-    })
+    useEffect(() => console.log('CoordinateMeetup Rendered'))
     
     // Functions and Event Handlers
     // ===========================================================================================
@@ -116,11 +114,16 @@ const CoordinateMeetup = ({ loggedInUser }) => {
     useEffect(() => {
         if(error.submit) {
             if(!error.date && !error.restaurant) {
-                axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchMeetup, meetup)
+                axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchUser, meetup)
                 
                 dispatchMeetup({
                     key: 'initialize',
                     value: initialState
+                })
+
+                dispatchDate({
+                    key: 'initialize',
+                    value: {date: '', time: ''}
                 })
             }
         } else {
@@ -217,13 +220,15 @@ return (
                 <input 
                     style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
                     onChange={(e) => dateSelect(e, 'date')} 
-                    type='date'>
-                </input>
+                    type='date'
+                    value={date.date}
+                />
                 <input 
                     style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
                     onChange={(e) => dateSelect(e, 'time')} 
-                    type='time'>
-                </input>
+                    type='time'
+                    value={date.time} 
+                />
             </div>
                 <Button 
                     style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
