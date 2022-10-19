@@ -4,7 +4,7 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
 
-const CoordinateMeetup = ({ loggedInUser, dispatchUser }) => {
+const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
     // State Variables
     // ===========================================================================================
     const initialState = {
@@ -13,13 +13,15 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser }) => {
         date: null,
         createdBy: loggedInUser.response._id
     }
-
-    const [meetup, dispatchMeetup] = useReducer(axiosReducer, initialState)
+    
+    const [meetup, dispatchMeetup] = useReducer(axiosReducer, event || initialState)
     const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
     const [date, dispatchDate] = useReducer(axiosReducer, {date: '', time: ''})
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
     useEffect(() => console.log('CoordinateMeetup Rendered'))
+    useEffect(() => console.log(loggedInUser.response))
+    useEffect(() => console.log(event))
     
     // Functions and Event Handlers
     // ===========================================================================================
@@ -114,7 +116,8 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser }) => {
     useEffect(() => {
         if(error.submit) {
             if(!error.date && !error.restaurant) {
-                axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchUser, meetup)
+                if(showEdit) axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchUser, meetup)
+                else axiosAll('PUT', `/users/events/edit`, loggedInUser.token, dispatchUser, meetup)
                 
                 dispatchMeetup({
                     key: 'initialize',
@@ -132,7 +135,7 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser }) => {
     },[error])
 
 return (
-    <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>
+    <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F', marginBottom:'1%' }}>
         <Card.Body>
             <Card.Title 
                 style={{ textAlign:'center' }}>
@@ -193,7 +196,7 @@ return (
                     >
                         {   
                             // Displays name of selected restaurant, or 'choose restaurant'
-                            (meetup.restaurant && loggedInUser.response.favorites.find(restaurant => restaurant._id === meetup.restaurant).name )
+                            (meetup.restaurant != null && loggedInUser.response.favorites.find(restaurant => restaurant._id == meetup.restaurant).name )
                             || 'choose restaurant'
                         }
                     </Dropdown.Toggle>
@@ -235,7 +238,10 @@ return (
                     id="button-addon2"
                     onClick={createEventHandler}
                 >
-                        create event
+                        {showEdit == true ? 
+                        <p>edit event</p>
+                    :
+                        <p>create event</p>}
                 </Button>
         </Card.Body>
     </Card>
