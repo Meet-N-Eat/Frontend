@@ -1,22 +1,16 @@
-import React, { useState, useEffect, useContext } from 'react'
+import React, { useState, useEffect, useContext, useReducer } from 'react'
 import { Card, OverlayTrigger, Popover, Button, ListGroup, Modal, NavDropdown, Offcanvas } from 'react-bootstrap'
 import { BiDotsVertical } from 'react-icons/bi'
 import { Context } from '../../App'
-import { axiosAll } from '../../data-and-functions/axiosAll'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import CoordinateMeetup from './CoordinateMeetup'
 
 const Event = ({ event }) => {
     const { loggedInUser, dispatchUser } = useContext(Context)
+    const [restaurant, dispatchRestaurant] = useReducer(axiosReducer, null)
     const [modalState, setModalState] = useState(false)
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false) 
-
-
-    //edit modal state
-    // const [meetup, dispatchMeetup] = useReducer(axiosReducer, initialState)
-    // const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
-    // const [date, dispatchDate] = useReducer(axiosReducer, {date: '', time: ''})
-    // const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
  
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
@@ -25,8 +19,15 @@ const Event = ({ event }) => {
     const editShow = () => setShowEdit(true)
 
     useEffect(() => console.log('Event Rendered'))
-    useEffect(() => console.log(loggedInUser.response))
-    
+    useEffect(() => console.log(event))
+    useEffect(() => {
+        if(restaurant) console.log(restaurant.response)
+    })
+
+    useEffect(() => {
+        axiosAll('GET', `/restaurants/${event.restaurant}`, loggedInUser.token, dispatchRestaurant)
+    },[])
+
     function toggleModal() {
         setModalState(!modalState)
     }
@@ -48,9 +49,6 @@ else {
                     <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical style={{color:'white'}} size={20} onClick={() => {console.log(event)}}/>}>
                         <NavDropdown.Item>
                             <Button variant='danger' style={{color:'black'}} onClick={editShow}>Edit</Button>
-                            {/* <Offcanvas placement='bottom' show={showEdit} onHide={editClose}>
-                                <CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} showEdit={showEdit} />
-                            </Offcanvas> */}
                         </NavDropdown.Item>
                         <NavDropdown.Item>
                             <Button variant="danger" onClick={handleShow} style={{color:'black'}}>Cancel Event</Button>
@@ -74,10 +72,10 @@ else {
             </Card.Header>
             <Card.Body style={{ display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center' }}>
     
-                <Card.Title>{event.restaurant.name}</Card.Title>
-                <Card.Text>{event.restaurant.display_phone}</Card.Text>
-                <Card.Text>{event.restaurant.location.address1}</Card.Text>
-                <Card.Text>{event.restaurant.location.city}</Card.Text>
+                <Card.Title>{restaurant && restaurant.response.name}</Card.Title>
+                <Card.Text>{restaurant && restaurant.response.display_phone}</Card.Text>
+                <Card.Text>{restaurant && restaurant.response.location.address1}</Card.Text>
+                <Card.Text>{restaurant && restaurant.response.location.city}</Card.Text>
                 {['bottom'].map((placement) => (
                     <OverlayTrigger
                     trigger="click"

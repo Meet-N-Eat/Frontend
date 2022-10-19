@@ -9,7 +9,7 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
     // ===========================================================================================
     const initialState = {
         restaurant: null,
-        participants: [loggedInUser.response._id],
+        participants: [loggedInUser.response._id], 
         date: null,
         createdBy: loggedInUser.response._id
     }
@@ -20,8 +20,9 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
     useEffect(() => console.log('CoordinateMeetup Rendered'))
-    useEffect(() => console.log(loggedInUser.response))
+    useEffect(() => console.log(meetup))
     useEffect(() => console.log(event))
+    useEffect(() => console.log(loggedInUser.response))
     
     // Functions and Event Handlers
     // ===========================================================================================
@@ -196,7 +197,7 @@ return (
                     >
                         {   
                             // Displays name of selected restaurant, or 'choose restaurant'
-                            (meetup.restaurant != null && loggedInUser.response.favorites.find(restaurant => restaurant._id == meetup.restaurant).name )
+                            (meetup.restaurant && loggedInUser.response.favorites.find(restaurant => restaurant._id == meetup.restaurant).name)
                             || 'choose restaurant'
                         }
                     </Dropdown.Toggle>
