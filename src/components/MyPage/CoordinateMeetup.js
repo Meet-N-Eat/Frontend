@@ -20,9 +20,7 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
     useEffect(() => console.log('CoordinateMeetup Rendered'))
-    useEffect(() => console.log(meetup))
-    useEffect(() => console.log(event))
-    useEffect(() => console.log(loggedInUser.response))
+    useEffect(() => console.log(date))
     
     // Functions and Event Handlers
     // ===========================================================================================
