@@ -21,7 +21,7 @@ useEffect(() => {
 },[])
 
 // Stating slideItems as an array of components
-const slideItems = [<CoordinateMeetup loggedInUser={loggedInUser} />, <Friends friends={loggedInUser.response.friends} />, <Favorites favorites={loggedInUser.response.favorites} />, <Itinerary profile={loggedInUser.response}/>]
+const slideItems = [<CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} />, <Friends friends={loggedInUser.response.friends} />, <Favorites favorites={loggedInUser.response.favorites} />, <Itinerary profile={loggedInUser.response}/>]
 
 // slideIndex ref for event handlers
 const slideIndex = useRef(0)

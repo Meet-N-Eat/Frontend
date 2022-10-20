@@ -4,22 +4,23 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
 
-const CoordinateMeetup = ({ loggedInUser }) => {
+const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
     // State Variables
     // ===========================================================================================
     const initialState = {
         restaurant: null,
-        participants: [loggedInUser.response._id],
+        participants: [loggedInUser.response._id], 
         date: null,
         createdBy: loggedInUser.response._id
     }
     
-    const [meetup, dispatchMeetup] = useReducer(axiosReducer, initialState)
+    const [meetup, dispatchMeetup] = useReducer(axiosReducer, event || initialState)
     const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
     const [date, dispatchDate] = useReducer(axiosReducer, {date: '', time: ''})
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
-    useEffect(() => console.log(error, meetup))
+    useEffect(() => console.log('CoordinateMeetup Rendered'))
+    useEffect(() => console.log(date))
     
     // Functions and Event Handlers
     // ===========================================================================================
@@ -114,11 +115,17 @@ const CoordinateMeetup = ({ loggedInUser }) => {
     useEffect(() => {
         if(error.submit) {
             if(!error.date && !error.restaurant) {
-                axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchMeetup, meetup)
+                if(showEdit) axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchUser, meetup)
+                else axiosAll('PUT', `/users/events/edit`, loggedInUser.token, dispatchUser, meetup)
                 
                 dispatchMeetup({
                     key: 'initialize',
                     value: initialState
+                })
+
+                dispatchDate({
+                    key: 'initialize',
+                    value: {date: '', time: ''}
                 })
             }
         } else {
@@ -128,6 +135,7 @@ const CoordinateMeetup = ({ loggedInUser }) => {
 
 return (
     <Card style={{ width: '80%', height:'80%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>
+    
         <Card.Body>
             <Card.Title 
                 style={{ textAlign:'center' }}>
@@ -188,7 +196,7 @@ return (
                     >
                         {   
                             // Displays name of selected restaurant, or 'choose restaurant'
-                            (meetup.restaurant && loggedInUser.response.favorites.find(restaurant => restaurant._id === meetup.restaurant).name )
+                            (meetup.restaurant && loggedInUser.response.favorites.find(restaurant => restaurant._id == meetup.restaurant).name)
                             || 'choose restaurant'
                         }
                     </Dropdown.Toggle>
@@ -215,20 +223,25 @@ return (
                 <input 
                     style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
                     onChange={(e) => dateSelect(e, 'date')} 
-                    type='date'>
-                </input>
+                    type='date'
+                    value={date.date}
+                />
                 <input 
                     style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
                     onChange={(e) => dateSelect(e, 'time')} 
-                    type='time'>
-                </input>
+                    type='time'
+                    value={date.time} 
+                />
             </div>
                 <Button 
                     style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                     id="button-addon2"
                     onClick={createEventHandler}
                 >
-                        create event
+                        {showEdit == true ? 
+                        <p>edit event</p>
+                    :
+                        <p>create event</p>}
                 </Button>
         </Card.Body>
     </Card>
