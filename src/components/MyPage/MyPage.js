@@ -1,14 +1,14 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useState, useRef } from 'react'
 import Favorites from './Favorites'
 import Friends from './Friends'
 import CoordinateMeetup from './CoordinateMeetup'
 import Itinerary from './Itinerary'
 import { axiosAll } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
-import { Navbar, Nav, Container, Carousel, Row } from 'react-bootstrap'
+import { Navbar, Nav, Container, Row } from 'react-bootstrap'
 import './MyProfile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faUtensils, faUsers, faPeopleArrows, faCalendarDays } from '@fortawesome/free-solid-svg-icons'
+import { faUtensils, faUsers, faPeopleArrows, faCalendarDays, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
 
 
 const MyPage = () => {
@@ -20,16 +20,67 @@ useEffect(() => {
     axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
 },[])
 
-if(!loggedInUser.response){
-    return <Container>Loading...</Container>
+// Stating slideItems as an array of components
+const slideItems = [<CoordinateMeetup loggedInUser={loggedInUser} />, <Friends friends={loggedInUser.response.friends} />, <Favorites favorites={loggedInUser.response.favorites} />, <Itinerary profile={loggedInUser.response}/>]
+
+// slideIndex ref for event handlers
+const slideIndex = useRef(0)
+
+// Building state for slideItems
+const [slide, setSlide] = useState(slideItems[0])
+
+// Functions
+// ===========================================================================
+
+function rightSlideHandler() {
+        if (slideIndex.current < 3) {
+            slideIndex.current++
+        }
+        setSlide(slideItems[slideIndex.current])
 }
+
+function leftSlideHandler() {
+    if (slideIndex.current > 0) {
+        slideIndex.current--
+    }
+    setSlide(slideItems[slideIndex.current])
+}
+
+function tabHandler(tabIndex) {
+    slideIndex.current = tabIndex
+    setSlide(slideItems[slideIndex.current])
+}
+
 
 return (
     <div>
+        {loggedInUser && loggedInUser.response ?
+        <div>
+            <div class="absolute inset-y-52 left-4">
+                <button 
+                id="left-btn"
+                onClick={leftSlideHandler}>
+                    <FontAwesomeIcon icon={faChevronLeft} />
+                </button>
+            </div>
+            <div className="grid place-items-center h-screen">
+                {slide}
+            </div>
+            <div class="absolute inset-y-52 right-4">
+                <button 
+                id="right-btn"
+                onClick={rightSlideHandler}>
+                    <FontAwesomeIcon icon={faChevronRight} />
+                </button>
+            </div>
+        </div>
+        : null }
         <div>
             <Navbar fixed='bottom' id='mypage-bar'>
                     <Container>
-                        <Nav.Link id="mypage-tabs" data-bs-target aria-label="Slide 1">
+                        <Nav.Link
+                        type="coordinate-meetup"
+                        onClick={() => tabHandler(0)}>
                             <Container id="mypage-tabs">
                                 <Row>
                                     <FontAwesomeIcon icon={faPeopleArrows} />
@@ -39,7 +90,9 @@ return (
                                 </Row>
                             </Container>
                         </Nav.Link>
-                        <Nav.Link id="mypage-tabs" data-bs-target aria-label="Slide 2">
+                        <Nav.Link 
+                        type="friends"
+                        onClick={() => tabHandler(1)}>
                             <Container>
                                 <Row>
                                     <FontAwesomeIcon icon={faUsers} />
@@ -49,7 +102,9 @@ return (
                                 </Row>
                             </Container>
                         </Nav.Link>
-                        <Nav.Link id="mypage-tabs" data-bs-target aria-label="Slide 3">
+                        <Nav.Link 
+                        type="favorites"
+                        onClick={() => tabHandler(2)}>
                             <Container>
                                 <Row>
                                     <FontAwesomeIcon icon={faUtensils} />
@@ -59,7 +114,9 @@ return (
                                 </Row>
                             </Container>
                         </Nav.Link>
-                        <Nav.Link id="mypage-tabs" data-bs-target aria-label="Slide 4">
+                        <Nav.Link 
+                        type="itinerary"
+                        onClick={() => tabHandler(3)}>
                             <Container>
                                 <Row>
                                     <FontAwesomeIcon icon={faCalendarDays} />
@@ -72,140 +129,7 @@ return (
                     </Container>
             </Navbar>
         </div>
-        <div className="grid place-items-center h-screen">
-            <Carousel slide={false} wrap={false} interval={null}>
-                <Carousel.Item>
-                    <div className="grid place-items-center h-screen">
-                        <CoordinateMeetup loggedInUser={loggedInUser}/>
-                    </div>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <div className="grid place-items-center h-screen">
-                        <Friends friends={loggedInUser.response.friends} />
-                    </div>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <div className="grid place-items-center h-screen">
-                        <Favorites favorites={loggedInUser.response.favorites} />
-                    </div>
-                </Carousel.Item>
-                <Carousel.Item>
-                    <div className="grid place-items-center h-screen">
-                        <Itinerary profile={loggedInUser.response}/>
-                    </div>
-                </Carousel.Item>
-            </Carousel>
-        </div>
     </div>
-
-
-
-    // <Container className='page-container'>
-    //     <Row>
-    //         {/* <Col>
-    //             <ProfileCard profile={loggedInUser.response}/>
-    //         </Col> */}
-    //         <Col xs={8}>
-    //             <Row>
-    //                 <Col className='friends-likes'>
-    //                     <LikedRestaurants likedrestaurants={loggedInUser.response.likedrestaurants} />
-    //                 </Col>
-    //                 <Col className='friends-likes'>
-    //                     <Friends friends={loggedInUser.response.friends} />
-    //                 </Col>
-    //             </Row>
-    //             <Row>
-    //                 <CoordinateMeetup profile={loggedInUser.response}/>
-    //             </Row>
-    //         </Col>
-    //         <Col>
-    //             <Itinerary profile={loggedInUser.response}/>
-    //         </Col>
-    //     </Row>
-    // </Container>
-
-    // <div style={{
-    //     marginLeft:'15%',
-    //     marginRight:'15%',
-    //     marginTop: '1%',
-    //     height:'85vh',
-    //     display:'flex',
-    //     flexDirection:'row'
-    //     }}
-    //     className='d-sm-flex d-md-flex d-lg-flex flex-sm-column flex-md-column flex-lg-row'>
-
-    //     <div style={{
-    //         border:'1px solid #D6300F',
-    //         boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)',
-    //         width:'30%',
-    //         marginRight:'3%',
-    //         display:'flex',
-    //         justifyContent:'center',
-    //         borderRadius:'10px'
-    //         }}
-    //         className='container-lg mx-auto me-lg-2 mb-sm-3 mb-lg-0'>
-
-    //         <ProfileCard profile={loggedInUser.response}/>
-
-    //     </div>
-
-    //     <div style={{
-    //         width:'45%',
-    //         marginRight:'3%',
-    //         display:'flex',
-    //         flexWrap:'wrap',
-    //         justifyContent:'space-between'
-    //         }}
-    //         className='d-ms-flex d-md-flex f-lg-flex justify-content-sm-between mx-sm-auto mx-md-auto me-lg-2'>
-
-    //         <div style={{
-    //             boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)',
-    //             height:'68%',
-    //             width:'49%',
-    //             borderRadius:'10px',
-    //             overflow:'scroll',
-    //             overflowX:'hidden',
-    //             border:'1px solid #D6300F'
-    //             }}
-    //             className=''>
-
-    //             <LikedRestaurant likedrestaurants={loggedInUser.response.likedrestaurants} />
-    //         </div>
-
-    //         <div style={{
-    //             boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)',
-    //             height:'68%',
-    //             width:'49%',
-    //             borderRadius:'10px',
-    //             overflowY:'scroll',
-    //             border:'1px solid #D6300F',
-    //             }}
-    //             className='friends-block'>
-
-    //             <Friends friends={loggedInUser.response.friends} />
-
-    //         </div>
-    //         <div style={{
-    //             boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)',
-    //             height:'30%',
-    //             width:'100%',
-    //             marginTop:'2%',
-    //             borderRadius:'10px'}}
-    //             className=''>
-
-    //             <CoordinateMeetup profile={loggedInUser.response}/>
-
-    //         </div>
-    //     </div>
-    //     <div style={{
-    //         boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)',
-    //         width:'25%',
-    //         borderRadius:'10px',
-    //         border:'1px solid #D6300F'}}
-    //          className='mx-sm-auto mx-md-auto'>
-    //           <Itinerary profile={loggedInUser.response}/>
-    //     </div>
-    // </div>
 )
 }
 
