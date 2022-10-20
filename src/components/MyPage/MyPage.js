@@ -56,6 +56,9 @@ return (
     <div>
         {loggedInUser && loggedInUser.response ?
         <div>
+            { slideIndex.current === 0 
+            ? null 
+            :
             <div class="absolute inset-y-52 left-4">
                 <button 
                 id="left-btn"
@@ -63,9 +66,13 @@ return (
                     <FontAwesomeIcon icon={faChevronLeft} />
                 </button>
             </div>
+            }
             <div className="grid place-items-center h-screen">
                 {slide}
             </div>
+            { slideIndex.current === 3
+            ? null
+            : 
             <div class="absolute inset-y-52 right-4">
                 <button 
                 id="right-btn"
@@ -73,6 +80,7 @@ return (
                     <FontAwesomeIcon icon={faChevronRight} />
                 </button>
             </div>
+            }
         </div>
         : null }
         <div>
