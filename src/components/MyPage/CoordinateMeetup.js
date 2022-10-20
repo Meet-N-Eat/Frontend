@@ -134,7 +134,8 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
     },[error])
 
 return (
-    <Card style={{ width: '100%', height:'100%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F', marginBottom:'1%' }}>
+    <Card style={{ width: '80%', height:'80%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>
+    
         <Card.Body>
             <Card.Title 
                 style={{ textAlign:'center' }}>
