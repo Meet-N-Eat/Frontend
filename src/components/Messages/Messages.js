@@ -16,12 +16,23 @@ function Messages() {
   useEffect(() => {
     axiosAll('GET', `/users/${loggedInUser.response._id}/messages/all`, loggedInUser.token, dispatchMessages)
   },[])
+  useEffect(() => console.log(messages.threads),[messages.threads])
+  useEffect(() => {
+    messages.response && messageThreads()
+      .then(threads => {
+        dispatchMessages({
+          key: 'threads',
+          value: threads
+        })
+      })
+  }, [messages.response])
 
   // Creates one thread for each unique sender, and stores the last message in the thread
   async function messageThreads() {
     // sort messages by date
     const sortedMessages = messages.response.sort((a, b) => a.createdAt < b.createdAt ? -1 : (a.createdAt === b.createdAt ? 0 : 1))
     const threads = {}
+    const threadArray = []
 
     // create unique keys for each thread and store the messages for that thread
     sortedMessages.forEach(message => {
@@ -36,12 +47,16 @@ function Messages() {
       }
     })
 
-    return threads
+    for(const thread in threads) {
+      threadArray.push(threads[thread])
+    }
+
+    return threadArray
   }
-  messageThreads()
+
   return (
     <Container>
-      {/* <div>
+      <div>
         <Dropdown>
           <Dropdown.Toggle>
             <FontAwesomeIcon icon={faMessage}/>
@@ -51,7 +66,7 @@ function Messages() {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      {loggedInUser.token && messageThreads().map(message => <Message key={message._id} message={message} />)} */}
+      {messages.threads && messages.threads.map(thread => <Message key={thread[thread.length - 1]._id} message={thread[thread.length - 1]} />)}
     </Container>
   )
 }
