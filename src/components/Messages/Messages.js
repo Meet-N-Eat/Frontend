@@ -16,7 +16,7 @@ function Messages() {
   useEffect(() => {
     axiosAll('GET', `/users/${loggedInUser.response._id}/messages/all`, loggedInUser.token, dispatchMessages)
   },[])
-  useEffect(() => console.log(messages.threads),[messages.threads])
+
   useEffect(() => {
     messages.response && messageThreads()
       .then(([threads, threadArray]) => {
@@ -71,7 +71,7 @@ function Messages() {
                 <Link 
                   to={`/messages/chat`} 
                   key={friend._id} 
-                  thread={messages.threads && messages.threads[friend._id] ? messages.threads[friend._id] : []}
+                  state={messages.threads && messages.threads[friend._id] ? messages.threads[friend._id] : []}
                 >
                   <ProfileCard user={friend} />
                 </Link>
@@ -85,7 +85,7 @@ function Messages() {
           <Link 
             to="/messages/chat" 
             key={thread[thread.length - 1]._id} 
-            thread={thread}
+            state={thread}
           >
             <Message message={thread[thread.length - 1]} />
           </Link>
