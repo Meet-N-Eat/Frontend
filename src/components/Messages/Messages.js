@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom'
 import { Container, Dropdown } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
+import { messageThreads } from '../../data-and-functions/messageThreads'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage } from '@fortawesome/free-solid-svg-icons'
 import Message from './Message'
@@ -18,7 +19,7 @@ function Messages() {
   },[])
 
   useEffect(() => {
-    messages.response && messageThreads()
+    messages.response && messageThreads(messages, loggedInUser)
       .then(([threads, threadArray]) => {
         dispatchMessages({
           key: 'threads',
@@ -30,33 +31,6 @@ function Messages() {
         })
       })
   }, [messages.response])
-
-  // Creates one thread for each unique sender, and stores the last message in the thread
-  async function messageThreads() {
-    // sort messages by date
-    const sortedMessages = messages.response.sort((a, b) => a.createdAt < b.createdAt ? -1 : (a.createdAt === b.createdAt ? 0 : 1))
-    const threads = {}
-    const threadArray = []
-
-    // create unique keys for each thread and store the messages for that thread
-    sortedMessages.forEach(message => {
-      if(message.sender !== loggedInUser.response._id) {
-        threads[message.sender] ?
-          threads[message.sender].push(message)
-          : threads[message.sender] = [ message ]
-      } else {
-        threads[message.recipient] ?
-          threads[message.recipient].push(message)
-          : threads[message.recipient] = [ message ]
-      }
-    })
-
-    for(const thread in threads) {
-      threadArray.push(threads[thread])
-    }
-
-    return [threads, threadArray]
-  }
 
   return (
     <Container>
