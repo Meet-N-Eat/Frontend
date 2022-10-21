@@ -43,9 +43,8 @@ function Messages() {
             {loggedInUser.response && 
               loggedInUser.response.friends.map(friend => 
                 <Link 
-                  to={`/messages/chat`} 
+                  to={`/messages/${friend._id}`} 
                   key={friend._id} 
-                  state={messages.threads && messages.threads[friend._id] ? messages.threads[friend._id] : []}
                 >
                   <ProfileCard user={friend} />
                 </Link>
@@ -57,9 +56,8 @@ function Messages() {
       {messages.threads && 
         messages.threadArray.map(thread => 
           <Link 
-            to="/messages/chat" 
+            to={`/messages/${thread[0].sender != loggedInUser.response._id ? thread[0].sender : thread[0].recipient}`} 
             key={thread[thread.length - 1]._id} 
-            state={thread}
           >
             <Message message={thread[thread.length - 1]} />
           </Link>

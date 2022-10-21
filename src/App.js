@@ -43,7 +43,7 @@ function App() {
             <Route path="/profile" element={<UserProfile />} />
             <Route path="/restaurants/:restaurantId" element={<RestaurantDetail />} />
             <Route path="/messages" element={<Messages />} />
-            <Route path="/messages/chat" element={<MessageChat />} />
+            <Route path="/messages/:friendId" element={<MessageChat />} />
             <Route path="/faq" element={<FAQ />} />
             <Route path="/friendrequests" element={<FriendRequests />} />
           </Routes>
