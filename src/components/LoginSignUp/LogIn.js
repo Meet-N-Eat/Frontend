@@ -36,7 +36,7 @@ const LogIn = () => {
     e.preventDefault()
     const response = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
 
-    response.data.token ? dispatch({
+    response.token ? dispatch({
       key: 'success',
       value: true
     })

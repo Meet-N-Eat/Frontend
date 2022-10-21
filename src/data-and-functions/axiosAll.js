@@ -34,7 +34,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
          break
    }
 
-   return res
+   return res.data
 }
 
 export function axiosReducer (state, object) {
