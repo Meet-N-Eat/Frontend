@@ -19,10 +19,14 @@ function Messages() {
   useEffect(() => console.log(messages.threads),[messages.threads])
   useEffect(() => {
     messages.response && messageThreads()
-      .then(threads => {
+      .then(([threads, threadArray]) => {
         dispatchMessages({
           key: 'threads',
           value: threads
+        })
+        dispatchMessages({
+          key: 'threadArray',
+          value: threadArray
         })
       })
   }, [messages.response])
@@ -51,7 +55,7 @@ function Messages() {
       threadArray.push(threads[thread])
     }
 
-    return threadArray
+    return [threads, threadArray]
   }
 
   return (
@@ -62,11 +66,31 @@ function Messages() {
             <FontAwesomeIcon icon={faMessage}/>
           </Dropdown.Toggle>
           <Dropdown.Menu>
-            {loggedInUser.response && loggedInUser.response.friends.map(friend => <Link to={`/messages/chat/${friend._id}`} key={friend._id}><ProfileCard user={friend} /></Link>)}
+            {loggedInUser.response && 
+              loggedInUser.response.friends.map(friend => 
+                <Link 
+                  to={`/messages/chat`} 
+                  key={friend._id} 
+                  thread={messages.threads && messages.threads[friend._id] ? messages.threads[friend._id] : []}
+                >
+                  <ProfileCard user={friend} />
+                </Link>
+              )
+            }
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      {messages.threads && messages.threads.map(thread => <Message key={thread[thread.length - 1]._id} message={thread[thread.length - 1]} />)}
+      {messages.threads && 
+        messages.threadArray.map(thread => 
+          <Link 
+            to="/messages/chat" 
+            key={thread[thread.length - 1]._id} 
+            thread={thread}
+          >
+            <Message message={thread[thread.length - 1]} />
+          </Link>
+        )
+      }
     </Container>
   )
 }
