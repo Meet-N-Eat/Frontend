@@ -15,7 +15,7 @@ const Message = ({ message }) => {
     },[])
 
 return (
-    <Card style={{ width: '70%',display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', padding:'1%' }}>
+    <Card style={{ width: '100%',display:'flex', flexDirection:'row', justifyContent:'center', alignItems:'center', padding:'1%' }}>
         <div style={{ width:'20%'}} >
             {sender.response && <ProfileCard user={sender.response} />}
         </div>
