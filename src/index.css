@@ -63,3 +63,18 @@ body {
   height: 100%;
 }
 
+.page-container {
+  display: flex;
+  flex-direction: column;
+  max-width: 800px;
+  margin: auto;
+}
+
+.user {
+  align-self: end;
+}
+
+.chat-message {
+  width: 60%
+}
+

@@ -22,7 +22,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
       case 'POST':
          res = await axios.post(`${baseURL}${path}`, body, headers)
          !authToken ? dispatch({ key: 'token', value: res.data.token})
-            : dispatch({ key: 'response', value: res.data })
+            : dispatch && dispatch({ key: 'response', value: res.data })
          break
 
       case 'DELETE':
