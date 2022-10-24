@@ -26,7 +26,7 @@ function MessageChat() {
   // sort messages into a chronological thread
   useEffect(() => {
     thread.response && messageThreads(thread, loggedInUser)
-      .then(({ threadArray }) => {
+      .then(threadArray => {
         dispatchThread({
           key: 'threadArray',
           value: threadArray
