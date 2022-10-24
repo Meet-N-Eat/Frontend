@@ -31,13 +31,11 @@ return (
                             aria-label="Recipient's username" aria-describedby="basic-addon2"
                         />
                     </InputGroup>
-                    {friends && friends.filter((friend) => {
-                        if (searchCharacters == ''){
-                            return friend
-                        } else if (friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase())) {
-                            return friend
-                        }   
-                    }).map(friend =>  <FriendCard key={friend._id} friend={friend} />)}
+                    {friends && friends.length > 0 ?
+                        friends.filter(friend => searchCharacters == '' || friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
+                            .map(friend =>  <FriendCard key={friend._id} friend={friend} />)
+                        : <div>you don't have any friends yet, send friend requests by clicking on other people who like the same restaurants you do.</div>
+                    }
                 </div>
             </Card.Body>
         </Card.Body>

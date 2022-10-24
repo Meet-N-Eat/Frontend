@@ -1,4 +1,4 @@
-import { useReducer, useEffect, useContext } from 'react'
+import { useReducer, useEffect, useContext, useState } from 'react'
 import { Container, Form, Row, Image, Button } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
@@ -7,8 +7,17 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 const UserProfile = () => {
 // state hooks and variable declaration
 //===========================================================================
+    const initialState = {
+        profileimg: '',
+        about: '',
+        location: '',
+        displayname: '',
+        email: ''
+    }
+
     const { defaultImage, loggedInUser, dispatchUser } = useContext(Context)
-    const [userData, dispatch] = useReducer(axiosReducer, {})
+    const [userData, dispatch] = useReducer(axiosReducer, initialState)
+    const [error, setError] = useState(false)
 
 // Getting user data
 // ===========================================================================
@@ -43,7 +52,12 @@ const UserProfile = () => {
 
     function onSubmit(e) {
         e.preventDefault()
-        axiosAll('PUT', `/users/${userData.response._id}`, loggedInUser.token, dispatch, userData)
+        axiosAll('PUT', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser, userData)
+            .then(res => {
+                typeof(res.data) === 'string' ?
+                    setError(true)
+                    : setError(false)
+            })
     }
 
     return (
@@ -106,6 +120,7 @@ const UserProfile = () => {
                                 value={userData.email}
                                 style={{border: '1px solid #EB3510', width: '70%'}}
                             />
+                            {error && <Form.Text className="text-muted">this email address already exists, please enter another</Form.Text>}
                         </Row>
                     <Button 
                         variant="danger" 

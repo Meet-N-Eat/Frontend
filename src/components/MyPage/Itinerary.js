@@ -12,7 +12,10 @@ return (
                 <h2> {today} </h2>
             </div>
             <div style={{margin:'5%', height:'80%', display:'flex', flexDirection:'column', alignItems:'center' }}>
-                {profile.events.map(event => <Event event={event} key={event._id}/>)}
+                {profile.events.length > 0 ?
+                    profile.events.map(event => <Event event={event} key={event._id}/>)
+                    : <div>no events right now, send someone an invite!</div>
+                }
             </div>
     </div>
 )

@@ -4,7 +4,7 @@ export async function messageThreads(messages, loggedInUser) {
    const threads = {}
    const threadArray = []
   
-   if(messages.response === []) return { threads: threads, threadArray: threadArray }
+   if(messages.response === []) return threadArray
 
    // sort messages by date
    const sortedMessages = messages.response.sort((a, b) => a.createdAt < b.createdAt ? -1 : (a.createdAt === b.createdAt ? 0 : 1))
@@ -26,5 +26,5 @@ export async function messageThreads(messages, loggedInUser) {
       threadArray.push(threads[thread])
    }
 
-   return { threads: threads, threadArray: threadArray }
+   return threadArray
 }

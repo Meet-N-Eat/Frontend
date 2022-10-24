@@ -26,7 +26,7 @@ function MessageChat() {
   // sort messages into a chronological thread
   useEffect(() => {
     thread.response && messageThreads(thread, loggedInUser)
-      .then(({ threadArray }) => {
+      .then(threadArray => {
         dispatchThread({
           key: 'threadArray',
           value: threadArray
@@ -49,11 +49,13 @@ function MessageChat() {
 
   return (
     <div className="page-container">
-      {thread.threadArray && thread.threadArray.length > 0 && thread.threadArray[0].map(message => 
+      {thread.threadArray && thread.threadArray.length > 0 ? thread.threadArray[0].map(message => 
         <div key={message._id} className={`${message.sender == loggedInUser.response._id ? "user chat-message" : "friend chat-message"}`}>
           <Message message={message} />
         </div>
-      )}
+        )
+        : <div>no messages yet, say hi!</div>
+      }
       <form onSubmit={submitHandler}>
         <input
           style={{ border: '1px solid black'}}

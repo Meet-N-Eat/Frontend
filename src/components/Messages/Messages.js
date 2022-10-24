@@ -20,12 +20,7 @@ function Messages() {
 
   useEffect(() => {
     messages.response && messageThreads(messages, loggedInUser)
-      .then(({ threads, threadArray }) => {
-
-        dispatchMessages({
-          key: 'threads',
-          value: threads
-        })
+      .then(threadArray => {
         dispatchMessages({
           key: 'threadArray',
           value: threadArray
@@ -44,8 +39,8 @@ function Messages() {
             {loggedInUser.response && 
               loggedInUser.response.friends.map(friend => 
                 <Link 
-                  to={`/messages/${friend._id}`} 
                   key={friend._id} 
+                  to={`/messages/${friend._id}`} 
                 >
                   <ProfileCard user={friend} />
                 </Link>
@@ -54,15 +49,16 @@ function Messages() {
           </Dropdown.Menu>
         </Dropdown>
       </div>
-      {messages.threads && 
+      {messages.threadArray && messages.threadArray.length > 0 ?
         messages.threadArray.map(thread => 
           <Link 
-            to={`/messages/${thread[0].sender != loggedInUser.response._id ? thread[0].sender : thread[0].recipient}`} 
             key={thread[thread.length - 1]._id} 
+            to={`/messages/${thread[0].sender != loggedInUser.response._id ? thread[0].sender : thread[0].recipient}`} 
           >
             <Message message={thread[thread.length - 1]} />
           </Link>
         )
+        : <div>you don't have any messages, choose a friend from the list and start chatting!</div>
       }
     </Container>
   )
