@@ -3,8 +3,9 @@ import { Card, Dropdown, Button, Modal, Form } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
+import Event from './Event'
 
-const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
+const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formattedHour, formattedDate }) => {
     // State Variables
     // ===========================================================================================
     const initialState = {
@@ -16,14 +17,22 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
     
     const [meetup, dispatchMeetup] = useReducer(axiosReducer, event || initialState)
     const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
-    const [date, dispatchDate] = useReducer(axiosReducer, {date: '', time: ''})
+    const [date, dispatchDate] = useReducer(axiosReducer, {date: '' || formattedDate, time: '' || formattedHour})
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
     useEffect(() => console.log('CoordinateMeetup Rendered'))
-    useEffect(() => console.log(date))
+    useEffect(() => console.log(date.date))
     
     // Functions and Event Handlers
     // ===========================================================================================
+
+    //
+    // if (formattedDate) {
+    //     date.date = formattedDate;
+    //     date.time = formattedHour;
+    // } else {
+        
+    // }
     
     // Creates a date object from date and time inputs
     function combineDate(date, time) {
@@ -110,6 +119,10 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event }) => {
             key: 'submit',
             value: true
         })
+    }
+
+    const editEventHandler = () => {
+        // axiosAll('PUT', `/users/events/edit`, loggedInUser.token, dispatchUser, meetup)
     }
 
     useEffect(() => {
@@ -233,16 +246,16 @@ return (
                     value={date.time} 
                 />
             </div>
-                <Button 
+                {showEdit == true ? 
+                    <Button 
                     style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                     id="button-addon2"
-                    onClick={createEventHandler}
-                >
-                        {showEdit == true ? 
-                        <p>edit event</p>
+                    onClick={createEventHandler}> edit event </Button>
                     :
-                        <p>create event</p>}
-                </Button>
+                    <Button 
+                    style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
+                    id="button-addon2"
+                    onClick={editEventHandler}> create event </Button>}
         </Card.Body>
     </Card>
 )
