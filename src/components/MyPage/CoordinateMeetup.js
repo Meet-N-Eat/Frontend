@@ -165,8 +165,8 @@ return (
             <Modal show={showModal.invite} onHide={modalHandler}>
                 <Modal.Body>
                     {loggedInUser.response.friends.map((friend, index) => 
-                        <>
-                            <ProfileCard key={friend._id} user={friend} />
+                        <div key={friend._id}>
+                            <ProfileCard user={friend} />
                             <Form.Check
                                 key={index}
                                 type='switch'
@@ -175,7 +175,7 @@ return (
                                 defaultChecked={meetup.participants.find(participant => participant === friend._id)}
                                 onClick={() => inviteHandler(friend)}
                             />
-                        </>
+                        </div>
                     )}
                 </Modal.Body>
             </Modal>
