@@ -1,3 +1,4 @@
+import moment from 'moment'
 import React, { useState, useEffect, useContext, useReducer } from 'react'
 import { Card, OverlayTrigger, Popover, Button, ListGroup, Modal, NavDropdown, Offcanvas } from 'react-bootstrap'
 import { BiDotsVertical } from 'react-icons/bi'
@@ -20,6 +21,14 @@ const Event = ({ event }) => {
 
     useEffect(() => console.log('Event Rendered'))
     useEffect(() => console.log(event))
+    
+    // DATE AND HOUR FORMAT
+    let eventDate = moment(event.date)
+    console.log(eventDate)
+    const formattedDate = moment.utc(event.date).format('YYYY-MM-DD')
+    const formattedHour = (eventDate).format('hh:mm')
+
+
     useEffect(() => {
         if(restaurant) console.log(restaurant.response)
     })
@@ -38,14 +47,14 @@ const Event = ({ event }) => {
     }
 
 if(showEdit) {
-    return <CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} showEdit={showEdit} event={event} />
+    return <CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} showEdit={showEdit} event={event} formattedDate={formattedDate} formattedHour={formattedHour}/>
 }
 else {
     return (
         <Card style={{ width:'80%', marginBottom:'2%', border:"1px solid #D6300F" }}>
             <Card.Header style={{backgroundColor:'#D6300F', color:'white'}}>
                 <div style={{display:'flex', justifyContent:'space-between'}}>
-                    <p>{event.date}</p>
+                    <p>{formattedDate} at {formattedHour}</p>
                     <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical style={{color:'white'}} size={20} onClick={() => {console.log(event)}}/>}>
                         <NavDropdown.Item>
                             <Button variant='danger' style={{color:'black'}} onClick={editShow}>Edit</Button>
