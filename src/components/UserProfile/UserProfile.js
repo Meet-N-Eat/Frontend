@@ -7,8 +7,16 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 const UserProfile = () => {
 // state hooks and variable declaration
 //===========================================================================
+    const initialState = {
+        profileimg: '',
+        about: '',
+        location: '',
+        displayname: '',
+        email: ''
+    }
+
     const { defaultImage, loggedInUser, dispatchUser } = useContext(Context)
-    const [userData, dispatch] = useReducer(axiosReducer, {})
+    const [userData, dispatch] = useReducer(axiosReducer, initialState)
 
 // Getting user data
 // ===========================================================================

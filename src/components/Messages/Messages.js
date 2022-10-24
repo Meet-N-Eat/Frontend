@@ -58,7 +58,7 @@ function Messages() {
             <Message message={thread[thread.length - 1]} />
           </Link>
         )
-        : <div>you don't have any chat messages, reach out to a friend and say hi!</div>
+        : <div>you don't have any messages, choose a friend from the list and start chatting!</div>
       }
     </Container>
   )
