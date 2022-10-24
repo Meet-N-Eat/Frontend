@@ -5,15 +5,19 @@ import { axiosAll } from '../../data-and-functions/axiosAll'
 import FriendRequest from './FriendRequest'
 
 function FriendRequests() {
-const { loggedInUser, dispatchUser } = useContext(Context)
+  const { loggedInUser, dispatchUser } = useContext(Context)
 
-useEffect(() => {
-  axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
-},[])
+  useEffect(() => {
+    axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
+  },[])
 
   return (
     <Container>
-      {loggedInUser.token && loggedInUser.response.friendinvites.map(friendRequest => <FriendRequest key={friendRequest._id} friendRequest={friendRequest} />)}
+      {loggedInUser.token && 
+        loggedInUser.response.friendinvites.length > 0 ? 
+          loggedInUser.response.friendinvites.map(friendRequest => <FriendRequest key={friendRequest._id} friendRequest={friendRequest} />)
+          : <div>you don't have any invites right now</div>
+      }
     </Container>
   )
 }
