@@ -11,7 +11,7 @@ import ProfileCard from '../ProfileCard'
 import { useReducer } from 'react'
 
 function Messages() {
-  const { loggedInUser, dispatchUser } = useContext(Context)
+  const { loggedInUser } = useContext(Context)
   const [messages, dispatchMessages] = useReducer(axiosReducer, {})
 
   useEffect(() => {
@@ -20,7 +20,8 @@ function Messages() {
 
   useEffect(() => {
     messages.response && messageThreads(messages, loggedInUser)
-      .then(([threads, threadArray]) => {
+      .then(({ threads, threadArray }) => {
+
         dispatchMessages({
           key: 'threads',
           value: threads

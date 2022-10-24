@@ -1,7 +1,5 @@
-import { useEffect } from "react"
-import { useReducer } from "react"
-import { useContext } from "react"
-import { useLocation, useParams } from "react-router-dom"
+import { useEffect, useReducer, useContext } from "react"
+import { useParams } from "react-router-dom"
 import { Context } from "../../App"
 import { axiosAll, axiosReducer } from "../../data-and-functions/axiosAll"
 import { messageThreads } from "../../data-and-functions/messageThreads"
@@ -9,7 +7,7 @@ import Message from "./Message"
 
 
 function MessageChat() {
-  const { loggedInUser, dispatchUser } = useContext(Context)
+  const { loggedInUser } = useContext(Context)
   const { friendId } = useParams()
 
   const initialState = {
@@ -19,24 +17,39 @@ function MessageChat() {
   }
 
   const [ message, dispatchMessage ] = useReducer(axiosReducer, initialState)
-  const [ thread, dispatchThread ] = useReducer(axiosReducer, [])
-  useEffect(() => console.log(message), [message])
+  const [ thread, dispatchThread ] = useReducer(axiosReducer, {})
+
   useEffect(() => {
-    // add call to backend route for single thread
+    axiosAll('GET', `/users/${loggedInUser.response._id}/messages/${friendId}`, loggedInUser.token, dispatchThread)
   }, [])
+
+  // sort messages into a chronological thread
+  useEffect(() => {
+    thread.response && messageThreads(thread, loggedInUser)
+      .then(({ threadArray }) => {
+        dispatchThread({
+          key: 'threadArray',
+          value: threadArray
+        })
+      })
+  }, [thread.response])
   
-  function submitHandler(e) {
+  async function submitHandler(e) {
     e.preventDefault()
-    axiosAll('POST', '/users/messages/new', loggedInUser.token, dispatchUser, message)
-    dispatchMessage({
+    // create new message
+    await axiosAll('POST', '/users/messages/new', loggedInUser.token, null, message)
+    // reset local message state
+    await dispatchMessage({
       key: 'initialize',
       value: initialState
     })
+    // update the thread to display the new message
+    await axiosAll('GET', `/users/${loggedInUser.response._id}/messages/${friendId}`, loggedInUser.token, dispatchThread)
   }
 
   return (
     <div className="page-container">
-      {thread.map(message => 
+      {thread.threadArray && thread.threadArray.length > 0 && thread.threadArray[0].map(message => 
         <div key={message._id} className={`${message.sender == loggedInUser.response._id ? "user chat-message" : "friend chat-message"}`}>
           <Message message={message} />
         </div>
