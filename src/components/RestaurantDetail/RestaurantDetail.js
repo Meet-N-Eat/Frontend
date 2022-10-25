@@ -2,22 +2,20 @@ import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
 import { Context } from '../../App'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import RestaurantCard from '../RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
-import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
-import { reviewStars } from '../../data-and-functions/reviewStars'
 import UserLike from './UserLikes'
 
 
 const RestaurantDetail = () => {
     // State hooks and variable declarations
     // ===========================================================================
-    const [resDetails, dispatch] = useReducer(axiosReducer, { response: null })
+    const [ resDetails, dispatchRestaurant ] = useReducer(axiosReducer, { response: null })
     const { colorTemplate, loggedInUser, dispatchUser } = useContext(Context)
     const { restaurantId } = useParams()
-    const [modalShow, setModalShow] = useState(false)
-    const [likeRefresh, setLikeRefresh] = useState(false)
+    const [ modalShow, setModalShow ] = useState(false)
     
     // Getting restaurant data by restaurantId
     // ===========================================================================
@@ -28,8 +26,9 @@ const RestaurantDetail = () => {
     
     useEffect(() => {
         // Get restaurant state
-        axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatch)
-    }, [likeRefresh])
+        axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatchRestaurant)
+        console.log('Get restaurant state')
+    },[])
 
     // Event Handler
     function handleShow() {
@@ -45,7 +44,7 @@ return (
     <Card style={{padding:'1%', borderColor:`${colorTemplate.darkColor}`, boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}}>
         <Row>
             <Col style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
-                <RestaurantCard restaurant={resDetails.response} setLikeRefresh={setLikeRefresh} />
+                <RestaurantCard restaurant={resDetails.response} />
                 <p>{address}</p>
             </Col>
         </Row>
@@ -59,7 +58,7 @@ return (
                         <h4>reviews</h4>
                     </div>
                 </Row>
-                <Reviews restaurantId={resDetails.response._id} />
+                <Reviews restaurantId={resDetails.response._id} modalShow={modalShow} />
                 <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
                     <button 
                         style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
