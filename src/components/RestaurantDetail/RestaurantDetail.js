@@ -6,18 +6,16 @@ import RestaurantCard from '../RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
-import { reviewStars } from '../../data-and-functions/reviewStars'
 import UserLike from './UserLikes'
 
 
 const RestaurantDetail = () => {
     // State hooks and variable declarations
     // ===========================================================================
-    const [resDetails, dispatch] = useReducer(axiosReducer, { response: null })
+    const [ resDetails, dispatchRestaurant ] = useReducer(axiosReducer, { response: null })
     const { colorTemplate, loggedInUser, dispatchUser } = useContext(Context)
     const { restaurantId } = useParams()
-    const [modalShow, setModalShow] = useState(false)
-    const [likeRefresh, setLikeRefresh] = useState(false)
+    const [ modalShow, setModalShow ] = useState(false)
     
     // Getting restaurant data by restaurantId
     // ===========================================================================
@@ -28,8 +26,8 @@ const RestaurantDetail = () => {
     
     useEffect(() => {
         // Get restaurant state
-        axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatch)
-    }, [likeRefresh])
+        axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatchRestaurant)
+    }, [])
 
     // Event Handler
     function handleShow() {
@@ -45,7 +43,7 @@ return (
     <Card style={{padding:'1%', borderColor:`${colorTemplate.darkColor}`, boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}}>
         <Row>
             <Col style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
-                <RestaurantCard restaurant={resDetails.response} setLikeRefresh={setLikeRefresh} />
+                <RestaurantCard restaurant={resDetails.response} />
                 <p>{address}</p>
             </Col>
         </Row>
