@@ -42,7 +42,6 @@ export function axiosReducer (state, object) {
       case 'initialize':
          return object.value 
 
-  
       default:
          return {...state, [object.key]: object.value}
    }

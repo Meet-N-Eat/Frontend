@@ -13,27 +13,27 @@ const ReviewForm = ({ restaurantId, handleShow }) => {
         body: ''
     }
 
-    const [review, dispatch] = useReducer(axiosReducer, initialState)
+    const [review, dispatchReview] = useReducer(axiosReducer, initialState)
     const [validate, dispatchValidate] = useReducer(axiosReducer, { valid: false })
     const starMenu = ['None', '1', '2', '3', '4', '5']
 
     function starClick(e) {
         e.target.text !== 'None' ?
-        dispatch({
+        dispatchReview({
             key: 'stars',
             value: e.target.text})
-        : dispatch({
+        : dispatchReview({
             key: 'stars',
             value: ''})
     }
 
     function reviewChange(e) {
-        dispatch({
+        dispatchReview({
             key: 'body',
             value: e.target.value})
     }
 
-    function reviewSubmit(e) {
+    async function reviewSubmit(e) {
         e.preventDefault()
 
         review.stars == '' ? 
@@ -43,10 +43,9 @@ const ReviewForm = ({ restaurantId, handleShow }) => {
             dispatchValidate({ key: 'missingBody', value: true})
             : dispatchValidate({ key: 'missingBody', value: false})
 
-        review.stars != '' && review.body != '' && (
-            axiosAll('POST', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatch, review) &&
-            handleShow()
-        )
+        review.stars != '' && review.body != '' &&
+            (await axiosAll('POST', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, null, review) &&
+            handleShow())
     }
 
 return (

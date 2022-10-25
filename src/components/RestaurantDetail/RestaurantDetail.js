@@ -2,10 +2,10 @@ import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
 import { Context } from '../../App'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import RestaurantCard from '../RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
-import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import UserLike from './UserLikes'
 
 
@@ -27,7 +27,8 @@ const RestaurantDetail = () => {
     useEffect(() => {
         // Get restaurant state
         axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatchRestaurant)
-    }, [])
+        console.log('Get restaurant state')
+    },[])
 
     // Event Handler
     function handleShow() {
@@ -57,7 +58,7 @@ return (
                         <h4>reviews</h4>
                     </div>
                 </Row>
-                <Reviews restaurantId={resDetails.response._id} />
+                <Reviews restaurantId={resDetails.response._id} modalShow={modalShow} />
                 <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
                     <button 
                         style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
