@@ -3,9 +3,8 @@ import { Card, Dropdown, Button, Modal, Form } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
-import Event from './Event'
 
-const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formattedHour, formattedDate }) => {
+const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formattedHour, formattedDate, setShowEdit }) => {
     // State Variables
     // ===========================================================================================
     const initialState = {
@@ -26,14 +25,6 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     // Functions and Event Handlers
     // ===========================================================================================
 
-    //
-    // if (formattedDate) {
-    //     date.date = formattedDate;
-    //     date.time = formattedHour;
-    // } else {
-        
-    // }
-    
     // Creates a date object from date and time inputs
     function combineDate(date, time) {
         const dateArr = date.split('-')
@@ -122,7 +113,8 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     }
 
     const editEventHandler = () => {
-        // axiosAll('PUT', `/users/events/edit`, loggedInUser.token, dispatchUser, meetup)
+        axiosAll('PUT', `/users/events/edit`, loggedInUser.token, dispatchUser, meetup)
+        setShowEdit(false)
     }
 
     useEffect(() => {
@@ -250,12 +242,12 @@ return (
                     <Button 
                     style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                     id="button-addon2"
-                    onClick={createEventHandler}> edit event </Button>
+                    onClick={editEventHandler}> edit event </Button>
                     :
                     <Button 
                     style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                     id="button-addon2"
-                    onClick={editEventHandler}> create event </Button>}
+                    onClick={createEventHandler}> create event </Button>}
         </Card.Body>
     </Card>
 )
