@@ -1,4 +1,4 @@
-import { useEffect, useContext, useReducer } from "react"
+import { useContext } from "react"
 import { Card, Button, Row, Col, Container } from "react-bootstrap"
 import { formatDateTime } from "../../data-and-functions/formatDateTime"
 import { axiosAll, axiosReducer } from "../../data-and-functions/axiosAll"
@@ -6,7 +6,6 @@ import { Context } from "../../App"
 import ProfileCard from "../ProfileCard"
 
 const FriendRequest = ({ friendRequest }) => {
-    const [sender, dispatch]  = useReducer(axiosReducer, {})
     const { loggedInUser, dispatchUser } = useContext(Context)
     const [date, time] = formatDateTime(friendRequest.createdAt)
 
@@ -18,15 +17,11 @@ const FriendRequest = ({ friendRequest }) => {
         choice != '' && axiosAll('DELETE', `/users/${loggedInUser.response._id}/friendInvites/${friendRequest._id}`, loggedInUser.token, dispatchUser)
     }
 
-    useEffect(() => {
-        axiosAll('GET', `/users/${friendRequest.sender}`, loggedInUser.token, dispatch)
-    },[])
-
 return (
    
     <Card className='d-flex flex-row justify-content-center align-items-center' style={{ width: '90%', padding:'1%', marginTop: '1rem', border:'1px solid #D6300F'}}>
         <div style={{ width:'30%', textAlign: 'center', border: '1px solid #eb350f', borderRadius: '6px', boxShadow: '1px 1px 7px -2px rgba(0,0,0,0.75)' }} >
-            {sender.response && <ProfileCard user={sender.response} />}
+            <ProfileCard user={friendRequest.sender} />
         </div>
         
         <Card.Body className='friend-card'>
