@@ -12,7 +12,7 @@ function UserLike({ user }) {
    const modalHandler = () => setShow(!show);
    
    function friends() {
-      if(loggedInUser.response.friends.find(friend => friend._id === user._id)) return true
+      if(loggedInUser.response.friends.find(friend => friend === user._id)) return true
       else return false
    }
 

@@ -1,10 +1,26 @@
 import React from 'react'
-import { Card, InputGroup, Form, Button, ListGroup } from 'react-bootstrap'
+import { Card, InputGroup, Form } from 'react-bootstrap'
 import FriendCard from './FriendCard'
-import { useState } from 'react'
+import { useState, useReducer, useContext, useEffect } from 'react'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
+import { Context } from '../../App'
 
-const Friends = ({ friends }) => {
+
+const Friends = () => {
+
     const [searchCharacters, setSearchCharacters] = useState('')
+    const [friends, dispatchFriends] = useReducer(axiosReducer, {})
+    const { loggedInUser } = useContext(Context)
+    // const [friendUsernames, dispatchFriendUsernames] = 
+    useEffect(() => {
+        axiosAll('GET', `/users/${loggedInUser.response._id}/friends`, loggedInUser.token, dispatchFriends)
+    }, [])
+
+
+    useEffect(() => console.log('Friends Rendered'))
+    friends.response && 
+    (console.log(friends.response.friends))
+
 
     function searchChange(e) {
         setSearchCharacters(e.target.value)
@@ -31,9 +47,9 @@ return (
                             aria-label="Recipient's username" aria-describedby="basic-addon2"
                         />
                     </InputGroup>
-                    {friends && friends.length > 0 ?
-                        friends.filter(friend => searchCharacters == '' || friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
-                            .map(friend =>  <FriendCard key={friend._id} friend={friend} />)
+                    {friends.response && friends.response.friends.length > 0 ?
+                        friends.response.friends.filter(friend => searchCharacters == '' || friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
+                            .map(friend =>  <FriendCard key={friend} friend={friend} />)
                         : <div>you don't have any friends yet, send friend requests by clicking on other people who like the same restaurants you do.</div>
                     }
                 </div>
