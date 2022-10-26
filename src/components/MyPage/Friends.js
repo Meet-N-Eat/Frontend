@@ -15,12 +15,6 @@ const Friends = () => {
         axiosAll('GET', `/users/${loggedInUser.response._id}/friends`, loggedInUser.token, dispatchFriends)
     }, [])
 
-
-    useEffect(() => console.log('Friends Rendered'))
-    friends.response && 
-    (console.log(friends.response.friends))
-
-
     function searchChange(e) {
         setSearchCharacters(e.target.value)
     }

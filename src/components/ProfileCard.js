@@ -10,20 +10,18 @@ const ProfileCard = ({ user }) => {
     
     // get user by id call
     useEffect(() => {
-        axiosAll('GET', `/users/${user}`, loggedInUser.token, dispatchUserInfo)
+        axiosAll('GET', `/users/${user}/profileCard`, loggedInUser.token, dispatchUserInfo)
     }, [])
-
-    useEffect(() => console.log('User by ID rendered'))
 
     return (
         <div>
             {userInfo.response && 
-            <div>
-                <div className='profile-image'>
-                    <img src={userInfo.response.profileimg || user.profileimg || defaultImage} alt="profile" />
+                <div>
+                    <div className='profile-image'>
+                        <img src={userInfo.response.profileimg || defaultImage} alt="profile" />
+                    </div>
+                    <p>{userInfo.response.displayname || userInfo.response.username}</p>
                 </div>
-                <p>{userInfo.response.displayname || userInfo.response.username}</p>
-            </div>
             }
         </div>
     )
