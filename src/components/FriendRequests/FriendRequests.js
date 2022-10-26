@@ -1,21 +1,22 @@
-import { useContext, useEffect } from 'react'
+import { useContext, useEffect, useReducer } from 'react'
 import { Container } from 'react-bootstrap'
 import { Context } from '../../App'
-import { axiosAll } from '../../data-and-functions/axiosAll'
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import FriendRequest from './FriendRequest'
 
 function FriendRequests() {
-  const { loggedInUser, dispatchUser } = useContext(Context)
+  const { loggedInUser } = useContext(Context)
+  const [ friendRequests, dispatchRequests ] = useReducer(axiosReducer, [])
 
   useEffect(() => {
-    axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
+    axiosAll('GET', `/users/${loggedInUser.response._id}/friendInvites`, loggedInUser.token, dispatchRequests)
   },[])
 
   return (
     <Container>
       {loggedInUser.token && 
-        loggedInUser.response.friendinvites.length > 0 ? 
-          loggedInUser.response.friendinvites.map(friendRequest => <FriendRequest key={friendRequest._id} friendRequest={friendRequest} />)
+        friendRequests.response && friendRequests.response.length > 0 ? 
+          friendRequests.response.map(friendRequest => <FriendRequest key={friendRequest._id} friendRequest={friendRequest} />)
           : <div>you don't have any invites right now</div>
       }
     </Container>

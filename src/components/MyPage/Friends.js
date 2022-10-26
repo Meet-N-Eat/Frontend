@@ -1,9 +1,8 @@
-import React from 'react'
-import { Card, InputGroup, Form } from 'react-bootstrap'
-import FriendCard from './FriendCard'
 import { useState, useReducer, useContext, useEffect } from 'react'
+import { Card, InputGroup, Form } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
+import FriendCard from './FriendCard'
 
 
 const Friends = () => {
@@ -49,7 +48,7 @@ return (
                     </InputGroup>
                     {friends.response && friends.response.friends.length > 0 ?
                         friends.response.friends.filter(friend => searchCharacters == '' || friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
-                            .map(friend =>  <FriendCard key={friend} friend={friend} />)
+                            .map(friend =>  <FriendCard key={friend._id} friend={friend} />)
                         : <div>you don't have any friends yet, send friend requests by clicking on other people who like the same restaurants you do.</div>
                     }
                 </div>
