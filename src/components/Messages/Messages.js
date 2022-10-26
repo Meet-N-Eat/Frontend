@@ -1,4 +1,4 @@
-import { useEffect, useContext } from 'react'
+import { useEffect, useContext, useReducer } from 'react'
 import { Link } from 'react-router-dom'
 import { Container, Dropdown } from 'react-bootstrap'
 import { Context } from '../../App'
@@ -8,7 +8,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faMessage } from '@fortawesome/free-solid-svg-icons'
 import Message from './Message'
 import ProfileCard from '../ProfileCard'
-import { useReducer } from 'react'
 
 function Messages() {
   const { loggedInUser } = useContext(Context)

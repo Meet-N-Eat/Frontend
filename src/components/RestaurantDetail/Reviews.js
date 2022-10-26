@@ -9,7 +9,7 @@ import Review from './Review'
 const Reviews = ({ restaurantId, modalShow }) => {
     // State hooks and variable declarations
     // ===========================================================================
-    const [ reviews, dispatchReviews ] = useReducer(axiosReducer, { response: null })
+    const [ reviews, dispatchReviews ] = useReducer(axiosReducer, {})
     const { loggedInUser } = useContext(Context)
 
     useEffect(() => {
@@ -17,20 +17,19 @@ const Reviews = ({ restaurantId, modalShow }) => {
         console.log('Get reviews')
     }, [modalShow])
 
-    useEffect(() => console.log(reviews),[reviews])
-if(!reviews.response) {
-    return <Container>Loading...</Container>
-}
-return (
-    <div style={{  display:'flex', justifyContent:'center', marginTop:'2%'}}>
+    if(!reviews.response) {
+        return <Container>Loading...</Container>
+    }
+    return (
+        <div style={{  display:'flex', justifyContent:'center', marginTop:'2%'}}>
 
-        <Card style={{width:'50%', borderColor:'white'}}>
-            <Card.Body>
-                {reviews.response.reviews && reviews.response.reviews.map(review => <Review review={review} key={review._id} />)}
-            </Card.Body>
-        </Card>
-    </div>
-)
+            <Card style={{width:'50%', borderColor:'white'}}>
+                <Card.Body>
+                    {reviews.response.reviews && reviews.response.reviews.map(review => <Review review={review} key={review._id} />)}
+                </Card.Body>
+            </Card>
+        </div>
+    )
 }
 
 export default Reviews
