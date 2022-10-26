@@ -47,8 +47,8 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     function participantsList() {
         let participants = loggedInUser.response.friends
         .filter(friend => meetup.participants
-            .find(participant => participant === friend._id))
-        .map(friend => <ProfileCard key={friend._id} user={friend} />)
+            .find(participant => participant === friend))
+        .map(friend => <ProfileCard key={friend} user={friend} />)
 
         if(participants.length === 0) participants = (<h1>You're rollin' solo, invite some of your peeps!</h1>)
 
@@ -74,14 +74,14 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
 
     const inviteHandler = (friend) => {
         // Determine if the friend is already invited to the event
-        const invited = meetup.participants.find(participant => participant === friend._id)
+        const invited = meetup.participants.find(participant => participant === friend)
 
         // If friend is already invited, remove them from participants, otherwise add them to participants
         dispatchMeetup({
             key: 'participants',
             value: invited 
-                ? meetup.participants.filter(participant => participant !== friend._id) 
-                : [...meetup.participants, friend._id]
+                ? meetup.participants.filter(participant => participant !== friend) 
+                : [...meetup.participants, friend]
         })
     }
 
@@ -165,14 +165,14 @@ return (
             <Modal show={showModal.invite} onHide={modalHandler}>
                 <Modal.Body>
                     {loggedInUser.response.friends.map((friend, index) => 
-                        <div key={friend._id}>
+                        <div key={friend}>
                             <ProfileCard user={friend} />
                             <Form.Check
                                 key={index}
                                 type='switch'
                                 id='invite-toggle'
                                 label='invite'
-                                defaultChecked={meetup.participants.find(participant => participant === friend._id)}
+                                defaultChecked={meetup.participants.find(participant => participant === friend)}
                                 onClick={() => inviteHandler(friend)}
                             />
                         </div>

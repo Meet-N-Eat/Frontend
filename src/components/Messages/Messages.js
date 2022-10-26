@@ -39,8 +39,8 @@ function Messages() {
             {loggedInUser.response && 
               loggedInUser.response.friends.map(friend => 
                 <Link 
-                  key={friend._id} 
-                  to={`/messages/${friend._id}`} 
+                  key={friend} 
+                  to={`/messages/${friend}`} 
                 >
                   <ProfileCard user={friend} />
                 </Link>
