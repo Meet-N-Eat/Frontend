@@ -3,7 +3,7 @@ import { Card, InputGroup, Form, Button, ListGroup } from 'react-bootstrap'
 import FriendCard from './FriendCard'
 import { useState } from 'react'
 
-const Friends = ( {friends} ) => {
+const Friends = ({ friends }) => {
     const [searchCharacters, setSearchCharacters] = useState('')
 
     function searchChange(e) {
