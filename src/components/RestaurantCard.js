@@ -5,7 +5,7 @@ import { Context } from '../App'
 import { axiosAll } from '../data-and-functions/axiosAll';
 
 
-const RestaurantCard = ({ restaurant, setLikeRefresh, hideLikeButton }) => {
+const RestaurantCard = ({ restaurant, hideLikeButton }) => {
     // State Hooks and Variables
   // ===========================================================================
 
@@ -31,13 +31,13 @@ const RestaurantCard = ({ restaurant, setLikeRefresh, hideLikeButton }) => {
             if(liked()) {
                 // axiosAll(method, path, authToken, dispatch, body)
                 axiosAll('DELETE', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`, loggedInUser.token, dispatchUser)
-                    .then(() => setLikeRefresh && setLikeRefresh(prevState => !prevState))
-                setButtonIcon(notLikedImage)
+                    .then(() => setButtonIcon(notLikedImage))
+                
             } else {
                 // axiosAll(method, path, authToken, dispatch, body)
                 axiosAll('POST', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`, loggedInUser.token, dispatchUser)
-                    .then(() => setLikeRefresh && setLikeRefresh(prevState => !prevState))
-                setButtonIcon(likedImage)
+                    .then(() => setButtonIcon(likedImage))
+                
             }
         } else {
             navigate('/users/authentication/login', { state: { logInMessage: true }})

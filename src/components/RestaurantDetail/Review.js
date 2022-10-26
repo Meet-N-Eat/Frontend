@@ -12,17 +12,15 @@ const Review = ({ review }) => {
     useEffect(() => {
         axiosAll('GET', `/users/${review.reviewer}`, loggedInUser.token, dispatch)
     },[])
-    // console.log(reviewer)
 
-if(!reviewer.response) return <Container>Loading...</Container>
-return (
-    <ListGroup style={{border:'1px solid #D6300F'}} horizontal>
-        <ListGroup.Item style={{borderRightColor:'#D6300F', width:'20%'}}>{reviewer.response.displayname}</ListGroup.Item>
-        <ListGroup.Item style={{ borderRightColor:'#D6300F', width:'60%' }}>{review.body}</ListGroup.Item>
-        <ListGroup.Item>{`${date} ${time}`}</ListGroup.Item>
-    </ListGroup>
-            
-)
+    if(!reviewer.response) return <Container>Loading...</Container>
+    return (
+        <ListGroup style={{border:'1px solid #D6300F'}} horizontal>
+            <ListGroup.Item style={{borderRightColor:'#D6300F', width:'20%'}}>{reviewer.response.displayname}</ListGroup.Item>
+            <ListGroup.Item style={{ borderRightColor:'#D6300F', width:'60%' }}>{review.body}</ListGroup.Item>
+            <ListGroup.Item>{`${date} ${time}`}</ListGroup.Item>
+        </ListGroup>
+    )
 }
 
 export default Review

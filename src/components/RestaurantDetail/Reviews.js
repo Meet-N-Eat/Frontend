@@ -6,17 +6,18 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import Review from './Review'
 
 
-const Reviews = ({ restaurantId }) => {
+const Reviews = ({ restaurantId, modalShow }) => {
     // State hooks and variable declarations
     // ===========================================================================
-    const [reviews, dispatch] = useReducer(axiosReducer, { response: null })
+    const [ reviews, dispatchReviews ] = useReducer(axiosReducer, { response: null })
     const { loggedInUser } = useContext(Context)
 
     useEffect(() => {
-        axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatch)
-    }, [])
+        axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatchReviews)
+        console.log('Get reviews')
+    }, [modalShow])
 
-
+    useEffect(() => console.log(reviews),[reviews])
 if(!reviews.response) {
     return <Container>Loading...</Container>
 }

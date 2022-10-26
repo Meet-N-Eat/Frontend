@@ -5,7 +5,9 @@ import { useState, useReducer, useContext, useEffect } from 'react'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
 
+
 const Friends = () => {
+
     const [searchCharacters, setSearchCharacters] = useState('')
     const [friends, dispatchFriends] = useReducer(axiosReducer, {})
     const { loggedInUser } = useContext(Context)

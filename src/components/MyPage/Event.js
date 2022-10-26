@@ -16,17 +16,14 @@ const Event = ({ event }) => {
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
-    const editClose = () => setShowEdit(false)
-    const editShow = () => setShowEdit(true)
-
     useEffect(() => console.log('Event Rendered'))
     useEffect(() => console.log(event))
     
     // DATE AND HOUR FORMAT
     let eventDate = moment(event.date)
-    console.log(eventDate)
     const formattedDate = moment.utc(event.date).format('YYYY-MM-DD')
     const formattedHour = (eventDate).format('hh:mm')
+    const formattedHourAMPM = (eventDate).format('hh:mm A')
 
 
     useEffect(() => {
@@ -42,22 +39,22 @@ const Event = ({ event }) => {
     }
 
     const handleCancel = () => {
-        axiosAll('DELETE', `/users/events/${event._id}`, loggedInUser.token, dispatchUser)
+        axiosAll('DELETE', `/users/events/${event._id}`, loggedInUser.token, null)
         handleClose()
     }
 
 if(showEdit) {
-    return <CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} showEdit={showEdit} event={event} formattedDate={formattedDate} formattedHour={formattedHour}/>
+    return <CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} showEdit={showEdit} event={event} formattedDate={formattedDate} formattedHour={formattedHour} setShowEdit={setShowEdit} />
 }
 else {
     return (
         <Card style={{ width:'80%', marginBottom:'2%', border:"1px solid #D6300F" }}>
             <Card.Header style={{backgroundColor:'#D6300F', color:'white'}}>
                 <div style={{display:'flex', justifyContent:'space-between'}}>
-                    <p>{formattedDate} at {formattedHour}</p>
+                    <p>{formattedDate} at {formattedHourAMPM}</p>
                     <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical style={{color:'white'}} size={20} onClick={() => {console.log(event)}}/>}>
                         <NavDropdown.Item>
-                            <Button variant='danger' style={{color:'black'}} onClick={editShow}>Edit</Button>
+                            <Button variant='danger' style={{color:'black'}} onClick={() => {setShowEdit(true)}}>Edit</Button>
                         </NavDropdown.Item>
                         <NavDropdown.Item>
                             <Button variant="danger" onClick={handleShow} style={{color:'black'}}>Cancel Event</Button>
