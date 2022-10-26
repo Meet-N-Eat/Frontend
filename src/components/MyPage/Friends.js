@@ -10,7 +10,7 @@ const Friends = () => {
     const [searchCharacters, setSearchCharacters] = useState('')
     const [friends, dispatchFriends] = useReducer(axiosReducer, {})
     const { loggedInUser } = useContext(Context)
-    // const [friendUsernames, dispatchFriendUsernames] = 
+
     useEffect(() => {
         axiosAll('GET', `/users/${loggedInUser.response._id}/friends`, loggedInUser.token, dispatchFriends)
     }, [])

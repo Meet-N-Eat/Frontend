@@ -1,7 +1,7 @@
 import { useContext } from "react"
 import { Card, Button, Row, Col, Container } from "react-bootstrap"
 import { formatDateTime } from "../../data-and-functions/formatDateTime"
-import { axiosAll, axiosReducer } from "../../data-and-functions/axiosAll"
+import { axiosAll } from "../../data-and-functions/axiosAll"
 import { Context } from "../../App"
 import ProfileCard from "../ProfileCard"
 
