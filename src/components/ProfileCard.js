@@ -22,7 +22,7 @@ const ProfileCard = ({ user }) => {
                 <div className='profile-image'>
                     <img src={userInfo.response.profileimg || user.profileimg || defaultImage} alt="profile" />
                 </div>
-                <p>{userInfo.response.displayname || user.displayname || userInfo.response.username}</p>
+                <p>{userInfo.response.displayname || userInfo.response.username}</p>
             </div>
             }
         </div>
