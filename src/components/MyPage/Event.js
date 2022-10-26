@@ -39,7 +39,7 @@ const Event = ({ event }) => {
     }
 
     const handleCancel = () => {
-        axiosAll('DELETE', `/users/events/${event._id}`, loggedInUser.token, dispatchUser)
+        axiosAll('DELETE', `/users/events/${event._id}`, loggedInUser.token, null)
         handleClose()
     }
 
