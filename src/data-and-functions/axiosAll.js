@@ -12,7 +12,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
    switch(method) {
       case 'GET':
          res = await axios.get(`${baseURL}${path}`, headers)
-         dispatch && dispatch({ key: 'response', value: res.data })
+         dispatch({ key: 'response', value: res.data })
          break
       
       case 'PUT':
@@ -21,13 +21,11 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
 
       case 'POST':
          res = await axios.post(`${baseURL}${path}`, body, headers)
-         !authToken ? dispatch({ key: 'token', value: res.data.token})
-            : dispatch && dispatch({ key: 'response', value: res.data })
+         !authToken && dispatch({ key: 'token', value: res.data.token})
          break
 
       case 'DELETE':
          res = await axios.delete(`${baseURL}${path}`, headers)
-         dispatch({ key: 'response', value: res.data })
          break
 
       default:
