@@ -79,7 +79,7 @@ const Event = ({ event, updateEvents }) => {
                     </div>
                 </Card.Header>
                 <Card.Body style={{ display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center' }}>
-                    <RestaurantCard restaurant={event.restaurant._id} hideLikeButton={true} />
+                    <RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
                     {['bottom'].map((placement) => (
                         <OverlayTrigger
                         trigger="click"
