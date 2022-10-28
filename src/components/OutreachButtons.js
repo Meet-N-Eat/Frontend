@@ -9,7 +9,7 @@ function OutreachButtons( {friends, user, friendRequestHandler} ) {
   const { loggedInUser } = useContext(Context)
   
   const handleMessage = () => {
-    navigate(`/messages/chat/${user.id}`)
+    navigate(`/messages/${user.id}`)
   }
 
   return (
