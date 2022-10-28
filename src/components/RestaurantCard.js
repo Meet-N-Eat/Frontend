@@ -29,7 +29,6 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
 // Functions
 // ===========================================================================
     function liked() {
-        return true
         if(loggedInUser.response && loggedInUser.response.favorites.find(favorite => favorite === restaurant)) return true
         else return false
     }
