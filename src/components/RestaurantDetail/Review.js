@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer } from 'react'
-import { Container, ListGroup } from 'react-bootstrap'
+import { Container, ListGroup, Spinner } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { formatDateTime } from '../../data-and-functions/formatDateTime'
@@ -13,13 +13,17 @@ const Review = ({ review }) => {
         axiosAll('GET', `/users/${review.reviewer}/profileCard`, loggedInUser.token, dispatch)
     },[])
 
-    if(!reviewer.response) return <Container>Loading...</Container>
     return (
-        <ListGroup style={{border:'1px solid #D6300F'}} horizontal>
-            <ListGroup.Item style={{borderRightColor:'#D6300F', width:'20%'}}>{reviewer.response.displayname || reviewer.response.username}</ListGroup.Item>
-            <ListGroup.Item style={{ borderRightColor:'#D6300F', width:'60%' }}>{review.body}</ListGroup.Item>
-            <ListGroup.Item>{`${date} ${time}`}</ListGroup.Item>
-        </ListGroup>
+        <div>
+            {reviewer.response ? 
+            <ListGroup style={{border:'1px solid #D6300F'}} horizontal>
+                <ListGroup.Item style={{borderRightColor:'#D6300F', width:'20%'}}>{reviewer.response.displayname || reviewer.response.username}</ListGroup.Item>
+                <ListGroup.Item style={{ borderRightColor:'#D6300F', width:'60%' }}>{review.body}</ListGroup.Item>
+                <ListGroup.Item>{`${date} ${time}`}</ListGroup.Item>
+            </ListGroup>
+            : <Spinner animation="border" />
+            }
+        </div>
     )
 }
 

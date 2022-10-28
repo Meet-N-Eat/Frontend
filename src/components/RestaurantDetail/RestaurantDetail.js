@@ -1,6 +1,6 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
 import { Link, useParams } from 'react-router-dom'
-import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
+import { Card, Container, Col, Row, Modal, Spinner } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import RestaurantCard from '../RestaurantCard'
@@ -92,7 +92,8 @@ const RestaurantDetail = () => {
                         </Col>
                     </Row>
                 </Card>
-            : <h2>Loading..</h2>}
+            : <Spinner animation="border" />
+            }
             </Container>
     )
 }
