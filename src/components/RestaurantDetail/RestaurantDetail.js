@@ -1,5 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react'
-import { useParams } from 'react-router-dom'
+import { Link, useParams } from 'react-router-dom'
 import { Card, Container, Col, Row, Modal } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
@@ -22,13 +22,13 @@ const RestaurantDetail = () => {
     // ===========================================================================
     useEffect(() => {
         // Update user state
-        axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
+        loggedInUser.token && axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
     }, [])
     
     useEffect(() => {
         // Get restaurant state
-        axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatchRestaurant)
-        axiosAll('GET', `/restaurants/${restaurantId}/userLikes`, loggedInUser.token, dispatchLikes)
+        axiosAll('GET', `/restaurants/${restaurantId}`, null, dispatchRestaurant)
+        axiosAll('GET', `/restaurants/${restaurantId}/userLikes`, null, dispatchLikes)
         console.log('Get restaurant state')
     },[])
 
@@ -52,33 +52,43 @@ const RestaurantDetail = () => {
                         </Col>
                     </Row>
                     <Row>
-                        {userLikes.response.map(user => <UserLike key={user._id} user={user} />)}
+                        {loggedInUser.token ? 
+                            userLikes.response.map(user => <UserLike key={user._id} user={user} />)
+                            : <Link to='/users/authentication/login' state={{logInMessage: true}}>{userLikes.response.length} users like this restaurant</Link>
+                        }
                     </Row>
                     <Row>
                         <Col>
                             <Row>
                                 <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
-                                    <h4>reviews</h4>
+                                    {loggedInUser.token ? 
+                                        <h4>reviews</h4>
+                                        : <Link to='/users/authentication/login' state={{logInMessage: true}} >reviews</Link>
+                                    }
                                 </div>
                             </Row>
-                            <Reviews restaurantId={resDetails.response._id} modalShow={modalShow} />
-                            <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
-                                <button 
-                                    style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
-                                    type="submit"
-                                    onClick={handleShow}
-                                >write a review
-                                </button>
-                                <Modal 
-                                    show={modalShow}
-                                    onHide={handleShow}
-                                    size="md"
-                                    aria-labelledby="likedrestaurants-modal"
-                                    centered
-                                > 
-                                    <ReviewForm restaurantId={resDetails.response._id} handleShow={handleShow} />
-                                </Modal>
-                            </div>
+                            {loggedInUser.token &&
+                                <>
+                                    <Reviews restaurantId={resDetails.response._id} modalShow={modalShow} />
+                                    <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
+                                        <button 
+                                            style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
+                                            type="submit"
+                                            onClick={handleShow}
+                                        >write a review
+                                        </button>
+                                        <Modal 
+                                            show={modalShow}
+                                            onHide={handleShow}
+                                            size="md"
+                                            aria-labelledby="likedrestaurants-modal"
+                                            centered
+                                        > 
+                                            <ReviewForm restaurantId={resDetails.response._id} handleShow={handleShow} />
+                                        </Modal>
+                                    </div>
+                                </>
+                            }
                         </Col>
                     </Row>
                 </Card>
