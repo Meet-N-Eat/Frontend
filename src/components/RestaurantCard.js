@@ -1,8 +1,8 @@
-import React, { useContext, useState } from 'react';
+import React, { useContext, useState, useEffect, useReducer } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
 import {Card, Button, Container, Image, Col, Row, ButtonGroup } from 'react-bootstrap/'
 import { Context } from '../App'
-import { axiosAll } from '../data-and-functions/axiosAll';
+import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
 
 
 const RestaurantCard = ({ restaurant, hideLikeButton }) => {
@@ -13,32 +13,39 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
     const notLikedImage = 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
     const { colorTemplate, loggedInUser, dispatchUser }  = useContext(Context)
     const navigate = useNavigate()
+    
+    const [resDetails, dispatchDetails] = useReducer(axiosReducer, {})
     const [buttonIcon, setButtonIcon] = useState(liked() ? likedImage : notLikedImage)
-    const { name, image_url, display_phone, price } = restaurant
-    const { city, state } = restaurant.location
+    // const { name, image_url, display_phone, price } = restaurant
+    // const { address1, city, state } = restaurant.location
     const categories = []
-    restaurant.categories.forEach(category => categories.push(category.title))
+    resDetails.response && resDetails.response.categories.forEach(category => categories.push(category.title))
 
+    useEffect(() => {
+        axiosAll('GET', `/restaurants/${restaurant}`, null, dispatchDetails)
+    },[])
+    console.log(loggedInUser.response)
+    // console.log(restaurant)
 // Functions
 // ===========================================================================
     function liked() {
-        if(loggedInUser.response && loggedInUser.response.favorites.find(favorite => favorite._id === restaurant._id)) return true
+        return true
+        if(loggedInUser.response && loggedInUser.response.favorites.find(favorite => favorite === restaurant)) return true
         else return false
     }
 
-    function likeHandler() {
+    async function likeHandler() {
         if(loggedInUser.token) {
-            if(liked()) {
-                // axiosAll(method, path, authToken, dispatch, body)
-                axiosAll('DELETE', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`, loggedInUser.token, dispatchUser)
-                    .then(() => setButtonIcon(notLikedImage))
-                
-            } else {
-                // axiosAll(method, path, authToken, dispatch, body)
-                axiosAll('POST', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`, loggedInUser.token, dispatchUser)
-                    .then(() => setButtonIcon(likedImage))
-                
-            }
+            // Add or delete based on whether restaurant is already a favorite
+            const callArgs = liked() ? 
+                ['DELETE', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`]
+                : ['POST', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`] 
+            const [ method, path ] = callArgs
+
+            await axiosAll(method, path, loggedInUser.token)
+            await axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
+            
+            setButtonIcon(liked() ? notLikedImage : likedImage)
         } else {
             navigate('/users/authentication/login', { state: { logInMessage: true }})
         }
@@ -46,10 +53,10 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
     
 // Return 
 // ===========================================================================
-    if (categories) {
         
-        return (
-            <div>
+    return (
+        <div>
+            {resDetails.response &&
                 <Card 
                     style={{
                         marginBottom:'5%', 
@@ -80,7 +87,7 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
                         }
                     </div>
                     <Card style={{border:'none', padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
-                        <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant._id}`}>
+                        <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant}`}>
                             <Card
                                 style={{ display:'flex', flexDirection:'column'}}
                                 className ="py-1 px-1 border-white "
@@ -90,24 +97,25 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
                                         <Container style={{ textAlign:'center', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}} className="ml-1">
                                             <Image 
                                                 style={{ borderRadius:'10px', border:'1px solid #D6300F', marginBottom:'5%'}}
-                                                src={image_url}
+                                                src={resDetails.response.image_url}
                                                 alt="restaurant-image"
                                                 width={170}
                                                 height={170}
                                             />
-                                            <Card.Title>{name}</Card.Title>
+                                            <Card.Title>{resDetails.response.name}</Card.Title>
                                         </Container> 
                                     </Col>
                                     <Col>
                                         <Card.Body>
-                                            <p>{price}</p>
+                                            <p>{resDetails.price}</p>
                                             <p>M - F 9:00 AM - 8:00 PM</p>
                                             <Row>
                                                 <Col>
-                                                    <p>{city}, {state}</p>
+                                                    <p>{resDetails.response.address1}</p>
+                                                    <p>{resDetails.response.city}, {resDetails.response.state}</p>
                                                 </Col>
                                                 <Col>
-                                                    <p>{display_phone}</p>
+                                                    <p>{resDetails.response.display_phone}</p>
                                                 </Col>
                                             </Row>
                                             {categories.map((category, index) => 
@@ -122,9 +130,9 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
                         </Link>
                     </Card>
                 </Card>
-            </div>
-        )
-    }
+            }
+        </div>
+    )
 }
 
 export default RestaurantCard

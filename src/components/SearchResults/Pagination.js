@@ -11,11 +11,11 @@ const Pagination = ({ cardsPerPage, totalCards, paginate }) => {
     return (
         <div>
             <ul>
-                <div class="flex flex-row justify-between">
+                <div className="flex flex-row justify-between">
                     {pageNumbers.map(number => (
                         <li 
                         key={number} 
-                        class="cursor-pointer" 
+                        className="cursor-pointer" 
                         onClick={() => paginate(number)}>
                             {number}
                         </li>

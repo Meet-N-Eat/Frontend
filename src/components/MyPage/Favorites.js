@@ -1,11 +1,16 @@
-import React from 'react'
 import { InputGroup, Form } from 'react-bootstrap'
-import { useState } from 'react'
+import { useState, useReducer, useEffect } from 'react'
 import RestaurantCard from '../RestaurantCard';
+import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 
-const Favorites = ({ favorites }) => {
+const Favorites = ({ loggedInUser }) => {
 
     const [searchCharacters, setSearchCharacters] = useState('')
+    const [favorites, dispatchFavorites] = useReducer(axiosReducer, {})
+
+    useEffect(() => {
+        axiosAll('GET', `/users/${loggedInUser.response._id}/favorites`, loggedInUser.token, dispatchFavorites)
+    }, [])
 
     return (
         <div className='likedRestaurants' style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
@@ -19,8 +24,8 @@ const Favorites = ({ favorites }) => {
             <div 
                 style={{ padding:'5%', overflow:'scroll', overflowX:'hidden', maxHeight:'76%', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:"center" }}
             >
-                {favorites && favorites.length > 0 ?
-                    favorites.filter(restaurant => searchCharacters == '' || restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
+                {favorites.response && favorites.response.length > 0 ?
+                    favorites.response.filter(restaurant => searchCharacters == '' || restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
                         .map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)
                     : <div>add favorites by clicking on the heart icon of a restaurant</div>
                 }

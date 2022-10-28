@@ -31,9 +31,6 @@ const SearchResults = () => {
         }
         // Get restaurants that match search criteria
         axiosAll('GET', `/restaurants/results/${searchString}${buildSearchParams(params, values)}`, loggedInUser.token, dispatch)
-
-        // Update user state
-        loggedInUser.token && axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
     },[])
 
     
@@ -53,7 +50,7 @@ const SearchResults = () => {
             {restaurantsData.response && restaurantsData.response.length !== 0 &&
                 <div>
                     <Container>
-                        <Row xs='3'>{restaurantsData.response.slice(indexOfFirstCard, indexOfLastCard).map(restaurant => <RestaurantCard restaurant={restaurant} key={restaurant._id}/>)}</Row>
+                        <Row xs='3'>{restaurantsData.response.slice(indexOfFirstCard, indexOfLastCard).map(restaurant => <RestaurantCard restaurant={restaurant._id} key={restaurant._id}/>)}</Row>
                     </Container>
                     <Pagination cardsPerPage={cardsPerPage} totalCards={restaurantsData.response.length} paginate={paginate}/>
                 </div>

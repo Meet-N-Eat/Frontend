@@ -15,12 +15,16 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     }
     
     const [meetup, dispatchMeetup] = useReducer(axiosReducer, event || initialState)
+    const [favorites, dispatchFavorites] = useReducer(axiosReducer, [])
     const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
     const [date, dispatchDate] = useReducer(axiosReducer, {date: '' || formattedDate, time: '' || formattedHour})
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
     useEffect(() => console.log('CoordinateMeetup Rendered'))
-    useEffect(() => console.log(date.date))
+    
+    useEffect(() => {
+        axiosAll('GET', `/users/${loggedInUser.response._id}/favorites`, loggedInUser.token, dispatchFavorites)
+    },[])
     
     // Functions and Event Handlers
     // ===========================================================================================
@@ -120,9 +124,11 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     useEffect(() => {
         if(error.submit) {
             if(!error.date && !error.restaurant) {
-                if(showEdit) axiosAll('POST', `/users/events/create`, loggedInUser.token, dispatchUser, meetup)
-                else axiosAll('PUT', `/users/events/edit`, loggedInUser.token, dispatchUser, meetup)
+                if(showEdit) axiosAll('PUT', `/users/events/edit`, loggedInUser.token, null, meetup)
+                else axiosAll('POST', `/users/events/create`, loggedInUser.token, null, meetup)
                 
+                axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
+
                 dispatchMeetup({
                     key: 'initialize',
                     value: initialState
@@ -199,14 +205,10 @@ return (
                         variant="secondary" 
                         id="dropdown-basic"
                     >
-                        {   
-                            // Displays name of selected restaurant, or 'choose restaurant'
-                            (meetup.restaurant && loggedInUser.response.favorites.find(restaurant => restaurant._id == meetup.restaurant).name)
-                            || 'choose restaurant'
-                        }
+                        {meetup.restaurant && (favorites.response.find(favorite => favorite._id === meetup.restaurant).name || 'choose restaurant')}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
-                        { loggedInUser.response && loggedInUser.response.favorites.map(restaurant => 
+                        { favorites.response && favorites.response.map(restaurant => 
                             <Dropdown.Item 
                                 key={restaurant._id}
                                 eventKey={restaurant._id} 
@@ -219,7 +221,7 @@ return (
                 {
                     meetup.restaurant && 
                     <RestaurantCard 
-                        restaurant={loggedInUser.response.favorites.find(favorite => favorite._id === meetup.restaurant)}
+                        restaurant={favorites.response.find(favorite => favorite._id === meetup.restaurant)}
                         hideLikeButton={true}
                     />
                 }
