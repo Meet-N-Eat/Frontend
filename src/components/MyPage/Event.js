@@ -9,7 +9,6 @@ import RestaurantCard from '../RestaurantCard'
 
 const Event = ({ event, updateEvents }) => {
     const { loggedInUser, dispatchUser } = useContext(Context)
-    // const [restaurant, dispatchRestaurant] = useReducer(axiosReducer, null)
     const [modalState, setModalState] = useState(false)
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false) 

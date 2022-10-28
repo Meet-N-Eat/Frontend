@@ -21,7 +21,7 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
 
     useEffect(() => {
         axiosAll('GET', `/restaurants/${restaurant}`, null, dispatchDetails)
-    },[])
+    },[restaurant])
 
 // Functions
 // ===========================================================================
