@@ -52,11 +52,13 @@ const UserProfile = () => {
 
     function onSubmit(e) {
         e.preventDefault()
-        axiosAll('PUT', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser, userData)
+        axiosAll('PUT', `/users/${loggedInUser.response._id}`, loggedInUser.token, null, userData)
             .then(res => {
                 typeof(res.data) === 'string' ?
                     setError(true)
                     : setError(false)
+                
+                axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
             })
     }
 
