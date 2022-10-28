@@ -16,16 +16,13 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
     
     const [resDetails, dispatchDetails] = useReducer(axiosReducer, {})
     const [buttonIcon, setButtonIcon] = useState(liked() ? likedImage : notLikedImage)
-    // const { name, image_url, display_phone, price } = restaurant
-    // const { address1, city, state } = restaurant.location
     const categories = []
     resDetails.response && resDetails.response.categories.forEach(category => categories.push(category.title))
 
     useEffect(() => {
         axiosAll('GET', `/restaurants/${restaurant}`, null, dispatchDetails)
     },[])
-    console.log(loggedInUser.response)
-    // console.log(restaurant)
+
 // Functions
 // ===========================================================================
     function liked() {

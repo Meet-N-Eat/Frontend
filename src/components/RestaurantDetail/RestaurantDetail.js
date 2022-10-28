@@ -12,7 +12,8 @@ import UserLike from './UserLike'
 const RestaurantDetail = () => {
     // State hooks and variable declarations
     // ===========================================================================
-    const [ resDetails, dispatchRestaurant ] = useReducer(axiosReducer, { response: null })
+    const [ resDetails, dispatchRestaurant ] = useReducer(axiosReducer, {})
+    const [ userLikes, dispatchLikes ] = useReducer(axiosReducer, [])
     const { colorTemplate, loggedInUser, dispatchUser } = useContext(Context)
     const { restaurantId } = useParams()
     const [ modalShow, setModalShow ] = useState(false)
@@ -21,12 +22,13 @@ const RestaurantDetail = () => {
     // ===========================================================================
     useEffect(() => {
         // Update user state
-        axiosAll('GET', `/users/${loggedInUser._id}`, loggedInUser.token, dispatchUser)
+        axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
     }, [])
     
     useEffect(() => {
         // Get restaurant state
         axiosAll('GET', `/restaurants/${restaurantId}`, loggedInUser.token, dispatchRestaurant)
+        axiosAll('GET', `/restaurants/${restaurantId}/userLikes`, loggedInUser.token, dispatchLikes)
         console.log('Get restaurant state')
     },[])
 
@@ -41,16 +43,16 @@ const RestaurantDetail = () => {
     
     return (
             <Container>
-            {resDetails.response ?
+            {resDetails.response && userLikes.response ?
                 <Card style={{padding:'1%', borderColor:`${colorTemplate.darkColor}`, boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}}>
                     <Row>
                         <Col style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
-                            <RestaurantCard restaurant={resDetails.response} />
+                            <RestaurantCard restaurant={resDetails.response._id} />
                             {/* <p>{address}</p> */}
                         </Col>
                     </Row>
                     <Row>
-                        {resDetails.response.userLikes.map(user => <UserLike key={user._id} user={user} />)}
+                        {userLikes.response.map(user => <UserLike key={user._id} user={user} />)}
                     </Row>
                     <Row>
                         <Col>
