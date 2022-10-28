@@ -16,7 +16,7 @@ function FriendRequests() {
     <Container>
       {loggedInUser.token && 
         friendRequests.response && friendRequests.response.length > 0 ? 
-          friendRequests.response.map(friendRequest => <FriendRequest key={friendRequest._id} friendRequest={friendRequest} />)
+          friendRequests.response.map(friendRequest => <FriendRequest key={friendRequest._id} friendRequest={friendRequest} dispatchRequests={dispatchRequests} />)
           : <div>you don't have any invites right now</div>
       }
     </Container>

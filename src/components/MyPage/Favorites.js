@@ -26,7 +26,7 @@ const Favorites = ({ loggedInUser }) => {
             >
                 {favorites.response && favorites.response.length > 0 ?
                     favorites.response.filter(restaurant => searchCharacters == '' || restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
-                        .map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant}/>)
+                        .map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant._id}/>)
                     : <div>add favorites by clicking on the heart icon of a restaurant</div>
                 }
             </div>

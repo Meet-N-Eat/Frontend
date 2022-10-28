@@ -13,8 +13,8 @@ const SearchResults = () => {
     // ===========================================================================================
     const { searchString } = useParams()
     const [ searchParams ] = useSearchParams()
-    const { loggedInUser, dispatchUser } = useContext(Context)
-    const [restaurantsData, dispatch] = useReducer(axiosReducer, { searchString: '' })
+    const { loggedInUser } = useContext(Context)
+    const [restaurantsData, dispatchData] = useReducer(axiosReducer, { searchString: '' })
     const [currentPage, setCurrentPage] = useState(1)
     const cardsPerPage = 6
 
@@ -30,7 +30,7 @@ const SearchResults = () => {
             values.push(value)
         }
         // Get restaurants that match search criteria
-        axiosAll('GET', `/restaurants/results/${searchString}${buildSearchParams(params, values)}`, loggedInUser.token, dispatch)
+        axiosAll('GET', `/restaurants/results/${searchString}${buildSearchParams(params, values)}`, loggedInUser.token, dispatchData)
     },[])
 
     

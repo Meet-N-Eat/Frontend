@@ -1,15 +1,15 @@
 import moment from 'moment'
 import React, { useState, useEffect, useContext } from 'react'
-import { Card, OverlayTrigger, Popover, Button, ListGroup, Modal, NavDropdown } from 'react-bootstrap'
+import { Card, OverlayTrigger, Popover, Button, ListGroup, Modal, NavDropdown, Col } from 'react-bootstrap'
 import { BiDotsVertical } from 'react-icons/bi'
 import { Context } from '../../App'
 import { axiosAll } from '../../data-and-functions/axiosAll'
 import CoordinateMeetup from './CoordinateMeetup'
 import RestaurantCard from '../RestaurantCard'
+import ProfileCard from '../ProfileCard'
 
 const Event = ({ event, updateEvents }) => {
     const { loggedInUser, dispatchUser } = useContext(Context)
-    // const [restaurant, dispatchRestaurant] = useReducer(axiosReducer, null)
     const [modalState, setModalState] = useState(false)
     const [show, setShow] = useState(false);
     const [showEdit, setShowEdit] = useState(false) 
@@ -37,7 +37,17 @@ const Event = ({ event, updateEvents }) => {
     }
     console.log(event.participants)
     if(showEdit) {
-        return <CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} showEdit={showEdit} event={event} formattedDate={formattedDate} formattedHour={formattedHour} setShowEdit={setShowEdit} />
+        return (
+            <CoordinateMeetup 
+                loggedInUser={loggedInUser} 
+                dispatchUser={dispatchUser} 
+                showEdit={showEdit} event={event} 
+                formattedDate={formattedDate} 
+                formattedHour={formattedHour} 
+                setShowEdit={setShowEdit}
+                updateEvents={updateEvents} 
+            />
+        )
     }
     else {
         return (
@@ -80,9 +90,12 @@ const Event = ({ event, updateEvents }) => {
                             <Popover id={`popover-positioned-${placement}`}>
                             <Popover.Header style={{backgroundColor:'#F0704E', color:'white'}} as="h3">{`friends going`}</Popover.Header>
                             <Popover.Body>
-                                <ListGroup>
-                                    {event.participants.map(participant => <ListGroup.Item key={participant._id}><strong>{participant.displayname || participant.username}</strong></ListGroup.Item>)}
-                                </ListGroup>
+                                <Col>
+                                    {event.participants.map(participant => 
+                                        <ProfileCard key={participant} user={participant} />
+                                        )
+                                    }
+                                </Col>
                             </Popover.Body>
                             </Popover>
                         }

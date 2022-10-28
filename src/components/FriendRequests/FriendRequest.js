@@ -5,16 +5,19 @@ import { axiosAll } from "../../data-and-functions/axiosAll"
 import { Context } from "../../App"
 import ProfileCard from "../ProfileCard"
 
-const FriendRequest = ({ friendRequest }) => {
-    const { loggedInUser, dispatchUser } = useContext(Context)
+const FriendRequest = ({ friendRequest, dispatchRequests }) => {
+    const { loggedInUser } = useContext(Context)
     const [date, time] = formatDateTime(friendRequest.createdAt)
 
-    function inviteHandler(choice) {
+    async function inviteHandler(choice) {
         // if accept was clicked, add new friend
-        choice == 'accept' && axiosAll('POST', `/users/${loggedInUser.response._id}/friends/${friendRequest.sender}`, loggedInUser.token, dispatchUser)
+        choice == 'accept' && await axiosAll('POST', `/users/${loggedInUser.response._id}/friends/${friendRequest.sender}`, loggedInUser.token)
         
         // delete the friend request
-        choice != '' && axiosAll('DELETE', `/users/${loggedInUser.response._id}/friendInvites/${friendRequest._id}`, loggedInUser.token, dispatchUser)
+        choice != '' && await axiosAll('DELETE', `/users/${loggedInUser.response._id}/friendInvites/${friendRequest._id}`, loggedInUser.token)
+
+        // update loggedInUser once the appropriate action has been taken
+        axiosAll('GET', `/users/${loggedInUser.response._id}/friendInvites`, loggedInUser.token, dispatchRequests)
     }
 
 return (

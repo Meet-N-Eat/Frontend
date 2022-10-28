@@ -17,9 +17,9 @@ const MyPage = () => {
 const { loggedInUser, dispatchUser } = useContext(Context)
 
 useEffect(() => {
-    axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
+    axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
 },[])
-
+console.log(loggedInUser)
 // Stating slideItems as an array of components
 const slideItems = [<CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} />, <Friends loggedInUser={loggedInUser} />, <Favorites loggedInUser={loggedInUser} />, <Itinerary loggedInUser={loggedInUser}/>]
 

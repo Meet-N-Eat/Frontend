@@ -16,16 +16,13 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
     
     const [resDetails, dispatchDetails] = useReducer(axiosReducer, {})
     const [buttonIcon, setButtonIcon] = useState(liked() ? likedImage : notLikedImage)
-    // const { name, image_url, display_phone, price } = restaurant
-    // const { address1, city, state } = restaurant.location
     const categories = []
     resDetails.response && resDetails.response.categories.forEach(category => categories.push(category.title))
 
     useEffect(() => {
         axiosAll('GET', `/restaurants/${restaurant}`, null, dispatchDetails)
-    },[])
-    console.log(loggedInUser.response)
-    // console.log(restaurant)
+    },[restaurant])
+
 // Functions
 // ===========================================================================
     function liked() {
@@ -37,8 +34,8 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
         if(loggedInUser.token) {
             // Add or delete based on whether restaurant is already a favorite
             const callArgs = liked() ? 
-                ['DELETE', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`]
-                : ['POST', `/users/${loggedInUser.response._id}/favorites/${restaurant._id}`] 
+                ['DELETE', `/users/${loggedInUser.response._id}/favorites/${restaurant}`]
+                : ['POST', `/users/${loggedInUser.response._id}/favorites/${restaurant}`] 
             const [ method, path ] = callArgs
 
             await axiosAll(method, path, loggedInUser.token)
@@ -106,12 +103,12 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
                                     </Col>
                                     <Col>
                                         <Card.Body>
-                                            <p>{resDetails.price}</p>
+                                            <p>{resDetails.response.price}</p>
                                             <p>M - F 9:00 AM - 8:00 PM</p>
                                             <Row>
                                                 <Col>
-                                                    <p>{resDetails.response.address1}</p>
-                                                    <p>{resDetails.response.city}, {resDetails.response.state}</p>
+                                                    <p>{resDetails.response.location.address1}</p>
+                                                    <p>{resDetails.response.location.city}, {resDetails.response.location.state}</p>
                                                 </Col>
                                                 <Col>
                                                     <p>{resDetails.response.display_phone}</p>
