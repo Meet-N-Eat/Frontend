@@ -143,7 +143,7 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
             error.submit = false
         }
     },[error])
-console.log(meetup.restaurant)
+
 return (
     <Card style={{ width: '80%', height:'80%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>
     
@@ -205,7 +205,7 @@ return (
                         variant="secondary" 
                         id="dropdown-basic"
                     >
-                        {(meetup.restaurant && favorites.response.find(favorite => favorite._id === meetup.restaurant).name) || 'choose restaurant'}
+                        {(meetup.restaurant && favorites.response && favorites.response.find(favorite => favorite._id === meetup.restaurant).name) || 'choose restaurant'}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
                         { favorites.response && favorites.response.map(restaurant => 
