@@ -4,7 +4,7 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
 
-const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formattedHour, formattedDate, setShowEdit }) => {
+const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formattedHour, formattedDate, setShowEdit, updateEvents}) => {
     // State Variables
     // ===========================================================================================
     const initialState = {
@@ -19,7 +19,7 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     const [showModal, dispatchModal] = useReducer(axiosReducer, { invite: false, invited: false})
     const [date, dispatchDate] = useReducer(axiosReducer, {date: '' || formattedDate, time: '' || formattedHour})
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
-
+    
     useEffect(() => console.log('CoordinateMeetup Rendered'))
     
     useEffect(() => {
@@ -116,8 +116,10 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
         })
     }
 
-    const editEventHandler = () => {
-        axiosAll('PUT', `/users/events/edit`, loggedInUser.token, dispatchUser, meetup)
+    console.log(meetup)
+    const editEventHandler = async () => {
+        await axiosAll('PUT', `/users/events/edit`, loggedInUser.token, null, meetup)
+        axiosAll('GET', `/users/${loggedInUser.response._id}/events`, loggedInUser.token, updateEvents)
         setShowEdit(false)
     }
 
