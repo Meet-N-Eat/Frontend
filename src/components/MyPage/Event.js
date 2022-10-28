@@ -37,7 +37,16 @@ const Event = ({ event, updateEvents }) => {
     }
     console.log(event.participants)
     if(showEdit) {
-        return <CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} showEdit={showEdit} event={event} formattedDate={formattedDate} formattedHour={formattedHour} setShowEdit={setShowEdit} />
+        return (
+            <CoordinateMeetup 
+                loggedInUser={loggedInUser} 
+                dispatchUser={dispatchUser} 
+                showEdit={showEdit} event={event} 
+                formattedDate={formattedDate} 
+                formattedHour={formattedHour} 
+                setShowEdit={setShowEdit} 
+            />
+        )
     }
     else {
         return (

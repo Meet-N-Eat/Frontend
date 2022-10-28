@@ -221,7 +221,7 @@ return (
                 {
                     meetup.restaurant && 
                     <RestaurantCard 
-                        restaurant={favorites.response.find(favorite => favorite._id === meetup.restaurant)}
+                        restaurant={meetup.restaurant}
                         hideLikeButton={true}
                     />
                 }
