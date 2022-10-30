@@ -12,6 +12,11 @@
   src: url(../fonts/DegularDisplayDemo-Black.otf);
 }
 
+@layer components {
+  .center-container {
+    @apply grid place-items-center h-screen rounded-lg;
+  }
+}
 
 * {
   font-family: DegularRegular;
