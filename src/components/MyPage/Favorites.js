@@ -1,4 +1,3 @@
-import { InputGroup, Form } from 'react-bootstrap'
 import { useState, useReducer, useEffect } from 'react'
 import RestaurantCard from '../RestaurantCard';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
@@ -14,15 +13,14 @@ const Favorites = ({ loggedInUser }) => {
 
     return (
         <div className='likedRestaurants'>
-            <InputGroup className="">
-            <InputGroup.Text id="basic-addon2">enter name</InputGroup.Text>
-                <Form.Control onChange={e => {
+            <form className="">
+            <p id="basic-addon2">enter name</p>
+                <input onChange={e => {
                         setSearchCharacters(e.target.value
                             )}
                         } placeholder="liked restaurants" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-            </InputGroup>
-            <div
-            >
+            </form>
+            <div>
                 {favorites.response && favorites.response.length > 0 ?
                     favorites.response.filter(restaurant => searchCharacters == '' || restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
                         .map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant._id}/>)

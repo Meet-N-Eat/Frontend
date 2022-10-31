@@ -1,5 +1,4 @@
 import { useReducer, useEffect, useContext, useState } from 'react'
-import { Container, Form, Row, Image, Button } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 
@@ -63,73 +62,69 @@ const UserProfile = () => {
     }
 
     return (
-        <Container >
-            {userData && <Row>         
+        <div>
+            {userData && <div>         
                 <div className='profile-image'>
-                    <Image
-                        src={userData.profileimg || defaultImage}
-                        alt="profile-image"
-                        />
+                    <img src={userData.profileimg || defaultImage} alt="profile-image"/>
                 </div>
-                <Form> 
-                    <Form.Control className="profileimg"
+                <form> 
+                    <input className="profileimg"
                         type="profile-image" 
                         placeholder="paste a picture URL here"
                         onChange={inputChange}  
                         value={userData.profileimg}
                     />
-                    <Form.Text className="text-muted">only JPG and PNG files supported.</Form.Text>
+                    <p className="text-muted">only JPG and PNG files supported.</p>
                     <h3>{userData.username}</h3>
-                    <Form.Label>about me</Form.Label>
-                    <Form.Control  
+                    <label>about me</label>
+                    <input  
                         className="about"
                         as="textarea" 
-                        rows={3}
+                        divs={3}
                         type="about-me" 
                         placeholder="write your about me here for others to see"
                         onChange={inputChange}  
                         value={userData.about}
                     />
-                    <Form.Text className="text-muted d-block mt-3">maximum length: 500 characters</Form.Text>
-                        <Row>
-                            <Form.Label>location</Form.Label>
-                            <Form.Control 
+                    <p className="text-muted d-block mt-3">maximum length: 500 characters</p>
+                        <div>
+                            <label>location</label>
+                            <input 
                                 className="location"
                                 type="location" 
                                 placeholder="eg. los angeles, california"
                                 onChange={inputChange}
                                 value={userData.location}
                             />
-                            <Form.Label>display name</Form.Label>
-                            <Form.Control 
+                            <label>display name</label>
+                            <input 
                                 className="displayname" 
                                 type="display-name"
                                 placeholder="change display name"
                                 onChange={inputChange}
                                 value={userData.displayname}
                             />
-                            <Form.Text className="text-muted">this will be the name other users see when they view your profile.</Form.Text>
-                        </Row>
-                        <Row>
-                            <Form.Label>email</Form.Label>
-                            <Form.Control 
+                            <p className="text-muted">this will be the name other users see when they view your profile.</p>
+                        </div>
+                        <div>
+                            <label>email</label>
+                            <input 
                                 className="email"
                                 type="email-address" 
                                 placeholder="Change your email address"
                                 onChange={inputChange}
                                 value={userData.email}
                             />
-                            {error && <Form.Text className="text-muted">this email address already exists, please enter another</Form.Text>}
-                        </Row>
-                    <Button 
-                        variant="danger" 
+                            {error && <p className="text-muted">this email address already exists, please enter another</p>}
+                        </div>
+                    <button 
                         type="submit"
                         id="save-changes"
                         onClick={onSubmit}
-                    >save changes</Button>
-                </Form>
-            </Row>}
-        </Container>
+                    >save changes</button>
+                </form>
+            </div>}
+        </div>
     )
 }
 

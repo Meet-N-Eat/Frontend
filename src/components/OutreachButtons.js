@@ -1,5 +1,4 @@
 import { useContext } from 'react'
-import { Button } from 'react-bootstrap'
 import { useNavigate } from 'react-router-dom'
 import { Context } from '../App'
 
@@ -16,9 +15,9 @@ function OutreachButtons( {friends, user, friendRequestHandler} ) {
     <div>
       {user._id !== loggedInUser.response._id &&
         (friends && friends === true ?
-        <Button onClick={handleMessage}> Message {user.displayname || user.username}</Button>
+        <button onClick={handleMessage}> Message {user.displayname || user.username}</button>
         :
-        <Button onClick={friendRequestHandler}>Add {user.displayname || user.username} as friend</Button>) 
+        <button onClick={friendRequestHandler}>Add {user.displayname || user.username} as friend</button>) 
      }
     </div>
   )

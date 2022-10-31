@@ -1,6 +1,6 @@
 
 import { useContext, useEffect, useReducer } from 'react'
-import {  Card, Container, Spinner } from 'react-bootstrap'
+import { Spinner } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import Review from './Review'
@@ -21,12 +21,7 @@ const Reviews = ({ restaurantId, modalShow }) => {
         <div>
             {reviews.response ? 
                 <div>
-
-                    <Card>
-                        <Card.Body>
-                            {reviews.response.reviews && reviews.response.reviews.map(review => <Review review={review} key={review._id} />)}
-                        </Card.Body>
-                    </Card>
+                    {reviews.response.reviews && reviews.response.reviews.map(review => <Review review={review} key={review._id} />)}
                 </div>
                 : <Spinner animation="border" />
             }

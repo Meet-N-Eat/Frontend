@@ -1,6 +1,6 @@
 import { useContext, useRef } from "react"
-import { NavDropdown, Navbar, Container, Row } from "react-bootstrap"
-import { Link, NavLink, useNavigate } from "react-router-dom"
+import { NavDropdown, Navbar } from "react-bootstrap"
+import { NavLink, useNavigate } from "react-router-dom"
 import { Context } from "../../App"
 import { HiCog } from 'react-icons/hi'
 import { CgProfile } from 'react-icons/cg'
@@ -45,10 +45,10 @@ function handleLogOut(){
 
 return (
     <Navbar expand='lg' >
-        <Container>
-            <Navbar.Brand as={Link} to='/'>
+        <div>
+            <NavLink to='/'>
                 <h2>MEET N EAT</h2>
-            </Navbar.Brand>
+            </NavLink>
 
             {loggedInUser.token && loggedInUser.response ?
                 <>
@@ -70,16 +70,16 @@ return (
                         className="nav-dropdown d-inline-block" 
                         title={<HiCog size={40}/>}
                     >
-                        <Row>
+                        <div>
                             <NavLink to='/profile'>
                                 My Profile
                             </NavLink>
-                        </Row>
-                        <Row>
+                        </div>
+                        <div>
                             <NavLink to='/' onClick={handleLogOut}>
                                 Log Out
                             </NavLink>
-                        </Row>
+                        </div>
                     </NavDropdown>
                         <NavLink to='/faq'>
                         <GrCircleInformation size={40}/>
@@ -93,7 +93,7 @@ return (
                     <NavLink to='/faq'><GrCircleInformation size={40} /></NavLink>
                 </>
             } 
-        </Container>
+        </div>
         
     </Navbar>
 )

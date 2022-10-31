@@ -1,5 +1,5 @@
 import React, {  useContext, useReducer, useState } from 'react';
-import { Button, Row, Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 import { Context } from '../../App';
@@ -51,19 +51,19 @@ const SignUp = () => {
   return (
     <div>
       <Modal show={show} onHide={modalHandler}>
-        <Modal.Header closeButton>
-          <Modal.Title>Successfully registered!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Row>
+        <div closeButton>
+          <h1>Successfully registered!</h1>
+        </div>
+        <div>
+          <div>
             <Link to='/profile'>
               <button>Set up your profile</button>
             </Link>
-          </Row>
-          <Row>
+          </div>
+          <div>
             <Link to='/'>Skip</Link>
-          </Row>
-        </Modal.Body>
+          </div>
+        </div>
       </Modal>
       <div className='container'>
         <h1>SIGN UP</h1>
@@ -101,11 +101,11 @@ const SignUp = () => {
             onChange={changeHandler}
             value={loggedInUser.email}
           ></input>
-          <Button  
+          <button  
             type='submit'
             variant="primary">
               Submit
-          </Button>{' '}
+          </button>
         </form>
       </div>
       </div>

@@ -1,31 +1,23 @@
 import { useContext } from 'react';
-import { Card, Row, Col } from 'react-bootstrap';
 import { Context } from '../../App';
 
 const FriendCard = ({ friend }) => {
   const { defaultImage } = useContext(Context);
 
   return (
-    <Card
-    >
-      <Row>
-        <Col>
-          <Card.Img
-            variant='top'
-            src={friend.profileimg || defaultImage}
-          />
-        </Col>
-        <Col>
-          <Card.Body>
-            <Card.Title>{friend.username}</Card.Title>
-            <Card.Text>
-              {' '}
-              {friend.location}{' '}
-            </Card.Text>
-          </Card.Body>
-        </Col>
-      </Row>
-    </Card>
+    <div>
+      <div>
+        <div>
+          <img src={friend.profileimg || defaultImage}/>
+        </div>
+        <div>
+          <div>
+            <h1>{friend.username}</h1>
+            <p>{friend.location}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   );
 };
 

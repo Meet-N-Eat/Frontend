@@ -1,4 +1,4 @@
-import { Modal, Dropdown, Row } from 'react-bootstrap'
+import { Modal, Dropdown } from 'react-bootstrap'
 import DropdownItem from 'react-bootstrap/esm/DropdownItem'
 import DropdownToggle from 'react-bootstrap/esm/DropdownToggle'
 import { categoriesArray } from '../../data-and-functions/categoriesArray'
@@ -40,34 +40,32 @@ const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) =
                 <Modal.Title>Filter Options</Modal.Title>
             </Modal.Header>
             <Modal.Body>
-                <Row xs='3'>
-                    <div>
-                        <Dropdown>
-                            <Dropdown.Toggle id='city-select'>
-                                {city || 'select city'}
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                {citiesArray.map((city, index) => <DropdownItem className='city' onClick={dropdownChoice} key={index}>{city}</DropdownItem>)}
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <Dropdown>
-                            <Dropdown.Toggle id='category-select'>
-                                {category || 'select category'}
-                            </Dropdown.Toggle>
-                            <Dropdown.Menu>
-                                {categoriesArray.map((category, index) => <DropdownItem className='category' onClick={dropdownChoice} key={index}>{category}</DropdownItem>)}
-                            </Dropdown.Menu>
-                        </Dropdown>
-                        <Dropdown>
-                            <DropdownToggle id='price-range-select'>
-                                {price || 'select price range'}
-                            </DropdownToggle>
-                            <Dropdown.Menu>
-                                {priceRangeArray.map((price, index) => <DropdownItem className='price' onClick={dropdownChoice} key={index}>{price}</DropdownItem>)}
-                            </Dropdown.Menu>
-                        </Dropdown>
-                    </div>
-                </Row>
+                <div>
+                    <Dropdown>
+                        <Dropdown.Toggle id='city-select'>
+                            {city || 'select city'}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {citiesArray.map((city, index) => <DropdownItem className='city' onClick={dropdownChoice} key={index}>{city}</DropdownItem>)}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown>
+                        <Dropdown.Toggle id='category-select'>
+                            {category || 'select category'}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {categoriesArray.map((category, index) => <DropdownItem className='category' onClick={dropdownChoice} key={index}>{category}</DropdownItem>)}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <Dropdown>
+                        <DropdownToggle id='price-range-select'>
+                            {price || 'select price range'}
+                        </DropdownToggle>
+                        <Dropdown.Menu>
+                            {priceRangeArray.map((price, index) => <DropdownItem className='price' onClick={dropdownChoice} key={index}>{price}</DropdownItem>)}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                </div>
                 <Modal.Title>More Options:</Modal.Title>
                 <div>
                     <label>

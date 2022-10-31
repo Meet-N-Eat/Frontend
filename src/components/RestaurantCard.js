@@ -1,9 +1,7 @@
-import React, { useContext, useState, useEffect, useReducer } from 'react';
+import { useContext, useState, useEffect, useReducer } from 'react';
 import { Link, useNavigate } from 'react-router-dom'
-import {Card, Button, Container, Image, Col, Row, ButtonGroup } from 'react-bootstrap/'
 import { Context } from '../App'
 import { axiosAll, axiosReducer } from '../data-and-functions/axiosAll';
-
 
 const RestaurantCard = ({ restaurant, hideLikeButton }) => {
     // State Hooks and Variables
@@ -53,62 +51,58 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
     return (
         <div>
             {resDetails.response &&
-                <Card>
+                <div>
                     <div>
                         {
                             // Hide like button if hideLikeButton is true
                             !hideLikeButton &&
-                            <ButtonGroup>
-                                <Button type="checkbox" variant="outline-light">
-                                <Image
-                                    width={50}
-                                    src={buttonIcon} 
-                                    onClick={likeHandler}
-                                />
-                                </Button>
-                            </ButtonGroup>
+                            <div>
+                                <button type="checkbox" variant="outline-light">
+                                <img width={50} src={buttonIcon} onClick={likeHandler}/>
+                                </button>
+                            </div>
                         }
                     </div>
-                    <Card>
+                    <div>
                         <Link to={`/restaurants/${restaurant}`}>
-                            <Card>
-                                <Row>
-                                    <Col >
-                                        <Container>
-                                            <Image 
+                            <div>
+                                <div>
+                                    <div >
+                                        <div>
+                                            <img 
                                                 src={resDetails.response.image_url}
                                                 alt="restaurant-image"
                                                 width={170}
                                                 height={170}
                                             />
-                                            <Card.Title>{resDetails.response.name}</Card.Title>
-                                        </Container> 
-                                    </Col>
-                                    <Col>
-                                        <Card.Body>
+                                            <h1>{resDetails.response.name}</h1>
+                                        </div> 
+                                    </div>
+                                    <div>
+                                        <div>
                                             <p>{resDetails.response.price}</p>
                                             <p>M - F 9:00 AM - 8:00 PM</p>
-                                            <Row>
-                                                <Col>
+                                            <div>
+                                                <div>
                                                     <p>{resDetails.response.location.address1}</p>
                                                     <p>{resDetails.response.location.city}, {resDetails.response.location.state}</p>
-                                                </Col>
-                                                <Col>
+                                                </div>
+                                                <div>
                                                     <p>{resDetails.response.display_phone}</p>
-                                                </Col>
-                                            </Row>
+                                                </div>
+                                            </div>
                                             {categories.map((category, index) => 
-                                                <Row key={index}>
+                                                <div key={index}>
                                                     {category}
-                                                </Row>
+                                                </div>
                                             )}
-                                        </Card.Body>
-                                    </Col>
-                                </Row>
-                            </Card>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </Link>
-                    </Card>
-                </Card>
+                    </div>
+                </div>
             }
         </div>
     )

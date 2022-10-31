@@ -22,12 +22,11 @@ function UserLike({ user }) {
 
    return (
    <div>
-      <div>
-         <div onClick={modalHandler}>
-            <ProfileCard user={user._id} />
-         </div>
-         <Modal show={show} onHide={modalHandler}>
-            {!formSwitch ?
+      <div onClick={modalHandler}>
+         <ProfileCard user={user._id} />
+      </div>
+      <Modal show={show} onHide={modalHandler}>
+         {!formSwitch ?
             <>
                <Modal.Header closeButton>
                   <ProfileCard user={user._id} />
@@ -39,9 +38,8 @@ function UserLike({ user }) {
             </>
             :
             <FriendRequestForm user={user} modalHandler={modalHandler} />
-            }
-         </Modal>
-      </div>
+         }
+      </Modal>
    </div>
    )
 }

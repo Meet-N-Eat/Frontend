@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react'
-import { Card, Dropdown, Button, Modal, Form } from 'react-bootstrap'
+import { Dropdown, Modal } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
@@ -147,25 +147,24 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     },[error])
 
 return (
-    <Card>
-    
-        <Card.Body>
-            <Card.Title>
+    <div>
+        <div>
+            <h1>
                     coordinate meet 'n eat with friends
-            </Card.Title>
+            </h1>
 
-            <Button 
+            <button 
                 className='invite'
                 onClick={modalHandler}
             >
                     invite friends
-            </Button>
+            </button>
             <Modal show={showModal.invite} onHide={modalHandler}>
-                <Modal.Body>
+                <div>
                     {loggedInUser.response.friends.map((friend, index) => 
                         <div key={friend}>
                             <ProfileCard user={friend} />
-                            <Form.Check
+                            <input
                                 key={index}
                                 type='switch'
                                 id='invite-toggle'
@@ -175,19 +174,19 @@ return (
                             />
                         </div>
                     )}
-                </Modal.Body>
+                </div>
             </Modal>
 
-            <Button 
+            <button 
                 className='invited'
                 onClick={modalHandler}
             >
                     who's invited?
-            </Button>
+            </button>
             <Modal show={showModal.invited} onHide={modalHandler}>
-                <Modal.Body>
+                <div>
                     {participantsList()}
-                </Modal.Body>
+                </div>
             </Modal>
 
             <div 
@@ -235,15 +234,15 @@ return (
                 />
             </div>
                 {showEdit == true ? 
-                    <Button 
+                    <button 
                     id="button-addon2"
-                    onClick={editEventHandler}> edit event </Button>
+                    onClick={editEventHandler}> edit event </button>
                     :
-                    <Button
+                    <button
                     id="button-addon2"
-                    onClick={createEventHandler}> create event </Button>}
-        </Card.Body>
-    </Card>
+                    onClick={createEventHandler}> create event </button>}
+        </div>
+    </div>
 )
 }
 

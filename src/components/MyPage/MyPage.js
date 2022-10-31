@@ -5,7 +5,7 @@ import CoordinateMeetup from './CoordinateMeetup'
 import Itinerary from './Itinerary'
 import { axiosAll } from '../../data-and-functions/axiosAll'
 import { Context } from '../../App'
-import { Navbar, Nav, Container, Row } from 'react-bootstrap'
+import { Navbar, Nav } from 'react-bootstrap'
 import './MyProfile.css'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUtensils, faUsers, faPeopleArrows, faCalendarDays, faChevronRight, faChevronLeft } from '@fortawesome/free-solid-svg-icons'
@@ -85,56 +85,56 @@ return (
         : null }
         <div>
             <Navbar fixed='bottom' id='mypage-bar'>
-                    <Container>
+                    <div>
                         <Nav.Link
                         type="coordinate-meetup"
                         onClick={() => tabHandler(0)}>
-                            <Container id="mypage-tabs">
-                                <Row>
+                            <div id="mypage-tabs">
+                                <div>
                                     <FontAwesomeIcon icon={faPeopleArrows} />
-                                </Row>
-                                <Row>
+                                </div>
+                                <div>
                                     invite
-                                </Row>
-                            </Container>
+                                </div>
+                            </div>
                         </Nav.Link>
                         <Nav.Link 
                         type="friends"
                         onClick={() => tabHandler(1)}>
-                            <Container>
-                                <Row>
+                            <div>
+                                <div>
                                     <FontAwesomeIcon icon={faUsers} />
-                                </Row>
-                                <Row>
+                                </div>
+                                <div>
                                     friends
-                                </Row>
-                            </Container>
+                                </div>
+                            </div>
                         </Nav.Link>
                         <Nav.Link 
                         type="favorites"
                         onClick={() => tabHandler(2)}>
-                            <Container>
-                                <Row>
+                            <div>
+                                <div>
                                     <FontAwesomeIcon icon={faUtensils} />
-                                </Row>
-                                <Row>
+                                </div>
+                                <div>
                                     favorites
-                                </Row>
-                            </Container>
+                                </div>
+                            </div>
                         </Nav.Link>
                         <Nav.Link 
                         type="itinerary"
                         onClick={() => tabHandler(3)}>
-                            <Container>
-                                <Row>
+                            <div>
+                                <div>
                                     <FontAwesomeIcon icon={faCalendarDays} />
-                                </Row>
-                                <Row>
+                                </div>
+                                <div>
                                     itinerary
-                                </Row>
-                            </Container>
+                                </div>
+                            </div>
                         </Nav.Link>
-                    </Container>
+                    </div>
             </Navbar>
         </div>
     </div>

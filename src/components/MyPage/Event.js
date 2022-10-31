@@ -1,6 +1,6 @@
 import moment from 'moment'
 import React, { useState, useEffect, useContext } from 'react'
-import { Card, OverlayTrigger, Popover, Button, ListGroup, Modal, NavDropdown, Col } from 'react-bootstrap'
+import { OverlayTrigger, Popover, Modal, NavDropdown } from 'react-bootstrap'
 import { BiDotsVertical } from 'react-icons/bi'
 import { Context } from '../../App'
 import { axiosAll } from '../../data-and-functions/axiosAll'
@@ -51,35 +51,31 @@ const Event = ({ event, updateEvents }) => {
     }
     else {
         return (
-            <Card>
-                <Card.Header>
+            <div>
+                <div>
                     <div>
                         <p>{formattedDate} at {formattedHourAMPM}</p>
                         <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical/>}>
                             <NavDropdown.Item>
-                                <Button variant='danger'>Edit</Button>
+                                <button>edit</button>
                             </NavDropdown.Item>
                             <NavDropdown.Item>
-                                <Button variant="danger" onClick={handleShow}>Cancel Event</Button>
+                                <button onClick={handleShow}>Cancel Event</button>
                                 <Modal show={show} onHide={handleClose}>
-                                    <Modal.Header closeButton>
-                                    <Modal.Title>Confirm cancelation</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>Are you sure you don't want to meet a creep and get free food?</Modal.Body>
-                                    <Modal.Footer>
-                                    <Button variant="secondary" onClick={handleClose}>
-                                            Close
-                                        </Button>
-                                        <Button variant="danger" onClick={handleCancel}>
-                                            Cancel Event
-                                        </Button>
-                                        </Modal.Footer>
-                                    </Modal>
-                                </NavDropdown.Item>
+                                    <div closeButton>
+                                        <h1>Confirm cancelation</h1>
+                                    </div>
+                                    <div>Are you sure you don't want to meet a creep and get free food?</div>
+                                    <div>
+                                        <button onClick={handleClose}> close </button>
+                                        <button onClick={handleCancel}> cancel event </button>
+                                    </div>
+                                </Modal>
+                            </NavDropdown.Item>
                         </NavDropdown>
                     </div>
-                </Card.Header>
-                <Card.Body>
+                </div>
+                <div>
                     <RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
                     {['bottom'].map((placement) => (
                         <OverlayTrigger
@@ -88,25 +84,23 @@ const Event = ({ event, updateEvents }) => {
                         placement={placement}
                         overlay={
                             <Popover id={`popover-positioned-${placement}`}>
-                            <Popover.Header as="h3">{`friends going`}</Popover.Header>
-                            <Popover.Body>
-                                <Col>
-                                    {event.participants.map(participant => 
-                                        <ProfileCard key={participant} user={participant} />
-                                        )
-                                    }
-                                </Col>
-                            </Popover.Body>
+                                <h3>{`friends going`}</h3>
+                                <div>
+                                    <div>
+                                        {event.participants.map(participant => 
+                                            <ProfileCard key={participant} user={participant} />
+                                            )
+                                        }
+                                    </div>
+                                </div>
                             </Popover>
                         }
                         >
-                        <Button 
-                            onClick={toggleModal}
-                        >who's going?</Button>
+                        <button onClick={toggleModal}>who's going?</button>
                         </OverlayTrigger>
                     ))}     
-                </Card.Body>
-            </Card>
+                </div>
+            </div>
         )
     }
 }

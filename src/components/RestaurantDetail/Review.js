@@ -1,5 +1,5 @@
-import React, { useContext, useEffect, useReducer } from 'react'
-import { Container, ListGroup, Spinner } from 'react-bootstrap'
+import { useContext, useEffect, useReducer } from 'react'
+import { Spinner } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { formatDateTime } from '../../data-and-functions/formatDateTime'
@@ -16,12 +16,12 @@ const Review = ({ review }) => {
     return (
         <div>
             {reviewer.response ? 
-            <ListGroup>
-                <ListGroup.Item>{reviewer.response.displayname || reviewer.response.username}</ListGroup.Item>
-                <ListGroup.Item>{review.body}</ListGroup.Item>
-                <ListGroup.Item>{`${date} ${time}`}</ListGroup.Item>
-            </ListGroup>
-            : <Spinner animation="border" />
+                <ul>
+                    <li>{reviewer.response.displayname || reviewer.response.username}</li>
+                    <li>{review.body}</li>
+                    <li>{`${date} ${time}`}</li>
+                </ul>
+                : <Spinner animation="border" />
             }
         </div>
     )

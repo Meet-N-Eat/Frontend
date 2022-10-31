@@ -1,6 +1,5 @@
-import { useState } from 'react'
-import { useContext, useEffect, useReducer } from 'react'
-import { Button, Container, Dropdown, Form } from 'react-bootstrap'
+import { useContext, useReducer } from 'react'
+import { Dropdown } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 
@@ -48,41 +47,40 @@ const ReviewForm = ({ restaurantId, handleShow }) => {
             handleShow())
     }
 
-return (
-    <Container>
-        <Form>
-            <Form.Group controlId='reviewBody'>
-                <Dropdown>
-                    <Form.Label>
-                        {validate.missingStars ? 
-                            'Please add a star rating to this review' 
-                            : 'Give it some stars'
+    return (
+        <div>
+            <form onSubmit={reviewSubmit}>
+                <div controlId='reviewBody'>
+                    <Dropdown>
+                        <label>
+                            {validate.missingStars ? 
+                                'Please add a star rating to this review' 
+                                : 'Give it some stars'
+                            }
+                        </label>
+                        <Dropdown.Toggle>
+                            {review.stars || 'Stars'}
+                        </Dropdown.Toggle>
+                        <Dropdown.Menu>
+                            {starMenu.map((menuItem, index) => <Dropdown.Item className='stars' onClick={starClick} key={index}>{menuItem}</Dropdown.Item>)}
+                        </Dropdown.Menu>
+                    </Dropdown>
+                    <label>
+                        {validate.missingBody ?
+                            'Please enter something about your experience'
+                            : 'Tell us your thoughts'
                         }
-                    </Form.Label>
-                    <Dropdown.Toggle>
-                        {review.stars || 'Stars'}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        {starMenu.map((menuItem, index) => <Dropdown.Item className='stars' onClick={starClick} key={index}>{menuItem}</Dropdown.Item>)}
-                    </Dropdown.Menu>
-                </Dropdown>
-                <Form.Label>
-                    {validate.missingBody ?
-                        'Please enter something about your experience'
-                        : 'Tell us your thoughts'
-                    }
-                </Form.Label>
-                <Form.Control 
-                    as='textarea' 
-                    rows={3} 
-                    onChange={reviewChange}
-                    value={review.body}
-                />
-                <Button onClick={reviewSubmit}>Submit</Button>
-            </Form.Group>
-        </Form>
-    </Container>
-)
+                    </label>
+                    <textarea  
+                        rows={3} 
+                        onChange={reviewChange}
+                        value={review.body}
+                    />
+                    <button type='submit'>Submit</button>
+                </div>
+            </form>
+        </div>
+    )
 }
 
 export default ReviewForm

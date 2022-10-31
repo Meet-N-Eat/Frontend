@@ -1,5 +1,4 @@
 import { useReducer, useState } from "react"
-import { Button, ButtonGroup, Col, Container,  Form, Row } from "react-bootstrap"
 import { useNavigate } from "react-router-dom"
 import { getSearchParams } from "../../data-and-functions/searchParams"
 import { searchCriteriaReducer } from "../../data-and-functions/searchCriteriaReducer"
@@ -42,39 +41,30 @@ const Search = () => {
     }
 
     return (
-        <Container>
-            <Form>
-                <Form.Group controlId='searchInput'>
-                    <Row className='d-flex justify-content-end'>
-                        <Col className='gx-5'>
-                            <Form.Control
-                                type='text'
-                                placeholder='search by restaurant or category'
-                                onChange={inputChange}
-                                value={searchCriteria.searchString}
-                            />
-                        </Col>
-                        <Col>
-                            <ButtonGroup>
-                                <Button
-                                    type='submit'
-                                >search</Button>
-                                <Button
-                                    type='button'
-                                 onClick={filterClick}
-                                >filters</Button>
-                            </ButtonGroup>
-                        </Col>
-                    </Row>
-                </Form.Group>
-            </Form>
+        <div>
+            <form onSubmit={formSubmit}>
+                <div>
+                    <div>
+                        <input
+                            type='text'
+                            placeholder='search by restaurant or category'
+                            onChange={inputChange}
+                            value={searchCriteria.searchString}
+                        />
+                    </div>
+                    <div>
+                        <button type='submit'>search</button>
+                        <button type='button' onClick={filterClick}>filters</button>
+                    </div>
+                </div>
+            </form>
             <SearchFilters
                 searchCriteria={searchCriteria}
                 dispatch={dispatch} 
                 filterClick={filterClick}
                 showFilters={showFilters}
             />
-        </Container>
+        </div>
     )
 }
 

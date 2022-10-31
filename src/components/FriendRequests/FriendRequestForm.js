@@ -1,5 +1,4 @@
 import React, { useContext, useReducer } from 'react'
-import { Modal, Form, InputGroup, Button } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 import { Context } from '../../App'
 
@@ -28,16 +27,16 @@ function FriendRequestForm( {user, modalHandler} ) {
 
   return (
     <div>
-      <Modal.Header closeButton>
-        <Modal.Title>Modal heading</Modal.Title>
-      </Modal.Header>
-      <InputGroup>
-        <Form.Label>Message for {user.username}</Form.Label>
-        <Form.Control className='body' as='textarea'></Form.Control>
-      </InputGroup>
-      <Modal.Footer>
-        <Button> Submit </Button>
-      </Modal.Footer>
+      <div closeButton>
+        <h1>Modal heading</h1>
+      </div>
+      <div>
+        <label>Message for {user.username}</label>
+        <input className='body' as='textarea'></input>
+      </div>
+      <div>
+        <div> Submit </div>
+      </div>
     </div>
   )
 }

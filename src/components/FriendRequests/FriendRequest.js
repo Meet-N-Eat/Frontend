@@ -1,5 +1,4 @@
 import { useContext } from "react"
-import { Card, Button, Row, Col, Container } from "react-bootstrap"
 import { formatDateTime } from "../../data-and-functions/formatDateTime"
 import { axiosAll } from "../../data-and-functions/axiosAll"
 import { Context } from "../../App"
@@ -22,32 +21,34 @@ const FriendRequest = ({ friendRequest, dispatchRequests }) => {
 
 return (
    
-    <Card className=''>
+    <div className=''>
         <div>
             <ProfileCard user={friendRequest.sender} />
         </div>
         
-        <Card.Body className='friend-card'>
-            <Row>
-                <Col>
-                    <Card.Text>{friendRequest.body}</Card.Text>
-                </Col>
-                <Col>
-                    <Container aria-label="Basic example">
-                        <Button 
+        <div className='friend-card'>
+            <div>
+                <div>
+                    <p>{friendRequest.body}</p>
+                </div>
+                <div>
+                    <div aria-label="Basic example">
+                        <button 
                             variant="secondary"
-                            onClick={() => inviteHandler('accept')}                            
-                        >accept</Button>
-                        <Button 
+                            onClick={() => inviteHandler('accept')}>
+                                accept
+                        </button>
+                        <button 
                             variant="secondary"
-                            onClick={() => inviteHandler('decline')}
-                        >decline</Button>
-                    </Container>
-                </Col>
-            </Row>
-        </Card.Body>
-    </Card>
-)
-}
+                            onClick={() => inviteHandler('decline')}>
+                                decline
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    )
+}   
 
 export default FriendRequest
