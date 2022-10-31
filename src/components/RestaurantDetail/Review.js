@@ -16,9 +16,9 @@ const Review = ({ review }) => {
     return (
         <div>
             {reviewer.response ? 
-            <ListGroup style={{border:'1px solid #D6300F'}} horizontal>
-                <ListGroup.Item style={{borderRightColor:'#D6300F', width:'20%'}}>{reviewer.response.displayname || reviewer.response.username}</ListGroup.Item>
-                <ListGroup.Item style={{ borderRightColor:'#D6300F', width:'60%' }}>{review.body}</ListGroup.Item>
+            <ListGroup>
+                <ListGroup.Item>{reviewer.response.displayname || reviewer.response.username}</ListGroup.Item>
+                <ListGroup.Item>{review.body}</ListGroup.Item>
                 <ListGroup.Item>{`${date} ${time}`}</ListGroup.Item>
             </ListGroup>
             : <Spinner animation="border" />

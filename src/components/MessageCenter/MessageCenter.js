@@ -41,17 +41,17 @@ useEffect ( () => {
 
 
 return (
-    <div style={{ border:'1px solid #eb350f', margin:'2%', height:'90vh', display:'flex', flexDirection:'row', borderRadius:'5px'}} className="messages">
-        <div style={{ border:'1px solid #eb350f', width:'55%', margin:'2%', display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'5px'}} className='message-section'>
-            <InputGroup style={{ margin:'2%', width:'60%' }} className="mb-3">
-                <Form.Control style={{border:'1px solid #D6300F'}}  placeholder="search messages" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
-                <Button style={{border:'1px solid #D6300F'}} variant="outline-secondary" id="button-addon2"> search </Button>
+    <div className="messages">
+        <div className='message-section'>
+            <InputGroup className="mb-3">
+                <Form.Control placeholder="search messages" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+                <Button variant="outline-secondary" id="button-addon2"> search </Button>
             </InputGroup>
-            <div style={{ display:'flex', flexDirection:'column', alignItems:'center' }} className='messages-area'>
+            <div className='messages-area'>
                 {messages && messages.map(message => <Message message={message} defaultImage={defaultImage} key={message._id}/>)} 
             </div>     
         </div>
-        <div style={{ border:'1px solid #eb350f', margin:'2%', width:'35%', display:'flex', flexDirection:'column', alignItems:'center', borderRadius:'5px'}} className='requests-section'>
+        <div className='requests-section'>
             {requests && requests.map(request => <FriendRequest request={request} defaultImage={defaultImage} key={request._id}/>)}
         </div>
     </div>

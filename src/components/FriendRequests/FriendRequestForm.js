@@ -31,12 +31,12 @@ function FriendRequestForm( {user, modalHandler} ) {
       <Modal.Header closeButton>
         <Modal.Title>Modal heading</Modal.Title>
       </Modal.Header>
-      <InputGroup style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center'}}>
+      <InputGroup>
         <Form.Label>Message for {user.username}</Form.Label>
-        <Form.Control className='body' as='textarea' style={{width:'90%', marginBottom:'2%'}} value={request.body} onChange={handleChange}></Form.Control>
+        <Form.Control className='body' as='textarea'></Form.Control>
       </InputGroup>
-      <Modal.Footer style={{display:'flex', justifyContent:'center'}}>
-        <Button onClick={handleSubmit} style={{color:'black'}}> Submit </Button>
+      <Modal.Footer>
+        <Button> Submit </Button>
       </Modal.Footer>
     </div>
   )

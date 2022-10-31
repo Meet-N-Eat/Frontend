@@ -59,7 +59,7 @@ return (
             { slideIndex.current === 0 
             ? null 
             :
-            <div className="absolute inset-y-52 left-4">
+            <div className="">
                 <button 
                 id="left-btn"
                 onClick={leftSlideHandler}>
@@ -67,13 +67,13 @@ return (
                 </button>
             </div>
             }
-            <div className="grid place-items-center h-screen">
+            <div className="">
                 {slide}
             </div>
             { slideIndex.current === 3
             ? null
             : 
-            <div className="absolute inset-y-52 right-4">
+            <div className="">
                 <button 
                 id="right-btn"
                 onClick={rightSlideHandler}>

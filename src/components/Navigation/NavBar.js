@@ -45,55 +45,54 @@ function handleLogOut(){
 
 return (
     <Navbar expand='lg' >
-        <Container style={{borderBottom: '1px solid black' }}>
+        <Container>
+            <Navbar.Brand as={Link} to='/'>
+                <h2>MEET N EAT</h2>
+            </Navbar.Brand>
 
-                        <Navbar.Brand as={Link} to='/'>
-                            <h2>MEET N EAT</h2>
-                        </Navbar.Brand>
-
-                        {loggedInUser.token && loggedInUser.response ?
-                            <>
-                                <NavLink to='/my-page'>
-                                    <img 
-                                    src={loggedInUser.response.profileimg || defaultImage} 
-                                    alt="profile-icon"
-                                    className="rounded-full h-10 w-10"
-                                    id="nav-profile-icon"
-                                     />
-                                </NavLink>
-                                <NavLink to='/friendrequests'>
-                                    <FontAwesomeIcon icon={faUserGroup} />
-                                </NavLink>
-                                <NavLink to='/messages'>
-                                    <AiOutlineMessage size={40}/>
-                                </NavLink>
-                                <NavDropdown 
-                                    className="nav-dropdown d-inline-block" 
-                                    title={<HiCog size={40}/>}
-                                >
-                                    <Row>
-                                        <NavLink to='/profile'>
-                                            My Profile
-                                        </NavLink>
-                                    </Row>
-                                    <Row>
-                                        <NavLink to='/' onClick={handleLogOut}>
-                                            Log Out
-                                        </NavLink>
-                                    </Row>
-                                </NavDropdown>
-                                 <NavLink to='/faq'>
-                                    <GrCircleInformation size={40}/>
-                                </NavLink>
-                            </>
-                            : 
-                            <>
-                                <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile style={{color:'#D6300F'}} size={40}/>}>
-                                    {['Log In', 'Sign Up'].map((text, index) => <NavDropdown.Item onClick={userAuthClick} key={index}>{text}</NavDropdown.Item>)}
-                                </NavDropdown>
-                                <NavLink to='/faq'><GrCircleInformation size={40} /></NavLink>
-                            </>
-                        } 
+            {loggedInUser.token && loggedInUser.response ?
+                <>
+                    <NavLink to='/my-page'>
+                        <img 
+                        src={loggedInUser.response.profileimg || defaultImage} 
+                        alt="profile-icon"
+                        className="rounded-full h-10 w-10"
+                        id="nav-profile-icon"
+                            />
+                    </NavLink>
+                    <NavLink to='/friendrequests'>
+                        <FontAwesomeIcon icon={faUserGroup} />
+                    </NavLink>
+                    <NavLink to='/messages'>
+                        <AiOutlineMessage size={40}/>
+                    </NavLink>
+                    <NavDropdown 
+                        className="nav-dropdown d-inline-block" 
+                        title={<HiCog size={40}/>}
+                    >
+                        <Row>
+                            <NavLink to='/profile'>
+                                My Profile
+                            </NavLink>
+                        </Row>
+                        <Row>
+                            <NavLink to='/' onClick={handleLogOut}>
+                                Log Out
+                            </NavLink>
+                        </Row>
+                    </NavDropdown>
+                        <NavLink to='/faq'>
+                        <GrCircleInformation size={40}/>
+                    </NavLink>
+                </>
+                : 
+                <>
+                    <NavDropdown className="nav-dropdown d-inline-block" title={<CgProfile />}>
+                        {['Log In', 'Sign Up'].map((text, index) => <NavDropdown.Item onClick={userAuthClick} key={index}>{text}</NavDropdown.Item>)}
+                    </NavDropdown>
+                    <NavLink to='/faq'><GrCircleInformation size={40} /></NavLink>
+                </>
+            } 
         </Container>
         
     </Navbar>

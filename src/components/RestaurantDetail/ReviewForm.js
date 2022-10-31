@@ -49,17 +49,17 @@ const ReviewForm = ({ restaurantId, handleShow }) => {
     }
 
 return (
-    <Container style={{padding:'5%', border:'1px solid #D6300F', borderRadius:'5px'}}>
+    <Container>
         <Form>
-            <Form.Group style={{display:'flex', flexDirection:'column', alignItems:'center'}} controlId='reviewBody'>
-                <Dropdown style={{display:'flex', flexDirection:'column', marginBottom:'3%'}}>
+            <Form.Group controlId='reviewBody'>
+                <Dropdown>
                     <Form.Label>
                         {validate.missingStars ? 
                             'Please add a star rating to this review' 
                             : 'Give it some stars'
                         }
                     </Form.Label>
-                    <Dropdown.Toggle style={{backgroundColor:'#D6300F', color:'white', border:'1px solid #D6300F'}}>
+                    <Dropdown.Toggle>
                         {review.stars || 'Stars'}
                     </Dropdown.Toggle>
                     <Dropdown.Menu>
@@ -73,13 +73,12 @@ return (
                     }
                 </Form.Label>
                 <Form.Control 
-                    style={{border:'1px solid #D6300F'}}
                     as='textarea' 
                     rows={3} 
                     onChange={reviewChange}
                     value={review.body}
                 />
-                <Button style={{marginTop:'3%', color:'white', border:'1px solid #D6300F', backgroundColor:'#D6300F'}} onClick={reviewSubmit}>Submit</Button>
+                <Button onClick={reviewSubmit}>Submit</Button>
             </Form.Group>
         </Form>
     </Container>

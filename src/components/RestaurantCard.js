@@ -53,25 +53,12 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
     return (
         <div>
             {resDetails.response &&
-                <Card 
-                    style={{
-                        marginBottom:'5%', 
-                        fontSize:'70%', 
-                        display:'flex', 
-                        flexWrap:'wrap', 
-                        justifyContent:'center', 
-                        alignItems:'center', 
-                        width:'100%', 
-                        border:`1px solid ${colorTemplate.darkColor}`, 
-                        margin:'1%', height:'100%'
-                    }} 
-                    className="fluid"
-                >
-                    <div style={{width:'100%'}}>
+                <Card>
+                    <div>
                         {
                             // Hide like button if hideLikeButton is true
                             !hideLikeButton &&
-                            <ButtonGroup style={{float:'right', margin:'1%'}}className="mb-2">
+                            <ButtonGroup>
                                 <Button type="checkbox" variant="outline-light">
                                 <Image
                                     width={50}
@@ -82,17 +69,13 @@ const RestaurantCard = ({ restaurant, hideLikeButton }) => {
                             </ButtonGroup>
                         }
                     </div>
-                    <Card style={{border:'none', padding:'5%', minWidth: '300px', minHeight: '400px'}} className="fluid">
-                        <Link style={{ color:'black', textDecoration:'none' }} to={`/restaurants/${restaurant}`}>
-                            <Card
-                                style={{ display:'flex', flexDirection:'column'}}
-                                className ="py-1 px-1 border-white "
-                            >
-                                <Row style={{padding:'5%', borderRadius:'10px', backgroundColor:"white"}}>
+                    <Card>
+                        <Link to={`/restaurants/${restaurant}`}>
+                            <Card>
+                                <Row>
                                     <Col >
-                                        <Container style={{ textAlign:'center', display:'flex', flexDirection:'column', alignItems:'center', justifyContent:'center'}} className="ml-1">
+                                        <Container>
                                             <Image 
-                                                style={{ borderRadius:'10px', border:'1px solid #D6300F', marginBottom:'5%'}}
                                                 src={resDetails.response.image_url}
                                                 alt="restaurant-image"
                                                 width={170}

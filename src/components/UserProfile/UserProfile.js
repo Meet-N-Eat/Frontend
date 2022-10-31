@@ -63,7 +63,7 @@ const UserProfile = () => {
     }
 
     return (
-        <Container style={{ marginTop: '18vh', border: '1px solid #EB3510', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', borderRadius:'10px'}}>
+        <Container >
             {userData && <Row>         
                 <div className='profile-image'>
                     <Image
@@ -79,7 +79,7 @@ const UserProfile = () => {
                         value={userData.profileimg}
                     />
                     <Form.Text className="text-muted">only JPG and PNG files supported.</Form.Text>
-                    <h3 style={{marginTop:'1rem'}}>{userData.username}</h3>
+                    <h3>{userData.username}</h3>
                     <Form.Label>about me</Form.Label>
                     <Form.Control  
                         className="about"
@@ -99,28 +99,25 @@ const UserProfile = () => {
                                 placeholder="eg. los angeles, california"
                                 onChange={inputChange}
                                 value={userData.location}
-                                style={{border: '1px solid #EB3510', width: '70%'}}
                             />
-                            <Form.Label style={{marginTop:'2rem'}}>display name</Form.Label>
+                            <Form.Label>display name</Form.Label>
                             <Form.Control 
                                 className="displayname" 
                                 type="display-name"
                                 placeholder="change display name"
                                 onChange={inputChange}
                                 value={userData.displayname}
-                                style={{border: '1px solid #EB3510', width: '70%'}}
                             />
                             <Form.Text className="text-muted">this will be the name other users see when they view your profile.</Form.Text>
                         </Row>
                         <Row>
-                            <Form.Label style={{marginTop:'2rem'}}>email</Form.Label>
+                            <Form.Label>email</Form.Label>
                             <Form.Control 
                                 className="email"
                                 type="email-address" 
                                 placeholder="Change your email address"
                                 onChange={inputChange}
                                 value={userData.email}
-                                style={{border: '1px solid #EB3510', width: '70%'}}
                             />
                             {error && <Form.Text className="text-muted">this email address already exists, please enter another</Form.Text>}
                         </Row>
@@ -129,7 +126,6 @@ const UserProfile = () => {
                         type="submit"
                         id="save-changes"
                         onClick={onSubmit}
-                        style={{marginTop: '1rem',backgroundColor:'#EB3510', borderColor: '#D6300F'}}
                     >save changes</Button>
                 </Form>
             </Row>}

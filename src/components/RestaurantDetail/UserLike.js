@@ -21,7 +21,7 @@ function UserLike({ user }) {
    }
 
    return (
-   <div style={{display:'flex', width:'auto', marginRight:"1%"}}>
+   <div>
       <div>
          <div onClick={modalHandler}>
             <ProfileCard user={user._id} />
@@ -33,7 +33,7 @@ function UserLike({ user }) {
                   <ProfileCard user={user._id} />
                </Modal.Header>
                <Modal.Body>{user.about}</Modal.Body>
-               <Modal.Footer style={{display:"flex", flexDirection:'column', justifyContent:"center", alignItems:"center"}}>
+               <Modal.Footer>
                   <OutreachButtons friends={friends()} user={user} friendRequestHandler={friendRequestHandler} />
                </Modal.Footer>
             </>

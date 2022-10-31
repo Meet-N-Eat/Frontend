@@ -147,17 +147,15 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     },[error])
 
 return (
-    <Card style={{ width: '80%', height:'80%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>
+    <Card>
     
         <Card.Body>
-            <Card.Title 
-                style={{ textAlign:'center' }}>
+            <Card.Title>
                     coordinate meet 'n eat with friends
             </Card.Title>
 
             <Button 
                 className='invite'
-                style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                 onClick={modalHandler}
             >
                     invite friends
@@ -182,7 +180,6 @@ return (
 
             <Button 
                 className='invited'
-                style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                 onClick={modalHandler}
             >
                     who's invited?
@@ -194,16 +191,13 @@ return (
             </Modal>
 
             <div 
-                style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end' }} 
-                className="input-group justify-content-between">
+                className="input-group">
                 
                 {error.restaurant && <h2>select a restaurant for this event</h2>}
                 <Dropdown 
                     onSelect={restaurantSelect} 
-                    style={{ marginTop:'5%'}}
                 >
-                    <Dropdown.Toggle 
-                        style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }} 
+                    <Dropdown.Toggle
                         variant="secondary" 
                         id="dropdown-basic"
                     >
@@ -229,14 +223,12 @@ return (
                 }
 
                 {error.date && <h2>pick a date and time for this event</h2>}
-                <input 
-                    style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
+                <input
                     onChange={(e) => dateSelect(e, 'date')} 
                     type='date'
                     value={date.date}
                 />
-                <input 
-                    style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
+                <input
                     onChange={(e) => dateSelect(e, 'time')} 
                     type='time'
                     value={date.time} 
@@ -244,12 +236,10 @@ return (
             </div>
                 {showEdit == true ? 
                     <Button 
-                    style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                     id="button-addon2"
                     onClick={editEventHandler}> edit event </Button>
                     :
-                    <Button 
-                    style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
+                    <Button
                     id="button-addon2"
                     onClick={createEventHandler}> create event </Button>}
         </Card.Body>

@@ -7,20 +7,10 @@ const FriendCard = ({ friend }) => {
 
   return (
     <Card
-      style={{
-        border: '1px solid #EB3510',
-        width: '90%',
-        padding: '3%',
-        marginBottom: '5%',
-      }}
     >
       <Row>
         <Col>
           <Card.Img
-            style={{
-              border: '1px solid #EB3510',
-              borderRadius: '100%',
-            }}
             variant='top'
             src={friend.profileimg || defaultImage}
           />
@@ -28,7 +18,7 @@ const FriendCard = ({ friend }) => {
         <Col>
           <Card.Body>
             <Card.Title>{friend.username}</Card.Title>
-            <Card.Text style={{ fontSize: '0.8rem' }}>
+            <Card.Text>
               {' '}
               {friend.location}{' '}
             </Card.Text>

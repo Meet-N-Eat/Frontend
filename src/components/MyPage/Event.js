@@ -51,26 +51,26 @@ const Event = ({ event, updateEvents }) => {
     }
     else {
         return (
-            <Card style={{ width:'80%', marginBottom:'2%', border:"1px solid #D6300F" }}>
-                <Card.Header style={{backgroundColor:'#D6300F', color:'white'}}>
-                    <div style={{display:'flex', justifyContent:'space-between'}}>
+            <Card>
+                <Card.Header>
+                    <div>
                         <p>{formattedDate} at {formattedHourAMPM}</p>
-                        <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical style={{color:'white'}} size={20} onClick={() => {console.log(event)}}/>}>
+                        <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical/>}>
                             <NavDropdown.Item>
-                                <Button variant='danger' style={{color:'black'}} onClick={() => {setShowEdit(true)}}>Edit</Button>
+                                <Button variant='danger'>Edit</Button>
                             </NavDropdown.Item>
                             <NavDropdown.Item>
-                                <Button variant="danger" onClick={handleShow} style={{color:'black'}}>Cancel Event</Button>
+                                <Button variant="danger" onClick={handleShow}>Cancel Event</Button>
                                 <Modal show={show} onHide={handleClose}>
                                     <Modal.Header closeButton>
                                     <Modal.Title>Confirm cancelation</Modal.Title>
                                     </Modal.Header>
                                     <Modal.Body>Are you sure you don't want to meet a creep and get free food?</Modal.Body>
                                     <Modal.Footer>
-                                    <Button variant="secondary" onClick={handleClose} style={{color:'black'}}>
+                                    <Button variant="secondary" onClick={handleClose}>
                                             Close
                                         </Button>
-                                        <Button variant="danger" onClick={handleCancel} style={{backgroundColor:'#D6300F'}}>
+                                        <Button variant="danger" onClick={handleCancel}>
                                             Cancel Event
                                         </Button>
                                         </Modal.Footer>
@@ -79,7 +79,7 @@ const Event = ({ event, updateEvents }) => {
                         </NavDropdown>
                     </div>
                 </Card.Header>
-                <Card.Body style={{ display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center' }}>
+                <Card.Body>
                     <RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
                     {['bottom'].map((placement) => (
                         <OverlayTrigger
@@ -88,7 +88,7 @@ const Event = ({ event, updateEvents }) => {
                         placement={placement}
                         overlay={
                             <Popover id={`popover-positioned-${placement}`}>
-                            <Popover.Header style={{backgroundColor:'#F0704E', color:'white'}} as="h3">{`friends going`}</Popover.Header>
+                            <Popover.Header as="h3">{`friends going`}</Popover.Header>
                             <Popover.Body>
                                 <Col>
                                     {event.participants.map(participant => 
@@ -101,7 +101,6 @@ const Event = ({ event, updateEvents }) => {
                         }
                         >
                         <Button 
-                            style={{backgroundColor:'white', border:'1px solid #D6300F', color:'black'}}
                             onClick={toggleModal}
                         >who's going?</Button>
                         </OverlayTrigger>

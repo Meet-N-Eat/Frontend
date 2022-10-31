@@ -44,9 +44,9 @@ const RestaurantDetail = () => {
     return (
             <Container>
             {resDetails.response && userLikes.response ?
-                <Card style={{padding:'1%', borderColor:`${colorTemplate.darkColor}`, boxShadow:'-1px 3px 11px 0px rgba(0,0,0,0.75)'}}>
+                <Card>
                     <Row>
-                        <Col style={{ display:'flex', flexDirection:'column', alignItems:'center'}}>
+                        <Col>
                             <RestaurantCard restaurant={resDetails.response._id} />
                             {/* <p>{address}</p> */}
                         </Col>
@@ -60,7 +60,7 @@ const RestaurantDetail = () => {
                     <Row>
                         <Col>
                             <Row>
-                                <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
+                                <div>
                                     {loggedInUser.token ? 
                                         <h4>reviews</h4>
                                         : <Link to='/users/authentication/login' state={{logInMessage: true}} >reviews</Link>
@@ -70,12 +70,12 @@ const RestaurantDetail = () => {
                             {loggedInUser.token &&
                                 <>
                                     <Reviews restaurantId={resDetails.response._id} modalShow={modalShow} />
-                                    <div style={{ display:'flex', justifyContent:'center', marginTop:'2%' }}>
+                                    <div>
                                         <button 
-                                            style={{backgroundColor:'white', borderRadius:'10px', borderColor:`${colorTemplate.darkColor}`, color:`${colorTemplate.darkColor}`}}
                                             type="submit"
                                             onClick={handleShow}
-                                        >write a review
+                                        >
+                                            write a review
                                         </button>
                                         <Modal 
                                             show={modalShow}

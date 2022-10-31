@@ -19,20 +19,17 @@ const Friends = ({ loggedInUser }) => {
 
 return (
     
-    <Card className='friends' style={{ width: '80%', height:'80%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'none'}}>
+    <Card className='friends'>
         <Card.Body>
-            <Card.Body style={{width:'100%', heigth:'70%', marginTop:'10%'}}>
+            <Card.Body >
                 <div>
-                    <InputGroup 
-                        style={{ margin:'2%', width:'90%'}} 
-                        className="mb-3"
+                    <InputGroup
+                        className=""
                     >
                         <InputGroup.Text 
-                            style={{backgroundColor:'#D6300F', color:'white'}} 
                             id="basic-addon2"
                         >enter name</InputGroup.Text>
                         <Form.Control 
-                            style={{border:'1px solid #D6300F'}} 
                             onChange={searchChange} 
                             placeholder="friends" 
                             aria-label="Recipient's username" aria-describedby="basic-addon2"
