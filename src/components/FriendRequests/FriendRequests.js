@@ -1,5 +1,4 @@
 import { useContext, useEffect, useReducer } from 'react'
-import { Container } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import FriendRequest from './FriendRequest'
@@ -13,13 +12,13 @@ function FriendRequests() {
   },[])
 
   return (
-    <Container>
+    <div>
       {loggedInUser.token && 
-        friendRequests.response && friendRequests.response.length > 0 ? 
-          friendRequests.response.map(friendRequest => <FriendRequest key={friendRequest._id} friendRequest={friendRequest} dispatchRequests={dispatchRequests} />)
-          : <div>you don't have any invites right now</div>
+          friendRequests.response && friendRequests.response.length > 0 ? 
+            friendRequests.response.map(friendRequest => <FriendRequest key={friendRequest._id} friendRequest={friendRequest} dispatchRequests={dispatchRequests} />)
+            : <div>you don't have any invites right now</div>
       }
-    </Container>
+    </div>
   )
 }
 

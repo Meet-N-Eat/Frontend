@@ -1,5 +1,5 @@
 import React, { useEffect, useReducer } from 'react'
-import { Card, Dropdown, Button, Modal, Form } from 'react-bootstrap'
+import { Dropdown, Modal } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
@@ -147,27 +147,24 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     },[error])
 
 return (
-    <Card style={{ width: '80%', height:'80%', display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center', border:'1px solid #D6300F' }}>
-    
-        <Card.Body>
-            <Card.Title 
-                style={{ textAlign:'center' }}>
+    <div>
+        <div>
+            <h1>
                     coordinate meet 'n eat with friends
-            </Card.Title>
+            </h1>
 
-            <Button 
+            <button 
                 className='invite'
-                style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                 onClick={modalHandler}
             >
                     invite friends
-            </Button>
+            </button>
             <Modal show={showModal.invite} onHide={modalHandler}>
-                <Modal.Body>
+                <div>
                     {loggedInUser.response.friends.map((friend, index) => 
                         <div key={friend}>
                             <ProfileCard user={friend} />
-                            <Form.Check
+                            <input
                                 key={index}
                                 type='switch'
                                 id='invite-toggle'
@@ -177,33 +174,29 @@ return (
                             />
                         </div>
                     )}
-                </Modal.Body>
+                </div>
             </Modal>
 
-            <Button 
+            <button 
                 className='invited'
-                style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
                 onClick={modalHandler}
             >
                     who's invited?
-            </Button>
+            </button>
             <Modal show={showModal.invited} onHide={modalHandler}>
-                <Modal.Body>
+                <div>
                     {participantsList()}
-                </Modal.Body>
+                </div>
             </Modal>
 
             <div 
-                style={{ display:'flex', flexDirection:'row', justifyContent:'space-between', width:'105%', alignItems:'self-end' }} 
-                className="input-group justify-content-between">
+                className="input-group">
                 
                 {error.restaurant && <h2>select a restaurant for this event</h2>}
                 <Dropdown 
                     onSelect={restaurantSelect} 
-                    style={{ marginTop:'5%'}}
                 >
-                    <Dropdown.Toggle 
-                        style={{ width:'100%', border:'1px solid #D6300F', backgroundColor:'white', color:'black' }} 
+                    <Dropdown.Toggle
                         variant="secondary" 
                         id="dropdown-basic"
                     >
@@ -229,31 +222,27 @@ return (
                 }
 
                 {error.date && <h2>pick a date and time for this event</h2>}
-                <input 
-                    style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
+                <input
                     onChange={(e) => dateSelect(e, 'date')} 
                     type='date'
                     value={date.date}
                 />
-                <input 
-                    style={{padding:'1%', borderRadius:'5px', border:"1px solid #D6300F"}} 
+                <input
                     onChange={(e) => dateSelect(e, 'time')} 
                     type='time'
                     value={date.time} 
                 />
             </div>
                 {showEdit == true ? 
-                    <Button 
-                    style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
+                    <button 
                     id="button-addon2"
-                    onClick={editEventHandler}> edit event </Button>
+                    onClick={editEventHandler}> edit event </button>
                     :
-                    <Button 
-                    style={{ width:'100%', marginTop:'5%', backgroundColor:'#D6300F', border:'none' }} 
+                    <button
                     id="button-addon2"
-                    onClick={createEventHandler}> create event </Button>}
-        </Card.Body>
-    </Card>
+                    onClick={createEventHandler}> create event </button>}
+        </div>
+    </div>
 )
 }
 

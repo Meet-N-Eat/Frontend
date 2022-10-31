@@ -21,27 +21,25 @@ function UserLike({ user }) {
    }
 
    return (
-   <div style={{display:'flex', width:'auto', marginRight:"1%"}}>
-      <div>
-         <div onClick={modalHandler}>
-            <ProfileCard user={user._id} />
-         </div>
-         <Modal show={show} onHide={modalHandler}>
-            {!formSwitch ?
+   <div>
+      <div onClick={modalHandler}>
+         <ProfileCard user={user._id} />
+      </div>
+      <Modal show={show} onHide={modalHandler}>
+         {!formSwitch ?
             <>
                <Modal.Header closeButton>
                   <ProfileCard user={user._id} />
                </Modal.Header>
                <Modal.Body>{user.about}</Modal.Body>
-               <Modal.Footer style={{display:"flex", flexDirection:'column', justifyContent:"center", alignItems:"center"}}>
+               <Modal.Footer>
                   <OutreachButtons friends={friends()} user={user} friendRequestHandler={friendRequestHandler} />
                </Modal.Footer>
             </>
             :
             <FriendRequestForm user={user} modalHandler={modalHandler} />
-            }
-         </Modal>
-      </div>
+         }
+      </Modal>
    </div>
    )
 }

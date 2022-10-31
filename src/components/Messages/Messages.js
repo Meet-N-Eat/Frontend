@@ -1,6 +1,6 @@
 import { useEffect, useContext, useReducer } from 'react'
 import { Link } from 'react-router-dom'
-import { Container, Dropdown } from 'react-bootstrap'
+import { Dropdown } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { messageThreads } from '../../data-and-functions/messageThreads'
@@ -28,7 +28,7 @@ function Messages() {
   }, [messages.response])
 
   return (
-    <Container>
+    <div>
       <div>
         <Dropdown>
           <Dropdown.Toggle>
@@ -59,7 +59,7 @@ function Messages() {
         )
         : <div>you don't have any messages, choose a friend from the list and start chatting!</div>
       }
-    </Container>
+    </div>
   )
 }
 
