@@ -41,7 +41,7 @@ const Search = () => {
     }
 
     return (
-        <div>
+        <div className="row-start-2 row-span-2">
             <form onSubmit={formSubmit}>
                 <div>
                     <div>

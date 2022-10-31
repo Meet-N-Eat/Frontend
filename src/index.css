@@ -1,7 +1,9 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
 @import 'bootstrap/dist/css/bootstrap.min.css';
+
 @font-face {
   font-family: DegularRegular;
   src: url(../fonts/DegularDemo-Regular.otf);
@@ -12,18 +14,18 @@
   src: url(../fonts/DegularDisplayDemo-Black.otf);
 }
 
+@layer components {
+  /* NavBar */
+  .icon {
+    @apply rounded-full h-10 w-10;
+  }
 
-* {
-  font-family: DegularRegular;
-  
-  /* background: rgb(0, 100, 0, .2); */
 }
 
-
-
-html, body {
-  /* margin: 0px;
-  padding: 0px; */
+* {
+  /* font-family: DegularRegular; */
+  
+  /* background: rgb(0, 100, 0, .2); */
 }
 
 body {
@@ -33,6 +35,22 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  height: 100vh;
+  width: 100vw;
+}
+
+#root {
+  height: 100%;
+  width: 100%;
+}
+
+.App {
+  display: grid;
+  grid-template-rows: repeat(12, 1fr);
+}
+
+main {
+  grid-row: 2 / span 11;
 }
 
 .nav-dropdown, .dropdown-toggle::after {

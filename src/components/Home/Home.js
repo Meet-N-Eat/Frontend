@@ -16,30 +16,22 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div className='border border-black h-full'>
             { loggedInUser.token ? 
-                <div id="loggedin-user-home">
-                    <div>
-                        <Search />
-                    </div>
-                </div>
+                    <Search />
                 : 
-                <div>
-                    <div id="new-user-home">
-                        <div>
-                            <Search />
-                        </div>
-                        <div>
-                            <button 
-                                id="signup-button"
-                                onClick={signUpShowHandler}
-                            >
-                                Create an account
-                            </button>
-                        </div>
+                <>
+                    <Search />
+                    <div className='row-start-4'>
+                        <button 
+                            id="signup-button"
+                            onClick={signUpShowHandler}
+                        >
+                            Create an account
+                        </button>
                     </div>
                     { signUpShow ? <SignUp /> : null }
-                </div>
+                </>
             }
         </div>
     )
