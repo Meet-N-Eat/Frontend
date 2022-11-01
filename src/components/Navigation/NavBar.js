@@ -2,12 +2,8 @@ import {useContext, useRef} from 'react'
 import {NavDropdown} from 'react-bootstrap'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {Context} from '../../App'
-import {HiCog} from 'react-icons/hi'
-import {CgProfile} from 'react-icons/cg'
-import {GrCircleInformation} from 'react-icons/gr'
-import {AiOutlineMessage} from 'react-icons/ai'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUserGroup} from '@fortawesome/free-solid-svg-icons'
+import {faUserGroup, faCommentDots, faGear, faCircleInfo, faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import defaultImage from '../../assets/defaultImage.png'
 
 const NavBar = () => {
@@ -26,8 +22,6 @@ const NavBar = () => {
 				break
 			case 'Sign Up':
 				option = 'signup'
-				break
-			default:
 				break
 		}
 		navigate(`/users/authentication/${option}`)
@@ -64,11 +58,11 @@ const NavBar = () => {
 							<FontAwesomeIcon icon={faUserGroup} className='icon' />
 						</NavLink>
 						<NavLink to='/messages'>
-							<AiOutlineMessage size={40} className='icon' />
+							<FontAwesomeIcon icon={faCommentDots} className='icon' />
 						</NavLink>
 						<NavDropdown
 							className='nav-dropdown d-inline-block'
-							title={<HiCog size={40} className='icon' />}
+							title={<FontAwesomeIcon icon={faGear} className='icon' />}
 						>
 							<div>
 								<NavLink to='/profile'>My Profile</NavLink>
@@ -79,27 +73,22 @@ const NavBar = () => {
 								</NavLink>
 							</div>
 						</NavDropdown>
-						<NavLink to='/faq'>
-							<GrCircleInformation size={40} className='icon' />
-						</NavLink>
 					</>
 				) : (
-					<>
-						<NavDropdown
-							className='nav-dropdown d-inline-block'
-							title={<CgProfile className='icon' />}
-						>
-							{['Log In', 'Sign Up'].map((text, index) => (
-								<NavDropdown.Item onClick={userAuthClick} key={index}>
-									{text}
-								</NavDropdown.Item>
-							))}
-						</NavDropdown>
-						<NavLink to='/faq'>
-							<GrCircleInformation size={40} className='icon' />
-						</NavLink>
-					</>
+					<NavDropdown
+						className='nav-dropdown d-inline-block'
+						title={<FontAwesomeIcon icon={faCircleUser} className='icon' />}
+					>
+						{['Log In', 'Sign Up'].map((text, index) => (
+							<NavDropdown.Item onClick={userAuthClick} key={index}>
+								{text}
+							</NavDropdown.Item>
+						))}
+					</NavDropdown>
 				)}
+				<NavLink to='/faq'>
+					<FontAwesomeIcon icon={faCircleInfo} className='icon' />
+				</NavLink>
 			</div>
 		</div>
 	)
