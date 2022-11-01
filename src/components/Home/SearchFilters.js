@@ -7,7 +7,6 @@ const SearchFilters = ({searchCriteria, dispatch}) => {
 
 	// Handles click events for dropdown menus
 	function dropdownChoice(e) {
-		console.log(e.target.value)
 		e.target.value !== 'None'
 			? dispatch({
 					key: e.target.classList[0],

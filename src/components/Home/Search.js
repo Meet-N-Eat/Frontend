@@ -24,7 +24,7 @@ const Search = () => {
 	const [searchCriteria, dispatch] = useReducer(searchCriteriaReducer, initialState)
 	const [showFilters, setShowFilters] = useState(false)
 	const navigate = useNavigate()
-	console.log(searchCriteria)
+
 	// Event handlers
 	// ===========================================================================
 	function inputChange(e) {
