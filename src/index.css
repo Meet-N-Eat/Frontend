@@ -15,11 +15,13 @@
 }
 
 @layer components {
+  .center-container {
+    @apply grid place-items-center h-screen rounded-lg;
+  }
   /* NavBar */
   .icon {
     @apply rounded-full h-10 w-10;
   }
-
 }
 
 * {
