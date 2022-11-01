@@ -46,8 +46,8 @@ const Search = () => {
 	return (
 		<div>
 			<form onSubmit={formSubmit}>
-				<div className='w-8/12 mx-auto grid grid-cols-5 space-x-2'>
-					<div className='col-span-4'>
+				<div className='w-8/12 mx-auto flex space-x-2'>
+					<div className='w-full'>
 						<input
 							className='w-full p-1 rounded'
 							type='text'
@@ -56,7 +56,7 @@ const Search = () => {
 							value={searchCriteria.searchString}
 						/>
 					</div>
-					<div>
+					<div className='place-self-end'>
 						<button type='button' onClick={filterClick}>
 							<FontAwesomeIcon icon={faSliders} className='h-8' />
 						</button>
