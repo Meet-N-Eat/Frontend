@@ -17,7 +17,7 @@ const Home = () => {
 
 	return (
 		<div className='home h-36 w-10/12 mx-auto rounded-2xl flex flex-col justify-center space-y-2'>
-			<p className='text-white mx-auto'>Find restaurants you like? Meet others who like them too.</p>
+			<p className='text-white text-3xl mx-auto'>Find restaurants you like? Meet others who like them too.</p>
 			<Search />
 			{!loggedInUser.token && (
 				<>

@@ -3,6 +3,7 @@ import {useNavigate} from 'react-router-dom'
 import {getSearchParams} from '../../data-and-functions/searchParams'
 import {searchCriteriaReducer} from '../../data-and-functions/searchCriteriaReducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faSliders } from '@fortawesome/free-solid-svg-icons'
 import SearchFilters from './SearchFilters'
 
 const Search = () => {
@@ -45,7 +46,7 @@ const Search = () => {
 	return (
 		<div>
 			<form onSubmit={formSubmit}>
-				<div className='w-8/12 mx-auto grid grid-cols-5'>
+				<div className='w-8/12 mx-auto grid grid-cols-5 space-x-2'>
 					<div className='col-span-4'>
 						<input
 							className='w-full p-1 rounded'
@@ -57,7 +58,7 @@ const Search = () => {
 					</div>
 					<div>
 						<button type='button' onClick={filterClick}>
-							filters
+							<FontAwesomeIcon icon={faSliders} className='h-8' />
 						</button>
 					</div>
 				</div>
