@@ -15,12 +15,29 @@
 }
 
 @layer components {
-  .center-container {
-    @apply grid place-items-center h-screen rounded-lg;
+  /* Centered red semi-rounded container */
+  .center-red-container {
+    @apply grid place-items-center h-screen rounded-lg bg-gradient-to-br from-red-400 via-red-900 to-black;
+  }
+  /* Centered white semi-rounded container */
+  .center-white-container {
+    @apply grid place-items-center h-screen rounded-lg bg-slate-200;
+  }
+  /* Centered semi-rounded container */
+  .center-round-container {
+    @apply grid place-items-center h-screen rounded-full;
   }
   /* NavBar */
   .icon {
     @apply rounded-full h-10 w-10;
+  }
+  /* Buttons */
+  .buttons {
+    @apply rounded-full h-10;
+  }
+  /* Input boxes */
+  .input-box {
+    @apply border-gray-600 rounded-md shadow-sm bg-white placeholder-gray-500 text-zinc-900 focus:ring-2 focus:ring-red-900;
   }
 }
 

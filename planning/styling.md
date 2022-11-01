@@ -5,7 +5,7 @@
 - [✅] Navbar icons
 - [ ] Centered fully-rounded containers (CoordinateMeetup, Friends, UserLikes)
 - [ ] Semi-rounded input boxes
-- [ ] Semi-rounded buttons
+- [ ] Rounded buttons
 - [ ] On hover round backdrop color
 - [ ] RestaurantCard image sizing
 
