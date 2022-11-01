@@ -2,12 +2,8 @@ import {useContext, useRef} from 'react'
 import {NavDropdown} from 'react-bootstrap'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {Context} from '../../App'
-import {HiCog} from 'react-icons/hi'
-import {CgProfile} from 'react-icons/cg'
-import {GrCircleInformation} from 'react-icons/gr'
-import {AiOutlineMessage} from 'react-icons/ai'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUserGroup} from '@fortawesome/free-solid-svg-icons'
+import {faUserGroup, faCommentDots, faGear, faCircleInfo, faCircleUser} from '@fortawesome/free-solid-svg-icons'
 import defaultImage from '../../assets/defaultImage.png'
 
 const NavBar = () => {
@@ -27,8 +23,6 @@ const NavBar = () => {
 			case 'Sign Up':
 				option = 'signup'
 				break
-			default:
-				break
 		}
 		navigate(`/users/authentication/${option}`)
 	}
@@ -41,10 +35,12 @@ const NavBar = () => {
 	}
 
 	return (
-		<div className="flex flex-row justify-between items-center p-3">
+		<div className='flex flex-row justify-between items-center p-3'>
 			<div>
 				<NavLink to='/'>
-					<h2 className='text-4xl'>MEET N EAT</h2>
+					<h2 className='text-4xl text-white'>
+						MEET <span className='text-red-600'>N</span> EAT
+					</h2>
 				</NavLink>
 			</div>
 			<div className='flex flex-row space-x-4'>
@@ -54,7 +50,7 @@ const NavBar = () => {
 							<img
 								src={loggedInUser.response.profileimg || defaultImage}
 								alt='profile-icon'
-								className='icon'
+								className='icon border-2'
 								id='nav-profile-icon'
 							/>
 						</NavLink>
@@ -62,9 +58,12 @@ const NavBar = () => {
 							<FontAwesomeIcon icon={faUserGroup} className='icon' />
 						</NavLink>
 						<NavLink to='/messages'>
-							<AiOutlineMessage size={40} className='icon' />
+							<FontAwesomeIcon icon={faCommentDots} className='icon' />
 						</NavLink>
-						<NavDropdown className='nav-dropdown d-inline-block' title={<HiCog size={40} className='icon' />}>
+						<NavDropdown
+							className='nav-dropdown d-inline-block'
+							title={<FontAwesomeIcon icon={faGear} className='icon' />}
+						>
 							<div>
 								<NavLink to='/profile'>My Profile</NavLink>
 							</div>
@@ -74,24 +73,22 @@ const NavBar = () => {
 								</NavLink>
 							</div>
 						</NavDropdown>
-						<NavLink to='/faq'>
-							<GrCircleInformation size={40} className='icon' />
-						</NavLink>
 					</>
 				) : (
-					<>
-						<NavDropdown className='nav-dropdown d-inline-block' title={<CgProfile className='icon' />}>
-							{['Log In', 'Sign Up'].map((text, index) => (
-								<NavDropdown.Item onClick={userAuthClick} key={index}>
-									{text}
-								</NavDropdown.Item>
-							))}
-						</NavDropdown>
-						<NavLink to='/faq'>
-							<GrCircleInformation size={40} className='icon' />
-						</NavLink>
-					</>
+					<NavDropdown
+						className='nav-dropdown d-inline-block'
+						title={<FontAwesomeIcon icon={faCircleUser} className='icon' />}
+					>
+						{['Log In', 'Sign Up'].map((text, index) => (
+							<NavDropdown.Item onClick={userAuthClick} key={index}>
+								{text}
+							</NavDropdown.Item>
+						))}
+					</NavDropdown>
 				)}
+				<NavLink to='/faq'>
+					<FontAwesomeIcon icon={faCircleInfo} className='icon' />
+				</NavLink>
 			</div>
 		</div>
 	)
