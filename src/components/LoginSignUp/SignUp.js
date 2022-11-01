@@ -29,7 +29,7 @@ const SignUp = () => {
     if(loggedInUser.password === loggedInUser.confirmPassword) {
       const response = await axiosAll('POST', `/users/signup`, null, dispatchUser, loggedInUser)
       const response2 = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
-      
+      setShow(!show)
 
       if (typeof(response.data) === 'string') {
         response.data.indexOf('{ username:') !== -1 ?
@@ -40,8 +40,6 @@ const SignUp = () => {
           dispatchError({ key: 'email', value: true })
           : dispatchError({ key: 'email', value: false })
       }
-      else 
-        setShow(!show)
     }
   }
 
