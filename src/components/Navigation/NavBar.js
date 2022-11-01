@@ -41,10 +41,12 @@ const NavBar = () => {
 	}
 
 	return (
-		<div className="flex flex-row justify-between items-center p-3">
+		<div className='flex flex-row justify-between items-center p-3'>
 			<div>
 				<NavLink to='/'>
-					<h2 className='text-4xl'>MEET N EAT</h2>
+					<h2 className='text-4xl text-white'>
+						MEET <span className='text-red-600'>N</span> EAT
+					</h2>
 				</NavLink>
 			</div>
 			<div className='flex flex-row space-x-4'>
@@ -54,7 +56,7 @@ const NavBar = () => {
 							<img
 								src={loggedInUser.response.profileimg || defaultImage}
 								alt='profile-icon'
-								className='icon'
+								className='icon border-2'
 								id='nav-profile-icon'
 							/>
 						</NavLink>
@@ -64,7 +66,10 @@ const NavBar = () => {
 						<NavLink to='/messages'>
 							<AiOutlineMessage size={40} className='icon' />
 						</NavLink>
-						<NavDropdown className='nav-dropdown d-inline-block' title={<HiCog size={40} className='icon' />}>
+						<NavDropdown
+							className='nav-dropdown d-inline-block'
+							title={<HiCog size={40} className='icon' />}
+						>
 							<div>
 								<NavLink to='/profile'>My Profile</NavLink>
 							</div>
@@ -80,7 +85,10 @@ const NavBar = () => {
 					</>
 				) : (
 					<>
-						<NavDropdown className='nav-dropdown d-inline-block' title={<CgProfile className='icon' />}>
+						<NavDropdown
+							className='nav-dropdown d-inline-block'
+							title={<CgProfile className='icon' />}
+						>
 							{['Log In', 'Sign Up'].map((text, index) => (
 								<NavDropdown.Item onClick={userAuthClick} key={index}>
 									{text}
