@@ -1,86 +1,106 @@
-import { Modal, Dropdown } from 'react-bootstrap'
-import DropdownItem from 'react-bootstrap/esm/DropdownItem'
-import DropdownToggle from 'react-bootstrap/esm/DropdownToggle'
-import { categoriesArray } from '../../data-and-functions/categoriesArray'
-import { citiesArray } from '../../data-and-functions/citiesArray'
-import { priceRangeArray } from '../../data-and-functions/priceRangeArray'
+import {categoriesArray} from '../../data-and-functions/categoriesArray'
+import {citiesArray} from '../../data-and-functions/citiesArray'
+import {priceRangeArray} from '../../data-and-functions/priceRangeArray'
 
-const SearchFilters = ({ searchCriteria, dispatch, filterClick, showFilters }) => {
-    const { city, category, price } = searchCriteria
+const SearchFilters = ({searchCriteria, dispatch}) => {
+	const {city, category, price} = searchCriteria
 
-    // Handles click events for dropdown menus
-    function dropdownChoice(e) {
-        e.target.text !== 'None' ?
-        dispatch({
-            key: e.target.classList[0],
-            value: e.target.text
-        })
-        : dispatch({
-            key: e.target.classList[0],
-            value: ''
-        })
-    }
+	// Handles click events for dropdown menus
+	function dropdownChoice(e) {
+		console.log(e.target.value)
+		e.target.value !== 'None'
+			? dispatch({
+					key: e.target.classList[0],
+					value: e.target.value,
+			  })
+			: dispatch({
+					key: e.target.classList[0],
+					value: '',
+			  })
+	}
 
-    // Handles click events for checkbox items
-    function checkboxClick(e) {
-        searchCriteria[e.target.classList[0]] ?
-        dispatch({
-            key: e.target.classList[0],
-            value: ''
-        })
-        : dispatch({
-            key: e.target.classList[0],
-            value: e.target.value
-        })
-    }
+	// Handles click events for checkbox items
+	function checkboxClick(e) {
+		searchCriteria[e.target.classList[0]]
+			? dispatch({
+					key: e.target.classList[0],
+					value: '',
+			  })
+			: dispatch({
+					key: e.target.classList[0],
+					value: e.target.value,
+			  })
+	}
 
-    return (
-        <Modal show={showFilters} onHide={filterClick}>
-            <Modal.Header closeButton>
-                <Modal.Title>Filter Options</Modal.Title>
-            </Modal.Header>
-            <Modal.Body>
-                <div>
-                    <Dropdown>
-                        <Dropdown.Toggle id='city-select'>
-                            {city || 'select city'}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {citiesArray.map((city, index) => <DropdownItem className='city' onClick={dropdownChoice} key={index}>{city}</DropdownItem>)}
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Dropdown>
-                        <Dropdown.Toggle id='category-select'>
-                            {category || 'select category'}
-                        </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            {categoriesArray.map((category, index) => <DropdownItem className='category' onClick={dropdownChoice} key={index}>{category}</DropdownItem>)}
-                        </Dropdown.Menu>
-                    </Dropdown>
-                    <Dropdown>
-                        <DropdownToggle id='price-range-select'>
-                            {price || 'select price range'}
-                        </DropdownToggle>
-                        <Dropdown.Menu>
-                            {priceRangeArray.map((price, index) => <DropdownItem className='price' onClick={dropdownChoice} key={index}>{price}</DropdownItem>)}
-                        </Dropdown.Menu>
-                    </Dropdown>
-                </div>
-                <Modal.Title>More Options:</Modal.Title>
-                <div>
-                    <label>
-                        <input type='checkbox' className='wheelchairAccessible' value='yes' onClick={checkboxClick}/>
-                        Wheelchair Accessible
-                    </label>
-                    <label>
-                        <input  type='checkbox' className='openLate' value='yes' onClick={checkboxClick}/>
-                            Open Late
-                    </label>
-
-                </div>
-            </Modal.Body>
-        </Modal>
-    )
+	return (
+		<form className='p-3 flex flex-col items-center space-y-3'>
+			<p className='text-red-600 text-2xl'>Filter Options</p>
+			<div className='flex space-x-1'>
+				<select
+					defaultValue={city || 'select a city'}
+					className='city border rounded text-center'
+					onChange={dropdownChoice}
+				>
+					<option value='select a city' disabled hidden>
+						select a city
+					</option>
+					{citiesArray.map(city => (
+						<option value={city} key={city}>
+							{city}
+						</option>
+					))}
+				</select>
+				<select
+					defaultValue={category || 'select a category'}
+					className='category border rounded text-center'
+					onChange={dropdownChoice}
+				>
+					<option value='select a category' disabled hidden>
+						select a category
+					</option>
+					{categoriesArray.map(category => (
+						<option value={category} key={category}>
+							{category}
+						</option>
+					))}
+				</select>
+				<select
+					defaultValue={price || 'select price range'}
+					className='price border rounded text-center'
+					onChange={dropdownChoice}
+				>
+					<option value='select price range' disabled hidden>
+						select price range
+					</option>
+					{priceRangeArray.map(price => (
+						<option value={price} key={price}>
+							{price}
+						</option>
+					))}
+				</select>
+			</div>
+			<div className='flex space-x-2'>
+				<label>
+					<input
+						type='checkbox'
+						className='wheelchairAccessible mr-1'
+						value='yes'
+						onClick={checkboxClick}
+					/>
+					Wheelchair Accessible
+				</label>
+				<label>
+					<input
+						type='checkbox'
+						className='openLate mr-1'
+						value='yes'
+						onClick={checkboxClick}
+					/>
+					Open Late
+				</label>
+			</div>
+		</form>
+	)
 }
 
 export default SearchFilters

@@ -1,5 +1,6 @@
 import {useReducer, useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import { Modal } from 'react-bootstrap'
 import {getSearchParams} from '../../data-and-functions/searchParams'
 import {searchCriteriaReducer} from '../../data-and-functions/searchCriteriaReducer'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -23,7 +24,7 @@ const Search = () => {
 	const [searchCriteria, dispatch] = useReducer(searchCriteriaReducer, initialState)
 	const [showFilters, setShowFilters] = useState(false)
 	const navigate = useNavigate()
-
+	console.log(searchCriteria)
 	// Event handlers
 	// ===========================================================================
 	function inputChange(e) {
@@ -63,12 +64,12 @@ const Search = () => {
 					</div>
 				</div>
 			</form>
-			<SearchFilters
-				searchCriteria={searchCriteria}
-				dispatch={dispatch}
-				filterClick={filterClick}
-				showFilters={showFilters}
-			/>
+			<Modal show={showFilters} onHide={filterClick}>
+				<SearchFilters
+					searchCriteria={searchCriteria}
+					dispatch={dispatch}
+				/>
+			</Modal>
 		</div>
 	)
 }

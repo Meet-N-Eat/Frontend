@@ -8,10 +8,13 @@
 	font-family: DegularRegular;
 	src: url(../fonts/DegularDemo-Regular.otf);
 }
-
 @font-face {
 	font-family: DegularBlack;
 	src: url(../fonts/DegularDisplayDemo-Black.otf);
+}
+
+:root {
+	--bg-red: rgba(165, 0, 0, 0.85);
 }
 
 @layer components {
@@ -39,6 +42,10 @@
 	.input-box {
 		@apply border-gray-600 rounded-md shadow-sm bg-white placeholder-gray-500 text-zinc-900 focus:ring-2 focus:ring-red-900;
 	}
+}
+
+.bg-red {
+	background-color: var(--bg-red);
 }
 
 * {
@@ -85,10 +92,6 @@ main {
 	font-family: DegularBlack;
 	font-size: 2rem;
 	letter-spacing: 3px;
-}
-
-.home {
-	background-color: rgba(165, 0, 0, 0.85);
 }
 
 .input {

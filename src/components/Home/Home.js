@@ -16,7 +16,7 @@ const Home = () => {
 	}
 
 	return (
-		<div className='home h-56 md:h-48 w-10/12 max-w-5xl mx-auto rounded-2xl row-start-2 flex flex-col justify-center space-y-2'>
+		<div className='bg-red h-56 md:h-48 w-10/12 max-w-5xl mx-auto rounded-2xl row-start-2 flex flex-col justify-center space-y-2'>
 			<p className='text-white text-3xl w-10/12 max-w-3xl mx-auto'>Find restaurants you like? Meet others who like them too.</p>
 			<Search />
 			{!loggedInUser.token && (
