@@ -1,6 +1,5 @@
 import React, { useContext, useEffect, useReducer, useState } from 'react';
 import { useParams, useSearchParams } from 'react-router-dom';
-import { Container, Row } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 import { buildSearchParams } from '../../data-and-functions/searchParams';
 import { Context } from '../../App';
@@ -46,18 +45,18 @@ const SearchResults = () => {
 
 
     return (
-        <Container>
+        <div>
             {restaurantsData.response && restaurantsData.response.length !== 0 &&
                 <div>
-                    <Container>
-                        <Row xs='3'>{restaurantsData.response.slice(indexOfFirstCard, indexOfLastCard).map(restaurant => <RestaurantCard restaurant={restaurant._id} key={restaurant._id}/>)}</Row>
-                    </Container>
+                    <div>
+                        <div xs='3'>{restaurantsData.response.slice(indexOfFirstCard, indexOfLastCard).map(restaurant => <RestaurantCard restaurant={restaurant._id} key={restaurant._id}/>)}</div>
+                    </div>
                     <Pagination cardsPerPage={cardsPerPage} totalCards={restaurantsData.response.length} paginate={paginate}/>
                 </div>
             }
-            {!restaurantsData.response && <Container><h1>Loading restaurants...</h1></Container>}
-            {restaurantsData.response && restaurantsData.response.length === 0 && <Container><h1>No restaurants matching restaurants were found</h1></Container>}
-        </Container>
+            {!restaurantsData.response && <div><h1>Loading restaurants...</h1></div>}
+            {restaurantsData.response && restaurantsData.response.length === 0 && <div><h1>No restaurants matching restaurants were found</h1></div>}
+        </div>
     )
 }
 

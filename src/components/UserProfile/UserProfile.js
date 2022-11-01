@@ -1,5 +1,4 @@
 import { useReducer, useEffect, useContext, useState } from 'react'
-import { Container, Form, Row, Image, Button } from 'react-bootstrap'
 import { Context } from '../../App'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 
@@ -63,77 +62,69 @@ const UserProfile = () => {
     }
 
     return (
-        <Container style={{ marginTop: '18vh', border: '1px solid #EB3510', boxShadow:'2px 5px 26px -9px rgba(0,0,0,0.75)', borderRadius:'10px'}}>
-            {userData && <Row>         
+        <div>
+            {userData && <div>         
                 <div className='profile-image'>
-                    <Image
-                        src={userData.profileimg || defaultImage}
-                        alt="profile-image"
-                        />
+                    <img src={userData.profileimg || defaultImage} alt="profile-image"/>
                 </div>
-                <Form> 
-                    <Form.Control className="profileimg"
+                <form> 
+                    <input className="profileimg"
                         type="profile-image" 
                         placeholder="paste a picture URL here"
                         onChange={inputChange}  
                         value={userData.profileimg}
                     />
-                    <Form.Text className="text-muted">only JPG and PNG files supported.</Form.Text>
-                    <h3 style={{marginTop:'1rem'}}>{userData.username}</h3>
-                    <Form.Label>about me</Form.Label>
-                    <Form.Control  
+                    <p className="text-muted">only JPG and PNG files supported.</p>
+                    <h3>{userData.username}</h3>
+                    <label>about me</label>
+                    <input  
                         className="about"
                         as="textarea" 
-                        rows={3}
+                        divs={3}
                         type="about-me" 
                         placeholder="write your about me here for others to see"
                         onChange={inputChange}  
                         value={userData.about}
                     />
-                    <Form.Text className="text-muted d-block mt-3">maximum length: 500 characters</Form.Text>
-                        <Row>
-                            <Form.Label>location</Form.Label>
-                            <Form.Control 
+                    <p className="text-muted d-block mt-3">maximum length: 500 characters</p>
+                        <div>
+                            <label>location</label>
+                            <input 
                                 className="location"
                                 type="location" 
                                 placeholder="eg. los angeles, california"
                                 onChange={inputChange}
                                 value={userData.location}
-                                style={{border: '1px solid #EB3510', width: '70%'}}
                             />
-                            <Form.Label style={{marginTop:'2rem'}}>display name</Form.Label>
-                            <Form.Control 
+                            <label>display name</label>
+                            <input 
                                 className="displayname" 
                                 type="display-name"
                                 placeholder="change display name"
                                 onChange={inputChange}
                                 value={userData.displayname}
-                                style={{border: '1px solid #EB3510', width: '70%'}}
                             />
-                            <Form.Text className="text-muted">this will be the name other users see when they view your profile.</Form.Text>
-                        </Row>
-                        <Row>
-                            <Form.Label style={{marginTop:'2rem'}}>email</Form.Label>
-                            <Form.Control 
+                            <p className="text-muted">this will be the name other users see when they view your profile.</p>
+                        </div>
+                        <div>
+                            <label>email</label>
+                            <input 
                                 className="email"
                                 type="email-address" 
                                 placeholder="Change your email address"
                                 onChange={inputChange}
                                 value={userData.email}
-                                style={{border: '1px solid #EB3510', width: '70%'}}
                             />
-                            {error && <Form.Text className="text-muted">this email address already exists, please enter another</Form.Text>}
-                        </Row>
-                    <Button 
-                        variant="danger" 
+                            {error && <p className="text-muted">this email address already exists, please enter another</p>}
+                        </div>
+                    <button 
                         type="submit"
                         id="save-changes"
                         onClick={onSubmit}
-                        style={{marginTop: '1rem',backgroundColor:'#EB3510', borderColor: '#D6300F'}}
-                    >save changes</Button>
-                </Form>
-            </Row>}
-        </Container>
+                    >save changes</button>
+                </form>
+            </div>}
+        </div>
     )
 }
 

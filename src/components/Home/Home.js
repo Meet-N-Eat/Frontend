@@ -1,6 +1,5 @@
-import React, { useContext, useState } from 'react'
+import { useContext, useState } from 'react'
 import { Context } from '../../App'
-import { Row } from 'react-bootstrap'
 import Search from './Search'
 import SignUp from '../LoginSignUp/SignUp'
 
@@ -17,30 +16,22 @@ const Home = () => {
     }
 
     return (
-        <div>
+        <div className='border border-black h-full'>
             { loggedInUser.token ? 
-            <div id="loggedin-user-home">
-                <Row>
                     <Search />
-                </Row>
-            </div>
-            : 
-            <div>
-                <div id="new-user-home">
-                    <Row>
-                        <Search />
-                    </Row>
-                    <Row>
+                : 
+                <>
+                    <Search />
+                    <div className='row-start-4'>
                         <button 
-                        id="signup-button"
-                        onClick={signUpShowHandler}
+                            id="signup-button"
+                            onClick={signUpShowHandler}
                         >
                             Create an account
                         </button>
-                    </Row>
-                </div>
-                { signUpShow ? <SignUp /> : null }
-            </div>
+                    </div>
+                    { signUpShow ? <SignUp /> : null }
+                </>
             }
         </div>
     )

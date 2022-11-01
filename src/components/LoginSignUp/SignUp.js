@@ -1,5 +1,5 @@
 import React, {  useContext, useReducer, useState } from 'react';
-import { Button, Row, Modal } from 'react-bootstrap'
+import { Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 import { Context } from '../../App';
@@ -51,31 +51,29 @@ const SignUp = () => {
   return (
     <div>
       <Modal show={show} onHide={modalHandler}>
-        <Modal.Header closeButton>
-          <Modal.Title>Successfully registered!</Modal.Title>
-        </Modal.Header>
-        <Modal.Body>
-          <Row>
+        <div closeButton>
+          <h1>Successfully registered!</h1>
+        </div>
+        <div>
+          <div>
             <Link to='/profile'>
               <button>Set up your profile</button>
             </Link>
-          </Row>
-          <Row>
+          </div>
+          <div>
             <Link to='/'>Skip</Link>
-          </Row>
-        </Modal.Body>
+          </div>
+        </div>
       </Modal>
       <div className='container'>
         <h1>SIGN UP</h1>
-        <form 
-          style={{display:'flex', flexDirection:'column', justifyContent:'center', alignItems:"center"}} 
+        <form  
           action=''
           onSubmit={submitHandler}
         >
           {error.username && <h1>Username already taken, please try another.</h1>}
           <input
-            className='username' 
-            style={{marginBottom:'2%', border:'1px solid #D6300F', borderRadius:'5px', padding:'4px'}} 
+            className='username'  
             type='text' 
             placeholder='Username'
             onChange={changeHandler}
@@ -83,15 +81,13 @@ const SignUp = () => {
           ></input>
           <input
             className='password' 
-            style={{marginBottom:'2%', border:'1px solid #D6300F', borderRadius:'5px', padding:'4px'}} 
             type='password' 
             placeholder='Password'
             onChange={changeHandler}
             value={loggedInUser.password}
           ></input>
           <input
-            className='confirmPassword' 
-            style={{marginBottom:'2%', border:'1px solid #D6300F', borderRadius:'5px', padding:'4px'}} 
+            className='confirmPassword'  
             type='password' 
             placeholder='Confirm Password'
             onChange={changeHandler}
@@ -99,19 +95,17 @@ const SignUp = () => {
           ></input>
           {error.email && <h1>Email already taken, please try another.</h1>}
           <input
-            className='email' 
-            style={{marginBottom:'2%', border:'1px solid #D6300F', borderRadius:'5px', padding:'4px'}} 
+            className='email'  
             type='text' 
             placeholder='Email'
             onChange={changeHandler}
             value={loggedInUser.email}
           ></input>
-          <Button 
-            style={{borderRadius:'5px', backgroundColor:'#D6300F', color:'white', borderColor:'#D6300F'}} 
+          <button  
             type='submit'
             variant="primary">
               Submit
-          </Button>{' '}
+          </button>
         </form>
       </div>
       </div>

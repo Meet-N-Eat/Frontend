@@ -11,7 +11,7 @@ const Pagination = ({ cardsPerPage, totalCards, paginate }) => {
     return (
         <div>
             <ul>
-                <div className="flex flex-row justify-between">
+                <div className="">
                     {pageNumbers.map(number => (
                         <li 
                         key={number} 

@@ -1,6 +1,6 @@
 import moment from 'moment'
 import React, { useState, useEffect, useContext } from 'react'
-import { Card, OverlayTrigger, Popover, Button, ListGroup, Modal, NavDropdown, Col } from 'react-bootstrap'
+import { OverlayTrigger, Popover, Modal, NavDropdown } from 'react-bootstrap'
 import { BiDotsVertical } from 'react-icons/bi'
 import { Context } from '../../App'
 import { axiosAll } from '../../data-and-functions/axiosAll'
@@ -51,35 +51,31 @@ const Event = ({ event, updateEvents }) => {
     }
     else {
         return (
-            <Card style={{ width:'80%', marginBottom:'2%', border:"1px solid #D6300F" }}>
-                <Card.Header style={{backgroundColor:'#D6300F', color:'white'}}>
-                    <div style={{display:'flex', justifyContent:'space-between'}}>
+            <div>
+                <div>
+                    <div>
                         <p>{formattedDate} at {formattedHourAMPM}</p>
-                        <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical style={{color:'white'}} size={20} onClick={() => {console.log(event)}}/>}>
+                        <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical/>}>
                             <NavDropdown.Item>
-                                <Button variant='danger' style={{color:'black'}} onClick={() => {setShowEdit(true)}}>Edit</Button>
+                                <button>edit</button>
                             </NavDropdown.Item>
                             <NavDropdown.Item>
-                                <Button variant="danger" onClick={handleShow} style={{color:'black'}}>Cancel Event</Button>
+                                <button onClick={handleShow}>Cancel Event</button>
                                 <Modal show={show} onHide={handleClose}>
-                                    <Modal.Header closeButton>
-                                    <Modal.Title>Confirm cancelation</Modal.Title>
-                                    </Modal.Header>
-                                    <Modal.Body>Are you sure you don't want to meet a creep and get free food?</Modal.Body>
-                                    <Modal.Footer>
-                                    <Button variant="secondary" onClick={handleClose} style={{color:'black'}}>
-                                            Close
-                                        </Button>
-                                        <Button variant="danger" onClick={handleCancel} style={{backgroundColor:'#D6300F'}}>
-                                            Cancel Event
-                                        </Button>
-                                        </Modal.Footer>
-                                    </Modal>
-                                </NavDropdown.Item>
+                                    <div closeButton>
+                                        <h1>Confirm cancelation</h1>
+                                    </div>
+                                    <div>Are you sure you don't want to meet a creep and get free food?</div>
+                                    <div>
+                                        <button onClick={handleClose}> close </button>
+                                        <button onClick={handleCancel}> cancel event </button>
+                                    </div>
+                                </Modal>
+                            </NavDropdown.Item>
                         </NavDropdown>
                     </div>
-                </Card.Header>
-                <Card.Body style={{ display:'flex', flexDirection:'column', justifyContent:'center', alignItems:'center' }}>
+                </div>
+                <div>
                     <RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
                     {['bottom'].map((placement) => (
                         <OverlayTrigger
@@ -88,26 +84,23 @@ const Event = ({ event, updateEvents }) => {
                         placement={placement}
                         overlay={
                             <Popover id={`popover-positioned-${placement}`}>
-                            <Popover.Header style={{backgroundColor:'#F0704E', color:'white'}} as="h3">{`friends going`}</Popover.Header>
-                            <Popover.Body>
-                                <Col>
-                                    {event.participants.map(participant => 
-                                        <ProfileCard key={participant} user={participant} />
-                                        )
-                                    }
-                                </Col>
-                            </Popover.Body>
+                                <h3>{`friends going`}</h3>
+                                <div>
+                                    <div>
+                                        {event.participants.map(participant => 
+                                            <ProfileCard key={participant} user={participant} />
+                                            )
+                                        }
+                                    </div>
+                                </div>
                             </Popover>
                         }
                         >
-                        <Button 
-                            style={{backgroundColor:'white', border:'1px solid #D6300F', color:'black'}}
-                            onClick={toggleModal}
-                        >who's going?</Button>
+                        <button onClick={toggleModal}>who's going?</button>
                         </OverlayTrigger>
                     ))}     
-                </Card.Body>
-            </Card>
+                </div>
+            </div>
         )
     }
 }

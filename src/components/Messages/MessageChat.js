@@ -58,7 +58,6 @@ function MessageChat() {
       }
       <form onSubmit={submitHandler}>
         <input
-          style={{ border: '1px solid black'}}
           type="text"
           onChange={(e) => dispatchMessage({ key: 'body', value: e.target.value})}
           value={message.body}
