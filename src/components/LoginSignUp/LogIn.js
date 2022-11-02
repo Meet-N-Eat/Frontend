@@ -62,7 +62,7 @@ const LogIn = () => {
   return (
     <div className='flex items-center justify-center row-start-2'>
       <div className='flex flex-col justify-center bg-white opacity-90 rounded-2xl w-60 md:w-80 p-2'>
-        <h1 className="header text-2xl text-red-900 mx-auto pt-2 ">LOG IN</h1>
+        <h1 className='header text-2xl text-red-900 mx-auto pt-2'>LOG IN</h1>
         { location.state !== null && <p className='text-center mx-auto text-xs md:text-sm'>You'll need to log in to access this feature!</p> }
         <form  
           action=''
@@ -84,16 +84,16 @@ const LogIn = () => {
           ></input>
           {login.badLogin && <h1 className='text-center mb-2 text-xs md:text-sm text-red-800'>Incorrect username or password</h1>}
           <Row>
-          <button
-          className='account-button w-20 mb-4 mx-auto'  
-            type='submit' 
-          >Submit</button>
+            <button
+              className='account-button w-20 mb-4 mx-auto'  
+              type='submit' 
+            >Submit</button>
           </Row>
       </form>
       <Link 
-      className='mx-auto text-sm md:text-lg hover:text-red-900 hover:font-normal'
-      to='/users/authentication/signup'>
-      Not registered? Sign up here
+        className='mx-auto text-sm md:text-lg hover:text-red-900 hover:font-normal'
+        to='/users/authentication/signup'>
+          Not registered? Sign up here
       </Link>
     </div>
   </div>
