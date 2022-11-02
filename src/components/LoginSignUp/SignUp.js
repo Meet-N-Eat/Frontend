@@ -1,4 +1,4 @@
-import React, {  useContext, useReducer, useState } from 'react';
+import React, {  useContext, useEffect, useReducer, useState } from 'react';
 import { Modal } from 'react-bootstrap'
 import { Link } from 'react-router-dom';
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
@@ -10,6 +10,7 @@ const SignUp = () => {
   const { dispatchUser, loggedInUser } = useContext(Context)
   const [error, dispatchError] = useReducer(axiosReducer, { username: false, email: false })
   const [show, setShow] = useState(false)
+  const [success, setSuccess] = useState(false)
   
   // Functions
   // ===========================================================================
@@ -28,8 +29,6 @@ const SignUp = () => {
     e.preventDefault()
     if(loggedInUser.password === loggedInUser.confirmPassword) {
       const response = await axiosAll('POST', `/users/signup`, null, dispatchUser, loggedInUser)
-      await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
-      console.log(loggedInUser.token)
 
       if (typeof(response.data) === 'string') {
         response.data.indexOf('{ username:') !== -1 ?
@@ -39,14 +38,22 @@ const SignUp = () => {
         response.data.indexOf('{ email:') !== -1 ?
           dispatchError({ key: 'email', value: true })
           : dispatchError({ key: 'email', value: false })
-      } else {
-        setShow(!show)
+      } else if (!error.username && !error.email) {
+        setSuccess(true)
       }
-      if(!error.username && !error.email) setSuccess(true)
     }
   }
-
-
+  console.log(success)
+  useEffect(() => {
+    console.log(loggedInUser.token)
+  }, [loggedInUser.token])
+  
+  useEffect(() => {
+      if (success) {
+        axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
+        setShow(!show)
+      }
+  }, [loggedInUser.token])
 
 
   // Return
