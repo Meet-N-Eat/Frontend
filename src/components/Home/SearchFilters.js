@@ -3,7 +3,7 @@ import {citiesArray} from '../../data-and-functions/citiesArray'
 import {priceRangeArray} from '../../data-and-functions/priceRangeArray'
 
 const SearchFilters = ({searchCriteria, dispatch}) => {
-	const {city, category, price} = searchCriteria
+	const {city, category, price, wheelchairAccessible, openLate} = searchCriteria
 
 	// Handles click events for dropdown menus
 	function dropdownChoice(e) {
@@ -30,11 +30,11 @@ const SearchFilters = ({searchCriteria, dispatch}) => {
 					value: e.target.value,
 			  })
 	}
-	console.log('rendered')
+
 	return (
 		<div className='modala' id='filter-modal'>
 			<form className='modala-content p-3 flex flex-col items-center space-y-3'>
-				<p className='text-red-600 text-2xl'>Filter Options</p>
+				<p className='text-red-600 text-2xl font-normal'>Filter Options</p>
 				<div className='flex space-x-1'>
 					<select
 						defaultValue={city || 'select a city'}
@@ -79,22 +79,24 @@ const SearchFilters = ({searchCriteria, dispatch}) => {
 						))}
 					</select>
 				</div>
-				<div className='flex space-x-2'>
+				<div className='flex space-x-2 text-white'>
 					<label>
 						<input
 							type='checkbox'
-							className='wheelchairAccessible mr-1'
+							className='wheelchairAccessible'
 							value='yes'
-							onClick={checkboxClick}
+							checked={wheelchairAccessible}
+							onChange={checkboxClick}
 						/>
 						Wheelchair Accessible
 					</label>
 					<label>
 						<input
 							type='checkbox'
-							className='openLate mr-1'
+							className='openLate'
 							value='yes'
-							onClick={checkboxClick}
+							checked={openLate}
+							onChange={checkboxClick}
 						/>
 						Open Late
 					</label>

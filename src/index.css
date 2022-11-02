@@ -21,13 +21,14 @@
 		background-color: var(--modal-bg);
 	}
 
+	/* Named 'modala' and 'modala-content' to avoid conflict with existing bootstrap classes.  Rename to 'modal' and 'modal-content' once bootstrap is removed */
 	.modala {
 		@apply h-full w-full fixed z-10 top-0 left-0 overflow-auto bg-black/40;
 	}
 
 	.modala-content {
 		background-color: var(--modal-bg);
-		@apply p-8 border w-4/5 mt-36 mx-auto rounded-2xl;
+		@apply p-8 border w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl;
 	}
 
 	/* Centered white semi-rounded container */
@@ -54,6 +55,14 @@
 	/* Input boxes */
 	.input {
 		@apply shadow-sm bg-gray-500/80 focus:bg-white/90 placeholder-white focus:placeholder-gray-600 text-zinc-900 focus:outline-none indent-2.5 rounded-full p-1;
+	}
+
+	input[type="checkbox"] {
+		@apply mr-1 border
+	}
+
+	input[type="checkbox"]:checked {
+		@apply appearance-none bg-black border-white h-3 w-3
 	}
 }
 
