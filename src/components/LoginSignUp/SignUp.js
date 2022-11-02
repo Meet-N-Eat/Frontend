@@ -28,8 +28,8 @@ const SignUp = () => {
     e.preventDefault()
     if(loggedInUser.password === loggedInUser.confirmPassword) {
       const response = await axiosAll('POST', `/users/signup`, null, dispatchUser, loggedInUser)
-      const response2 = await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
-      setShow(!show)
+      await axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
+      console.log(loggedInUser.token)
 
       if (typeof(response.data) === 'string') {
         response.data.indexOf('{ username:') !== -1 ?
@@ -39,9 +39,14 @@ const SignUp = () => {
         response.data.indexOf('{ email:') !== -1 ?
           dispatchError({ key: 'email', value: true })
           : dispatchError({ key: 'email', value: false })
+      } else {
+        setShow(!show)
       }
+      if(!error.username && !error.email) setSuccess(true)
     }
   }
+
+
 
 
   // Return

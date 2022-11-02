@@ -63,7 +63,7 @@ const UserProfile = () => {
 
     return (
         <div>
-            {userData && <div>         
+            {loggedInUser.response && <div>         
                 <div className='profile-image'>
                     <img src={userData.profileimg || defaultImage} alt="profile-image"/>
                 </div>
