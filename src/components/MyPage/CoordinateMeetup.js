@@ -21,7 +21,7 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     const [date, dispatchDate] = useReducer(axiosReducer, {date: '' || formattedDate, time: '' || formattedHour})
     const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
     
-    useEffect(() => console.log('CoordinateMeetup Rendered'))
+    // useEffect(() => console.log('CoordinateMeetup Rendered'))
     
     useEffect(() => {
         axiosAll('GET', `/users/${loggedInUser.response._id}/favorites`, loggedInUser.token, dispatchFavorites)
@@ -118,7 +118,6 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
         })
     }
 
-    console.log(meetup)
     const editEventHandler = async () => {
         await axiosAll('PUT', `/users/events/edit`, loggedInUser.token, null, meetup)
         axiosAll('GET', `/users/${loggedInUser.response._id}/events`, loggedInUser.token, updateEvents)

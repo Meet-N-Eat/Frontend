@@ -15,6 +15,7 @@ import {
 	faCalendarDays,
 	faChevronRight,
 	faChevronLeft,
+	faC,
 } from '@fortawesome/free-solid-svg-icons'
 
 const MyPage = () => {
@@ -37,8 +38,28 @@ const MyPage = () => {
 	// slideIndex ref for event handlers
 	const slideIndex = useRef(0)
 
-	// Building state for slideItems
+	// Set first slide as initial state
 	const [slide, setSlide] = useState(slideItems[0])
+
+	// State for navigation tabs
+	const navTabs = {
+		0: {
+			title: 'invite',
+			icon: faPeopleArrows,
+		},
+		1: {
+			title: 'friends',
+			icon: faUsers,
+		},
+		2: {
+			title: 'favorites',
+			icon: faUtensils,
+		},
+		3: {
+			title: 'itinerary',
+			icon: faCalendarDays,
+		},
+	}
 
 	// Functions
 	// ===========================================================================
@@ -60,6 +81,26 @@ const MyPage = () => {
 	function tabHandler(tabIndex) {
 		slideIndex.current = tabIndex
 		setSlide(slideItems[slideIndex.current])
+	}
+
+	function generateTabs() {
+		const tabArray = []
+		for (const key in navTabs) {
+			tabArray.push (
+				<li
+					className='h-20 w-32 bg-red-700 text-white border-r border-black rounded-t-2xl grid items-center'
+					key={key} 
+					onClick={() => tabHandler(key)}>
+					<div className='text-center'>
+						<div>
+							<FontAwesomeIcon icon={navTabs[key].icon} />
+						</div>
+						<div>{navTabs[key].title}</div>
+					</div>
+				</li>
+			)
+		}
+		return tabArray
 	}
 
 	return (
@@ -85,44 +126,9 @@ const MyPage = () => {
 					)}
 				</div>
 			)}
-			<div>
-				<Navbar fixed='bottom' id='mypage-bar'>
-					<div>
-						<Nav.Link type='coordinate-meetup' onClick={() => tabHandler(0)}>
-							<div id='mypage-tabs'>
-								<div>
-									<FontAwesomeIcon icon={faPeopleArrows} />
-								</div>
-								<div>invite</div>
-							</div>
-						</Nav.Link>
-						<Nav.Link type='friends' onClick={() => tabHandler(1)}>
-							<div>
-								<div>
-									<FontAwesomeIcon icon={faUsers} />
-								</div>
-								<div>friends</div>
-							</div>
-						</Nav.Link>
-						<Nav.Link type='favorites' onClick={() => tabHandler(2)}>
-							<div>
-								<div>
-									<FontAwesomeIcon icon={faUtensils} />
-								</div>
-								<div>favorites</div>
-							</div>
-						</Nav.Link>
-						<Nav.Link type='itinerary' onClick={() => tabHandler(3)}>
-							<div>
-								<div>
-									<FontAwesomeIcon icon={faCalendarDays} />
-								</div>
-								<div>itinerary</div>
-							</div>
-						</Nav.Link>
-					</div>
-				</Navbar>
-			</div>
+			<ul className='w-full h-12 flex flex-row justify-center items-center fixed left-0 bottom-0'>
+				{generateTabs()}
+			</ul>
 		</div>
 	)
 }

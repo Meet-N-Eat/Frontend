@@ -1,5 +1,6 @@
 import {createContext, useReducer} from "react"
 import {Routes, Route} from "react-router-dom"
+import {axiosReducer} from "./data-and-functions/axiosAll"
 import FAQ from "./components/FAQ/FAQ"
 import Home from "./components/Home/Home"
 import Messages from "./components/Messages/Messages"
@@ -10,7 +11,6 @@ import RestaurantDetail from "./components/RestaurantDetail/RestaurantDetail"
 import SearchResults from "./components/SearchResults/SearchResults"
 import UserProfile from "./components/UserProfile/UserProfile"
 import FriendRequests from "./components/FriendRequests/FriendRequests"
-import {axiosReducer} from "./data-and-functions/axiosAll"
 import LogIn from "./components/LoginSignUp/LogIn"
 import SignUp from "./components/LoginSignUp/SignUp"
 
@@ -19,22 +19,13 @@ export const Context = createContext()
 function App() {
    // Context variables
    const [loggedInUser, dispatchUser] = useReducer(axiosReducer, {username: "", password: ""})
-   const defaultImage =
-      "https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460_1280.png"
-   const colorTemplate = {
-      darkColor: "#D6300F",
-      mediumColor: "#F7EEE6",
-      lightColor: "#F0704E",
-   }
 
    return (
       <div className='App h-full'>
          <Context.Provider
             value={{
-               loggedInUser: loggedInUser,
-               dispatchUser: dispatchUser,
-               defaultImage: defaultImage,
-               colorTemplate: colorTemplate,
+               'loggedInUser': loggedInUser,
+               'dispatchUser': dispatchUser,
             }}
          >
             <header className="row-start-1 row-span-1">
