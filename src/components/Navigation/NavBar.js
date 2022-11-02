@@ -17,10 +17,10 @@ const NavBar = () => {
 	// ===========================================================================
 	function userAuthClick(e) {
 		switch (e.target.text) {
-			case 'Log In':
+			case 'Log in':
 				option = 'login'
 				break
-			case 'Sign Up':
+			case 'Sign up':
 				option = 'signup'
 				break
 		}
@@ -79,7 +79,7 @@ const NavBar = () => {
 						className='nav-dropdown d-inline-block'
 						title={<FontAwesomeIcon icon={faCircleUser} className='icon' />}
 					>
-						{['Log In', 'Sign Up'].map((text, index) => (
+						{['Log in', 'Sign up'].map((text, index) => (
 							<NavDropdown.Item onClick={userAuthClick} key={index}>
 								{text}
 							</NavDropdown.Item>
