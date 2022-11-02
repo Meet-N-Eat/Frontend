@@ -4,14 +4,8 @@
 
 @import 'bootstrap/dist/css/bootstrap.min.css';
 
-@font-face {
-	font-family: DegularRegular;
-	src: url(../fonts/DegularDemo-Regular.otf);
-}
-@font-face {
-	font-family: DegularBlack;
-	src: url(../fonts/DegularDisplayDemo-Black.otf);
-}
+@import url('https://fonts.googleapis.com/css2?family=Rubik+Mono+One&display=swap');
+
 
 :root {
 	--bg-red: rgba(100, 0, 0, 0.85);
@@ -20,7 +14,7 @@
 @layer components {
 	/* Centered white semi-rounded container */
 	.center-white-container {
-		@apply grid place-items-center h-screen rounded-lg bg-slate-200;
+		@apply grid place-items-center h-screen rounded-lg bg-white;
 	}
 	/* Centered semi-rounded container */
 	.center-round-container {
@@ -84,6 +78,10 @@ main {
 .nav-dropdown,
 .dropdown-toggle::after {
 	display: none;
+}
+
+.nav-title {
+  font-family: 'Rubik Mono One', sans-serif;
 }
 
 /* .nav-title {
