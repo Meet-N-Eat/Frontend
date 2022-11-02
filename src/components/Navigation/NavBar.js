@@ -17,10 +17,10 @@ const NavBar = () => {
 	// ===========================================================================
 	function userAuthClick(e) {
 		switch (e.target.text) {
-			case 'Log In':
+			case 'Log in':
 				option = 'login'
 				break
-			case 'Sign Up':
+			case 'Sign up':
 				option = 'signup'
 				break
 		}
@@ -38,8 +38,8 @@ const NavBar = () => {
 		<div className='flex flex-row justify-between items-center p-3'>
 			<div>
 				<NavLink to='/'>
-					<h2 className='text-4xl text-white'>
-						MEET <span className='text-red-600'>N</span> EAT
+					<h2 className='text-4xl text-white nav-title'>
+						MEET <span className='text-red-800 -mx-6'>N</span> EAT
 					</h2>
 				</NavLink>
 			</div>
@@ -79,7 +79,7 @@ const NavBar = () => {
 						className='nav-dropdown d-inline-block'
 						title={<FontAwesomeIcon icon={faCircleUser} className='icon' />}
 					>
-						{['Log In', 'Sign Up'].map((text, index) => (
+						{['Log in', 'Sign up'].map((text, index) => (
 							<NavDropdown.Item onClick={userAuthClick} key={index}>
 								{text}
 							</NavDropdown.Item>
