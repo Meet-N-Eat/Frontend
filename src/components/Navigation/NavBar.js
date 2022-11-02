@@ -38,7 +38,7 @@ const NavBar = () => {
 		<div className='flex flex-row justify-between items-center p-3'>
 			<div>
 				<NavLink to='/'>
-					<h2 className='text-4xl text-white nav-title'>
+					<h2 className='text-5xl text-white nav-title'>
 						MEET <span className='text-red-800 -mx-6'>N</span> EAT
 					</h2>
 				</NavLink>

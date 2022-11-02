@@ -12,6 +12,10 @@
 }
 
 @layer components {
+	.bg-red {
+		background-color: var(--bg-red)
+	}
+
 	/* Centered white semi-rounded container */
 	.center-white-container {
 		@apply grid place-items-center h-screen rounded-lg bg-white;
@@ -26,7 +30,7 @@
 	}
 	/* Buttons */
 	.button {
-		@apply rounded-full p-2 text-black hover:text-white bg-white/90 hover:bg-red-900/80 hover:border shadow-md shadow-red-900;
+		@apply rounded-full p-2 text-black hover:text-white font-normal bg-white/90 hover:bg-red-900/80 hover:border shadow-md shadow-red-900;
 	}
 
 	.account-button {
@@ -41,12 +45,8 @@
 
 
 body {
-	/* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
-		'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-	-webkit-font-smoothing: antialiased;
-	-moz-osx-font-smoothing: grayscale; */
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 100;
+  	font-family: 'Montserrat', sans-serif;
+  	font-weight: 100;
 	height: 100vh;
 	width: 100vw;
 	background-image: url('./assets/homeBgImage.jpg');
