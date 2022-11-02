@@ -35,6 +35,7 @@ const SearchFilters = ({searchCriteria, dispatch}) => {
 		<form className='p-3 flex flex-col items-center space-y-3'>
 			<p className='text-red-600 text-2xl'>Filter Options</p>
 			<div className='flex space-x-1'>
+				<input type="text" className='input' placeholder='test' />
 				<select
 					defaultValue={city || 'select a city'}
 					className='city border rounded text-center'

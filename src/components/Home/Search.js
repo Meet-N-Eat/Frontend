@@ -50,7 +50,7 @@ const Search = () => {
 				<div className='w-8/12 mx-auto flex space-x-2'>
 					<div className='w-full'>
 						<input
-							className='input w-full p-1 rounded-full'
+							className='input w-full border border-white'
 							type='text'
 							placeholder='search by restaurant or category'
 							onChange={inputChange}
@@ -59,12 +59,15 @@ const Search = () => {
 					</div>
 					<div className='place-self-end'>
 						<button type='button' onClick={filterClick}>
-							<FontAwesomeIcon icon={faSliders} className='h-8' />
+							<FontAwesomeIcon icon={faSliders} className='icon h-8' />
 						</button>
 					</div>
 				</div>
 			</form>
-			<Modal show={showFilters} onHide={filterClick}>
+			<Modal 
+				show={showFilters} 
+				onHide={filterClick}
+			>
 				<SearchFilters
 					searchCriteria={searchCriteria}
 					dispatch={dispatch}
