@@ -48,12 +48,6 @@ const Search = () => {
 
 	return (
 		<div>
-			{showFilters &&
-				<SearchFilters
-					searchCriteria={searchCriteria}
-					dispatch={dispatch}
-				/>
-			}
 			<form onSubmit={formSubmit}>
 				<div className='w-8/12 mx-auto flex space-x-2'>
 					<div className='w-full'>
@@ -72,6 +66,12 @@ const Search = () => {
 					</div>
 				</div>
 			</form>
+			{showFilters &&
+				<SearchFilters
+					searchCriteria={searchCriteria}
+					dispatch={dispatch}
+				/>
+			}
 		</div>
 	)
 }

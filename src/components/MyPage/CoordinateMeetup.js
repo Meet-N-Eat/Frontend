@@ -1,6 +1,7 @@
 import React, { useEffect, useReducer } from 'react'
 import { Dropdown, Modal } from 'react-bootstrap'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
+import { hideModal } from '../../data-and-functions/hideModal'
 import ProfileCard from '../ProfileCard'
 import RestaurantCard from '../RestaurantCard'
 
@@ -24,6 +25,7 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     
     useEffect(() => {
         axiosAll('GET', `/users/${loggedInUser.response._id}/favorites`, loggedInUser.token, dispatchFavorites)
+        hideModal(null, modalHandler)
     },[])
     
     // Functions and Event Handlers
@@ -41,9 +43,9 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
     // Populates "who's invited?" modal
     function participantsList() {
         let participants = loggedInUser.response.friends
-        .filter(friend => meetup.participants
-            .find(participant => participant === friend))
-        .map(friend => <ProfileCard key={friend} user={friend} />)
+            .filter(friend => meetup.participants
+                .find(participant => participant === friend))
+            .map(friend => <ProfileCard key={friend} user={friend} />)
 
         if(participants.length === 0) participants = (<h1>You're rollin' solo, invite some of your peeps!</h1>)
 
@@ -159,35 +161,38 @@ return (
             >
                     invite friends
             </button>
-            <Modal show={showModal.invite} onHide={modalHandler}>
-                <div>
-                    {loggedInUser.response.friends.map((friend, index) => 
-                        <div key={friend}>
-                            <ProfileCard user={friend} />
-                            <input
-                                key={index}
-                                type='switch'
-                                id='invite-toggle'
-                                label='invite'
-                                defaultChecked={meetup.participants.find(participant => participant === friend)}
-                                onClick={() => inviteHandler(friend)}
-                            />
-                        </div>
-                    )}
+            {showModal.invite &&
+                <div className='modals'>
+                    <div className='modals-content'>
+                        {loggedInUser.response.friends.map((friend, index) => 
+                            <div key={friend}>
+                                <ProfileCard user={friend} />
+                                <input
+                                    key={index}
+                                    type='checkbox'
+                                    id='invite-toggle'
+                                    label='invite'
+                                    defaultChecked={meetup.participants.find(participant => participant === friend)}
+                                    onClick={() => inviteHandler(friend)}
+                                />
+                            </div>
+                        )}
+                    </div>
                 </div>
-            </Modal>
-
+            }
             <button 
                 className='invited'
                 onClick={modalHandler}
             >
                     who's invited?
             </button>
-            <Modal show={showModal.invited} onHide={modalHandler}>
-                <div>
-                    {participantsList()}
+            {showModal.invited &&
+                <div className='modals'>
+                    <div className='modals-content'>
+                        {participantsList()}
+                    </div>
                 </div>
-            </Modal>
+            }
 
             <div 
                 className="input-group">
