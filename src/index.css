@@ -36,8 +36,8 @@
 		@apply grid place-items-center h-screen rounded-lg bg-white;
 	}
 	/* Centered semi-rounded container */
-	.center-round-container {
-		@apply grid place-items-center h-screen rounded-full;
+	.centered {
+		@apply h-full w-full grid place-items-center;
 	}
 	/* NavBar */
 	.icon {

@@ -150,103 +150,101 @@ const CoordinateMeetup = ({ loggedInUser, dispatchUser, showEdit, event, formatt
 
 return (
     <div>
-        <div>
-            <h1>
-                    coordinate meet 'n eat with friends
-            </h1>
-
-            <button 
-                className='invite'
-                onClick={modalHandler}
-            >
-                    invite friends
-            </button>
-            {showModal.invite &&
-                <div className='modals'>
-                    <div className='modals-content'>
-                        {loggedInUser.response.friends.map((friend, index) => 
-                            <div key={friend}>
-                                <ProfileCard user={friend} />
-                                <input
-                                    key={index}
-                                    type='checkbox'
-                                    id='invite-toggle'
-                                    label='invite'
-                                    defaultChecked={meetup.participants.find(participant => participant === friend)}
-                                    onClick={() => inviteHandler(friend)}
-                                />
-                            </div>
-                        )}
-                    </div>
+        <h1>
+            coordinate meet 'n eat with friends
+        </h1>
+        <button 
+            className='invite'
+            onClick={modalHandler}
+        >
+                invite friends
+        </button>
+        {showModal.invite &&
+            <div className='modals'>
+                <div className='modals-content'>
+                    {loggedInUser.response.friends.map((friend, index) => 
+                        <div key={friend}>
+                            <ProfileCard user={friend} />
+                            <input
+                                key={index}
+                                type='checkbox'
+                                id='invite-toggle'
+                                label='invite'
+                                defaultChecked={meetup.participants.find(participant => participant === friend)}
+                                onClick={() => inviteHandler(friend)}
+                            />
+                        </div>
+                    )}
                 </div>
-            }
-            <button 
-                className='invited'
-                onClick={modalHandler}
-            >
-                    who's invited?
-            </button>
-            {showModal.invited &&
-                <div className='modals'>
-                    <div className='modals-content'>
-                        {participantsList()}
-                    </div>
-                </div>
-            }
-
-            <div 
-                className="input-group">
-                
-                {error.restaurant && <h2>select a restaurant for this event</h2>}
-                <Dropdown 
-                    onSelect={restaurantSelect} 
-                >
-                    <Dropdown.Toggle
-                        variant="secondary" 
-                        id="dropdown-basic"
-                    >
-                        {(meetup.restaurant && favorites.response && favorites.response.find(favorite => favorite._id === meetup.restaurant).name) || 'choose restaurant'}
-                    </Dropdown.Toggle>
-                    <Dropdown.Menu>
-                        { favorites.response && favorites.response.map(restaurant => 
-                            <Dropdown.Item 
-                                key={restaurant._id}
-                                eventKey={restaurant._id} 
-                            > 
-                                {restaurant.name} 
-                            </Dropdown.Item> )
-                        }
-                    </Dropdown.Menu>
-                </Dropdown>
-                {
-                    meetup.restaurant && 
-                    <RestaurantCard 
-                        restaurant={meetup.restaurant}
-                        hideLikeButton={true}
-                    />
-                }
-
-                {error.date && <h2>pick a date and time for this event</h2>}
-                <input
-                    onChange={(e) => dateSelect(e, 'date')} 
-                    type='date'
-                    value={date.date}
-                />
-                <input
-                    onChange={(e) => dateSelect(e, 'time')} 
-                    type='time'
-                    value={date.time} 
-                />
             </div>
-                {showEdit == true ? 
-                    <button 
-                    id="button-addon2"
-                    onClick={editEventHandler}> edit event </button>
-                    :
-                    <button
-                    id="button-addon2"
-                    onClick={createEventHandler}> create event </button>}
+        }
+        <button 
+            className='invited'
+            onClick={modalHandler}
+        >
+                who's invited?
+        </button>
+        {showModal.invited &&
+            <div className='modals'>
+                <div className='modals-content'>
+                    {participantsList()}
+                </div>
+            </div>
+        }
+
+        <div 
+            className="input-group">
+            
+            {error.restaurant && <h2>select a restaurant for this event</h2>}
+            <Dropdown 
+                onSelect={restaurantSelect} 
+            >
+                <Dropdown.Toggle
+                    variant="secondary" 
+                    id="dropdown-basic"
+                >
+                    {(meetup.restaurant && favorites.response && favorites.response.find(favorite => favorite._id === meetup.restaurant).name) || 'choose restaurant'}
+                </Dropdown.Toggle>
+                <Dropdown.Menu>
+                    { favorites.response && favorites.response.map(restaurant => 
+                        <Dropdown.Item 
+                            key={restaurant._id}
+                            eventKey={restaurant._id} 
+                        > 
+                            {restaurant.name} 
+                        </Dropdown.Item> )
+                    }
+                </Dropdown.Menu>
+            </Dropdown>
+            {
+                meetup.restaurant && 
+                <RestaurantCard 
+                    restaurant={meetup.restaurant}
+                    hideLikeButton={true}
+                />
+            }
+
+            {error.date && <h2>pick a date and time for this event</h2>}
+            <input
+                onChange={(e) => dateSelect(e, 'date')} 
+                type='date'
+                value={date.date}
+            />
+            <input
+                onChange={(e) => dateSelect(e, 'time')} 
+                type='time'
+                value={date.time} 
+            />
         </div>
+        {showEdit ? 
+            <button 
+            id="button-addon2"
+            onClick={editEventHandler}> edit event </button>
+            :
+            <button
+            id="button-addon2"
+            onClick={createEventHandler}> create event </button>
+        }
     </div>
 )
 }
