@@ -6,12 +6,12 @@ module.exports = {
   theme: {
     extend: {},
   },
-  variants: {
-    extend: {
-      backgroundColor: ['checked'],
-      borderColor: ['checked'],
-      color: ['checked']
-    }
-  },
+  // variants: {
+  //   extend: {
+  //     backgroundColor: ['checked'],
+  //     borderColor: ['checked'],
+  //     color: ['checked']
+  //   }
+  // },
   plugins: [],
 }

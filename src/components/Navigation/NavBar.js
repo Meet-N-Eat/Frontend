@@ -3,7 +3,7 @@ import {NavDropdown} from 'react-bootstrap'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {Context} from '../../App'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUserGroup, faCommentDots, faGear, faCircleInfo, faCircleUser} from '@fortawesome/free-solid-svg-icons'
+import {faUserGroup, faCommentDots, faGear, faCircleInfo, faCircleUser, faBars} from '@fortawesome/free-solid-svg-icons'
 import defaultImage from '../../assets/defaultImage.png'
 
 const NavBar = () => {
