@@ -1,8 +1,8 @@
-import {useReducer, useState} from 'react'
+import {useReducer, useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
-import { Modal } from 'react-bootstrap'
 import {getSearchParams} from '../../data-and-functions/searchParams'
 import {searchCriteriaReducer} from '../../data-and-functions/searchCriteriaReducer'
+import { hideModal } from '../../data-and-functions/hideModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSliders } from '@fortawesome/free-solid-svg-icons'
 import SearchFilters from './SearchFilters'
@@ -25,6 +25,8 @@ const Search = () => {
 	const [showFilters, setShowFilters] = useState(false)
 	const navigate = useNavigate()
 
+	useEffect(() => hideModal(setShowFilters), [])
+
 	// Event handlers
 	// ===========================================================================
 	function inputChange(e) {
@@ -46,6 +48,12 @@ const Search = () => {
 
 	return (
 		<div>
+			{showFilters &&
+				<SearchFilters
+					searchCriteria={searchCriteria}
+					dispatch={dispatch}
+				/>
+			}
 			<form onSubmit={formSubmit}>
 				<div className='w-8/12 mx-auto flex space-x-2'>
 					<div className='w-full'>
@@ -64,15 +72,6 @@ const Search = () => {
 					</div>
 				</div>
 			</form>
-			<Modal 
-				show={showFilters} 
-				onHide={filterClick}
-			>
-				<SearchFilters
-					searchCriteria={searchCriteria}
-					dispatch={dispatch}
-				/>
-			</Modal>
 		</div>
 	)
 }

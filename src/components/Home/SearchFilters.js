@@ -30,76 +30,77 @@ const SearchFilters = ({searchCriteria, dispatch}) => {
 					value: e.target.value,
 			  })
 	}
-
+	console.log('rendered')
 	return (
-		<form className='p-3 flex flex-col items-center space-y-3'>
-			<p className='text-red-600 text-2xl'>Filter Options</p>
-			<div className='flex space-x-1'>
-				<input type="text" className='input' placeholder='test' />
-				<select
-					defaultValue={city || 'select a city'}
-					className='city border rounded text-center'
-					onChange={dropdownChoice}
-				>
-					<option value='select a city' disabled hidden>
-						select a city
-					</option>
-					{citiesArray.map(city => (
-						<option value={city} key={city}>
-							{city}
+		<div className='modala' id='filter-modal'>
+			<form className='modala-content p-3 flex flex-col items-center space-y-3'>
+				<p className='text-red-600 text-2xl'>Filter Options</p>
+				<div className='flex space-x-1'>
+					<select
+						defaultValue={city || 'select a city'}
+						className='city border rounded text-center'
+						onChange={dropdownChoice}
+					>
+						<option value='select a city' disabled hidden>
+							select a city
 						</option>
-					))}
-				</select>
-				<select
-					defaultValue={category || 'select a category'}
-					className='category border rounded text-center'
-					onChange={dropdownChoice}
-				>
-					<option value='select a category' disabled hidden>
-						select a category
-					</option>
-					{categoriesArray.map(category => (
-						<option value={category} key={category}>
-							{category}
+						{citiesArray.map(city => (
+							<option value={city} key={city}>
+								{city}
+							</option>
+						))}
+					</select>
+					<select
+						defaultValue={category || 'select a category'}
+						className='category border rounded text-center'
+						onChange={dropdownChoice}
+					>
+						<option value='select a category' disabled hidden>
+							select a category
 						</option>
-					))}
-				</select>
-				<select
-					defaultValue={price || 'select price range'}
-					className='price border rounded text-center'
-					onChange={dropdownChoice}
-				>
-					<option value='select price range' disabled hidden>
-						select price range
-					</option>
-					{priceRangeArray.map(price => (
-						<option value={price} key={price}>
-							{price}
+						{categoriesArray.map(category => (
+							<option value={category} key={category}>
+								{category}
+							</option>
+						))}
+					</select>
+					<select
+						defaultValue={price || 'select price range'}
+						className='price border rounded text-center'
+						onChange={dropdownChoice}
+					>
+						<option value='select price range' disabled hidden>
+							select price range
 						</option>
-					))}
-				</select>
-			</div>
-			<div className='flex space-x-2'>
-				<label>
-					<input
-						type='checkbox'
-						className='wheelchairAccessible mr-1'
-						value='yes'
-						onClick={checkboxClick}
-					/>
-					Wheelchair Accessible
-				</label>
-				<label>
-					<input
-						type='checkbox'
-						className='openLate mr-1'
-						value='yes'
-						onClick={checkboxClick}
-					/>
-					Open Late
-				</label>
-			</div>
-		</form>
+						{priceRangeArray.map(price => (
+							<option value={price} key={price}>
+								{price}
+							</option>
+						))}
+					</select>
+				</div>
+				<div className='flex space-x-2'>
+					<label>
+						<input
+							type='checkbox'
+							className='wheelchairAccessible mr-1'
+							value='yes'
+							onClick={checkboxClick}
+						/>
+						Wheelchair Accessible
+					</label>
+					<label>
+						<input
+							type='checkbox'
+							className='openLate mr-1'
+							value='yes'
+							onClick={checkboxClick}
+						/>
+						Open Late
+					</label>
+				</div>
+			</form>
+		</div>
 	)
 }
 

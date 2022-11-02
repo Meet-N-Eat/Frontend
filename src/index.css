@@ -8,12 +8,26 @@
 
 
 :root {
-	--bg-red: rgba(100, 0, 0, 0.85);
+	--main-bg: rgba(100, 0, 0, 0.80);
+	--modal-bg: rgba(50,50,50, 0.80)
 }
 
 @layer components {
-	.bg-red {
-		background-color: var(--bg-red)
+	.main-bg {
+		background-color: var(--main-bg);
+	}
+
+	.modal-bg {
+		background-color: var(--modal-bg);
+	}
+
+	.modala {
+		@apply h-full w-full fixed z-10 top-0 left-0 overflow-auto bg-black/40;
+	}
+
+	.modala-content {
+		background-color: var(--modal-bg);
+		@apply p-8 border w-4/5 mt-36 mx-auto rounded-2xl;
 	}
 
 	/* Centered white semi-rounded container */
