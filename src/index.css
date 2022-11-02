@@ -39,25 +39,10 @@
 		@apply rounded-full p-2 text-white hover:text-black bg-red-900/80 hover:bg-white/90 hover:border shadow-md shadow-black;
 	}
 
-
-
-
 	/* Input boxes */
 	.input {
 		@apply shadow-sm bg-gray-500/80 focus:bg-white/90 placeholder-white focus:placeholder-gray-600 text-zinc-900 focus:outline-none indent-2.5 rounded-full p-1;
 	}
-
-	.white {
-
-	}
-
-	.grey {
-		
-	}
-}
-
-.bg-red {
-	background-color: var(--bg-red);
 }
 
 * {
