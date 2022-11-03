@@ -28,11 +28,11 @@ function Messages() {
   }, [messages.response])
 
   return (
-    <div>
-      <div>
-        <Dropdown>
+    <div className='centered bg-red-900/90 w-3/4 mx-auto flex flex-col p-4 rounded-2xl'> 
+      <div className='w-full'>
+        <Dropdown className='float-right outline-none'>
           <Dropdown.Toggle>
-            <FontAwesomeIcon icon={faMessage}/>
+            <FontAwesomeIcon className='' icon={faMessage}/>
           </Dropdown.Toggle>
           <Dropdown.Menu>
             {loggedInUser.response && 
@@ -51,6 +51,7 @@ function Messages() {
       {messages.threadArray && messages.threadArray.length > 0 ?
         messages.threadArray.map(thread => 
           <Link 
+            className='flex flex-col w-full p-1 rounded-xl text-white m-1'
             key={thread[thread.length - 1]._id} 
             to={`/messages/${thread[0].sender != loggedInUser.response._id ? thread[0].sender : thread[0].recipient}`} 
           >
