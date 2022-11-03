@@ -24,7 +24,7 @@ const Home = () => {
 					<button 
 						className='button row-start-4 mx-auto'
 						onClick={signUpShowHandler}>
-						Create an account
+						Create account
 					</button>
 					{signUpShow ? <SignUp /> : null}
 				</>

@@ -24,7 +24,7 @@
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
-		@apply h-full w-full fixed z-10 top-0 left-0 overflow-auto bg-black/40;
+		@apply h-screen w-screen fixed z-10 top-0 left-0 overflow-auto bg-black/40;
 	}
 
 	.modals-content {
@@ -78,6 +78,11 @@
 	
 	.left {
 		transform: rotate(135deg);
+	}
+
+	/* Effects */
+	.friend-invited {
+		
 	}
 }
 

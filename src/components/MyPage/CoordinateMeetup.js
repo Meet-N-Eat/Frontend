@@ -168,7 +168,7 @@ const CoordinateMeetup = ({
 			error.submit = false
 		}
 	}, [error])
-
+	console.log(meetup)
 	return (
 		<div className='invite-container'>
 			<h1 className='text-2xl'>meet 'n eat with friends</h1>
@@ -210,20 +210,30 @@ const CoordinateMeetup = ({
 
 			{showModal.invite && (
 				<div className='modals'>
-					<div className='modals-content'>
-						{loggedInUser.response.friends.map((friend, index) => (
-							<div key={friend}>
-								<ProfileCard user={friend} />
-								<input
-									key={index}
-									type='checkbox'
-									id='invite-toggle'
-									label='invite'
-									defaultChecked={meetup.participants.find(
+					<div className='modals-content flex space-x-3'>
+						{loggedInUser.response.friends.map((friend) => (
+							<div key={friend} className='text-center'>
+								<div 
+									classname={meetup.participants.find(
 										participant => participant === friend
-									)}
+									) && 'friend-invited'}
 									onClick={() => inviteHandler(friend)}
-								/>
+								>
+									<ProfileCard user={friend} />
+								</div>
+								{/* <label>
+									<input
+										key={index}
+										type='checkbox'
+										id='invite-toggle'
+										label='invite'
+										defaultChecked={meetup.participants.find(
+											participant => participant === friend
+										)}
+										onClick={() => inviteHandler(friend)}
+									/>
+									invite
+								</label> */}
 							</div>
 						))}
 					</div>
@@ -232,7 +242,7 @@ const CoordinateMeetup = ({
 
 			{showModal.invited && (
 				<div className='modals'>
-					<div className='modals-content'>{participantsList()}</div>
+					<div className='modals-content flex space-x-3'>{participantsList()}</div>
 				</div>
 			)}
 		</div>
