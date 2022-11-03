@@ -6,7 +6,7 @@ const Message = ({ message }) => {
     const [date, time] = formatDateTime(message.createdAt)
 
 return (
-    <div className="bg-slate-400/50 rounded-2xl flex p-2">
+    <div className="bg-white/90 rounded-2xl flex p-2">
         <div>
             <ProfileCard user={message.sender} />
         </div>
