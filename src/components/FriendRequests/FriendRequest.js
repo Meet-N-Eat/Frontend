@@ -20,31 +20,23 @@ const FriendRequest = ({ friendRequest, dispatchRequests }) => {
     }
 
 return (
-   
-    <div className=''>
-        <div>
+    <div className='bg-white rounded-2xl flex flex-col md:flex-row p-2 h-80 md:h-40'>
+        <div className='mx-auto md:flex-1'>
             <ProfileCard user={friendRequest.sender} />
         </div>
-        
-        <div className='friend-card'>
-            <div>
-                <div>
-                    <p>{friendRequest.body}</p>
-                </div>
-                <div>
-                    <div aria-label="Basic example">
-                        <button 
-                            variant="secondary"
-                            onClick={() => inviteHandler('accept')}>
-                                accept
-                        </button>
-                        <button 
-                            variant="secondary"
-                            onClick={() => inviteHandler('decline')}>
-                                decline
-                        </button>
-                    </div>
-                </div>
+        <div className='p-2 text-center space-y-4 md:space-y-2'>
+            <p className='max-h-7'>{friendRequest.body}</p>
+            <div className='flex flex-col space-y-2 p-2'>
+                <button 
+                    className='account-button'
+                    onClick={() => inviteHandler('accept')}>
+                        accept
+                </button>
+                <button 
+                    className='account-button'
+                    onClick={() => inviteHandler('decline')}>
+                        decline
+                </button>
             </div>
         </div>
     </div>
