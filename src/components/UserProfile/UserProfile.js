@@ -62,23 +62,24 @@ const UserProfile = () => {
     }
 
     return (
-        <div>
+        <div className='centered bg-white/90 rounded-2xl w-1/2 mx-auto'>
             {loggedInUser.response && <div>         
-                <div className='profile-image'>
-                    <img src={userData.profileimg || defaultImage} alt="profile-image"/>
-                </div>
-                <form> 
-                    <input className="profileimg"
+                    <div className='centered rounded-circle'>
+                        <img className='rounded-circle mb-1 border-2 border-red-900' src={userData.profileimg || defaultImage} alt="profile-image"/>
+                    </div>
+                <form className='flex flex-col'> 
+                    <input className="profileimg input placeholder-white"
                         type="profile-image" 
                         placeholder="paste a picture URL here"
                         onChange={inputChange}  
                         value={userData.profileimg}
-                    />
-                    <p className="text-muted">only JPG and PNG files supported.</p>
+                        />
+                        <p className="text-red-900 border-b-[1px] border-red-900 pb-1">only JPG and PNG files supported.</p>
                     <h3>{userData.username}</h3>
-                    <label>about me</label>
-                    <input  
-                        className="about"
+                    <label className='text-red-900 mx-auto mt-1'>about me</label>
+                    <textarea
+                        rows='2'  
+                        className="about input p-2"
                         as="textarea" 
                         divs={3}
                         type="about-me" 
@@ -86,38 +87,39 @@ const UserProfile = () => {
                         onChange={inputChange}  
                         value={userData.about}
                     />
-                    <p className="text-muted d-block mt-3">maximum length: 500 characters</p>
-                        <div>
-                            <label>location</label>
+                    <p className="text-red-900 d-block border-b-[1px] border-red-900 pb-1">maximum length: 500 characters</p>
+                        <div className='centered'>
+                            <label className='text-red-900 mt-1'>location</label>
                             <input 
-                                className="location"
+                                className="location input w-full"
                                 type="location" 
                                 placeholder="eg. los angeles, california"
                                 onChange={inputChange}
                                 value={userData.location}
                             />
-                            <label>display name</label>
+                            <label className='text-red-900'>display name</label>
                             <input 
-                                className="displayname" 
+                                className="displayname input w-full" 
                                 type="display-name"
                                 placeholder="change display name"
                                 onChange={inputChange}
                                 value={userData.displayname}
                             />
-                            <p className="text-muted">this will be the name other users see when they view your profile.</p>
+                            <p className="text-red-900">this will be the name other users see when they view your profile.</p>
                         </div>
-                        <div>
-                            <label>email</label>
+                        <div className='centered'>
+                            <label className='text-red-900'>email</label>
                             <input 
-                                className="email"
+                                className="email input w-full"
                                 type="email-address" 
                                 placeholder="Change your email address"
                                 onChange={inputChange}
                                 value={userData.email}
                             />
-                            {error && <p className="text-muted">this email address already exists, please enter another</p>}
+                            {error && <p className="text-red-900">this email address already exists, please enter another</p>}
                         </div>
                     <button 
+                        className='account-button w-1/2 mx-auto mt-1'
                         type="submit"
                         id="save-changes"
                         onClick={onSubmit}
