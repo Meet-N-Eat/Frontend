@@ -34,7 +34,7 @@
 
 	/* Page containers */
 	.centered {
-		@apply h-full w-full grid place-items-center;
+		@apply row-span-5 grid place-items-center;
 	}
 
 	/* Icons */
@@ -43,7 +43,7 @@
 	}
 	/* Buttons */
 	.button {
-		@apply rounded-full p-2 text-black hover:text-white font-normal bg-white/90 hover:bg-red-900/80 hover:border shadow-md shadow-red-900;
+		@apply h-11 w-40 rounded-full p-2 text-black hover:text-white font-normal bg-white/90 hover:bg-red-900/80 hover:border shadow-md shadow-red-900;
 	}
 
 	.account-button {
@@ -63,6 +63,10 @@
 		@apply appearance-none bg-black border-white h-3 w-3
 	}
 
+	select, input[type='date'], input[type='time'] {
+		@apply  border rounded text-center text-black
+	}
+
 	/* Arrows */
 	.arrow {
 		@apply h-14 w-14 border-gray-500/80 border-r-4 border-b-4 rounded;
@@ -77,6 +81,9 @@
 	}
 }
 
+.round {
+	border-radius: 50%;
+}
 
 body {
   	font-family: 'Montserrat', sans-serif;
@@ -122,6 +129,12 @@ main {
 
 .nav-title {
   font-family: 'Rubik Mono One', sans-serif;
+}
+
+.invite-container {
+	height: 600px;
+	width: 600px;
+	@apply main-bg text-white rounded-full flex flex-col justify-center items-center space-y-4;
 }
 
 

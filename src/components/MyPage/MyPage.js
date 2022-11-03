@@ -13,9 +13,6 @@ import {
 	faUsers,
 	faPeopleArrows,
 	faCalendarDays,
-	faChevronRight,
-	faChevronLeft,
-	faC,
 } from '@fortawesome/free-solid-svg-icons'
 
 const MyPage = () => {
@@ -99,27 +96,29 @@ const MyPage = () => {
 		return tabArray
 	}
 
+	// FUNCTION RETURN
+	// ===========================================================================
 	return (
-		<div className='centered row-start-2'>
+		<div className='centered'>
 			{loggedInUser && loggedInUser.response && (
-				<div className='flex flex-row'>
-					{slideIndex.current !== 0 && (
-						<div>
+				<div className='h-full w-full flex justify-around items-center'>
+					{slide}
+					<div className='w-11/12 max-w-7xl fixed top-2/4 flex justify-between -z-10'>
+						{slideIndex.current !== 0 ? (
 							<button id='left-btn' onClick={() => slideHandler('left')}>
 								<div className='arrow left'></div>
 							</button>
-						</div>
-					)}
-					<div>
-						{slide}
-					</div>
-					{slideIndex.current !== 3 && (
-						<div className='text-4xl text-gray-500/80'>
+						) : (
+							<div></div>
+						)}
+						{slideIndex.current !== 3 ? (
 							<button id='right-btn' onClick={() => slideHandler('right')}>
 								<div className='arrow right'></div>
 							</button>
-						</div>
-					)}
+						) : (
+							<div></div>
+						)}
+					</div>
 				</div>
 			)}
 			<ul className='w-full h-12 flex flex-row justify-center items-center fixed left-0 bottom-0'>

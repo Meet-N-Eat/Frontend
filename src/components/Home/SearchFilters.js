@@ -38,42 +38,42 @@ const SearchFilters = ({searchCriteria, dispatch}) => {
 				<div className='flex space-x-1'>
 					<select
 						defaultValue={city || 'select a city'}
-						className='city border rounded text-center'
+						className='city'
 						onChange={dropdownChoice}
 					>
 						<option value='select a city' disabled hidden>
 							select a city
 						</option>
 						{citiesArray.map(city => (
-							<option value={city} key={city}>
+							<option key={city} value={city}>
 								{city}
 							</option>
 						))}
 					</select>
 					<select
 						defaultValue={category || 'select a category'}
-						className='category border rounded text-center'
+						className='category'
 						onChange={dropdownChoice}
 					>
 						<option value='select a category' disabled hidden>
 							select a category
 						</option>
 						{categoriesArray.map(category => (
-							<option value={category} key={category}>
+							<option key={category} value={category}>
 								{category}
 							</option>
 						))}
 					</select>
 					<select
 						defaultValue={price || 'select price range'}
-						className='price border rounded text-center'
+						className='price'
 						onChange={dropdownChoice}
 					>
 						<option value='select price range' disabled hidden>
 							select price range
 						</option>
 						{priceRangeArray.map(price => (
-							<option value={price} key={price}>
+							<option key={price} value={price}>
 								{price}
 							</option>
 						))}
