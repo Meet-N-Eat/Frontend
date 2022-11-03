@@ -1,20 +1,19 @@
-import { useContext } from 'react';
-import { Context } from '../../App';
+import defaultImage from '../../assets/defaultImage.png'
 
 const FriendCard = ({ friend }) => {
-  const { defaultImage } = useContext(Context);
 
   return (
-    <div>
+    <div className='flex flex-col items-center space-y-3 pb-4'>
+      <div className='friend-image'>
+        <img 
+          src={friend.profileimg || defaultImage} 
+          alt='friend-profile'
+          className='profile-image img'/>
+      </div>
       <div>
-        <div>
-          <img src={friend.profileimg || defaultImage}/>
-        </div>
-        <div>
-          <div>
-            <h1>{friend.username}</h1>
-            <p>{friend.location}</p>
-          </div>
+        <div className='text-center text-white text-sm md:text-base'>
+          <h1 className='font-normal'>{friend.username}</h1>
+          <p>{friend.location}</p>
         </div>
       </div>
     </div>
