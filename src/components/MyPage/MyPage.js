@@ -64,17 +64,13 @@ const MyPage = () => {
 	// Functions
 	// ===========================================================================
 
-	function rightSlideHandler() {
-		if (slideIndex.current < 3) {
-			slideIndex.current++
-		}
-		setSlide(slideItems[slideIndex.current])
-	}
-
-	function leftSlideHandler() {
-		if (slideIndex.current > 0) {
-			slideIndex.current--
-		}
+	function slideHandler(direction) {
+		direction === 'right' ? (
+			slideIndex.current < 3 && slideIndex.current++
+		) : (
+			slideIndex.current > 0 && slideIndex.current--
+		)
+		
 		setSlide(slideItems[slideIndex.current])
 	}
 
@@ -106,21 +102,21 @@ const MyPage = () => {
 	return (
 		<div className='centered row-start-2'>
 			{loggedInUser && loggedInUser.response && (
-				<div>
+				<div className='flex flex-row'>
 					{slideIndex.current !== 0 && (
 						<div>
-							<button id='left-btn' onClick={leftSlideHandler}>
-								<FontAwesomeIcon icon={faChevronLeft} />
+							<button id='left-btn' onClick={() => slideHandler('left')}>
+								<div className='arrow left'></div>
 							</button>
 						</div>
 					)}
-					<div className=''>
+					<div>
 						{slide}
 					</div>
 					{slideIndex.current !== 3 && (
-						<div>
-							<button id='right-btn' onClick={rightSlideHandler}>
-								<FontAwesomeIcon icon={faChevronRight} />
+						<div className='text-4xl text-gray-500/80'>
+							<button id='right-btn' onClick={() => slideHandler('right')}>
+								<div className='arrow right'></div>
 							</button>
 						</div>
 					)}

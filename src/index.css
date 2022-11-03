@@ -13,6 +13,7 @@
 }
 
 @layer components {
+	/* Background colors */
 	.main-bg {
 		background-color: var(--main-bg);
 	}
@@ -21,7 +22,7 @@
 		background-color: var(--modal-bg);
 	}
 
-	/* Named 'modals' and 'modals-content' to avoid conflict with existing bootstrap classes.  Rename to 'modal' and 'modal-content' if bootstrap is removed */
+	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
 		@apply h-full w-full fixed z-10 top-0 left-0 overflow-auto bg-black/40;
 	}
@@ -31,15 +32,12 @@
 		@apply p-8 border w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl;
 	}
 
-	/* Centered white semi-rounded container */
-	.center-white-container {
-		@apply grid place-items-center h-screen rounded-lg bg-white;
-	}
-	/* Centered semi-rounded container */
+	/* Page containers */
 	.centered {
 		@apply h-full w-full grid place-items-center;
 	}
-	/* NavBar */
+
+	/* Icons */
 	.icon {
 		@apply rounded-full h-10 w-10 text-white;
 	}
@@ -63,6 +61,19 @@
 
 	input[type="checkbox"]:checked {
 		@apply appearance-none bg-black border-white h-3 w-3
+	}
+
+	/* Arrows */
+	.arrow {
+		@apply h-14 w-14 border-gray-500/80 border-r-4 border-b-4 rounded;
+	}
+
+	.right {
+		transform: rotate(-45deg);
+	}
+	
+	.left {
+		transform: rotate(135deg);
 	}
 }
 
