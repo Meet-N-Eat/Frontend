@@ -154,9 +154,42 @@ main {
 	padding: 0px;
 	margin: auto;
 }
+
+.friend-image {
+  width: 100px;
+  height: 100px;
+  display: inline-block;
+	position: relative;
+	overflow: hidden;
+	object-fit: cover;
+	padding: 0px;
+	margin: auto;
+}
+
+@media (max-width: 768px) {
+  .friend-image {
+    width: 75px;
+    height: 75px;
+    display: inline-block;
+    position: relative;
+    overflow: hidden;
+    object-fit: cover;
+    padding: 0px;
+    margin: auto;
+  }
+  
+  
+}
+
 /* Targets image inside wrapper div */
 .profile-image img {
 	border-radius: 50%;
+	width: auto;
+	height: 100%;
+}
+
+.friend-image img {
+  border-radius: 50%;
 	width: auto;
 	height: 100%;
 }
