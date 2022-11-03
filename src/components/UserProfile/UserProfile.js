@@ -68,7 +68,7 @@ const UserProfile = () => {
                         <img className='rounded-circle mb-1 border-2 border-red-900' src={userData.profileimg || defaultImage} alt="profile-image"/>
                     </div>
                 <form className='flex flex-col'> 
-                    <input className="profileimg input placeholder-white"
+                    <input className="profileimg input placeholder-white text-white focus:bg-red-900/60 focus:placeholder-white"
                         type="profile-image" 
                         placeholder="paste a picture URL here"
                         onChange={inputChange}  
@@ -79,7 +79,7 @@ const UserProfile = () => {
                     <label className='text-red-900 mx-auto mt-1'>about me</label>
                     <textarea
                         rows='2'  
-                        className="about input p-2"
+                        className="about input p-2 text-white focus:bg-red-900/60 focus:placeholder-white"
                         as="textarea" 
                         divs={3}
                         type="about-me" 
@@ -91,7 +91,7 @@ const UserProfile = () => {
                         <div className='centered'>
                             <label className='text-red-900 mt-1'>location</label>
                             <input 
-                                className="location input w-full"
+                                className="location input w-full text-white focus:bg-red-900/60 focus:placeholder-white"
                                 type="location" 
                                 placeholder="eg. los angeles, california"
                                 onChange={inputChange}
@@ -99,7 +99,7 @@ const UserProfile = () => {
                             />
                             <label className='text-red-900'>display name</label>
                             <input 
-                                className="displayname input w-full" 
+                                className="displayname input w-full text-white focus:bg-red-900/60 focus:placeholder-white" 
                                 type="display-name"
                                 placeholder="change display name"
                                 onChange={inputChange}
@@ -110,7 +110,7 @@ const UserProfile = () => {
                         <div className='centered'>
                             <label className='text-red-900'>email</label>
                             <input 
-                                className="email input w-full"
+                                className="email input w-full text-white focus:bg-red-900/60 focus:placeholder-white"
                                 type="email-address" 
                                 placeholder="Change your email address"
                                 onChange={inputChange}
