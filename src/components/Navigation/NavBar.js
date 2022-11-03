@@ -3,7 +3,7 @@ import {NavDropdown} from 'react-bootstrap'
 import {NavLink, useNavigate} from 'react-router-dom'
 import {Context} from '../../App'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faUserGroup, faCommentDots, faGear, faCircleInfo, faCircleUser} from '@fortawesome/free-solid-svg-icons'
+import {faUserGroup, faCommentDots, faGear, faCircleInfo, faCircleUser, faBars} from '@fortawesome/free-solid-svg-icons'
 import defaultImage from '../../assets/defaultImage.png'
 
 const NavBar = () => {
@@ -38,7 +38,7 @@ const NavBar = () => {
 		<div className='flex flex-row justify-between items-center p-3'>
 			<div>
 				<NavLink to='/'>
-					<h2 className='text-4xl text-white nav-title'>
+					<h2 className='text-5xl text-white nav-title'>
 						MEET <span className='text-red-800 -mx-6'>N</span> EAT
 					</h2>
 				</NavLink>

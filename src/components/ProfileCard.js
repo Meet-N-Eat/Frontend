@@ -13,14 +13,14 @@ const ProfileCard = ({user}) => {
    }, [])
 
    return (
-      <div>
+      <div className="main-bg h-32 w-32 rounded-2xl grid justify-items-center">
          {userInfo.response && (
-            <div>
+            <>
                <div className='profile-image'>
                   <img src={userInfo.response.profileimg || defaultImage} alt='profile' />
                </div>
                <p>{userInfo.response.displayname || userInfo.response.username}</p>
-            </div>
+            </>
          )}
       </div>
    )
