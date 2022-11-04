@@ -45,10 +45,10 @@ const SearchResults = () => {
 	const paginate = pageNumber => setCurrentPage(pageNumber)
 
 	return (
-		<div className='h-full w-full'>
+		<div className='h-full w-full space-y-4'>
 			{restaurantsData.response && restaurantsData.response.length !== 0 && (
 				<>
-					<div className='max-h-[810px] max-w-[330px] sm:max-w-[650px] lg:max-w-[970px] mx-auto grid place-items-center grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 gap-2 overflow-y-auto overflow-x-hidden scroll'>
+					<div className='max-h-[810px] max-w-[335px] sm:max-w-[665px] lg:max-w-[970px] mx-auto grid justify-items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 gap-2 overflow-y-auto overflow-x-hidden scroll'>
 						{restaurantsData.response
 							.slice(indexOfFirstCard, indexOfLastCard)
 							.map(restaurant => (
