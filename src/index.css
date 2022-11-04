@@ -10,6 +10,7 @@
 :root {
 	--main-bg: rgba(100, 0, 0, 0.80);
 	--modal-bg: rgba(50,50,50, 0.80);
+	--scroll-thumb: rgba(140, 0, 0, 0.80);
 }
 
 @layer components {
@@ -34,24 +35,24 @@
 		@apply p-8 border max-h-[80%] w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl;
 	}
 
-	.modals-content::-webkit-scrollbar {
+	::-webkit-scrollbar {
 		@apply w-3;
 	}
 
-	.modals-content::-webkit-scrollbar-thumb {
-		background-color: var(--main-bg);
+	::-webkit-scrollbar-thumb {
+		background-color: var(--scroll-thumb);
 		@apply rounded-full
 	}
 
-	.modals-content::-webkit-scrollbar-track-piece {
+	::-webkit-scrollbar-track-piece {
 		background-color: var(--modal-bg);
 		@apply rounded-full;
 	}
 
-	.modals-content::-webkit-scrollbar-track-piece:start {
+	::-webkit-scrollbar-track-piece:start {
 		margin-top: 15px;
 	}
-	.modals-content::-webkit-scrollbar-track-piece:end {
+	::-webkit-scrollbar-track-piece:end {
 		margin-bottom: 15px;
 	}
 
@@ -105,7 +106,7 @@
 	
 	/* Effects */
 	.friend-invited {
-		@apply bg-red-600/50 rounded-2xl border;
+		@apply bg-red-600/50 rounded-2xl border p-1;
 	}
 
 }
