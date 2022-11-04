@@ -13,13 +13,13 @@ const ProfileCard = ({user}) => {
    }, [])
 
    return (
-      <div className="main-bg h-32 w-32 rounded-2xl grid justify-items-center">
+      <div className="h-32 w-32 rounded-2xl grid justify-items-center space-y-2">
          {userInfo.response && (
             <>
-               <div className='profile-image'>
-                  <img src={userInfo.response.profileimg || defaultImage} alt='profile' />
+               <div className='friend-image'>
+                  <img src={userInfo.response.profileimg || defaultImage} alt='profile' className=''/>
                </div>
-               <p>{userInfo.response.displayname || userInfo.response.username}</p>
+               <p className='font-normal'>{userInfo.response.displayname || userInfo.response.username}</p>
             </>
          )}
       </div>
