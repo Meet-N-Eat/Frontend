@@ -20,7 +20,7 @@ const Itinerary = ({ loggedInUser }) => {
                     <h2 className='text-white'>itinerary</h2>
                     <h2 className='text-white'> {today} </h2>
                 </div>
-                <div>
+                <div className='w-1/2 centered'>
                     {events.response && events.response.length > 0 ?
                         events.response.map(event => <Event event={event} updateEvents={updateEvents} key={event._id}/>)
                         : <div>no events right now, send someone an invite!</div>
