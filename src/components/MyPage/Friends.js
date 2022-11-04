@@ -1,6 +1,5 @@
 import { useState, useReducer, useEffect } from 'react'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
-import FriendCard from './FriendCard'
 import ProfileCard from '../ProfileCard'
 
 

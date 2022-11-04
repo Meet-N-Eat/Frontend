@@ -9,7 +9,7 @@
 
 :root {
 	--main-bg: rgba(100, 0, 0, 0.80);
-	--modal-bg: rgba(50,50,50, 0.80)
+	--modal-bg: rgba(50,50,50, 0.80);
 }
 
 @layer components {
@@ -29,6 +29,7 @@
 
 	.modals-content {
 		background-color: var(--modal-bg);
+		max-height: 80%;
 		@apply p-8 border w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl;
 	}
 
@@ -56,15 +57,15 @@
 	}
 
 	input[type="checkbox"] {
-		@apply mr-1 border
+		@apply mr-1 border;
 	}
 
 	input[type="checkbox"]:checked {
-		@apply appearance-none bg-black border-white h-3 w-3
+		@apply appearance-none bg-black border-white h-3 w-3;
 	}
 
 	select, input[type='date'], input[type='time'] {
-		@apply  border rounded text-center text-black
+		@apply  border rounded text-center text-black;
 	}
 
 	/* Arrows */
@@ -79,11 +80,12 @@
 	.left {
 		transform: rotate(135deg);
 	}
+	
+}
 
-	/* Effects */
-	.friend-invited {
-		
-	}
+/* Effects */
+.friend-invited {
+	@apply bg-red-600/50 rounded-2xl border;
 }
 
 .round {

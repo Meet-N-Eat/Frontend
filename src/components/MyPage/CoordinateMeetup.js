@@ -196,29 +196,27 @@ const CoordinateMeetup = ({
 			{error.date && <h2>pick a date and time for this event</h2>}
 			<input onChange={e => dateSelect(e, 'date')} type='date' value={date.date} />
 			<input onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
-			<div className='space-x-8'>
+			{/* <div className='space-x-8'> */}
 				<button className='invite button' onClick={modalHandler}>
 					invite friends
 				</button>
-				<button className='invited button' onClick={modalHandler}>
+				{/* <button className='invited button' onClick={modalHandler}>
 					who's invited?
-				</button>
-			</div>
+				</button> */}
+			{/* </div> */}
 			<button className='button' onClick={showEdit ? editEventHandler : createEventHandler}>
 				{showEdit ? 'edit' : 'invite'}
 			</button>
 
 			{showModal.invite && (
 				<div className='modals'>
-					<div className='modals-content flex space-x-3 max-w-20 overflow-x-auto'>
+					<div className='modals-content flex flex-wrap max-w-20 gap-y-3 gap-x-1 overflow-auto'>
 						{loggedInUser.response.friends.map((friend) => (
 							<div key={friend} className='text-center'>
 								<div 
-									classname={meetup.participants.find(
-										participant => participant === friend
-									) && 'friend-invited'}
+									className={meetup.participants.find(participant => participant === friend) && 'friend-invited'}
 									onClick={() => inviteHandler(friend)}
-								>
+								> 
 									<ProfileCard user={friend} />
 								</div>
 								{/* <label>

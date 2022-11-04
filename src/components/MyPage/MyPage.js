@@ -1,11 +1,6 @@
 import {useContext, useEffect, useState, useRef} from 'react'
-import Favorites from './Favorites'
-import Friends from './Friends'
-import CoordinateMeetup from './CoordinateMeetup'
-import Itinerary from './Itinerary'
 import {axiosAll} from '../../data-and-functions/axiosAll'
 import {Context} from '../../App'
-import {Navbar, Nav} from 'react-bootstrap'
 import './MyProfile.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
@@ -14,6 +9,10 @@ import {
 	faPeopleArrows,
 	faCalendarDays,
 } from '@fortawesome/free-solid-svg-icons'
+import Favorites from './Favorites'
+import Friends from './Friends'
+import CoordinateMeetup from './CoordinateMeetup'
+import Itinerary from './Itinerary'
 
 const MyPage = () => {
 	// State Hooks and Variables
