@@ -43,7 +43,7 @@ const CoordinateMeetup = ({
 			dispatchFavorites
 		)
 		hideModal(null, modalHandler)
-	}, [])
+	}, [window])
 	console.log(showModal)
 	// Functions and Event Handlers
 	// ===========================================================================================

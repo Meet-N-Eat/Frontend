@@ -16,6 +16,7 @@
 	/* Background colors */
 	.main-bg {
 		background-color: var(--main-bg);
+		@apply rounded-2xl
 	}
 
 	.modal-bg {
@@ -24,13 +25,34 @@
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
-		@apply h-screen w-screen fixed z-10 top-0 left-0 overflow-auto bg-black/40;
+		@apply h-screen w-screen fixed z-10 top-0 left-0 bg-black/40 overflow-hidden;
 	}
 
 	.modals-content {
 		background-color: var(--modal-bg);
-		max-height: 80%;
-		@apply p-8 border w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl;
+		/* max-height: 80%; */
+		@apply p-8 border max-h-[80%] w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl;
+	}
+
+	.modals-content::-webkit-scrollbar {
+		@apply w-3;
+	}
+
+	.modals-content::-webkit-scrollbar-thumb {
+		background-color: var(--main-bg);
+		@apply rounded-full
+	}
+
+	.modals-content::-webkit-scrollbar-track-piece {
+		background-color: var(--modal-bg);
+		@apply rounded-full;
+	}
+
+	.modals-content::-webkit-scrollbar-track-piece:start {
+		margin-top: 15px;
+	}
+	.modals-content::-webkit-scrollbar-track-piece:end {
+		margin-bottom: 15px;
 	}
 
 	/* Page containers */
@@ -81,12 +103,13 @@
 		transform: rotate(135deg);
 	}
 	
+	/* Effects */
+	.friend-invited {
+		@apply bg-red-600/50 rounded-2xl border;
+	}
+
 }
 
-/* Effects */
-.friend-invited {
-	@apply bg-red-600/50 rounded-2xl border;
-}
 
 .round {
 	border-radius: 50%;
