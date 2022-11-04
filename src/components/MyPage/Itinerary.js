@@ -15,10 +15,10 @@ const Itinerary = ({ loggedInUser }) => {
     }
 
     return (
-        <div>
+        <div className='centered main-bg rounded-2xl p-5 w-1/2'>
                 <div>
-                    <h2>itinerary</h2>
-                    <h2> {today} </h2>
+                    <h2 className='text-white'>itinerary</h2>
+                    <h2 className='text-white'> {today} </h2>
                 </div>
                 <div>
                     {events.response && events.response.length > 0 ?
