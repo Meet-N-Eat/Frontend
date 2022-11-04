@@ -2,7 +2,7 @@ import {categoriesArray} from '../../data-and-functions/categoriesArray'
 import {citiesArray} from '../../data-and-functions/citiesArray'
 import {priceRangeArray} from '../../data-and-functions/priceRangeArray'
 
-const SearchFilters = ({searchCriteria, dispatch}) => {
+const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 	const {city, category, price, wheelchairAccessible, openLate} = searchCriteria
 
 	// Handles click events for dropdown menus
@@ -32,7 +32,11 @@ const SearchFilters = ({searchCriteria, dispatch}) => {
 	}
 
 	return (
-		<div className='modals' id='filter-modal'>
+		<div 
+			className='modals' 
+			id='filter-modal'
+			onClick={toggleModal}
+		>
 			<form className='modals-content p-3 flex flex-col items-center space-y-3'>
 				<p className='text-red-600 text-2xl font-normal'>Filter Options</p>
 				<div className='flex space-x-1'>

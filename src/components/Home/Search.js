@@ -2,7 +2,6 @@ import {useReducer, useState, useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {getSearchParams} from '../../data-and-functions/searchParams'
 import {searchCriteriaReducer} from '../../data-and-functions/searchCriteriaReducer'
-import { hideModal } from '../../data-and-functions/hideModal'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSliders } from '@fortawesome/free-solid-svg-icons'
 import SearchFilters from './SearchFilters'
@@ -22,10 +21,8 @@ const Search = () => {
 	// State hooks and variable declarations
 	// ===========================================================================
 	const [searchCriteria, dispatch] = useReducer(searchCriteriaReducer, initialState)
-	const [showFilters, setShowFilters] = useState(false)
+	const [toggle, setToggle] = useState(false)
 	const navigate = useNavigate()
-
-	useEffect(() => hideModal(setShowFilters), [])
 
 	// Event handlers
 	// ===========================================================================
@@ -42,8 +39,12 @@ const Search = () => {
 		searchCriteria && navigate(searchString)
 	}
 
-	function filterClick() {
-		setShowFilters(prev => !prev)
+	function toggleModal(e) {
+		if(toggle) {
+			if(e.target.className.includes('modals') && !e.target.className.includes('content'))
+				setToggle(prev => !prev)
+		} 
+		else setToggle(prev => !prev)	
 	}
 
 	return (
@@ -60,16 +61,17 @@ const Search = () => {
 						/>
 					</div>
 					<div className='place-self-end'>
-						<button type='button' onClick={filterClick}>
+						<button type='button' onClick={toggleModal}>
 							<FontAwesomeIcon icon={faSliders} className='icon h-8' />
 						</button>
 					</div>
 				</div>
 			</form>
-			{showFilters &&
+			{toggle &&
 				<SearchFilters
 					searchCriteria={searchCriteria}
 					dispatch={dispatch}
+					toggleModal={toggleModal}
 				/>
 			}
 		</div>
