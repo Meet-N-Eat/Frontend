@@ -14,6 +14,28 @@
 }
 
 @layer components {
+	/* Scrollbar */
+	.scroll::-webkit-scrollbar {
+		@apply w-3;
+	}
+
+	.scroll::-webkit-scrollbar-thumb {
+		background-color: var(--scroll-thumb);
+		@apply rounded-full
+	}
+
+	.scroll::-webkit-scrollbar-track-piece {
+		background-color: var(--modal-bg);
+		@apply rounded-full;
+	}
+
+	.scroll::-webkit-scrollbar-track-piece:start {
+		margin-top: 15px;
+	}
+	.scroll::-webkit-scrollbar-track-piece:end {
+		margin-bottom: 15px;
+	}
+
 	/* Background colors */
 	.main-bg {
 		background-color: var(--main-bg);
@@ -32,28 +54,7 @@
 	.modals-content {
 		background-color: var(--modal-bg);
 		/* max-height: 80%; */
-		@apply p-8 border max-h-[80%] w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl;
-	}
-
-	::-webkit-scrollbar {
-		@apply w-3;
-	}
-
-	::-webkit-scrollbar-thumb {
-		background-color: var(--scroll-thumb);
-		@apply rounded-full
-	}
-
-	::-webkit-scrollbar-track-piece {
-		background-color: var(--modal-bg);
-		@apply rounded-full;
-	}
-
-	::-webkit-scrollbar-track-piece:start {
-		margin-top: 15px;
-	}
-	::-webkit-scrollbar-track-piece:end {
-		margin-bottom: 15px;
+		@apply p-8 border max-h-[80%] w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl scroll;
 	}
 
 	/* Page containers */
@@ -125,6 +126,7 @@ body {
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	background-attachment: fixed;
 }
 
 .home-header {

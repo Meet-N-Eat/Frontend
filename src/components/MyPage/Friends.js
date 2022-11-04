@@ -24,7 +24,7 @@ const Friends = ({loggedInUser}) => {
 			<form>
 				<input className='input mb-4' onChange={searchChange} placeholder='search by name' />
 			</form>
-			<div className='main-bg rounded-2xl py-4 grid grid-cols-2 md:grid-cols-4 max-h-[23rem] overflow-y-auto'>
+			<div className='main-bg rounded-2xl py-4 grid grid-cols-2 md:grid-cols-4 max-h-[23rem] overflow-y-auto scroll'>
 				{friends.response && friends.response.length > 0 ? (
 					friends.response
 						.filter(

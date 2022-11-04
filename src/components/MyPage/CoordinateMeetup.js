@@ -1,7 +1,6 @@
 import React, {useEffect, useReducer} from 'react'
 import { useState } from 'react'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
-import {hideModal} from '../../data-and-functions/toggleModal'
 import ProfileCard from '../ProfileCard'
 
 const CoordinateMeetup = ({
