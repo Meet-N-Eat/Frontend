@@ -7,6 +7,8 @@ import { axiosAll } from '../../data-and-functions/axiosAll'
 import CoordinateMeetup from './CoordinateMeetup'
 import RestaurantCard from '../RestaurantCard'
 import ProfileCard from '../ProfileCard'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import { faEllipsisVertical } from '@fortawesome/free-solid-svg-icons'
 
 const Event = ({ event, updateEvents }) => {
     const { loggedInUser, dispatchUser } = useContext(Context)
@@ -51,11 +53,11 @@ const Event = ({ event, updateEvents }) => {
     }
     else {
         return (
-            <div>
-                <div>
-                    <div>
+            <div className='bg-white/80 centered p-2 w-3/4 rounded-2xl mt-2'>
+                <div className='w-full'>
+                    <div className='flex flex-row justify-around items-center w-full'>
                         <p>{formattedDate} at {formattedHourAMPM}</p>
-                        <NavDropdown className="nav-dropdown d-inline-block" title={<BiDotsVertical/>}>
+                        <NavDropdown className="nav-dropdown d-inline-block" title={<FontAwesomeIcon icon={faEllipsisVertical} className="icon text-black w-1/2 float-right" /> }>
                             <NavDropdown.Item>
                                 <button>edit</button>
                             </NavDropdown.Item>
