@@ -60,62 +60,48 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 	// ===========================================================================
 
 	return (
-		<div>
+		<div className='h-full w-full relative'>
 			{resDetails.response && (
-				<div>
-					<div>
+				<>
+					<div className='absolute top-0 right-0'>
 						{
 							// Hide like button if hideLikeButton is true
 							!hideLikeButton && (
-								<div>
-									<button type='checkbox' variant='outline-light'>
-										<img width={50} src={buttonIcon} onClick={likeHandler} />
-									</button>
-								</div>
+								<button type='checkbox' variant='outline-light'>
+									<img width={50} src={buttonIcon} onClick={likeHandler} />
+								</button>
 							)
 						}
 					</div>
-					<div>
-						<Link to={`/restaurants/${restaurant}`}>
-							<div>
-								<div>
-									<div>
-										<div>
-											<img
-												src={resDetails.response.image_url}
-												alt='restaurant-image'
-												width={170}
-												height={170}
-											/>
-											<h1>{resDetails.response.name}</h1>
-										</div>
-									</div>
-									<div>
-										<div>
-											<p>{resDetails.response.price}</p>
-											<p>M - F 9:00 AM - 8:00 PM</p>
-											<div>
-												<div>
-													<p>{resDetails.response.location.address1}</p>
-													<p>
-														{resDetails.response.location.city},{' '}
-														{resDetails.response.location.state}
-													</p>
-												</div>
-												<div>
-													<p>{resDetails.response.display_phone}</p>
-												</div>
-											</div>
-											{categories.map((category, index) => (
-												<div key={index}>{category}</div>
-											))}
-										</div>
-									</div>
-								</div>
-							</div>
-						</Link>
-					</div>
-				</div>
+					<Link
+						className='text-white hover:text-white text-center flex flex-col items-center space-y-4'
+						to={`/restaurants/${restaurant}`}
+					>
+						<p className='text-lg mt-4'>{resDetails.response.name}</p>
+						<img
+							className='restaurant-image'
+							src={resDetails.response.image_url}
+							alt='restaurant-image'
+						/>
+
+							{/* <ul>
+								<li>{resDetails.response.location.address1}</li>
+								<li>
+									{resDetails.response.location.city}, {resDetails.response.location.state}
+								</li>
+								<li>{resDetails.response.display_phone}</li>
+							</ul> */}
+						<div className='space-y-1'>
+							<ul>
+								{categories.map((category, index) => (
+									<li key={index}>{category}</li>
+								))}
+							</ul>
+							<p>{resDetails.response.price}</p>
+						</div>
+
+					</Link>
+				</>
 			)}
 		</div>
 	)
