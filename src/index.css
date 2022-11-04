@@ -170,8 +170,8 @@ main {
 }
 
 .restaurant-image {
-	height: 200px;
-	width: 200px;
+	height: 150px;
+	width: 150px;
 	object-fit: cover;
 	border-radius: 5px;
 

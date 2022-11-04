@@ -97,7 +97,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 									<li key={index}>{category}</li>
 								))}
 							</ul>
-							<p>{resDetails.response.price}</p>
+							<p>{resDetails.response.price || 'pricing unavailable'}</p>
 						</div>
 
 					</Link>
