@@ -210,7 +210,7 @@ const CoordinateMeetup = ({
 
 			{showModal.invite && (
 				<div className='modals'>
-					<div className='modals-content flex space-x-3'>
+					<div className='modals-content flex space-x-3 max-w-20 overflow-x-auto'>
 						{loggedInUser.response.friends.map((friend) => (
 							<div key={friend} className='text-center'>
 								<div 
