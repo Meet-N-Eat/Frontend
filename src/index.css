@@ -6,16 +6,39 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100;400;900&family=Rubik+Mono+One&display=swap');
 
-
 :root {
-	--main-bg: rgba(100, 0, 0, 0.80);
-	--modal-bg: rgba(50,50,50, 0.80)
+	--main-bg: rgba(100, 0, 0, 0.8);
+	--modal-bg: rgba(50, 50, 50, 0.8);
+	--scroll-thumb: rgba(140, 0, 0, 0.8);
 }
 
 @layer components {
+	/* Scrollbar */
+	.scroll::-webkit-scrollbar {
+		@apply w-3;
+	}
+
+	.scroll::-webkit-scrollbar-thumb {
+		background-color: var(--scroll-thumb);
+		@apply rounded-full;
+	}
+
+	.scroll::-webkit-scrollbar-track-piece {
+		background-color: var(--modal-bg);
+		@apply rounded-full;
+	}
+
+	.scroll::-webkit-scrollbar-track-piece:start {
+		margin-top: 15px;
+	}
+	.scroll::-webkit-scrollbar-track-piece:end {
+		margin-bottom: 15px;
+	}
+
 	/* Background colors */
 	.main-bg {
 		background-color: var(--main-bg);
+		@apply rounded-2xl;
 	}
 
 	.modal-bg {
@@ -24,12 +47,13 @@
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
-		@apply h-screen w-screen fixed z-10 top-0 left-0 overflow-auto bg-black/40;
+		@apply h-screen w-screen fixed z-10 top-0 left-0 bg-black/40 overflow-hidden;
 	}
 
 	.modals-content {
 		background-color: var(--modal-bg);
-		@apply p-8 border w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl;
+		/* max-height: 80%; */
+		@apply p-8 border max-h-[80%] w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl scroll;
 	}
 
 	/* Page containers */
@@ -55,16 +79,18 @@
 		@apply shadow-sm bg-gray-500/80 focus:bg-white/90 placeholder-white focus:placeholder-gray-600 text-zinc-900 focus:outline-none indent-2.5 rounded-full p-1;
 	}
 
-	input[type="checkbox"] {
-		@apply mr-1 border
+	input[type='checkbox'] {
+		@apply mr-1 border;
 	}
 
-	input[type="checkbox"]:checked {
-		@apply appearance-none bg-black border-white h-3 w-3
+	input[type='checkbox']:checked {
+		@apply appearance-none bg-black border-white h-3 w-3;
 	}
 
-	select, input[type='date'], input[type='time'] {
-		@apply  border rounded text-center text-black
+	select,
+	input[type='date'],
+	input[type='time'] {
+		@apply border rounded text-center text-black;
 	}
 
 	/* Arrows */
@@ -75,14 +101,14 @@
 	.right {
 		transform: rotate(-45deg);
 	}
-	
+
 	.left {
 		transform: rotate(135deg);
 	}
 
 	/* Effects */
 	.friend-invited {
-		
+		@apply bg-red-600/50 rounded-2xl border p-1;
 	}
 }
 
@@ -91,24 +117,25 @@
 }
 
 body {
-  	font-family: 'Montserrat', sans-serif;
-  	font-weight: 100;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 100;
 	height: 100vh;
 	width: 100vw;
 	background-image: url('./assets/homeBgImage.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
 	background-position: center;
+	background-attachment: fixed;
 }
 
 .home-header {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 900;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
 }
 
 .header {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 400;
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
 }
 
 #root {
@@ -133,7 +160,7 @@ main {
 }
 
 .nav-title {
-  font-family: 'Rubik Mono One', sans-serif;
+	font-family: 'Rubik Mono One', sans-serif;
 }
 
 .invite-container {
@@ -142,6 +169,13 @@ main {
 	@apply main-bg text-white rounded-full flex flex-col justify-center items-center space-y-4;
 }
 
+.restaurant-image {
+	height: 150px;
+	width: 150px;
+	object-fit: cover;
+	border-radius: 5px;
+
+}
 
 /* Class name goes on wrapper div */
 .profile-image {
@@ -156,9 +190,9 @@ main {
 }
 
 .friend-image {
-  width: 100px;
-  height: 100px;
-  display: inline-block;
+	width: 100px;
+	height: 100px;
+	display: inline-block;
 	position: relative;
 	overflow: hidden;
 	object-fit: cover;
@@ -167,18 +201,16 @@ main {
 }
 
 @media (max-width: 768px) {
-  .friend-image {
-    width: 75px;
-    height: 75px;
-    display: inline-block;
-    position: relative;
-    overflow: hidden;
-    object-fit: cover;
-    padding: 0px;
-    margin: auto;
-  }
-  
-  
+	.friend-image {
+		width: 75px;
+		height: 75px;
+		display: inline-block;
+		position: relative;
+		overflow: hidden;
+		object-fit: cover;
+		padding: 0px;
+		margin: auto;
+	}
 }
 
 /* Targets image inside wrapper div */
@@ -189,7 +221,7 @@ main {
 }
 
 .friend-image img {
-  border-radius: 50%;
+	border-radius: 50%;
 	width: auto;
 	height: 100%;
 }

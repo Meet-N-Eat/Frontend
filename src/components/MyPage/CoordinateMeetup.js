@@ -1,9 +1,7 @@
 import React, {useEffect, useReducer} from 'react'
-import {Dropdown, Modal} from 'react-bootstrap'
+import { useState } from 'react'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
-import {hideModal} from '../../data-and-functions/hideModal'
 import ProfileCard from '../ProfileCard'
-import RestaurantCard from '../RestaurantCard'
 
 const CoordinateMeetup = ({
 	loggedInUser,
@@ -26,7 +24,7 @@ const CoordinateMeetup = ({
 
 	const [meetup, dispatchMeetup] = useReducer(axiosReducer, event || initialState)
 	const [favorites, dispatchFavorites] = useReducer(axiosReducer, [])
-	const [showModal, dispatchModal] = useReducer(axiosReducer, {invite: false, invited: false})
+	const [toggle, setToggle] = useState(false)
 	const [date, dispatchDate] = useReducer(axiosReducer, {
 		date: '' || formattedDate,
 		time: '' || formattedHour,
@@ -42,9 +40,8 @@ const CoordinateMeetup = ({
 			loggedInUser.token,
 			dispatchFavorites
 		)
-		hideModal(null, modalHandler)
 	}, [])
-	console.log(showModal)
+
 	// Functions and Event Handlers
 	// ===========================================================================================
 
@@ -69,21 +66,12 @@ const CoordinateMeetup = ({
 		return participants
 	}
 
-	function modalHandler(e) {
-		// Close any open modals or open the appropriate modal
-		if (showModal.invite === true || showModal.invited === true) {
-			for (const key in showModal) {
-				dispatchModal({
-					key: key,
-					value: false,
-				})
-			}
-		} else {
-			dispatchModal({
-				key: e.target.classList[0],
-				value: !showModal[e.target.classList[0]],
-			})
-		}
+	function toggleModal(e) {
+		if(toggle) {
+			if(e.target.className.includes('modals') && !e.target.className.includes('content'))
+				setToggle(prev => !prev)
+		} 
+		else setToggle(prev => !prev)	
 	}
 
 	function inviteHandler(friend) {
@@ -196,29 +184,30 @@ const CoordinateMeetup = ({
 			{error.date && <h2>pick a date and time for this event</h2>}
 			<input onChange={e => dateSelect(e, 'date')} type='date' value={date.date} />
 			<input onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
-			<div className='space-x-8'>
-				<button className='invite button' onClick={modalHandler}>
+			{/* <div className='space-x-8'> */}
+				<button className='invite button' onClick={toggleModal}>
 					invite friends
 				</button>
-				<button className='invited button' onClick={modalHandler}>
+				{/* <button className='invited button' onClick={modalHandler}>
 					who's invited?
-				</button>
-			</div>
+				</button> */}
+			{/* </div> */}
 			<button className='button' onClick={showEdit ? editEventHandler : createEventHandler}>
 				{showEdit ? 'edit' : 'invite'}
 			</button>
 
-			{showModal.invite && (
-				<div className='modals'>
-					<div className='modals-content flex space-x-3 max-w-20 overflow-x-auto'>
+			{toggle && (
+				<div 
+					className='modals'
+					onClick={toggleModal}
+				>
+					<div className='modals-content flex flex-wrap max-w-20 gap-y-3 gap-x-1 overflow-auto'>
 						{loggedInUser.response.friends.map((friend) => (
 							<div key={friend} className='text-center'>
 								<div 
-									classname={meetup.participants.find(
-										participant => participant === friend
-									) && 'friend-invited'}
+									className={meetup.participants.find(participant => participant === friend) && 'friend-invited'}
 									onClick={() => inviteHandler(friend)}
-								>
+								> 
 									<ProfileCard user={friend} />
 								</div>
 								{/* <label>
@@ -240,11 +229,11 @@ const CoordinateMeetup = ({
 				</div>
 			)}
 
-			{showModal.invited && (
+			{/* {toggle.invited && (
 				<div className='modals'>
 					<div className='modals-content flex space-x-3'>{participantsList()}</div>
 				</div>
-			)}
+			)} */}
 		</div>
 	)
 }
