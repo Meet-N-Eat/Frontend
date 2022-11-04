@@ -1,6 +1,7 @@
 import { useState, useReducer, useEffect } from 'react'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import FriendCard from './FriendCard'
+import ProfileCard from '../ProfileCard'
 
 
 const Friends = ({ loggedInUser }) => {
@@ -26,9 +27,13 @@ const Friends = ({ loggedInUser }) => {
             </form>
             <div className='main-bg rounded-2xl py-4 grid grid-cols-2 md:grid-cols-4 max-h-[23rem] overflow-y-auto'>
                 {friends.response && friends.response.length > 0 ?
-                    friends.response.filter(friend => searchCharacters == '' || friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
-                        .map(friend => <FriendCard key={friend._id} friend={friend} />)
-                        
+                    friends.response.filter(friend => searchCharacters === '' || friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
+                        .map(friend => 
+                            <div className='text-white py-4'>
+                                <ProfileCard 
+                                    key={friend._id} 
+                                    user={friend._id} />
+                            </div>)
                     : <div>you don't have any friends yet, send friend requests by clicking on other people who like the same restaurants you do.</div>
                 }
             </div>
