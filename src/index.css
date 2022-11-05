@@ -78,14 +78,6 @@
 	.restaurant-image {
 		@apply h-[150px] w-[150px] object-cover rounded-[5px];
 	}
-	/* Class name goes on wrapper div */
-	.user-image {
-		@apply w-[75px] h-[75px] inline-block relative overflow-hidden object-cover m-auto;
-	}
-	/* Targets image inside wrapper div */
-	.user-image img {
-		@apply rounded-[50%] w-auto h-full;
-	}
 
 	/* Icons */
 	.icon {
@@ -141,6 +133,21 @@
 	.chat-message {
 		@apply w-[60%]
 	}
+}
+
+/* Class name goes on wrapper div */
+.user-image {
+	@apply w-[75px] h-[75px] inline-block relative overflow-hidden object-cover m-auto;
+}
+
+@media (max-width: 768px) {
+	.user-image {
+		@apply w-[50px] h-[50px] inline-block relative overflow-hidden object-cover m-auto;
+	}
+}
+/* Targets image inside wrapper div */
+.user-image img {
+	@apply rounded-[50%] w-auto h-full;
 }
 
 
