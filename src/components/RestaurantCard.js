@@ -60,7 +60,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 	// ===========================================================================
 
 	return (
-		<div className='h-full w-full relative'>
+		<div className='h-full w-[320px] relative'>
 			{resDetails.response && (
 				<>
 					<div className='absolute top-0 right-0'>
@@ -77,7 +77,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 						className='text-white hover:text-white text-center flex flex-col items-center space-y-4'
 						to={`/restaurants/${restaurant}`}
 					>
-						<p className='text-lg mt-4'>{resDetails.response.name}</p>
+						<p className='w-40 font-bold text-center mt-4'>{resDetails.response.name}</p>
 						<img
 							className='restaurant-image'
 							src={resDetails.response.image_url}

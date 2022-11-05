@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState, useRef} from 'react'
 import {axiosAll} from '../../data-and-functions/axiosAll'
 import {Context} from '../../App'
-import './MyProfile.css'
+// import './MyProfile.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
 	faUtensils,
@@ -102,7 +102,7 @@ const MyPage = () => {
 			{loggedInUser && loggedInUser.response && (
 				<div className='h-full w-full flex justify-around items-center'>
 					{slide}
-					<div className='w-11/12 max-w-7xl fixed top-2/4 flex justify-between -z-10'>
+					<div className='w-11/12 max-w-7xl fixed top-2/4 flex justify-between'>
 						{slideIndex.current !== 0 ? (
 							<button id='left-btn' onClick={() => slideHandler('left')}>
 								<div className='arrow left'></div>

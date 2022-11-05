@@ -54,7 +54,7 @@ const SignUp = () => {
         axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
         
       }
-  }, [loggedInUser.token])
+  }, [success])
 
 
   // Return
