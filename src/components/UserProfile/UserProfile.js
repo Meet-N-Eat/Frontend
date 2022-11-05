@@ -68,7 +68,7 @@ const UserProfile = () => {
             {loggedInUser.response && 
                 <>         
                     <div className='centered rounded-circle'>
-                        <img className='rounded-circle mb-1 border-2 border-red-900' src={userData.profileimg || defaultImage} alt="profile-image"/>
+                        <img className='rounded-circle mb-1 border-2 border-red-900' src={userData.profileimg || defaultImage} alt="profile-icon"/>
                     </div>
                     <form className='flex flex-col text-white'> 
                         <input className="profileimg input"

@@ -16,11 +16,11 @@ const ProfileCard = ({user}) => {
 		<div className='h-32 w-32 rounded-2xl grid justify-items-center space-y-2'>
 			{userInfo.response && (
 				<>
-					<div className='friend-image'>
+					<div className='user-image'>
 						<img
 							src={userInfo.response.profileimg || defaultImage}
 							alt='profile'
-							className=''
+							className='user-image img'
 						/>
 					</div>
 					<p className='font-normal'>
