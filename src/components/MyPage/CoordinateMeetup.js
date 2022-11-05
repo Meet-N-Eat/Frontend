@@ -184,14 +184,9 @@ const CoordinateMeetup = ({
 			{error.date && <h2>pick a date and time for this event</h2>}
 			<input onChange={e => dateSelect(e, 'date')} type='date' value={date.date} />
 			<input onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
-			{/* <div className='space-x-8'> */}
-				<button className='invite button' onClick={toggleModal}>
-					invite friends
-				</button>
-				{/* <button className='invited button' onClick={modalHandler}>
-					who's invited?
-				</button> */}
-			{/* </div> */}
+			<button className='invite button' onClick={toggleModal}>
+				invite friends
+			</button>
 			<button className='button' onClick={showEdit ? editEventHandler : createEventHandler}>
 				{showEdit ? 'edit' : 'invite'}
 			</button>
@@ -210,30 +205,11 @@ const CoordinateMeetup = ({
 								> 
 									<ProfileCard user={friend} />
 								</div>
-								{/* <label>
-									<input
-										key={index}
-										type='checkbox'
-										id='invite-toggle'
-										label='invite'
-										defaultChecked={meetup.participants.find(
-											participant => participant === friend
-										)}
-										onClick={() => inviteHandler(friend)}
-									/>
-									invite
-								</label> */}
 							</div>
 						))}
 					</div>
 				</div>
 			)}
-
-			{/* {toggle.invited && (
-				<div className='modals'>
-					<div className='modals-content flex space-x-3'>{participantsList()}</div>
-				</div>
-			)} */}
 		</div>
 	)
 }
