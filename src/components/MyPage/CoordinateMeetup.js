@@ -13,7 +13,7 @@ const CoordinateMeetup = ({
 	setShowEdit,
 	updateEvents,
 }) => {
-	// State Variables
+	// State Hooks and Variables
 	// ===========================================================================================
 	const initialState = {
 		restaurant: null,
@@ -30,8 +30,6 @@ const CoordinateMeetup = ({
 		time: '' || formattedHour,
 	})
 	const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
-
-	// useEffect(() => console.log('CoordinateMeetup Rendered'))
 
 	useEffect(() => {
 		axiosAll(

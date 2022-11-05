@@ -79,7 +79,7 @@ const SignUp = () => {
           </div>
         </div>
       </Modal>
-      <div className='flex flex-col justify-center bg-white opacity-90 rounded-2xl w-60 md:w-96 p-2 space-y-4'>
+      <div className='flex flex-col justify-center bg-white opacity-90 rounded-2xl w-60 md:w-96 p-5 space-y-4'>
         <h1 className='header text-2xl text-red-900 mx-auto pt-2'>SIGN UP</h1>
         <form
           className='space-y-2 md:space-y-4'  
