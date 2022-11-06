@@ -21,7 +21,7 @@ function UserLike({ user }) {
    }
 
    return (
-   <div>
+   <div className='main-bg ml-2 text-white min-h-[140px] centered'>
       <div onClick={modalHandler}>
          <ProfileCard user={user._id} />
       </div>
