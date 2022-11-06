@@ -12,15 +12,15 @@ const Favorites = ({ loggedInUser }) => {
     }, [])
 
     return (
-        <div className='likedRestaurants centered main-bg w-1/2 rounded-2xl p-5'>
-            <form className="flex flex-row justify-center items-center border-b-[1px] border-slate-200/60 pb-2 mb-2 w-full">
+        <div className='likedRestaurants centered w-full rounded-2xl'>
+            <form className="flex flex-row justify-center items-center border-slate-200/60 pb-2 mb-2 w-full">
             <p id="basic-addon2" className='text-white mr-2'>enter name</p>
                 <input onChange={e => {
                         setSearchCharacters(e.target.value
                             )}
                         } className="input" placeholder="liked restaurants" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
             </form>
-            <div>
+            <div className='w-full max-h-[720px] max-w-[335px] sm:max-w-[1050px] gap-2 centered grid mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3 overflow-y-auto scroll'>
                 {favorites.response && favorites.response.length > 0 ?
                     favorites.response.filter(restaurant => searchCharacters == '' || restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase()))
                         .map(restaurant => <RestaurantCard key={restaurant._id} restaurant={restaurant._id}/>)
