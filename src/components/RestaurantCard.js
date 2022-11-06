@@ -60,7 +60,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 	// ===========================================================================
 
 	return (
-		<div className='h-full w-[320px] relative main-bg'>
+		<div className='h-full w-[320px] relative'>
 			{resDetails.response && (
 				<>
 					<div className='absolute top-0 right-0'>
