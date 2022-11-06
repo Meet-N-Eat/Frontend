@@ -38,9 +38,9 @@ const RestaurantDetail = () => {
 	}
 
 	return (
-		<div>
+		<div className='centered overflow-auto min-h-[820px] scroll'>
 			{resDetails.response && userLikes.response ? (
-				<div>
+				<div className='w-3/4 centered'>
 					<div>
 						<RestaurantCard restaurant={resDetails.response._id} />
 					</div>
@@ -53,7 +53,7 @@ const RestaurantDetail = () => {
 							</Link>
 						)}
 					</div>
-					<div>
+					<div className='w-full'>
 						<div>
 							<div>
 								{loggedInUser.token ? (
@@ -66,10 +66,10 @@ const RestaurantDetail = () => {
 							</div>
 						</div>
 						{loggedInUser.token && (
-							<>
+							<div className="centered p-2">
 								<Reviews restaurantId={resDetails.response._id} modalShow={modalShow} />
 								<div>
-									<button type='submit' onClick={handleShow}>
+									<button className='button mt-2' type='submit' onClick={handleShow}>
 										write a review
 									</button>
 									<Modal
@@ -85,7 +85,7 @@ const RestaurantDetail = () => {
 										/>
 									</Modal>
 								</div>
-							</>
+							</div>
 						)}
 					</div>
 				</div>
