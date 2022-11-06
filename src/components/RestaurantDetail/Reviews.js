@@ -18,7 +18,7 @@ const Reviews = ({ restaurantId, modalShow }) => {
     }, [modalShow])
 
     return (
-        <div>
+        <div className='w-full overflow-auto scroll'>
             {reviews.response ? 
                 <div>
                     {reviews.response.reviews && reviews.response.reviews.map(review => <Review review={review} key={review._id} />)}
