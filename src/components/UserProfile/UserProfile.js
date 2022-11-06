@@ -64,7 +64,7 @@ const UserProfile = () => {
     }
 
     return (
-        <div className='centered main-bg rounded-2xl w-1/2 mx-auto'>
+        <div className='centered main-bg rounded-2xl w-1/2 mx-auto min-w-[425px] min-h-[700px] p-2'>
             {loggedInUser.response && 
                 <>         
                     <div className='centered rounded-circle'>
@@ -77,12 +77,12 @@ const UserProfile = () => {
                             onChange={inputChange}  
                             value={userData.profileimg}
                             />
-                            <p className=" border-b-[1px] border-red-900 pb-1">only JPG and PNG files supported.</p>
+                            <p className=" border-b-[1px] border-red-900 pb-1 text-white/50">only JPG and PNG files supported.</p>
                         <h3>{userData.username}</h3>
                         <label className=' mx-auto mt-1'>about me</label>
                         <textarea
                             rows='2'  
-                            className="about input p-2 text-white focus:bg-red-900/60 focus:placeholder-white"
+                            className="about input"
                             as="textarea" 
                             divs={3}
                             type="about-me" 
@@ -90,11 +90,11 @@ const UserProfile = () => {
                             onChange={inputChange}  
                             value={userData.about}
                         />
-                        <p className=" d-block border-b-[1px] border-red-900 pb-1">maximum length: 500 characters</p>
+                        <p className=" d-block border-b-[1px] border-red-900 pb-1 text-white/50">maximum length: 500 characters</p>
                             <div className='centered'>
                                 <label className=' mt-1'>location</label>
                                 <input 
-                                    className="location input w-full text-white focus:bg-red-900/60 focus:placeholder-white"
+                                    className="location input"
                                     type="location" 
                                     placeholder="eg. los angeles, california"
                                     onChange={inputChange}
@@ -102,7 +102,7 @@ const UserProfile = () => {
                                 />
                                 <label className=''>display name</label>
                                 <input 
-                                    className="displayname input w-full text-white focus:bg-red-900/60 focus:placeholder-white" 
+                                    className="displayname input" 
                                     type="display-name"
                                     placeholder="change display name"
                                     onChange={inputChange}
@@ -113,7 +113,7 @@ const UserProfile = () => {
                             <div className='centered'>
                                 <label className=''>email</label>
                                 <input 
-                                    className="email input w-full text-white focus:bg-red-900/60 focus:placeholder-white"
+                                    className="email input"
                                     type="email-address" 
                                     placeholder="Change your email address"
                                     onChange={inputChange}
@@ -122,7 +122,7 @@ const UserProfile = () => {
                                 {error && <p className="">this email address already exists, please enter another</p>}
                             </div>
                         <button 
-                            className='account-button w-1/2 mx-auto mt-1'
+                            className='account-button w-1/2 mx-auto m-3'
                             type="submit"
                             id="save-changes"
                             onClick={onSubmit}
