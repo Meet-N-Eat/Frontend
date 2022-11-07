@@ -42,7 +42,7 @@ const UserProfile = () => {
         }
     },[loggedInUser.response])
 
-// Event Handler Functions
+// Event Handler and Functions
 //===========================================================================
     function inputChange(e) {
         dispatch({

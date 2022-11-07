@@ -1,19 +1,28 @@
-import {useContext, useState} from 'react'
+import {useContext, useState, useEffect, useReducer} from 'react'
 import {Context} from '../../App'
 import Search from './Search'
 import SignUp from '../LoginSignUp/SignUp'
+import { Modal } from 'react-bootstrap'
+import { axiosReducer, axiosAll } from '../../data-and-functions/axiosAll'
 
 const Home = () => {
 	// State hooks and Variables
 	// ===========================================================================
-	const {loggedInUser} = useContext(Context)
-	const [signUpShow, setSignUpShow] = useState(false)
+	const {loggedInUser, dispatchUser} = useContext(Context)
+	const [show, setShow] = useState(false)
+
+	// Getting user data
+	// ===========================================================================
+	useEffect(()=> {
+		axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
+	},[])
 
 	// Event handlers
 	// ===========================================================================
 	function signUpShowHandler() {
-		setSignUpShow(true)
+		setShow(prevState => !prevState)
 	}
+
 
 	return (
 		<div className='main-bg h-56 md:h-48 w-10/12 max-w-5xl mx-auto rounded-2xl row-start-2 flex flex-col justify-center space-y-5'>
@@ -26,7 +35,12 @@ const Home = () => {
 						onClick={signUpShowHandler}>
 						Create account
 					</button>
-					{signUpShow ? <SignUp /> : null}
+					<Modal 
+					show={show} 
+					onHide={() => setShow(false)}
+					centered={true}>
+						<SignUp />
+					</Modal> 
 				</>
 			)}
 		</div>
