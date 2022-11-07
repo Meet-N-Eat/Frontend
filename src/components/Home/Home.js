@@ -35,7 +35,6 @@ const Home = () => {
 						onClick={signUpShowHandler}>
 						Create account
 					</button>
-					
 					<Modal 
 					show={show} 
 					onHide={() => setShow(false)}

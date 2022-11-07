@@ -72,21 +72,21 @@ const SignUp = () => {
           >
             {error.username && <p className='text-center text-red-800 mx-auto text-xs md:text-sm'>Username already exists</p>}
             <input
-              className='username input w-full mx-auto border border-slate-800'   
+              className='username input w-full mx-auto border border-slate-800 text-xs md:text-base'   
               type='text' 
               placeholder='Username'
               onChange={changeHandler}
               value={loggedInUser.username}
             ></input>
             <input
-              className='password input w-full mx-auto border border-slate-800'
+              className='password input w-full mx-auto border border-slate-800 text-xs md:text-base'
               type='password' 
               placeholder='Password'
               onChange={changeHandler}
               value={loggedInUser.password}
             ></input>
             <input
-              className='confirmPassword input w-full mx-auto border border-slate-800'  
+              className='confirmPassword input w-full mx-auto border border-slate-800 text-xs md:text-base'  
               type='password' 
               placeholder='Confirm Password'
               onChange={changeHandler}
@@ -94,7 +94,7 @@ const SignUp = () => {
             ></input>
             {error.email && <p className='text-center text-red mx-auto text-xs md:text-sm'>Email already exists</p>}
             <input
-              className='email input w-full mx-auto border border-slate-800'  
+              className='email input w-full mx-auto border border-slate-800 text-xs md:text-base'  
               type='text' 
               placeholder='Email'
               onChange={changeHandler}
@@ -102,7 +102,7 @@ const SignUp = () => {
             ></input>
             <Row>
               <button  
-                className='account-button w-20 mx-auto mb-2'
+                className='account-button w-20 mx-auto mb-2 text-sm md:text-base'
                 type='submit'
               >Submit</button>
             </Row>
