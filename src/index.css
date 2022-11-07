@@ -197,5 +197,9 @@ main {
 .dropdown-toggle::after {
 	display: none;
 }
-
+/* Removing border styling around Bootstrap modal */
+.modal-content {
+	background-color: transparent;
+	border: 0;
+}
 

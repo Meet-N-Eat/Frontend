@@ -2,17 +2,18 @@ import {useContext, useState} from 'react'
 import {Context} from '../../App'
 import Search from './Search'
 import SignUp from '../LoginSignUp/SignUp'
+import { Modal } from 'react-bootstrap'
 
 const Home = () => {
 	// State hooks and Variables
 	// ===========================================================================
 	const {loggedInUser} = useContext(Context)
-	const [signUpShow, setSignUpShow] = useState(false)
+	const [show, setShow] = useState(false)
 
 	// Event handlers
 	// ===========================================================================
 	function signUpShowHandler() {
-		setSignUpShow(true)
+		setShow(prevState => !prevState)
 	}
 
 	return (
@@ -26,7 +27,13 @@ const Home = () => {
 						onClick={signUpShowHandler}>
 						Create account
 					</button>
-					{signUpShow ? <SignUp /> : null}
+					
+					<Modal 
+					show={show} 
+					onHide={() => setShow(false)}
+					centered={true}>
+						<SignUp />
+					</Modal> 
 				</>
 			)}
 		</div>
