@@ -93,6 +93,10 @@
 		@apply h-11 rounded-full p-2 text-white hover:text-black bg-red-900 hover:bg-white/90 hover:border shadow-md shadow-black;
 	}
 
+	.outreach-button {
+		@apply w-40 font-normal rounded-full p-2 text-black hover:text-white bg-white/90 hover:bg-red-900/80 shadow-md shadow-red-900;
+	}
+
 	/* Input boxes */
 	.input {
 		@apply shadow-sm border border-white bg-gray-500/80 focus:bg-white/90 placeholder-white focus:placeholder-gray-400 text-white focus:text-zinc-900 focus:outline-none indent-2.5 rounded-full p-1 font-normal;
@@ -134,9 +138,7 @@
 		@apply hover:text-red-800 hover:font-normal;
 	}
 
-	.focus-nav {
-		@apply focus:bg-red-200/70
-	}
+
 	/* Messages/Message/MessageChat */
 	.chat-message {
 		@apply w-[60%]
@@ -205,9 +207,15 @@ main {
 .dropdown-toggle::after {
 	display: none;
 }
-/* Removing border styling around Bootstrap modal */
+
+.message-backdrop:hover {
+	background-color: rgba(100, 0, 0, 0.8);
+	opacity: 0.5;
+	padding: 10px;
+
+}
+/* Removing styling around Bootstrap modal */
 .modal-content {
 	background-color: transparent;
-	border: 0;
 }
 

@@ -9,7 +9,9 @@ function UserLike({ user }) {
    const { loggedInUser } = useContext(Context)
    const [formSwitch, setFormSwitch] = useState(false)
    const [show, setShow] = useState(false);
-   const modalHandler = () => setShow(!show);
+   function modalHandler() {
+      setShow(prevState => !prevState)
+   }
    
    function friends() {
       if(loggedInUser.response.friends.find(friend => friend === user._id)) return true
@@ -25,17 +27,15 @@ function UserLike({ user }) {
       <div onClick={modalHandler}>
          <ProfileCard user={user._id} />
       </div>
-      <Modal show={show} onHide={modalHandler}>
+      <Modal size='sm' show={show} onHide={() => setShow(false)}>
          {!formSwitch ?
-            <>
-               <Modal.Header closeButton>
+            <div className='modal-bg border mt-36 mx-auto p-4 rounded-2xl w-72 h-60 text-white grid place-content-center'>
+               <div className='grid place-content-center'>
                   <ProfileCard user={user._id} />
-               </Modal.Header>
-               <Modal.Body>{user.about}</Modal.Body>
-               <Modal.Footer>
-                  <OutreachButtons friends={friends()} user={user} friendRequestHandler={friendRequestHandler} />
-               </Modal.Footer>
-            </>
+               </div>
+            <p className='text-white'>{user.about}</p>
+            <OutreachButtons friends={friends()} user={user} friendRequestHandler={friendRequestHandler} />
+         </div>
             :
             <FriendRequestForm user={user} modalHandler={modalHandler} />
          }
