@@ -7,8 +7,6 @@ import RestaurantCard from '../RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import UserLike from './UserLike'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faShuffle } from '@fortawesome/free-solid-svg-icons'
 
 const RestaurantDetail = () => {
 	// State hooks and variable declarations
