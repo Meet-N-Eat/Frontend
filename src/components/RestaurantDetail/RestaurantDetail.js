@@ -48,7 +48,7 @@ const RestaurantDetail = () => {
 						<RestaurantCard restaurant={resDetails.response._id} />
 					</div>
 
-					<div className='p-2 border-t-[1px] border-b-[1px] border-red-900 w-full mt-3 flex flex-row centered rounded-2xl'>
+					<div className='bg-white p-2 border-t-[1px] border-b-[1px] border-red-900 w-[25rem] mt-3 flex flex-row centered rounded-full'>
 						{loggedInUser.token ? (
 							userLikes.response.slice(0,3).map(user => 
 							<UserLike key={user._id} user={user} />)
