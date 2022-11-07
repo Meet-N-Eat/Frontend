@@ -129,6 +129,14 @@
 	.friend-invited {
 		@apply bg-red-600/50 rounded-2xl border p-1;
 	}
+
+	.hover-nav {
+		@apply hover:text-red-800 hover:font-normal;
+	}
+
+	.focus-nav {
+		@apply focus:bg-red-200/70
+	}
 	/* Messages/Message/MessageChat */
 	.chat-message {
 		@apply w-[60%]

@@ -39,7 +39,7 @@ const NavBar = () => {
 			<div>
 				<NavLink to='/'>
 					<h2 className='text-5xl text-white nav-title'>
-						MEET <span className='text-red-800 -mx-6'>N</span> EAT
+						MEET <span className='text-red-800 -mx-7'>N</span> EAT
 					</h2>
 				</NavLink>
 			</div>
@@ -50,7 +50,7 @@ const NavBar = () => {
 							<img
 								src={loggedInUser.response.profileimg || defaultImage}
 								alt='profile-icon'
-								className='icon border-2'
+								className='icon border-2 hover-nav'
 								id='nav-profile-icon'
 							/>
 						</NavLink>
@@ -58,17 +58,17 @@ const NavBar = () => {
 							<FontAwesomeIcon icon={faUserGroup} className='icon' />
 						</NavLink>
 						<NavLink to='/messages'>
-							<FontAwesomeIcon icon={faCommentDots} className='icon' />
+							<FontAwesomeIcon icon={faCommentDots} className='icon hover-nav' />
 						</NavLink>
 						<NavDropdown
 							className='nav-dropdown d-inline-block'
-							title={<FontAwesomeIcon icon={faGear} className='icon' />}
+							title={<FontAwesomeIcon icon={faGear} className='icon hover-nav' />}
 						>
 							<div>
-								<NavLink to='/profile'>My Profile</NavLink>
+								<NavLink className='hover-nav focus-nav' to='/profile'>My Profile</NavLink>
 							</div>
 							<div>
-								<NavLink to='/' onClick={handleLogOut}>
+								<NavLink className='hover-nav focus-nav' to='/' onClick={handleLogOut}>
 									Log Out
 								</NavLink>
 							</div>
@@ -77,21 +77,20 @@ const NavBar = () => {
 				) : (
 					<NavDropdown
 						className='nav-dropdown d-inline-block'
-						title={<FontAwesomeIcon icon={faCircleUser} className='icon' />}
+						title={<FontAwesomeIcon icon={faCircleUser} className='icon hover-nav' />}
 					>
 						{['Log in', 'Sign up'].map((text, index) => (
-							<NavDropdown.Item onClick={userAuthClick} key={index}>
+							<NavDropdown.Item className='hover-nav focus-nav' onClick={userAuthClick} key={index}>
 								{text}
 							</NavDropdown.Item>
 						))}
 					</NavDropdown>
 				)}
 				<NavLink to='/faq'>
-					<FontAwesomeIcon icon={faCircleInfo} className='icon' />
+					<FontAwesomeIcon icon={faCircleInfo} className='icon hover-nav' />
 				</NavLink>
 			</div>
 		</div>
 	)
 }
-
 export default NavBar
