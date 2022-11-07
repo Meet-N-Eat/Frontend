@@ -7,6 +7,8 @@ import RestaurantCard from '../RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import UserLike from './UserLike'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faShuffle } from '@fortawesome/free-solid-svg-icons'
 
 const RestaurantDetail = () => {
 	// State hooks and variable declarations
@@ -16,6 +18,7 @@ const RestaurantDetail = () => {
 	const {loggedInUser, dispatchUser} = useContext(Context)
 	const {restaurantId} = useParams()
 	const [modalShow, setModalShow] = useState(false)
+	
 
 	// Getting restaurant data by restaurantId
 	// ===========================================================================
@@ -44,9 +47,10 @@ const RestaurantDetail = () => {
 					<div>
 						<RestaurantCard restaurant={resDetails.response._id} />
 					</div>
-					<div>
+					<div className='bg-white rounded-full flex flex-row justify-center py-1 w-[28rem]'>
 						{loggedInUser.token ? (
-							userLikes.response.map(user => <UserLike key={user._id} user={user} />)
+							userLikes.response.slice(0,3).map(user => 
+							<UserLike key={user._id} user={user} />)
 						) : (
 							<Link to='/users/authentication/login' state={{logInMessage: true}}>
 								{userLikes.response.length} users like this restaurant
