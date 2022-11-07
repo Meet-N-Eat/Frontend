@@ -48,7 +48,7 @@ function MessageChat() {
   }
 
   return (
-    <div className="page-container pb-5 p-4 h-screen overflow-auto">
+    <div className="page-container pb-5 p-4 overflow-auto flex flex-col items-center min-w-[448px] max-h-[770px] scroll">
       {thread.threadArray && thread.threadArray.length > 0 ? thread.threadArray[0].map(message => 
         <div key={message._id} className={`${message.sender == loggedInUser.response._id ? "user chat-message" : "friend chat-message"}`}>
           <Message message={message} />
@@ -56,7 +56,7 @@ function MessageChat() {
         )
         : <div>no messages yet, say hi!</div>
       }
-      <form onSubmit={submitHandler} className="flex mt-4 fixed bottom-0 w-2/5">
+      <form onSubmit={submitHandler} className="flex mt-4 fixed bottom-0 mx-auto w-2/5 min-w-[430px]">
         <input
           className="input w-full"
           type="text"
@@ -65,7 +65,6 @@ function MessageChat() {
         />
         <button className="button" type="submit">send</button>
       </form>
-
     </div>
   )
 }

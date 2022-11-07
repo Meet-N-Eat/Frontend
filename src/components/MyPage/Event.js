@@ -53,11 +53,12 @@ const Event = ({ event, updateEvents }) => {
     }
     else {
         return (
-            <div className='bg-white/80 centered p-2 w-3/4 rounded-2xl mt-2'>
+            <div className='bg-red-900/80 centered p-2 w-[320px] min-h-[450px] max-h-[410px] rounded-2xl mt-2'>
                 <div className='w-full'>
                     <div className='flex flex-row justify-around items-center w-full'>
-                        <p>{formattedDate} at {formattedHourAMPM}</p>
-                        <NavDropdown className="nav-dropdown d-inline-block" title={<FontAwesomeIcon icon={faEllipsisVertical} className="icon text-black w-1/2 float-right" /> }>
+                        <>
+                        <p className='text-white'>{formattedDate} at {formattedHourAMPM}</p>
+                        <NavDropdown className="nav-dropdown d-inline-block" title={<FontAwesomeIcon icon={faEllipsisVertical} className="icon text-white w-1/2 float-right" /> }>
                             <NavDropdown.Item>
                                 <button>edit</button>
                             </NavDropdown.Item>
@@ -75,6 +76,7 @@ const Event = ({ event, updateEvents }) => {
                                 </Modal>
                             </NavDropdown.Item>
                         </NavDropdown>
+                        </>
                     </div>
                 </div>
                 <div>

@@ -23,11 +23,13 @@ function UserLike({ user }) {
    }
 
    return (
+
    <div>
       <div className=''>
          <div onClick={modalHandler}>
             <ProfileCard user={user._id} />
          </div>
+
       </div>
       <Modal size='sm' show={show} onHide={() => setShow(false)}>
          {!formSwitch ?

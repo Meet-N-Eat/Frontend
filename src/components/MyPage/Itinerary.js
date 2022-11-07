@@ -15,12 +15,12 @@ const Itinerary = ({ loggedInUser }) => {
     }
 
     return (
-        <div className='centered main-bg rounded-2xl p-5 w-1/2'>
+        <div className='flex flex-col items-center w-full min-h-[830px]'>
                 <div>
                     <h2 className='text-white'>itinerary</h2>
                     <h2 className='text-white'> {today} </h2>
                 </div>
-                <div className='w-1/2 centered'>
+                <div className='max-h-[720px] max-w-[335px] sm:max-w-[700px] gap-2 centered grid mx-auto grid-cols-1 lg:grid-cols-2 p-3 overflow-y-auto scroll'>
                     {events.response && events.response.length > 0 ?
                         events.response.map(event => <Event event={event} updateEvents={updateEvents} key={event._id}/>)
                         : <div>no events right now, send someone an invite!</div>
