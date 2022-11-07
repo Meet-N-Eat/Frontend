@@ -1,9 +1,9 @@
-import {useContext, useState, useEffect, useReducer} from 'react'
+import {useContext, useState, useEffect} from 'react'
 import {Context} from '../../App'
 import Search from './Search'
 import SignUp from '../LoginSignUp/SignUp'
 import { Modal } from 'react-bootstrap'
-import { axiosReducer, axiosAll } from '../../data-and-functions/axiosAll'
+import { axiosAll } from '../../data-and-functions/axiosAll'
 
 const Home = () => {
 	// State hooks and Variables

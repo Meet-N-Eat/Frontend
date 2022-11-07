@@ -147,12 +147,12 @@
 
 /* Class name goes on wrapper div */
 .user-image {
-	@apply w-[75px] h-[75px] inline-block relative overflow-hidden object-cover m-auto;
+	@apply w-[50px] h-[50px] inline-block relative overflow-hidden object-cover m-auto;
 }
 
 @media (max-width: 768px) {
 	.user-image {
-		@apply w-[50px] h-[50px] inline-block relative overflow-hidden object-cover m-auto;
+		@apply w-[65px] h-[65px] inline-block relative overflow-hidden object-cover m-auto;
 	}
 }
 /* Targets image inside wrapper div */
