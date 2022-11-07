@@ -65,10 +65,10 @@ const NavBar = () => {
 							title={<FontAwesomeIcon icon={faGear} className='icon hover-nav' />}
 						>
 							<div>
-								<NavLink className='hover-nav focus-nav' to='/profile'>My Profile</NavLink>
+								<NavLink className='hover-nav' to='/profile'>My Profile</NavLink>
 							</div>
 							<div>
-								<NavLink className='hover-nav focus-nav' to='/' onClick={handleLogOut}>
+								<NavLink className='hover-nav' to='/' onClick={handleLogOut}>
 									Log Out
 								</NavLink>
 							</div>
@@ -80,7 +80,7 @@ const NavBar = () => {
 						title={<FontAwesomeIcon icon={faCircleUser} className='icon hover-nav' />}
 					>
 						{['Log in', 'Sign up'].map((text, index) => (
-							<NavDropdown.Item className='hover-nav focus-nav' onClick={userAuthClick} key={index}>
+							<NavDropdown.Item className='hover-nav' onClick={userAuthClick} key={index}>
 								{text}
 							</NavDropdown.Item>
 						))}
