@@ -38,10 +38,10 @@ const Friends = ({loggedInUser}) => {
 							</div>
 						))
 				) : (
-					<div>
-						you don't have any friends yet, send friend requests by clicking on other people
-						who like the same restaurants you do.
-					</div>
+					<p className='text-white col-span-4 text-center'>
+						No friends yet! Send friend requests by clicking on other people
+						who like the same restaurants you do.				
+					</p>
 				)}
 			</div>
 		</div>
