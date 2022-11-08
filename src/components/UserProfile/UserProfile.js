@@ -64,13 +64,13 @@ const UserProfile = () => {
     }
 
     return (
-        <div className='centered main-bg rounded-2xl w-1/2 mx-auto min-w-[425px] min-h-[700px] p-2'>
+        <div className='h-4/5 w-3/4 max-w-[800px] centered main-bg rounded-2xl mx-auto md:mt-28 min-w-[425px] min-h-[700px]'>
             {loggedInUser.response && 
                 <>         
                     <div className='centered rounded-circle'>
-                        <img className='rounded-circle mb-1 border-2 border-red-900' src={userData.profileimg || defaultImage} alt="profile-icon"/>
+                        <img className='h-[150px] w-[150px] md:h-[180px] md:w-[180px] rounded-circle mb-1 border-2 border-red-900' src={userData.profileimg || defaultImage} alt="profile-icon"/>
                     </div>
-                    <form className='flex flex-col text-white'> 
+                    <form className='flex flex-col text-white mb-3'> 
                         <input className="profileimg input"
                             type="profile-image" 
                             placeholder="paste a picture URL here"
