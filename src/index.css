@@ -138,7 +138,9 @@
 		@apply hover:text-red-800 hover:font-normal;
 	}
 
-
+	.focus-nav {
+		@apply focus:bg-red-400/50 w-full
+	}
 	/* Messages/Message/MessageChat */
 	.chat-message {
 		@apply w-[60%]
