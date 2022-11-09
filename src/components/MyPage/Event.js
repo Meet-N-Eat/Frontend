@@ -76,10 +76,10 @@ const Event = ({event, updateEvents}) => {
 									<button onClick={handleShow}>Cancel Event</button>
 									<Modal show={show} onHide={handleClose}>
 										<div closeButton>
-											<h1>Confirm cancelation</h1>
+											<h1>confirm cancelation</h1>
 										</div>
 										<div>
-											Are you sure you don't want to meet a creep and get free food?
+											are you sure you don't want to meet a creep and get free food?
 										</div>
 										<div>
 											<button onClick={handleClose}> close </button>
@@ -91,7 +91,7 @@ const Event = ({event, updateEvents}) => {
 						</>
 					</div>
 				</div>
-				<div>
+				<div className='centered'>
 					<RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
 					{['bottom'].map(placement => (
 						<OverlayTrigger
@@ -111,7 +111,7 @@ const Event = ({event, updateEvents}) => {
 								</Popover>
 							}
 						>
-							<button onClick={toggleModal}>who's going?</button>
+							<button className='account-button' onClick={toggleModal}>who's going?</button>
 						</OverlayTrigger>
 					))}
 				</div>
