@@ -47,13 +47,33 @@
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
-		@apply h-screen w-screen fixed z-10 top-0 left-0 bg-black/40 overflow-hidden;
+		@apply 
+			h-screen 
+			w-screen 
+			z-10 
+			fixed 
+			top-0 
+			left-0
+			bg-black/40 
+			overflow-hidden;
 	}
 
 	.modals-content {
 		background-color: var(--modal-bg);
 		/* max-height: 80%; */
-		@apply p-8 border max-h-[80%] w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl scroll;
+		@apply 
+			border 
+			max-h-[80%] 
+			w-[340px]
+			sm:w-[590px] 
+			md:w-[722px]
+			lg:w-[854px]
+			xl:w-[996px]
+			mt-36 
+			mx-auto 
+			p-8 
+			rounded-2xl 
+			scroll;
 	}
 	
 	.centered {
@@ -141,7 +161,7 @@
 
 	/* Effects */
 	.friend-invited {
-		@apply bg-red-600/50 rounded-2xl border p-1;
+		@apply bg-red-600/50 rounded-2xl outline outline-1;
 	}
 
 	.hover-nav {
