@@ -104,7 +104,7 @@ const Event = ({event, updateEvents}) => {
 							<Modal.Body className=''>
 								<div className='centered overflow-auto'>
 									{event.participants.map(participant => (
-										<ProfileCard  key={participant} user={participant} />
+										<ProfileCard modalShow={modalShow} key={participant} user={participant} />
 										))}
 								</div>
 							</Modal.Body>
