@@ -68,12 +68,14 @@ function Messages() {
 									: thread[0].recipient
 							}`}
 						>
-							<ProfileCard user={
-								thread[0].sender != loggedInUser.response._id
-									? thread[0].sender
-									: thread[0].recipient
-								}
-							/>
+							<div className="mx-auto">
+								<ProfileCard user={
+									thread[0].sender != loggedInUser.response._id
+										? thread[0].sender
+										: thread[0].recipient
+									}
+								/>
+							</div>
 							<Message message={thread[thread.length - 1]} />
 						</Link>
 					))

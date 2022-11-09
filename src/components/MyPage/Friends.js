@@ -24,7 +24,7 @@ const Friends = ({loggedInUser}) => {
 			<form>
 				<input className='input mb-8' onChange={searchChange} placeholder='search by name' />
 			</form>
-			<div className='main-bg rounded-2xl grid grid-cols-2 my-auto place-content-center md:grid-cols-4 pt-48 md:pt-16 space-y-0 md:space-y-4 max-h-[23rem] text-xs md:text-base w-60 md:w-[52rem] overflow-y-auto scroll'>
+			<div className='max-h-[600px] main-bg display-friends flex-centered scroll'>
 				{friends.response && friends.response.length > 0 ? (
 					friends.response
 						.filter(
@@ -33,9 +33,7 @@ const Friends = ({loggedInUser}) => {
 								friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase())
 						)
 						.map(friend => (
-							<div className='text-white grid md:place-content-center'>
-								<ProfileCard key={friend._id} user={friend._id} />
-							</div>
+							<ProfileCard key={friend._id} user={friend._id}/>
 						))
 				) : (
 					<p className='text-white col-span-4 text-center'>
