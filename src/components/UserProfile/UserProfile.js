@@ -66,10 +66,10 @@ const UserProfile = () => {
 	}
 
 	return (
-		<div className='h-4/5 w-3/4 max-w-[800px] centered main-bg rounded-2xl mx-auto md:mt-28 min-w-[425px] min-h-[700px]'>
+		<div className='h-4/5 w-3/4 max-w-[800px] grid-centered main-bg rounded-2xl mx-auto md:mt-28 min-w-[425px] min-h-[700px]'>
 			{loggedInUser.response && (
 				<>
-					<div className='centered rounded-circle'>
+					<div className='grid-centered rounded-circle'>
 						<img
 							className='h-[150px] w-[150px] md:h-[180px] md:w-[180px] rounded-circle mb-1 border-2 border-red-900'
 							src={userData.profileimg || defaultImage}
@@ -102,7 +102,7 @@ const UserProfile = () => {
 						<p className=' d-block border-b-[1px] border-red-900 pb-1 text-white/50'>
 							maximum length: 500 characters
 						</p>
-						<div className='centered'>
+						<div className='grid-centered'>
 							<label className=' mt-1'>location</label>
 							<input
 								className='location input'
@@ -123,7 +123,7 @@ const UserProfile = () => {
 								this will be the name other users see when they view your profile.
 							</p>
 						</div>
-						<div className='centered'>
+						<div className='grid-centered'>
 							<label className=''>email</label>
 							<input
 								className='email input'

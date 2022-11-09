@@ -98,7 +98,7 @@ const MyPage = () => {
 	// FUNCTION RETURN
 	// ===========================================================================
 	return (
-		<div className='centered'>
+		<div className='grid-centered'>
 			{loggedInUser && loggedInUser.response && (
 				<div className='h-full w-full max-w-[1200px] relative flex justify-center items-center'>
 					{slide}
