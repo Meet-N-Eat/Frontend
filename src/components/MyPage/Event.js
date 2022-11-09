@@ -12,12 +12,15 @@ import {faEllipsisVertical} from '@fortawesome/free-solid-svg-icons'
 
 const Event = ({event, updateEvents}) => {
 	const {loggedInUser, dispatchUser} = useContext(Context)
-	const [modalState, setModalState] = useState(false)
 	const [show, setShow] = useState(false)
 	const [showEdit, setShowEdit] = useState(false)
+	const [modalShow, setModalShow] = useState(false)
 
 	const handleClose = () => setShow(false)
 	const handleShow = () => setShow(true)
+	const showHandler = () => {
+		setModalShow(!modalShow)
+	}
 
 	useEffect(() => console.log('Event Rendered'))
 	useEffect(() => console.log(event))
@@ -27,10 +30,6 @@ const Event = ({event, updateEvents}) => {
 	const formattedDate = moment.utc(event.date).format('YYYY-MM-DD')
 	const formattedHour = eventDate.format('hh:mm')
 	const formattedHourAMPM = eventDate.format('hh:mm A')
-
-	function toggleModal() {
-		setModalState(!modalState)
-	}
 
 	const handleCancel = async () => {
 		await axiosAll('DELETE', `/users/events/${event._id}`, loggedInUser.token, null)
@@ -93,27 +92,25 @@ const Event = ({event, updateEvents}) => {
 				</div>
 				<div className='centered'>
 					<RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
-					{['bottom'].map(placement => (
-						<OverlayTrigger
-							trigger='click'
-							key={placement}
-							placement={placement}
-							overlay={
-								<Popover id={`popover-positioned-${placement}`}>
-									<h3>{`friends going`}</h3>
-									<div>
-										<div>
-											{event.participants.map(participant => (
-												<ProfileCard key={participant} user={participant} />
-											))}
-										</div>
-									</div>
-								</Popover>
-							}
-						>
-							<button className='account-button' onClick={toggleModal}>who's going?</button>
-						</OverlayTrigger>
-					))}
+					<Modal
+					show={modalShow}
+					onHide={showHandler}
+					aria-labelledby="whosgoing-modal"
+					>
+						<div className='modals-content'>
+							<Modal.Header>
+								<Modal.Title className='text-white mx-auto'>who's going?</Modal.Title>
+							</Modal.Header>
+							<Modal.Body className=''>
+								<div className='centered overflow-auto'>
+									{event.participants.map(participant => (
+										<ProfileCard  key={participant} user={participant} />
+										))}
+								</div>
+							</Modal.Body>
+						</div>
+					</Modal>
+					<button className='account-button' onClick={showHandler}>who's going?</button>
 				</div>
 			</div>
 		)
