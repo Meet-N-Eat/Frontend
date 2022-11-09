@@ -7,6 +7,8 @@ import RestaurantCard from '../RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import UserLike from './UserLike'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
 
 const RestaurantDetail = () => {
 	// State hooks and variable declarations
@@ -55,6 +57,7 @@ const RestaurantDetail = () => {
 								{userLikes.response.length} users like this restaurant
 							</Link>
 						)}
+						{/* {userLikes.response.length > 3 ? <FontAwesomeIcon icon={faCirclePlus} className="text-red-900 text-4xl bg-white rounded-full"></FontAwesomeIcon> : ''} */}
 					</div>
 					<div className='w-full'>
 						<div>
