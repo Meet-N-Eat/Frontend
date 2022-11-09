@@ -55,6 +55,7 @@
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
+		margin: 0px !important;
 		@apply 
 			h-screen 
 			w-screen 
@@ -109,10 +110,6 @@
 			justify-center
 			items-center
 		;
-	}
-
-	.round {
-		@apply rounded-[50%];
 	}
 
 	.user {
@@ -232,9 +229,10 @@
 			bg-gray-500/80 
 			text-white 
 			placeholder-white 
+			mx-auto 
 			rounded-full 
 			border 
-			border-white 
+			border-white
 			shadow-sm 
 			p-1 
 
@@ -332,6 +330,7 @@ body {
 	font-weight: 300;
 	height: 100vh;
 	width: 100vw;
+	margin: 0px;
 	background-image: url('./assets/homeBgImage.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;
