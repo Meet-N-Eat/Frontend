@@ -13,17 +13,17 @@ const ProfileCard = ({user, modalShow}) => {
 	}, [])
 
 	return (
-		<div className='h-32 w-32 rounded-2xl grid-centered space-y-2'>
+		<div className='h-32 w-32 rounded-2xl flex-centered flex-col mx-auto'>
 			{userInfo.response && (
 				<>
-					<div className='user-image'>
+					<div className='user-image mb-2'>
 						<img
 							src={userInfo.response.profileimg || defaultImage}
 							alt='profile'
 							className='user-image img'
 						/>
 					</div>
-					<p className={modalShow == true ? `text-white 'font-normal text-center'` : 'font-normal text-center'}>
+					<p className={modalShow == true ? `text-white text-center'` : 'text-center'}>
 						{userInfo.response.displayname || userInfo.response.username}
 					</p>
 				</>

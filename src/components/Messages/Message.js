@@ -7,11 +7,8 @@ const Message = ({message}) => {
 
 	return (
 		<div className='modal-bg text-white rounded-2xl flex p-2'>
-			<div className='hidden'>
-				<ProfileCard user={message.sender} />
-			</div>
 			<div className='flex items-between w-full'>
-				<div className='w-3/4 p-2'>
+				<div className='w-3/4 my-auto p-2'>
 					<p>{message && message.body}</p>
 				</div>
 				<div className='w-1/4 flex flex-col justify-center items-center'>

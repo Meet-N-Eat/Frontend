@@ -37,42 +37,55 @@ function Messages() {
 	}
 
 	return (
-		<div className='flex-centered flex-col relative main-bg h-min max-h-[80%] w-full md:w-3/4 max-w-[1080px] mx-auto p-4 rounded-2xl overflow-y-auto overflow-x-hidden scroll'>
-			<button className='text-xl absolute top-2 right-4' onClick={toggleModal}>
-				<FontAwesomeIcon className='' icon={faMessage} />
-			</button>
-			{toggle && (
-				<div className='modals' onClick={toggleModal}>
-					<div className='modals-content display-friends'>
-						{loggedInUser.response &&
-							loggedInUser.response.friends.map(friend => (
-								<Link key={friend} to={`/messages/${friend}`}>
-									<ProfileCard user={friend} />
-								</Link>
-							))}
+		<>
+			<div className='standard-width max-w-[1080px] flex-centered relative mx-auto main-bg rounded-b-none'>
+				<p className='text-center'>conversations</p>
+				<button className='absolute top-5 right-10 text-xl' onClick={toggleModal}>
+					<FontAwesomeIcon className='' icon={faMessage} />
+				</button>
+			</div>
+			<div className='h-max max-h-[80vh] standard-width max-w-[1080px] flex flex-col main-bg mx-auto p-4 rounded-t-none overflow-y-auto overflow-x-hidden scroll'>
+				{toggle && (
+					<div className='modals' onClick={toggleModal}>
+						<div className='modals-content display-friends'>
+							{loggedInUser.response &&
+								loggedInUser.response.friends.map(friend => (
+									<Link key={friend} to={`/messages/${friend}`}>
+										<ProfileCard user={friend} />
+									</Link>
+								))}
+						</div>
 					</div>
-				</div>
-			)}
-			{messages.threadArray && messages.threadArray.length > 0 ? (
-				messages.threadArray.map(thread => (
-					<Link
-						className='flex flex-col w-full p-1 rounded-xl'
-						key={thread[thread.length - 1]._id}
-						to={`/messages/${
-							thread[0].sender != loggedInUser.response._id
-								? thread[0].sender
-								: thread[0].recipient
-						}`}
-					>
-						<Message message={thread[thread.length - 1]} />
-					</Link>
-				))
-			) : (
-				<div>
-					you don't have any messages, choose a friend from the list and start chatting!
-				</div>
-			)}
-		</div>
+				)}
+				{messages.threadArray && messages.threadArray.length > 0 ? (
+					messages.threadArray.map(thread => (
+						<Link
+							className='w-full message-thread rounded-xl p-1 hover:text-white'
+							key={thread[thread.length - 1]._id}
+							to={`/messages/${
+								thread[0].sender != loggedInUser.response._id
+									? thread[0].sender
+									: thread[0].recipient
+							}`}
+						>
+							<div className='h-[100px]'>
+								<ProfileCard user={
+									thread[0].sender != loggedInUser.response._id
+										? thread[0].sender
+										: thread[0].recipient
+									}
+								/>
+							</div>
+							<Message message={thread[thread.length - 1]} />
+						</Link>
+					))
+				) : (
+					<div>
+						you don't have any messages, choose a friend from the list and start chatting!
+					</div>
+				)}
+			</div>
+		</>
 	)
 }
 
