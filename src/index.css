@@ -63,7 +63,15 @@
 		@apply rounded-[50%];
 	}
 	.user {
-		@apply self-end;
+		@apply md:self-end;
+	}
+
+	.friend {
+		@apply md:self-start
+	}
+
+	.friend > div {
+		background-color: rgba(100, 100, 100, 0.8)
 	}
 
 	/* Page containers */
@@ -141,7 +149,7 @@
 
 	/* Messages/Message/MessageChat */
 	.chat-message {
-		@apply w-[60%]
+		@apply w-full md:w-[85%]
 	}
 }
 

@@ -1,6 +1,5 @@
-import {useEffect, useContext, useReducer} from 'react'
+import {useEffect, useContext, useReducer, useState} from 'react'
 import {Link} from 'react-router-dom'
-import {Dropdown} from 'react-bootstrap'
 import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import {messageThreads} from '../../data-and-functions/messageThreads'
@@ -12,6 +11,7 @@ import ProfileCard from '../ProfileCard'
 function Messages() {
 	const {loggedInUser} = useContext(Context)
 	const [messages, dispatchMessages] = useReducer(axiosReducer, {})
+	const [toggle, setToggle] = useState(false)
 
 	useEffect(() => {
 		axiosAll(
@@ -32,23 +32,27 @@ function Messages() {
 			})
 	}, [messages.response])
 
+	function toggleModal() {
+		setToggle(prev => !prev)
+	}
+
 	return (
-		<div className='centered main-bg w-3/4 mx-auto flex flex-col p-4 rounded-2xl'>
-			<div className='w-full'>
-				<Dropdown className='float-right outline-none'>
-					<Dropdown.Toggle className='border-none hover:bg-red-900 selection:bg-red-900 focus:bg-red-900 focus:ring-0'>
-						<FontAwesomeIcon className='' icon={faMessage} />
-					</Dropdown.Toggle>
-					<Dropdown.Menu>
+		<div className='centered relative main-bg w-3/4 mx-auto flex flex-col p-4 rounded-2xl'>
+			<button className='text-white text-xl absolute top-2 right-4' onClick={toggleModal}>
+				<FontAwesomeIcon className='' icon={faMessage} />
+			</button>
+			{toggle && (
+				<div className='modals' onClick={toggleModal}>
+					<div className='modals-content flex flex-wrap max-w-20 gap-y-3 gap-x-1 overflow-auto text-white'>
 						{loggedInUser.response &&
 							loggedInUser.response.friends.map(friend => (
 								<Link key={friend} to={`/messages/${friend}`}>
 									<ProfileCard user={friend} />
 								</Link>
 							))}
-					</Dropdown.Menu>
-				</Dropdown>
-			</div>
+					</div>
+				</div>
+			)}
 			{messages.threadArray && messages.threadArray.length > 0 ? (
 				messages.threadArray.map(thread => (
 					<Link
