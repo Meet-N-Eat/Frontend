@@ -23,7 +23,7 @@ const ProfileCard = ({user}) => {
 							className='user-image img'
 						/>
 					</div>
-					<p className='font-normal text-center'>
+					<p className='font-normal text-white text-center'>
 						{userInfo.response.displayname || userInfo.response.username}
 					</p>
 				</>
