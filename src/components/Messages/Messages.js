@@ -38,13 +38,13 @@ function Messages() {
 
 	return (
 		<>
-			<div className='standard-width max-w-[1080px] flex-centered relative mx-auto main-bg rounded-b-none'>
-				<p className='text-center'>conversations</p>
+			<div className='h-[73px] standard-width max-w-[1080px] flex-centered relative mx-auto main-bg rounded-b-none'>
+				<p className='m-auto'>conversations</p>
 				<button className='absolute top-5 right-10 text-xl' onClick={toggleModal}>
 					<FontAwesomeIcon className='' icon={faMessage} />
 				</button>
 			</div>
-			<div className='h-max max-h-[80vh] standard-width max-w-[1080px] flex flex-col main-bg mx-auto p-4 rounded-t-none overflow-y-auto overflow-x-hidden scroll'>
+			<div className='h-max max-h-[80vh] standard-width max-w-[1080px] flex flex-col main-bg mx-auto p-4 rounded-t-none overflow-y-auto overflow-x-hidden md:gap-y-2 scroll'>
 				{toggle && (
 					<div className='modals' onClick={toggleModal}>
 						<div className='modals-content display-friends'>
@@ -60,7 +60,7 @@ function Messages() {
 				{messages.threadArray && messages.threadArray.length > 0 ? (
 					messages.threadArray.map(thread => (
 						<Link
-							className='w-full message-thread rounded-xl p-1 hover:text-white'
+							className='w-full message-thread rounded-2xl hover:text-white'
 							key={thread[thread.length - 1]._id}
 							to={`/messages/${
 								thread[0].sender != loggedInUser.response._id
@@ -68,14 +68,12 @@ function Messages() {
 									: thread[0].recipient
 							}`}
 						>
-							<div className='h-[100px]'>
-								<ProfileCard user={
-									thread[0].sender != loggedInUser.response._id
-										? thread[0].sender
-										: thread[0].recipient
-									}
-								/>
-							</div>
+							<ProfileCard user={
+								thread[0].sender != loggedInUser.response._id
+									? thread[0].sender
+									: thread[0].recipient
+								}
+							/>
 							<Message message={thread[thread.length - 1]} />
 						</Link>
 					))
