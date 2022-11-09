@@ -100,24 +100,18 @@ const MyPage = () => {
 	return (
 		<div className='centered'>
 			{loggedInUser && loggedInUser.response && (
-				<div className='h-full w-full flex justify-around items-center'>
+				<div className='h-full w-full max-w-[1200px] relative flex justify-center items-center'>
 					{slide}
-					<div className='w-11/12 max-w-7xl fixed top-2/4 flex justify-between'>
-						{slideIndex.current !== 0 ? (
-							<button id='left-btn' onClick={() => slideHandler('left')}>
-								<div className='arrow left'></div>
-							</button>
-						) : (
-							<div></div>
-						)}
-						{slideIndex.current !== 3 ? (
-							<button id='right-btn' onClick={() => slideHandler('right')}>
-								<div className='arrow right'></div>
-							</button>
-						) : (
-							<div></div>
-						)}
-					</div>
+					{slideIndex.current !== 0 && (
+						<button id='left-btn' onClick={() => slideHandler('left')}>
+							<div className='arrow left'></div>
+						</button>
+					)}
+					{slideIndex.current !== 3 && (
+						<button id='right-btn' onClick={() => slideHandler('right')}>
+							<div className='arrow right'></div>
+						</button>
+					)}
 				</div>
 			)}
 			<ul className='w-full h-12 flex justify-center items-center fixed left-0 bottom-0'>

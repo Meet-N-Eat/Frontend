@@ -126,15 +126,17 @@
 
 	/* Arrows */
 	.arrow {
-		@apply h-14 w-14 border-gray-500/80 border-r-4 border-b-4 rounded;
+		@apply h-14 w-14 border-gray-500/80 border-r-4 border-b-4 rounded absolute top-1/2;
 	}
 
 	.right {
 		transform: rotate(-45deg);
+		right: 20px;
 	}
 
 	.left {
 		transform: rotate(135deg);
+		left: 20px;
 	}
 
 	/* Effects */
