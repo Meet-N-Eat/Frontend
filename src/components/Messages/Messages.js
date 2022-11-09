@@ -37,7 +37,7 @@ function Messages() {
 	}
 
 	return (
-		<div className='centered relative main-bg w-3/4 mx-auto flex flex-col p-4 rounded-2xl'>
+		<div className='centered relative main-bg w-full md:w-3/4 max-w-[1080px] mx-auto flex flex-col p-4 rounded-2xl'>
 			<button className='text-white text-xl absolute top-2 right-4' onClick={toggleModal}>
 				<FontAwesomeIcon className='' icon={faMessage} />
 			</button>

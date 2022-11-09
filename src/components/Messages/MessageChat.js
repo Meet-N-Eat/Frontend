@@ -49,7 +49,7 @@ function MessageChat() {
 
   return (
     <>
-      <div className="page-container main-bg row-start-1 row-span-4 p-4 overflow-auto flex flex-col min-w-[448px] max-h-[770px] scroll">
+      <div className="page-container main-bg text-white row-start-1 row-span-4 p-4 overflow-auto flex flex-col w-full  max-w-[800px] h-[770px] scroll">
         {thread.threadArray && thread.threadArray.length > 0 ? thread.threadArray[0].map(message =>
           <div key={message._id} className={`${message.sender == loggedInUser.response._id ? "user chat-message" : "friend chat-message"}`}>
             <Message message={message} />
