@@ -7,7 +7,7 @@ const Message = ({message}) => {
 
 	return (
 		<div className='modal-bg text-white rounded-2xl flex p-2'>
-			<div className='hidden md:block'>
+			<div className='hidden'>
 				<ProfileCard user={message.sender} />
 			</div>
 			<div className='flex items-between w-full'>

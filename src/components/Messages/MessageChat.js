@@ -3,6 +3,7 @@ import {useParams} from 'react-router-dom'
 import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import {messageThreads} from '../../data-and-functions/messageThreads'
+import ProfileCard from '../ProfileCard'
 import Message from './Message'
 
 function MessageChat() {
@@ -58,7 +59,10 @@ function MessageChat() {
 
 	return (
 		<>
-			<div className='page-container main-bg text-white row-start-1 row-span-4 p-4 overflow-auto flex flex-col w-full  max-w-[800px] h-[770px] scroll'>
+			<div className='w-full page-container main-bg items-center mx-auto rounded-b-none'>
+				<ProfileCard user={friendId} />
+			</div>
+			<div className='h-[770px] w-full page-container main-bg rounded-t-none gap-y-2 p-4 overflow-auto scroll'>
 				{thread.threadArray && thread.threadArray.length > 0 ? (
 					thread.threadArray[0].map(message => (
 						<div
