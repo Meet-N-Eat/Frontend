@@ -37,13 +37,13 @@ function Messages() {
 	}
 
 	return (
-		<div className='grid-centered relative main-bg w-full md:w-3/4 max-w-[1080px] mx-auto flex flex-col p-4 rounded-2xl'>
-			<button className='text-white text-xl absolute top-2 right-4' onClick={toggleModal}>
+		<div className='flex-centered flex-col relative main-bg h-min max-h-[80%] w-full md:w-3/4 max-w-[1080px] mx-auto p-4 rounded-2xl overflow-y-auto overflow-x-hidden scroll'>
+			<button className='text-xl absolute top-2 right-4' onClick={toggleModal}>
 				<FontAwesomeIcon className='' icon={faMessage} />
 			</button>
 			{toggle && (
 				<div className='modals' onClick={toggleModal}>
-					<div className='modals-content flex flex-wrap max-w-20 gap-y-3 gap-x-1 overflow-auto text-white'>
+					<div className='modals-content display-friends'>
 						{loggedInUser.response &&
 							loggedInUser.response.friends.map(friend => (
 								<Link key={friend} to={`/messages/${friend}`}>
@@ -56,7 +56,7 @@ function Messages() {
 			{messages.threadArray && messages.threadArray.length > 0 ? (
 				messages.threadArray.map(thread => (
 					<Link
-						className='flex flex-col w-full p-1 rounded-xl text-black m-1'
+						className='flex flex-col w-full p-1 rounded-xl'
 						key={thread[thread.length - 1]._id}
 						to={`/messages/${
 							thread[0].sender != loggedInUser.response._id

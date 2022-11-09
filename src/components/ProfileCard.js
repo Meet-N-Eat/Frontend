@@ -13,7 +13,7 @@ const ProfileCard = ({user, modalShow}) => {
 	}, [])
 
 	return (
-		<div className='h-32 w-32 rounded-2xl grid justify-items-center space-y-2'>
+		<div className='h-32 w-32 rounded-2xl grid-centered space-y-2'>
 			{userInfo.response && (
 				<>
 					<div className='user-image'>

@@ -38,11 +38,19 @@
 	/* Background colors */
 	.main-bg {
 		background-color: var(--main-bg);
-		@apply rounded-2xl;
+		@apply
+			text-white
+			rounded-2xl
+		;
+
 	}
 
 	.modal-bg {
 		background-color: var(--modal-bg);
+		@apply
+			text-white
+			rounded-2xl
+		;
 	}
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
@@ -94,9 +102,19 @@
 			row-span-5 
 		;
 	}
+
+	.flex-centered {
+		@apply
+			flex
+			justify-center
+			items-center
+		;
+	}
+
 	.round {
 		@apply rounded-[50%];
 	}
+
 	.user {
 		@apply md:self-end;
 	}
