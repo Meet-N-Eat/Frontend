@@ -1,5 +1,5 @@
 import React, {useEffect, useReducer} from 'react'
-import { useState } from 'react'
+import {useState} from 'react'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import ProfileCard from '../ProfileCard'
 
@@ -65,11 +65,10 @@ const CoordinateMeetup = ({
 	}
 
 	function toggleModal(e) {
-		if(toggle) {
-			if(e.target.className.includes('modals') && !e.target.className.includes('content'))
+		if (toggle) {
+			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
 				setToggle(prev => !prev)
-		} 
-		else setToggle(prev => !prev)	
+		} else setToggle(prev => !prev)
 	}
 
 	function inviteHandler(friend) {
@@ -163,9 +162,8 @@ const CoordinateMeetup = ({
 				defaultValue={
 					(meetup.restaurant &&
 						favorites.response &&
-						favorites.response.find(favorite => favorite._id === meetup.restaurant)
-							.name) 
-					|| 'choose restaurant'
+						favorites.response.find(favorite => favorite._id === meetup.restaurant).name) ||
+					'choose restaurant'
 				}
 				onChange={restaurantSelect}
 			>
@@ -190,17 +188,17 @@ const CoordinateMeetup = ({
 			</button>
 
 			{toggle && (
-				<div 
-					className='modals'
-					onClick={toggleModal}
-				>
+				<div className='modals' onClick={toggleModal}>
 					<div className='modals-content flex flex-wrap max-w-20 gap-y-3 gap-x-1 overflow-auto'>
-						{loggedInUser.response.friends.map((friend) => (
+						{loggedInUser.response.friends.map(friend => (
 							<div key={friend} className='text-center'>
-								<div 
-									className={meetup.participants.find(participant => participant === friend) && 'friend-invited'}
+								<div
+									className={
+										meetup.participants.find(participant => participant === friend) &&
+										'friend-invited'
+									}
 									onClick={() => inviteHandler(friend)}
-								> 
+								>
 									<ProfileCard user={friend} />
 								</div>
 							</div>
