@@ -41,14 +41,14 @@ const RestaurantDetail = () => {
 	}
 
 	return (
-		<div className='centered overflow-auto min-h-[820px] scroll'>
+		<div className='grid-centered overflow-auto min-h-[820px] scroll'>
 			{resDetails.response && userLikes.response ? (
-				<div className='w-3/4 centered'>
+				<div className='w-3/4 grid-centered'>
 					<div>
 						<RestaurantCard restaurant={resDetails.response._id} />
 					</div>
 
-					<div className='bg-white p-2 border-t-[1px] border-b-[1px] border-red-900 w-[25rem] mt-3 flex flex-row centered rounded-full'>
+					<div className='bg-white p-2 border-t-[1px] border-b-[1px] border-red-900 w-[25rem] mt-3 flex flex-row grid-centered rounded-full'>
 						{loggedInUser.token ? (
 							userLikes.response.slice(0,3).map(user => 
 							<UserLike key={user._id} user={user} />)
@@ -63,7 +63,7 @@ const RestaurantDetail = () => {
 						<div>
 							<div>
 								{loggedInUser.token ? (
-									<h4 className='centered font-normal text-white'>reviews</h4>
+									<h4 className='grid-centered font-normal text-white'>reviews</h4>
 								) : (
 									<Link to='/users/authentication/login' state={{logInMessage: true}}>
 										reviews
@@ -72,7 +72,7 @@ const RestaurantDetail = () => {
 							</div>
 						</div>
 						{loggedInUser.token && (
-							<div className="centered p-2">
+							<div className="grid-centered p-2">
 								<Reviews restaurantId={resDetails.response._id} modalShow={modalShow} />
 								<div>
 									<button className='button mt-2' type='submit' onClick={handleShow}>
@@ -83,7 +83,7 @@ const RestaurantDetail = () => {
 										onHide={handleShow}
 										size='md'
 										aria-labelledby='likedrestaurants-modal'
-										centered
+										centered={true}
 									>
 										<ReviewForm
 											restaurantId={resDetails.response._id}

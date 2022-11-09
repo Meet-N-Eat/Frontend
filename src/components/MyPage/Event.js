@@ -52,7 +52,7 @@ const Event = ({event, updateEvents}) => {
 		)
 	} else {
 		return (
-			<div className='bg-red-900/80 centered p-2 w-[320px] min-h-[450px] max-h-[410px] rounded-2xl mt-2'>
+			<div className='bg-red-900/80 grid-centered p-2 w-[320px] min-h-[450px] max-h-[410px] rounded-2xl mt-2'>
 				<div className='w-full'>
 					<div className='flex flex-row justify-around items-center w-full'>
 						<>
@@ -90,7 +90,7 @@ const Event = ({event, updateEvents}) => {
 						</>
 					</div>
 				</div>
-				<div className='centered'>
+				<div className='grid-centered'>
 					<RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
 					<Modal
 					show={modalShow}
@@ -102,7 +102,7 @@ const Event = ({event, updateEvents}) => {
 								<Modal.Title className='text-white mx-auto'>who's going?</Modal.Title>
 							</Modal.Header>
 							<Modal.Body className=''>
-								<div className='centered overflow-auto'>
+								<div className='grid-centered overflow-auto'>
 									{event.participants.map(participant => (
 										<ProfileCard modalShow={modalShow} key={participant} user={participant} />
 										))}

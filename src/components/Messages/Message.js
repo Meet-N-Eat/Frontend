@@ -6,12 +6,9 @@ const Message = ({message}) => {
 	const [date, time] = formatDateTime(message.createdAt)
 
 	return (
-		<div className='modal-bg text-white rounded-2xl flex p-2 m-1'>
-			<div className='hidden md:block'>
-				<ProfileCard user={message.sender} />
-			</div>
+		<div className='modal-bg text-white rounded-2xl flex p-2'>
 			<div className='flex items-between w-full'>
-				<div className='w-3/4 p-2'>
+				<div className='w-3/4 my-auto p-2'>
 					<p>{message && message.body}</p>
 				</div>
 				<div className='w-1/4 flex flex-col justify-center items-center'>

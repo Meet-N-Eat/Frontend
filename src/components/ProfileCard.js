@@ -3,7 +3,7 @@ import defaultImage from '../assets/defaultImage.png'
 import {axiosAll, axiosReducer} from '../data-and-functions/axiosAll'
 import {Context} from '../App'
 
-const ProfileCard = ({user, modalShow}) => {
+const ProfileCard = ({ user }) => {
 	const {loggedInUser} = useContext(Context)
 	const [userInfo, dispatchUserInfo] = useReducer(axiosReducer, {})
 
@@ -13,17 +13,17 @@ const ProfileCard = ({user, modalShow}) => {
 	}, [])
 
 	return (
-		<div className='h-32 w-32 rounded-2xl grid justify-items-center space-y-2'>
+		<div className='h-32 w-32 rounded-2xl flex-centered flex-col'>
 			{userInfo.response && (
 				<>
-					<div className='user-image'>
+					<div className='user-image mb-2'>
 						<img
 							src={userInfo.response.profileimg || defaultImage}
 							alt='profile'
 							className='user-image img'
 						/>
 					</div>
-					<p className={modalShow == true ? `text-white 'font-normal text-center'` : 'font-normal text-center'}>
+					<p className='text-center'>
 						{userInfo.response.displayname || userInfo.response.username}
 					</p>
 				</>

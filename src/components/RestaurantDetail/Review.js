@@ -18,8 +18,8 @@ const Review = ({ review }) => {
             {reviewer.response ? 
                 <ul className='flex flex-row justify-between items-center bg-red-900/90 rounded-2xl m-1'>
                     <li className='min-h-[70px] max-w-[90px] p-1 text-white rounded-tl-2xl rounded-bl-2xl'>{reviewer.response.displayname || reviewer.response.username}</li>
-                    <li className='w-full min-h-[70px] centered text-white'>{review.body}</li>
-                    <li className='min-h-[70px] float-right max-w-[100px] centered text-white rounded-br-2xl rounded-tr-2xl'>{`${date} ${time}`}</li>
+                    <li className='w-full min-h-[70px] grid-centered text-white'>{review.body}</li>
+                    <li className='min-h-[70px] float-right max-w-[100px] grid-centered text-white rounded-br-2xl rounded-tr-2xl'>{`${date} ${time}`}</li>
                 </ul>
                 : <Spinner animation="border" />
             }

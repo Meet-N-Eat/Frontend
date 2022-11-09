@@ -38,30 +38,80 @@
 	/* Background colors */
 	.main-bg {
 		background-color: var(--main-bg);
-		@apply rounded-2xl;
+		@apply
+			text-white
+			rounded-2xl
+		;
+
 	}
 
 	.modal-bg {
 		background-color: var(--modal-bg);
+		@apply
+			text-white
+			rounded-2xl
+		;
 	}
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
-		@apply h-screen w-screen fixed z-10 top-0 left-0 bg-black/40 overflow-hidden;
+		margin: 0px !important;
+		@apply 
+			h-screen 
+			w-screen 
+			z-10 
+			fixed 
+			top-0 
+			left-0
+			bg-black/40 
+			overflow-hidden
+		;
 	}
 
 	.modals-content {
-		background-color: var(--modal-bg);
-		/* max-height: 80%; */
-		@apply p-8 border max-h-[80%] w-4/5 max-w-5xl mt-36 mx-auto rounded-2xl scroll;
+		@apply 
+			max-h-[80%] 
+			modal-bg
+			rounded-2xl 
+			scroll
+			border 
+			mt-36 
+			mx-auto 
+			p-8 
+		;
+	}
+
+	.display-friends {
+		@apply
+			w-[340px]
+			sm:w-[590px] 
+			md:w-[722px]
+			lg:w-[854px]
+			xl:w-[996px]
+			flex 
+			flex-wrap 
+			gap-y-3 
+			gap-x-1 
+			overflow-auto
+		;
 	}
 	
-	.centered {
-		@apply row-span-5 grid place-items-center;
+	.grid-centered {
+		@apply 
+			grid 
+			place-items-center
+			row-span-5 
+		;
 	}
-	.round {
-		@apply rounded-[50%];
+
+	.flex-centered {
+		@apply
+			flex
+			justify-center
+			items-center
+		;
 	}
+
 	.user {
 		@apply md:self-end;
 	}
@@ -76,38 +126,121 @@
 
 	/* Page containers */
 	.invite-container {
-		@apply main-bg text-white h-[600px] w-[600px] rounded-full flex flex-col justify-center items-center space-y-4;
+		@apply 
+			main-bg 
+			text-white 
+			h-[600px] 
+			w-[600px] 
+			rounded-full 
+			flex 
+			flex-col 
+			justify-center 
+			items-center 
+			space-y-4
+		;
 	}
 	.page-container {
-		@apply flex flex-col max-w-[800px] m-auto;
+		@apply 
+			max-w-[800px] 
+			flex 
+			flex-col 
+			m-auto;
+	}
+
+	.standard-width {
+		@apply w-full md:w-4/5;
 	}
 	
 	/* Images */
 	.restaurant-image {
-		@apply h-[150px] w-[150px] object-cover rounded-[5px];
+		@apply 
+			h-[150px] 
+			w-[150px] 
+			object-cover 
+			rounded-[5px]
+		;
 	}
 
 	/* Icons */
 	.icon {
-		@apply rounded-full h-10 w-10 text-white;
+		@apply 
+			h-10 
+			w-10 
+			text-white
+			rounded-full 
+		;
 	}
 
 	/* Buttons */
 	.button {
-		@apply h-11 w-40 font-normal rounded-full p-2 text-black hover:text-white bg-white/90 hover:bg-red-900/80 shadow-md shadow-red-900;
+		@apply 
+			h-11 
+			w-40 
+			font-normal 
+			text-black 
+			bg-white/90 
+			rounded-full 
+			shadow-md 
+			p-2 
+			
+			hover:text-white 
+			hover:bg-red-900/80 
+			shadow-red-900
+		;
 	}
 
 	.account-button {
-		@apply h-11 rounded-full p-2 text-white hover:text-black bg-red-900 hover:bg-white/90 hover:border shadow-md shadow-black;
+		@apply 
+			h-11 
+			text-white 
+			bg-red-900 
+			rounded-full 
+			shadow-md 
+			shadow-black
+			p-2 
+
+			hover:text-black 
+			hover:bg-white/90 
+			hover:border 
+		;
 	}
 
 	.outreach-button {
-		@apply w-40 font-normal rounded-full p-2 text-black hover:text-white bg-white/90 hover:bg-red-900/80 shadow-md shadow-red-900;
+		@apply 
+			w-40 
+			font-normal 
+			text-black 
+			bg-white/90 
+			rounded-full 
+			shadow-md 
+			shadow-red-900
+			p-2 
+
+			hover:text-white 
+			hover:bg-red-900/80 
+		;
 	}
 
 	/* Input boxes */
 	.input {
-		@apply shadow-sm border border-white bg-gray-500/80 focus:bg-white/90 placeholder-white focus:placeholder-gray-400 text-white focus:text-zinc-900 focus:outline-none indent-2.5 rounded-full p-1 font-normal;
+		@apply 
+			font-normal
+			indent-2.5 
+			bg-gray-500/80 
+			text-white 
+			placeholder-white 
+			mx-auto 
+			rounded-full 
+			border 
+			border-white
+			shadow-sm 
+			p-1 
+
+			focus:bg-white/90 
+			focus:text-zinc-900 
+			focus:placeholder-gray-400 
+			focus:outline-none 
+		;
 	}
 
 	input[type='checkbox'] {
@@ -115,7 +248,13 @@
 	}
 
 	input[type='checkbox']:checked {
-		@apply appearance-none bg-black border-white h-3 w-3;
+		@apply 
+			h-3 
+			w-3
+			appearance-none 
+			bg-black 
+			border-white 
+		;
 	}
 
 	select,
@@ -126,28 +265,40 @@
 
 	/* Arrows */
 	.arrow {
-		@apply h-14 w-14 border-gray-500/80 border-r-4 border-b-4 rounded;
+		@apply h-14 w-14 border-gray-500/80 border-r-4 border-b-4 rounded absolute top-1/2;
 	}
 
 	.right {
 		transform: rotate(-45deg);
+		right: 20px;
 	}
 
 	.left {
 		transform: rotate(135deg);
+		left: 20px;
 	}
 
 	/* Effects */
 	.friend-invited {
-		@apply bg-red-600/50 rounded-2xl border p-1;
+		@apply bg-red-600/50 rounded-2xl outline outline-1;
 	}
 
 	.hover-nav {
 		@apply hover:text-red-800 hover:font-normal;
 	}
 
-
 	/* Messages/Message/MessageChat */
+	.message-thread {
+		@apply flex flex-col gap-y-2;
+	}
+	
+	@media (min-width: 768px) {
+		.message-thread {
+			display: grid;
+			grid-template-columns: 1fr 4fr;
+		}
+	}
+
 	.chat-message {
 		@apply w-full md:w-[85%]
 	}
@@ -155,17 +306,22 @@
 
 /* Class name goes on wrapper div */
 .user-image {
-	@apply w-[50px] h-[50px] inline-block relative overflow-hidden object-cover m-auto;
+	@apply 
+		h-[50px] 
+		w-[50px] 
+		/* md:h-[65px] 
+		md:w-[65px]  */
+		inline-block 
+		relative 
+		overflow-hidden 
+		object-cover 
+		mx-auto
+	;
 }
 
-@media (max-width: 768px) {
-	.user-image {
-		@apply w-[65px] h-[65px] inline-block relative overflow-hidden object-cover m-auto;
-	}
-}
 /* Targets image inside wrapper div */
 .user-image img {
-	@apply rounded-[50%] w-auto h-full;
+	@apply h-full w-auto rounded-[50%];
 }
 
 
@@ -174,6 +330,7 @@ body {
 	font-weight: 300;
 	height: 100vh;
 	width: 100vw;
+	margin: 0px;
 	background-image: url('./assets/homeBgImage.jpg');
 	background-size: cover;
 	background-repeat: no-repeat;

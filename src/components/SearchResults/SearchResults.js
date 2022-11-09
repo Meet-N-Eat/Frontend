@@ -71,7 +71,7 @@ const SearchResults = () => {
 				</div>
 			)}
 			{restaurantsData.response && restaurantsData.response.length === 0 && (
-				<div className='centered'>
+				<div className='grid-centered'>
 					<h1 className='text-white text-3xl'>No restaurants matching restaurants were found</h1>
 				</div>
 			)}

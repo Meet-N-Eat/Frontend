@@ -189,7 +189,7 @@ const CoordinateMeetup = ({
 
 			{toggle && (
 				<div className='modals' onClick={toggleModal}>
-					<div className='modals-content flex flex-wrap max-w-20 gap-y-3 gap-x-1 overflow-auto'>
+					<div className='modals-content display-friends'>
 						{loggedInUser.response.friends.map(friend => (
 							<div key={friend} className='text-center'>
 								<div

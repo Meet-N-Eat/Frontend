@@ -44,10 +44,17 @@ const UserProfile = () => {
 	// Event Handler and Functions
 	//===========================================================================
 	function inputChange(e) {
-		dispatch({
-			key: e.target.classList[0],
-			value: e.target.value,
-		})
+		if(e.target.classList[0]==='about') {
+			dispatch({
+				key: 'about',
+				value: e.target.value.slice(0,501)
+			})
+		} else {
+			dispatch({
+				key: e.target.classList[0],
+				value: e.target.value,
+			})
+		}
 	}
 
 	function onSubmit(e) {
@@ -66,32 +73,33 @@ const UserProfile = () => {
 	}
 
 	return (
-		<div className='h-4/5 w-3/4 max-w-[800px] centered main-bg rounded-2xl mx-auto md:mt-28 min-w-[425px] min-h-[700px]'>
+		<div className='h-4/5 w-3/4 max-w-[800px] grid-centered main-bg mx-auto md:mt-28 min-w-[370px] min-h-[900px]'>
 			{loggedInUser.response && (
 				<>
-					<div className='centered rounded-circle'>
+					<div className='grid-centered'>
 						<img
-							className='h-[150px] w-[150px] md:h-[180px] md:w-[180px] rounded-circle mb-1 border-2 border-red-900'
+							className='h-[150px] w-[150px] rounded-full border-2 border-white'
 							src={userData.profileimg || defaultImage}
 							alt='profile-icon'
 						/>
 					</div>
-					<form className='flex flex-col text-white mb-3'>
+					<form className='flex flex-col text-white gap-y-2'>
+						<label className=' mx-auto'>profile picture</label>
 						<input
-							className='profileimg input'
+							className='w-[90%] profileimg input'
 							type='profile-image'
 							placeholder='paste a picture URL here'
 							onChange={inputChange}
 							value={userData.profileimg}
 						/>
-						<p className=' border-b-[1px] border-red-900 pb-1 text-white/50'>
+						<p className='border-b-[1px] border-white pb-1 text-white/70 text-center'>
 							only JPG and PNG files supported.
 						</p>
 						<h3>{userData.username}</h3>
-						<label className=' mx-auto mt-1'>about me</label>
+						<label className='mx-auto'>about me</label>
 						<textarea
 							rows='2'
-							className='about input'
+							className='about w-[90%] input rounded-[5px] indent-0 p-2'
 							as='textarea'
 							divs={3}
 							type='about-me'
@@ -99,32 +107,32 @@ const UserProfile = () => {
 							onChange={inputChange}
 							value={userData.about}
 						/>
-						<p className=' d-block border-b-[1px] border-red-900 pb-1 text-white/50'>
+						<p className='border-b-[1px] border-white pb-1 text-white/70 text-center'>
 							maximum length: 500 characters
 						</p>
-						<div className='centered'>
-							<label className=' mt-1'>location</label>
+						<div className='grid-centered'>
+							<label className=''>location</label>
 							<input
-								className='location input'
+								className='location input mb-2'
 								type='location'
 								placeholder='eg. los angeles, california'
 								onChange={inputChange}
 								value={userData.location}
 							/>
-							<label className=''>display name</label>
+							<label>display name</label>
 							<input
-								className='displayname input'
+								className='displayname input mb-2'
 								type='display-name'
 								placeholder='change display name'
 								onChange={inputChange}
 								value={userData.displayname}
 							/>
-							<p className=''>
+							<p className='border-b-[1px] border-white pb-1 text-white/70 text-center'>
 								this will be the name other users see when they view your profile.
 							</p>
 						</div>
-						<div className='centered'>
-							<label className=''>email</label>
+						<div className='grid-centered'>
+							<label>email</label>
 							<input
 								className='email input'
 								type='email-address'
@@ -133,7 +141,7 @@ const UserProfile = () => {
 								value={userData.email}
 							/>
 							{error && (
-								<p className=''>this email address already exists, please enter another</p>
+								<p>this email address already exists, please enter another</p>
 							)}
 						</div>
 						<button
