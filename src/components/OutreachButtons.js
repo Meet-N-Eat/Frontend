@@ -2,7 +2,7 @@ import {useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Context} from '../App'
 
-function OutreachButtons({friends, user, friendRequestHandler}) {
+function OutreachButtons({user, friends, friendRequestHandler}) {
 	const navigate = useNavigate()
 	const {loggedInUser} = useContext(Context)
 
