@@ -44,7 +44,7 @@ const RestaurantDetail = () => {
 		<div className='grid-centered overflow-auto min-h-[820px] scroll'>
 			{resDetails.response && userLikes.response ? (
 				<div className='w-3/4 grid-centered'>
-					<div>
+					<div className='w-full flex justify-center main-bg'>
 						<RestaurantCard restaurant={resDetails.response._id} />
 					</div>
 
@@ -59,11 +59,11 @@ const RestaurantDetail = () => {
 						)}
 						{/* {userLikes.response.length > 3 ? <FontAwesomeIcon icon={faCirclePlus} className="text-red-900 text-4xl bg-white rounded-full"></FontAwesomeIcon> : ''} */}
 					</div>
-					<div className='w-full'>
+					<div className='w-full border-2 border-red-900 rounded-2xl m-2'>
 						<div>
 							<div>
 								{loggedInUser.token ? (
-									<h4 className='grid-centered font-normal text-white'>reviews</h4>
+									<h4 className='grid-centered font-normal text-white text-2xl'>reviews</h4>
 								) : (
 									<Link to='/users/authentication/login' state={{logInMessage: true}}>
 										reviews
