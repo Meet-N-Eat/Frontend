@@ -34,16 +34,18 @@ const NavBar = () => {
 		})
 	}
 
+	// Return
+  	// ===========================================================================
 	return (
 		<div className='horizontal justify-between items-center p-3'>
 			<div>
 				<NavLink to='/'>
-					<h2 className='text-5xl text-white nav-title'>
-						MEET <span className='text-red-800 -mx-7'>N</span> EAT
+					<h2 className='nav-title'>
+						MEET <span className='text-red-800 -mx-8'>N</span> EAT
 					</h2>
 				</NavLink>
 			</div>
-			<div className='horizontal space-x-4'>
+			<div className='horizontal space-x-6'>
 				{loggedInUser.token && loggedInUser.response ? (
 					<>
 						<NavLink to='/my-page'>
