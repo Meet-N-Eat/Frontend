@@ -98,7 +98,7 @@ const LogIn = () => {
 						</h1>
 					)}
 					<Row>
-						<button className='account-button w-20 mb-4 mx-auto' type='submit'>
+						<button className='account-button w-20 mb-4 mx-auto text-sm md:text-base' type='submit'>
 							Submit
 						</button>
 					</Row>

@@ -67,7 +67,7 @@ const SignUp = () => {
 				</div>
 			) : (
 				<div className='signup start-container items-center white-bg w-60 md:w-96 p-5 space-y-4'>
-					<h1 className='header text-2xl text-red-900 mx-auto pt-2'>SIGN UP</h1>
+					<h1 className='header mx-auto pt-2'>SIGN UP</h1>
 					<form className='space-y-2 md:space-y-4' action='' onSubmit={submitHandler}>
 						{error.username && (
 							<p className='account-error'>
