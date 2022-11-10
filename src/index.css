@@ -294,14 +294,6 @@
 		@apply border rounded text-center text-black;
 	}
 
-	.account-input {
-		@apply 
-			w-full 
-			mx-auto 
-			text-xs 
-			md:text-base;
-	}
-
 	/* Arrows */
 	.arrow {
 		@apply h-14 w-14 border-gray-500/80 border-r-4 border-b-4 rounded absolute top-1/2;
@@ -326,6 +318,23 @@
 		@apply hover:text-red-800 hover:font-normal;
 	}
 
+	/* LogIn/SignUp */
+	.account-input {
+		@apply 
+			w-full 
+			mx-auto 
+			text-xs 
+			md:text-base;
+	}
+
+	.account-error {
+		@apply 
+			text-center 
+			text-red-800
+			mx-auto 
+			text-xs 
+			md:text-sm;
+	}
 	/* Messages/Message/MessageChat */
 	.message-thread {
 		@apply flex flex-col gap-y-2;
@@ -385,6 +394,8 @@ body {
 .header {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
+	color:  var(--main-bg);
+	@apply text-2xl
 }
 
 .nav-title {
