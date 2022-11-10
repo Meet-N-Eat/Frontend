@@ -45,6 +45,10 @@
 		background-color: var(--modal-bg);
 	}
 
+	.white-bg {
+		@apply bg-white/90
+	}
+
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
 		@apply h-screen w-screen fixed z-10 top-0 left-0 bg-black/40 overflow-hidden;
@@ -74,6 +78,9 @@
 		@apply flex flex-col max-w-[800px] m-auto;
 	}
 	
+	.start-container {
+		@apply flex flex-col justify-center row-start-2 mx-auto rounded-2xl;
+	}
 	/* Images */
 	.restaurant-image {
 		@apply h-[150px] w-[150px] object-cover rounded-[5px];

@@ -53,7 +53,7 @@ const Event = ({ event, updateEvents }) => {
     }
     else {
         return (
-            <div className='bg-white/80 centered p-2 w-3/4 rounded-2xl mt-2'>
+            <div className='white-bg centered p-2 w-3/4 rounded-2xl mt-2'>
                 <div className='w-full'>
                     <div className='flex flex-row justify-around items-center w-full'>
                         <p>{formattedDate} at {formattedHourAMPM}</p>
