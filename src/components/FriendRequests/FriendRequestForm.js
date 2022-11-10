@@ -1,10 +1,11 @@
-import React, { useContext, useReducer } from 'react'
+import React, { useContext, useReducer, useState } from 'react'
 import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll';
 import { Context } from '../../App'
 
 function FriendRequestForm( {user, modalHandler} ) {
   
   const { loggedInUser } = useContext(Context)
+  const [modalState, setModalState] = useState(false)
 
   const initialState = {
     sender: loggedInUser.response._id,
@@ -25,19 +26,30 @@ function FriendRequestForm( {user, modalHandler} ) {
     modalHandler()
   }
 
+
   return (
-    <div>
-      <div closeButton>
-        <h1>Modal heading</h1>
-      </div>
-      <div>
-        <label>Message for {user.username}</label>
-        <input className='body' as='textarea'></input>
-      </div>
-      <div>
-        <div> Submit </div>
-      </div>
+    <>
+    <div 
+    className='modals'
+    onClick={modalHandler}>
+        <div className='modals-content space-y-4'>
+          <p className='header text-white text-xl text-center'>Add {user.username} as friend</p>
+          <input 
+          className='input w-full' 
+          as='textarea'
+          divs={3}
+          placeholder='Send an optional message'
+          maxlength='200'
+          onChange={handleChange}></input>
+          <p className='text-slate-300 text-sm'>maximum length: 200 characters</p>
+          <div className='centered'>
+            <button 
+            className='button'
+            onClick={handleSubmit}>Add friend</button>
+          </div>
+        </div>
     </div>
+    </>
   )
 }
 
