@@ -122,7 +122,7 @@ const UserProfile = () => {
                                 {error && <p className="">this email address already exists, please enter another</p>}
                             </div>
                         <button 
-                            className='account-button w-1/2 mx-auto mt-1'
+                            className='account-button w-1/2 mt-1'
                             type="submit"
                             id="save-changes"
                             onClick={onSubmit}

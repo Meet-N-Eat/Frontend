@@ -97,7 +97,7 @@
 	}
 
 	.account-button {
-		@apply h-11 rounded-full p-2 text-white hover:text-black bg-red-900 hover:bg-white/90 hover:border shadow-md shadow-black;
+		@apply h-11 rounded-full p-2 text-white hover:text-black bg-red-900 hover:bg-white/90 hover:border shadow-md shadow-black mx-auto;
 	}
 
 	.outreach-button {
@@ -107,6 +107,10 @@
 	/* Input boxes */
 	.input {
 		@apply shadow-sm border border-white bg-gray-500/80 focus:bg-white/90 placeholder-white focus:placeholder-gray-400 text-white focus:text-zinc-900 focus:outline-none indent-2.5 rounded-full p-1 font-normal;
+	}
+
+	.account-input {
+		@apply w-full mx-auto text-sm md:text-sm;
 	}
 
 	input[type='checkbox'] {

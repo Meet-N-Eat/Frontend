@@ -61,7 +61,7 @@ const LogIn = () => {
   // ===========================================================================
   return (
     <div className=''>
-      <div className='start-container white-bg w-60 md:w-80 p-4'>
+      <div className='start-container white-bg w-72 md:w-96 p-4'>
         <h1 className='header text-2xl text-red-900 mx-auto pt-2'>LOG IN</h1>
         { location.state !== null && <p className='text-center mx-auto text-xs md:text-sm'>Log in to access this feature!</p> }
         <form  
@@ -69,14 +69,14 @@ const LogIn = () => {
           onSubmit={submitHandler}
         >
           <input 
-            className='username input mt-4 w-full mx-auto border border-slate-800' 
+            className='username input account-input mt-4' 
             type='text' 
             placeholder='Username'
             onChange={changeHandler}
             value={loggedInUser.username}
           ></input>
           <input 
-            className='password input my-4 w-full mx-auto border border-slate-800' 
+            className='password input account-input my-4 ' 
             type='password' 
             placeholder='Password'
             onChange={changeHandler}
@@ -85,13 +85,13 @@ const LogIn = () => {
           {login.badLogin && <h1 className='text-center mb-2 text-xs md:text-sm text-red-800'>Incorrect username or password</h1>}
           <Row>
             <button
-              className='account-button w-20 mb-4 mx-auto'  
+              className='account-button w-20 mb-4'  
               type='submit' 
             >Submit</button>
           </Row>
       </form>
       <Link 
-        className='mx-auto text-xs md:text-lg hover:text-red-900 hover:font-normal'
+        className='mx-auto text-md md:text-lg hover:text-red-900 hover:font-normal'
         to='/users/authentication/signup'>
           Not registered? Sign up here
       </Link>
