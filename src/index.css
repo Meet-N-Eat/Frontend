@@ -53,6 +53,10 @@
 		;
 	}
 
+	.white-bg {
+		@apply bg-white/90;
+	}
+
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
 		margin: 0px !important;

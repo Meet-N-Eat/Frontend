@@ -49,7 +49,7 @@ const RestaurantDetail = () => {
 						<RestaurantCard restaurant={resDetails.response._id} />
 					</div>
 					<div className='flex justify-center items-center'>
-						<div className={'bg-white p-2 border-t-[1px] border-b-[1px] border-red-900 mt-3 flex w-[25rem] flex-row grid-centered rounded-full overflow-x-auto scroll'}>
+						<div className={'white-bg p-2 border-t-[1px] border-b-[1px] border-red-900 mt-3 flex w-[25rem] flex-row grid-centered rounded-full overflow-x-auto scroll'}>
 							{loggedInUser.token ? (
 								userLikes.response.slice(0,limit).map(user => 
 								<UserLike key={user._id} user={user} />)

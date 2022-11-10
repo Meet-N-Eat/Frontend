@@ -70,7 +70,7 @@ const LogIn = () => {
 	// ===========================================================================
 	return (
 		<div className=''>
-			<div className='start-container items-center bg-white opacity-90 w-60 md:w-80 p-4'>
+			<div className='start-container items-center white-bg w-60 md:w-96 p-4'>
 				<h1 className='header text-2xl text-red-900 mx-auto pt-2'>LOG IN</h1>
 				{location.state !== null && (
 					<p className='text-center mx-auto text-xs md:text-sm'>
