@@ -63,6 +63,11 @@
 	.centered {
 		@apply row-span-5 grid place-items-center;
 	}
+	
+	.flex-centered {
+		@apply items-center justify-center;
+	}
+	
 	.round {
 		@apply rounded-[50%];
 	}

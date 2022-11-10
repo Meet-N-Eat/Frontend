@@ -20,7 +20,7 @@ const Friends = ({loggedInUser}) => {
 	}
 
 	return (
-		<div className='vertical items-center justify-center'>
+		<div className='vertical flex-centered'>
 			<form>
 				<input className='input mb-8' onChange={searchChange} placeholder='search by name' />
 			</form>
