@@ -20,13 +20,13 @@ const FriendRequest = ({ friendRequest, dispatchRequests }) => {
     }
 
 return (
-    <div className='bg-white rounded-2xl flex flex-col md:flex-row p-2 h-80 md:h-40'>
+    <div className='bg-white rounded-2xl vertical md:flex-row p-2 h-80 md:h-40'>
         <div className='mx-auto md:flex-1'>
             <ProfileCard user={friendRequest.sender} />
         </div>
         <div className='p-2 text-center space-y-4 md:space-y-2'>
             <p className='max-h-7'>{friendRequest.body}</p>
-            <div className='flex flex-col space-y-2 p-2'>
+            <div className='vertical space-y-2 p-2'>
                 <button 
                     className='account-button'
                     onClick={() => inviteHandler('accept')}>

@@ -37,7 +37,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 			id='filter-modal'
 			onClick={toggleModal}
 		>
-			<form className='modals-content p-3 flex flex-col items-center space-y-3'>
+			<form className='modals-content p-3 vertical items-center space-y-3'>
 				<p className='text-red-600 text-2xl font-normal'>Filter Options</p>
 				<div className='flex space-x-1'>
 					<select

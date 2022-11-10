@@ -14,7 +14,7 @@ return (
             <div className="w-3/4 p-2">
                 <p>{message && message.body}</p>
             </div>
-            <div className="w-1/4 flex flex-col">
+            <div className="w-1/4 vertical">
                 <div>{message && date}</div>
                 <div>{message && time}</div>
             </div>

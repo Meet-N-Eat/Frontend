@@ -66,6 +66,14 @@
 	.round {
 		@apply rounded-[50%];
 	}
+
+	.vertical {
+		@apply flex flex-col;
+	}
+
+	.horizontal {
+		@apply flex flex-row;
+	}
 	.user {
 		@apply self-end;
 	}

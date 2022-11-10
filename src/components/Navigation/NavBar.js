@@ -35,7 +35,7 @@ const NavBar = () => {
 	}
 
 	return (
-		<div className='flex flex-row justify-between items-center p-3'>
+		<div className='horizontal justify-between items-center p-3'>
 			<div>
 				<NavLink to='/'>
 					<h2 className='text-5xl text-white nav-title'>
@@ -43,7 +43,7 @@ const NavBar = () => {
 					</h2>
 				</NavLink>
 			</div>
-			<div className='flex flex-row space-x-4'>
+			<div className='horizontal space-x-4'>
 				{loggedInUser.token && loggedInUser.response ? (
 					<>
 						<NavLink to='/my-page'>
@@ -64,7 +64,7 @@ const NavBar = () => {
 							className='nav-dropdown d-inline-block'
 							title={<FontAwesomeIcon icon={faGear} className='icon hover-nav' />}
 						>
-							<div className='flex flex-col space-y-1'>
+							<div className='vertical space-y-1'>
 								<NavLink className='hover-nav focus-nav w-full' to='/profile'>My Profile</NavLink>
 								<NavLink className='hover-nav focus-nav w-full' to='/' onClick={handleLogOut}>
 									Log Out

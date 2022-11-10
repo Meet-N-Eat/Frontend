@@ -70,7 +70,7 @@ const UserProfile = () => {
                     <div className='centered rounded-circle'>
                         <img className='rounded-circle mb-1 border-2 border-red-900' src={userData.profileimg || defaultImage} alt="profile-icon"/>
                     </div>
-                    <form className='flex flex-col text-white'> 
+                    <form className='vertical text-white'> 
                         <input className="profileimg input"
                             type="profile-image" 
                             placeholder="paste a picture URL here"

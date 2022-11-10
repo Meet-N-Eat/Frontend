@@ -28,7 +28,7 @@ function Messages() {
   }, [messages.response])
 
   return (
-    <div className='centered bg-red-900/90 w-3/4 mx-auto flex flex-col p-4 rounded-2xl'> 
+    <div className='centered bg-red-900/90 w-3/4 mx-auto vertical p-4 rounded-2xl'> 
       <div className='w-full'>
         <Dropdown className='float-right outline-none'>
           <Dropdown.Toggle>
@@ -51,7 +51,7 @@ function Messages() {
       {messages.threadArray && messages.threadArray.length > 0 ?
         messages.threadArray.map(thread => 
           <Link 
-            className='flex flex-col w-full p-1 rounded-xl text-black m-1'
+            className='vertical w-full p-1 rounded-xl text-black m-1'
             key={thread[thread.length - 1]._id} 
             to={`/messages/${thread[0].sender != loggedInUser.response._id ? thread[0].sender : thread[0].recipient}`} 
           >
