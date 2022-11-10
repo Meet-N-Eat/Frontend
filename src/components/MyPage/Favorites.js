@@ -14,11 +14,10 @@ const Favorites = ({ loggedInUser }) => {
     return (
         <div className='likedRestaurants centered main-bg w-1/2 rounded-2xl p-5'>
             <form className="horizontal justify-center items-center border-b-[1px] border-slate-200/60 pb-2 mb-2 w-full">
-            <p id="basic-addon2" className='text-white mr-2'>enter name</p>
                 <input onChange={e => {
                         setSearchCharacters(e.target.value
                             )}
-                        } className="input" placeholder="liked restaurants" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
+                        } className="input" placeholder="search by name" aria-label="Recipient's username" aria-describedby="basic-addon2"/>
             </form>
             <div>
                 {favorites.response && favorites.response.length > 0 ?
