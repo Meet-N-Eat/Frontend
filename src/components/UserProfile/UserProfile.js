@@ -104,6 +104,7 @@ const UserProfile = () => {
 							divs={3}
 							type='about-me'
 							placeholder='write your about me here for others to see'
+                            maxlength='500'
 							onChange={inputChange}
 							value={userData.about}
 						/>
