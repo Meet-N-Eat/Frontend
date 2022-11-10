@@ -117,11 +117,16 @@
 	}
 
 	.friend {
-		@apply md:self-start
+		@apply md:self-start;
 	}
 
 	.friend > div {
-		background-color: rgba(100, 100, 100, 0.8)
+		background-color: rgba(100, 100, 100, 0.8);
+		border-radius: 2rem 1rem 1rem 0px;
+	}
+	
+	.user > div {
+		border-radius: 1rem 2rem 0px 1rem;
 	}
 
 	/* Page containers */
