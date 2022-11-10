@@ -58,16 +58,16 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 	}
 
 	return (
-		<div>
+		<div className="modal-bg modals-content" >
 			<form onSubmit={reviewSubmit}>
-				<div controlId='reviewBody'>
+				<div controlId='reviewBody' className='flex flex-col'>
 					<Dropdown>
-						<label>
+						<label className='mr-2'>
 							{validate.missingStars
 								? 'Please add a star rating to this review'
 								: 'Give it some stars'}
 						</label>
-						<Dropdown.Toggle>{review.stars || 'Stars'}</Dropdown.Toggle>
+						<Dropdown.Toggle className='border border-white hover:bg-white hover:text-black'>{review.stars || 'Stars'}</Dropdown.Toggle>
 						<Dropdown.Menu>
 							{starMenu.map((menuItem, index) => (
 								<Dropdown.Item className='stars' onClick={starClick} key={index}>
@@ -81,8 +81,8 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 							? 'Please enter something about your experience'
 							: 'Tell us your thoughts'}
 					</label>
-					<textarea rows={3} onChange={reviewChange} value={review.body} />
-					<button type='submit'>Submit</button>
+					<textarea className='input rounded-[5px]' rows={3} onChange={reviewChange} value={review.body} />
+					<button className='account-button mt-2' type='submit'>Submit</button>
 				</div>
 			</form>
 		</div>
