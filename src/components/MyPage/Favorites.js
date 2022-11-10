@@ -17,7 +17,7 @@ const Favorites = ({loggedInUser}) => {
 
 	return (
 		<div className='likedRestaurants grid-centered w-full rounded-2xl'>
-			<form className='flex flex-row justify-center items-center border-slate-200/60 pb-2 mb-2 w-full'>
+			<form className='horizontal flex-centered border-slate-200/60 pb-2 mb-2 w-full'>
 				<p id='basic-addon2' className='text-white mr-2'>
 					enter name
 				</p>

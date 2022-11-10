@@ -54,7 +54,7 @@ const Event = ({event, updateEvents}) => {
 		return (
 			<div className='bg-red-900/80 grid-centered p-2 w-[320px] min-h-[450px] max-h-[410px] rounded-2xl mt-2'>
 				<div className='w-full'>
-					<div className='flex flex-row justify-around items-center w-full'>
+					<div className='horizontal justify-around items-center w-full'>
 						<>
 							<p className='text-white'>
 								{formattedDate} at {formattedHourAMPM}

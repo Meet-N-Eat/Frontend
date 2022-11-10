@@ -20,7 +20,7 @@ const Itinerary = ({loggedInUser}) => {
 	}
 
 	return (
-		<div className='flex flex-col items-center w-full min-h-[830px]'>
+		<div className='vertical items-center w-full min-h-[830px]'>
 			<div>
 				<h2 className='text-white'>itinerary</h2>
 				<h2 className='text-white'> {today} </h2>

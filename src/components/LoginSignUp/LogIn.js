@@ -69,24 +69,24 @@ const LogIn = () => {
 	// Return
 	// ===========================================================================
 	return (
-		<div className='flex items-center justify-center row-start-2'>
-			<div className='flex flex-col justify-center bg-white opacity-90 rounded-2xl w-60 md:w-80 p-4'>
-				<h1 className='header text-2xl text-red-900 mx-auto pt-2'>LOG IN</h1>
+		<div className=''>
+			<div className='start-container items-center white-bg w-60 md:w-96 p-4'>
+				<h1 className='header mx-auto pt-2'>LOG IN</h1>
 				{location.state !== null && (
 					<p className='text-center mx-auto text-xs md:text-sm'>
 						Log in to access this feature!
 					</p>
 				)}
-				<form action='' onSubmit={submitHandler}>
+				<form onSubmit={submitHandler}>
 					<input
-						className='username input mt-4 w-full mx-auto border border-slate-800'
+						className='username input mt-4 account-input'
 						type='text'
 						placeholder='Username'
 						onChange={changeHandler}
 						value={loggedInUser.username}
 					></input>
 					<input
-						className='password input my-4 w-full mx-auto border border-slate-800'
+						className='password input my-4 account-input'
 						type='password'
 						placeholder='Password'
 						onChange={changeHandler}
@@ -98,7 +98,7 @@ const LogIn = () => {
 						</h1>
 					)}
 					<Row>
-						<button className='account-button w-20 mb-4 mx-auto' type='submit'>
+						<button className='account-button w-20 mb-4 mx-auto text-sm md:text-base' type='submit'>
 							Submit
 						</button>
 					</Row>

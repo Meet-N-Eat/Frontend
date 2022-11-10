@@ -24,9 +24,8 @@ const Reviews = ({restaurantId, modalShow}) => {
 							<Review review={review} key={review._id} />
 						))}
 				</div>
-			) : (
-				<Spinner animation='border' />
-			)}
+			) : ( <Spinner animation='border' variant="light" /> )
+			}
 		</div>
 	)
 }

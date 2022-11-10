@@ -13,7 +13,7 @@ const ProfileCard = ({ user }) => {
 	}, [])
 
 	return (
-		<div className='h-32 w-32 rounded-2xl flex-centered flex-col'>
+		<div className='h-32 w-32 rounded-2xl flex-centered vertical'>
 			{userInfo.response && (
 				<>
 					<div className='user-image mb-2'>

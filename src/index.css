@@ -53,6 +53,10 @@
 		;
 	}
 
+	.white-bg {
+		@apply bg-white/90;
+	}
+
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
 		margin: 0px !important;
@@ -112,6 +116,18 @@
 		;
 	}
 
+	.horizontal {
+		@apply
+			flex
+			flex-row;
+	}
+
+	.vertical {
+		@apply
+			flex
+			flex-col;
+	}
+
 	.user {
 		@apply md:self-end;
 	}
@@ -150,6 +166,16 @@
 			flex 
 			flex-col 
 			m-auto;
+	}
+
+	.start-container {
+		@apply
+			mx-auto
+			rounded-2xl
+			row-start-2
+			flex
+			flex-col
+			justify-center;
 	}
 
 	.standard-width {
@@ -292,6 +318,23 @@
 		@apply hover:text-red-800 hover:font-normal;
 	}
 
+	/* LogIn/SignUp */
+	.account-input {
+		@apply 
+			w-full 
+			mx-auto 
+			text-xs 
+			md:text-base;
+	}
+
+	.account-error {
+		@apply 
+			text-center 
+			text-red-800
+			mx-auto 
+			text-xs 
+			md:text-sm;
+	}
 	/* Messages/Message/MessageChat */
 	.message-thread {
 		@apply flex flex-col gap-y-2;
@@ -351,6 +394,8 @@ body {
 .header {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
+	color:  var(--main-bg);
+	@apply text-2xl
 }
 
 .nav-title {
