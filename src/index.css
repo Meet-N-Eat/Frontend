@@ -152,6 +152,16 @@
 			m-auto;
 	}
 
+	.start-container {
+		@apply
+			mx-auto
+			rounded-2xl
+			row-start-2
+			flex
+			flex-col
+			justify-center;
+	}
+
 	.standard-width {
 		@apply w-full md:w-4/5;
 	}
@@ -266,6 +276,14 @@
 	input[type='date'],
 	input[type='time'] {
 		@apply border rounded text-center text-black;
+	}
+
+	.account-input {
+		@apply 
+			w-full 
+			mx-auto 
+			text-xs 
+			md:text-base;
 	}
 
 	/* Arrows */

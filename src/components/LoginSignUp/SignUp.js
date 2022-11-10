@@ -48,7 +48,7 @@ const SignUp = () => {
 	// Return
 	// ===========================================================================
 	return (
-		<div className='flex items-center justify-center row-start-2'>
+		<div className=''>
 			{success ? (
 				<div className='bg-white/90 rounded-2xl p-4 text-center mt-24'>
 					<h1 className='header text-2xl text-red-900 py-2'>Successfully registered!</h1>
@@ -64,7 +64,7 @@ const SignUp = () => {
 					</div>
 				</div>
 			) : (
-				<div className='signup flex flex-col justify-center bg-white opacity-90 rounded-2xl w-60 md:w-96 p-5 space-y-4'>
+				<div className='signup start-container items-center  bg-white opacity-90 w-60 md:w-96 p-5 space-y-4'>
 					<h1 className='header text-2xl text-red-900 mx-auto pt-2'>SIGN UP</h1>
 					<form className='space-y-2 md:space-y-4' action='' onSubmit={submitHandler}>
 						{error.username && (
@@ -73,21 +73,21 @@ const SignUp = () => {
 							</p>
 						)}
 						<input
-							className='username input w-full mx-auto border border-slate-800 text-xs md:text-base'
+							className='username input account-input border border-slate-800'
 							type='text'
 							placeholder='Username'
 							onChange={changeHandler}
 							value={loggedInUser.username}
 						></input>
 						<input
-							className='password input w-full mx-auto border border-slate-800 text-xs md:text-base'
+							className='password input account-input border border-slate-800'
 							type='password'
 							placeholder='Password'
 							onChange={changeHandler}
 							value={loggedInUser.password}
 						></input>
 						<input
-							className='confirmPassword input w-full mx-auto border border-slate-800 text-xs md:text-base'
+							className='confirmPassword input account-input border border-slate-800'
 							type='password'
 							placeholder='Confirm Password'
 							onChange={changeHandler}
@@ -99,7 +99,7 @@ const SignUp = () => {
 							</p>
 						)}
 						<input
-							className='email input w-full mx-auto border border-slate-800 text-xs md:text-base'
+							className='email input account-input border border-slate-800'
 							type='text'
 							placeholder='Email'
 							onChange={changeHandler}
