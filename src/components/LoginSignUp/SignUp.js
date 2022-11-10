@@ -73,21 +73,21 @@ const SignUp = () => {
 							</p>
 						)}
 						<input
-							className='username input account-input border border-slate-800'
+							className='username input account-input'
 							type='text'
 							placeholder='Username'
 							onChange={changeHandler}
 							value={loggedInUser.username}
 						></input>
 						<input
-							className='password input account-input border border-slate-800'
+							className='password input account-input'
 							type='password'
 							placeholder='Password'
 							onChange={changeHandler}
 							value={loggedInUser.password}
 						></input>
 						<input
-							className='confirmPassword input account-input border border-slate-800'
+							className='confirmPassword input account-input'
 							type='password'
 							placeholder='Confirm Password'
 							onChange={changeHandler}
@@ -99,7 +99,7 @@ const SignUp = () => {
 							</p>
 						)}
 						<input
-							className='email input account-input border border-slate-800'
+							className='email input account-input'
 							type='text'
 							placeholder='Email'
 							onChange={changeHandler}

@@ -79,14 +79,14 @@ const LogIn = () => {
 				)}
 				<form onSubmit={submitHandler}>
 					<input
-						className='username input mt-4 account-input border border-slate-800'
+						className='username input mt-4 account-input'
 						type='text'
 						placeholder='Username'
 						onChange={changeHandler}
 						value={loggedInUser.username}
 					></input>
 					<input
-						className='password input my-4 account-input border border-slate-800'
+						className='password input my-4 account-input'
 						type='password'
 						placeholder='Password'
 						onChange={changeHandler}
