@@ -44,7 +44,7 @@ function Messages() {
 					<FontAwesomeIcon className='' icon={faMessage} />
 				</button>
 			</div>
-			<div className='h-max max-h-[80vh] standard-width max-w-[1080px] flex flex-col main-bg mx-auto p-4 rounded-t-none overflow-y-auto overflow-x-hidden md:gap-y-2 scroll'>
+			<div className='h-max max-h-[80vh] standard-width max-w-[1080px] vertical main-bg mx-auto p-4 rounded-t-none overflow-y-auto overflow-x-hidden md:gap-y-2 scroll'>
 				{toggle && (
 					<div className='modals' onClick={toggleModal}>
 						<div className='modals-content display-friends'>

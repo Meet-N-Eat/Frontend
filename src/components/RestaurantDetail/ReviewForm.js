@@ -60,7 +60,7 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 	return (
 		<div className="modal-bg modals-content" >
 			<form onSubmit={reviewSubmit}>
-				<div controlId='reviewBody' className='flex flex-col'>
+				<div controlId='reviewBody' className='vertical'>
 					<Dropdown>
 						<label className='mr-2'>
 							{validate.missingStars

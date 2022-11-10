@@ -83,7 +83,7 @@ const UserProfile = () => {
 							alt='profile-icon'
 						/>
 					</div>
-					<form className='flex flex-col text-white gap-y-2'>
+					<form className='vertical text-white gap-y-2'>
 						<label className=' mx-auto'>profile picture</label>
 						<input
 							className='w-[90%] profileimg input'

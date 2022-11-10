@@ -74,7 +74,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 						}
 					</div>
 					<Link
-						className='text-white hover:text-white text-center flex flex-col items-center space-y-4'
+						className='text-white hover:text-white text-center vertical items-center space-y-4'
 						to={`/restaurants/${restaurant}`}
 					>
 						<p className='w-40 font-bold text-center mt-4'>{resDetails.response.name}</p>

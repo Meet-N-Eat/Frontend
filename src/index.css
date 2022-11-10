@@ -116,6 +116,18 @@
 		;
 	}
 
+	.horizontal {
+		@apply
+			flex
+			flex-row;
+	}
+
+	.vertical {
+		@apply
+			flex
+			flex-col;
+	}
+
 	.user {
 		@apply md:self-end;
 	}

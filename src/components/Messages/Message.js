@@ -11,7 +11,7 @@ const Message = ({message}) => {
 				<div className='w-3/4 my-auto p-2'>
 					<p>{message && message.body}</p>
 				</div>
-				<div className='w-1/4 flex flex-col justify-center items-center'>
+				<div className='w-1/4 vertical flex-centered'>
 					<div>{message && date}</div>
 					<div>{message && time}</div>
 				</div>
