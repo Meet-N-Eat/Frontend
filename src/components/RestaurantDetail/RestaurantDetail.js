@@ -44,7 +44,7 @@ const RestaurantDetail = () => {
 	return (
 		<div className='grid-centered overflow-auto min-h-[820px] scroll'>
 			{resDetails.response && userLikes.response ? (
-				<div className='w-3/4 grid-centered'>
+				<div className='w-[450px] sm:w-3/4 grid-centered'>
 					<div className='w-full flex flex-col items-center justify-center main-bg'>
 						<RestaurantCard restaurant={resDetails.response._id} />
 						<div className='flex justify-center items-center mb-2 text-black'>
