@@ -87,6 +87,7 @@
 
 	.display-friends {
 		@apply
+			main-bg
 			w-[340px]
 			sm:w-[590px] 
 			md:w-[722px]
