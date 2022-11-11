@@ -8,7 +8,7 @@ import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import UserLike from './UserLike'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faCirclePlus } from '@fortawesome/free-solid-svg-icons'
+import { faCirclePlus, faCircleMinus } from '@fortawesome/free-solid-svg-icons'
 
 const RestaurantDetail = () => {
 	// State hooks and variable declarations
@@ -19,7 +19,7 @@ const RestaurantDetail = () => {
 	const {restaurantId} = useParams()
 	const [modalShow, setModalShow] = useState(false)
 	const [limit, setLimit] = useState(3)
-	
+	const [showHideIcon, setShowHideIcon] = useState(faCirclePlus)
 
 	// Getting restaurant data by restaurantId
 	// ===========================================================================
@@ -58,7 +58,16 @@ const RestaurantDetail = () => {
 									</Link>
 								)}
 							</div>
-							{userLikes.response.length > 3 ? <FontAwesomeIcon icon={faCirclePlus} className="text-red-900 hover:text-gray-900/80 text-4xl bg-white rounded-full" onClick={() => {setLimit((userLikes.response.length))}}></FontAwesomeIcon> : ''}
+							{userLikes.response.length > 3 ? <FontAwesomeIcon icon={showHideIcon} className="text-red-900 hover:text-gray-900/80 text-4xl bg-white rounded-full" onClick={() => {
+								if(showHideIcon == faCircleMinus){
+									setLimit(3)
+									setShowHideIcon(faCirclePlus)
+								}
+								if(showHideIcon == faCirclePlus){
+									setLimit(userLikes.response.length)
+									setShowHideIcon(faCircleMinus)
+								} 
+							}}></FontAwesomeIcon> : ''}
 						</div>
 					</div>
 					<div className='w-full border-2 border-red-900 rounded-2xl m-2'>
