@@ -5,6 +5,7 @@ import {buildSearchParams} from '../../data-and-functions/searchParams'
 import {Context} from '../../App'
 import RestaurantCard from '../RestaurantCard'
 import Pagination from './Pagination'
+import {Spinner} from 'react-bootstrap'
 
 const SearchResults = () => {
 	// State Variables
@@ -66,8 +67,8 @@ const SearchResults = () => {
 				</>
 			)}
 			{!restaurantsData.response && (
-				<div>
-					<h1>Loading restaurants...</h1>
+				<div className='py-4'>
+					<Spinner animation='border' variant="light" /> 
 				</div>
 			)}
 			{restaurantsData.response && restaurantsData.response.length === 0 && (
