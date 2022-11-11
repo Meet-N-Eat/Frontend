@@ -53,7 +53,7 @@ const SignUp = () => {
 		<div className=''>
 			{success ? (
 				<div className='start-container w-60 md:w-96 white-bg p-4 text-center mt-24'>
-					<h1 className='header py-2'>Successfully registered!</h1>
+					<h1 className='red-header py-2'>Successfully registered!</h1>
 					<div className='py-2'>
 						<div className='pb-3'>
 							<Link to='/profile'>
@@ -67,7 +67,7 @@ const SignUp = () => {
 				</div>
 			) : (
 				<div className='signup start-container items-center white-bg w-60 md:w-96 p-5 space-y-4'>
-					<h1 className='header mx-auto pt-2'>SIGN UP</h1>
+					<h1 className='red-header mx-auto pt-2'>SIGN UP</h1>
 					<form className='space-y-2 md:space-y-4' action='' onSubmit={submitHandler}>
 						{error.username && (
 							<p className='account-error'>

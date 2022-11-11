@@ -36,7 +36,7 @@ function FriendRequestForm( {user, modalHandler} ) {
       <div className='modals-content space-y-4'>
         {user && user.username ? (
         <>
-        <p className='header text-white text-xl text-center'>Add {user.username} as friend</p>
+        <p className='white-header text-white text-xl text-center'>Add {user.username} as friend</p>
         <input
         className='input w-full'
         as='textarea'

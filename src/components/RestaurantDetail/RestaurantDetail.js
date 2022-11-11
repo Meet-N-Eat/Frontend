@@ -74,7 +74,7 @@ const RestaurantDetail = () => {
 						<div>
 							<div>
 								{loggedInUser.token ? (
-									<h4 className='grid-centered font-normal text-white text-2xl'>reviews</h4>
+									<h4 className='grid-centered white-header'>reviews</h4>
 								) : (
 									<Link to='/users/authentication/login' state={{logInMessage: true}}>
 										reviews

@@ -18,17 +18,13 @@ const Favorites = ({loggedInUser}) => {
 	return (
 		<div className='likedRestaurants grid-centered w-full rounded-2xl'>
 			<form className='horizontal flex-centered border-slate-200/60 pb-2 mb-2 w-full'>
-				<p id='basic-addon2' className='text-white mr-2'>
-					enter name
-				</p>
 				<input
 					onChange={e => {
 						setSearchCharacters(e.target.value)
 					}}
 					className='input'
-					placeholder='liked restaurants'
-					aria-label="Recipient's username"
-					aria-describedby='basic-addon2'
+					placeholder='search by name'
+					aria-label="User's liked restaurants"
 				/>
 			</form>
 			<div className='w-full max-h-[720px] max-w-[335px] sm:max-w-[1050px] gap-2 grid-centered mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3 overflow-y-auto scroll'>
