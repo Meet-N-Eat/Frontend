@@ -67,7 +67,7 @@ const SearchResults = () => {
 				</>
 			)}
 			{!restaurantsData.response && (
-				<div className='py-4'>
+				<div className='standard-width max-w-[1080px] main-bg rounded-2xl m-auto grid-centered p-4 mt-4'>
 					<Spinner animation='border' variant="light" /> 
 				</div>
 			)}
