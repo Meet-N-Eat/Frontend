@@ -45,21 +45,21 @@ const RestaurantDetail = () => {
 		<div className='grid-centered overflow-auto min-h-[820px] scroll'>
 			{resDetails.response && userLikes.response ? (
 				<div className='w-3/4 grid-centered'>
-					<div className='w-full flex justify-center main-bg'>
+					<div className='w-full flex flex-col items-center justify-center main-bg'>
 						<RestaurantCard restaurant={resDetails.response._id} />
-					</div>
-					<div className='flex justify-center items-center'>
-						<div className={'white-bg p-2 border-t-[1px] border-b-[1px] border-red-900 mt-3 flex w-[25rem] horizontal grid-centered rounded-full overflow-x-auto scroll'}>
-							{loggedInUser.token ? (
-								userLikes.response.slice(0,limit).map(user => 
-								<UserLike key={user._id} user={user} />)
-							) : (
-								<Link to='/users/authentication/login' state={{logInMessage: true}}>
-									{userLikes.response.length} users like this restaurant
-								</Link>
-							)}
+						<div className='flex justify-center items-center mb-2 text-black'>
+							<div className={'white-bg p-2 border-t-[1px] border-b-[1px] border-red-900 mt-3 flex w-[25rem] horizontal grid-centered rounded-full overflow-x-auto scroll'}>
+								{loggedInUser.token ? (
+									userLikes.response.slice(0,limit).map(user => 
+									<UserLike key={user._id} user={user} />)
+								) : (
+									<Link to='/users/authentication/login' state={{logInMessage: true}}>
+										{userLikes.response.length} users like this restaurant
+									</Link>
+								)}
+							</div>
+							{userLikes.response.length > 3 ? <FontAwesomeIcon icon={faCirclePlus} className="text-red-900 hover:text-gray-900/80 text-4xl bg-white rounded-full" onClick={() => {setLimit((userLikes.response.length))}}></FontAwesomeIcon> : ''}
 						</div>
-						{userLikes.response.length > 3 ? <FontAwesomeIcon icon={faCirclePlus} className="text-red-900 hover:text-gray-900/80 text-4xl bg-white rounded-full" onClick={() => {setLimit((userLikes.response.length))}}></FontAwesomeIcon> : ''}
 					</div>
 					<div className='w-full border-2 border-red-900 rounded-2xl m-2'>
 						<div>
