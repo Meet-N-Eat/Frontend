@@ -25,10 +25,10 @@ const Friends = ({loggedInUser}) => {
 			<form>
 				<input className='input mb-8' onChange={searchChange} placeholder='search by name' />
 			</form>
-			<div className='max-h-[600px] main-bg display-friends flex-centered scroll'>
+			<div className='max-h-[600px] display-friends flex-centered scroll'>
 				{!friends.response && (
 					<div className='py-4'>
-					<Spinner animation='border' variant="light"/> 
+					<Spinner animation='border' variant="light" /> 
 					</div>
 				)}
 				{friends.response && friends.response.length > 0 && (
@@ -43,7 +43,7 @@ const Friends = ({loggedInUser}) => {
 						))
 				)}
 				{friends.response && friends.response.length === 0 && (
-					<p className='text-white col-span-4 text-center'>
+					<p className='text-white col-span-4 text-center py-4'>
 					No friends yet! Send friend requests by clicking on other people
 					who like the same restaurants you do.				
 					</p>
