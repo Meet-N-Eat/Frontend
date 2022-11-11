@@ -1,6 +1,4 @@
-import {} from 'react-bootstrap'
 import {formatDateTime} from '../../data-and-functions/formatDateTime'
-import ProfileCard from '../ProfileCard'
 
 const Message = ({message}) => {
 	const [date, time] = formatDateTime(message.createdAt)

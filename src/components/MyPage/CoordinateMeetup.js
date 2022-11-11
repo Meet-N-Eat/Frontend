@@ -156,7 +156,7 @@ const CoordinateMeetup = ({
 	console.log(meetup)
 	return (
 		<div className='invite-container'>
-			<h1 className='text-2xl'>meet 'n eat with friends</h1>
+			<h1 className='white-header'>meet 'n eat with friends</h1>
 			{error.restaurant && <h2>select a restaurant for this event</h2>}
 			<select
 				defaultValue={

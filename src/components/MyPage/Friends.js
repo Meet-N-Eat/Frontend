@@ -28,7 +28,7 @@ const Friends = ({loggedInUser}) => {
 			<div className='max-h-[600px] display-friends flex-centered scroll'>
 				{!friends.response && (
 					<div className='py-4'>
-					<Spinner animation='border' variant="light" /> 
+						<Spinner animation='border' variant="light" /> 
 					</div>
 				)}
 				{friends.response && friends.response.length > 0 && (

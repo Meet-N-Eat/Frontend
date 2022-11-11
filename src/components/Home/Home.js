@@ -26,7 +26,7 @@ const Home = () => {
 
 	return (
 		<div className='main-bg start-container h-56 md:h-48 w-10/12 max-w-5xl space-y-5'>
-			<p className='home-header text-white text-2xl w-10/12 max-w-3xl mx-auto'>Find restaurants you like? Meet others who like them too.</p>
+			<p className='home-header w-10/12 max-w-3xl mx-auto'>Find restaurants you like? Meet others who like them too.</p>
 			<Search />
 			{!loggedInUser.token && (
 				<>
