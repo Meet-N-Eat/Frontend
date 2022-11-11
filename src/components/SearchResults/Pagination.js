@@ -11,7 +11,7 @@ const Pagination = ({cardsPerPage, totalCards, paginate}) => {
 	return (
 		<ul className='text-white flex justify-center gap-x-2'>
 			{pageNumbers.map(number => (
-				<li key={number} className='cursor-pointer' onClick={() => paginate(number)}>
+				<li key={number} className='cursor-pointer bg-red-900/80 p-1 rounded-circle w-[30px] text-center' onClick={() => paginate(number)}>
 					{number}
 				</li>
 			))}
