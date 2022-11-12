@@ -1,4 +1,6 @@
 import React from 'react'
+import ProfileCard from './ProfileCard'
+import OutreachButtons from './OutreachButtons'
 
 function ProfileModal() {
 	return (
