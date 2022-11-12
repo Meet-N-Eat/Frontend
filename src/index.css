@@ -321,6 +321,7 @@
 
 	/* LogIn/SignUp */
 	.account-input {
+		border-color: var(--main-bg);
 		@apply 
 			w-full 
 			mx-auto 
@@ -374,14 +375,15 @@
 	display: none;
 }
 
-/* Headers/Subheaders */
+/* Texts */
 .home-header {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
 	color: white;
 	@apply 
 		text-xl
-		md:text-2xl;
+		md:text-2xl
+		text-center;
 }
 
 .red-header {
@@ -402,6 +404,12 @@
 	font-family: 'Montserrat', sans-serif;
 	color:  white;
 	@apply text-xl;
+}
+
+.base-text {
+	@apply 
+		text-sm
+		md:text-base;
 }
 
 /* Class name goes on wrapper div */
