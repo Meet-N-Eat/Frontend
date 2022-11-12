@@ -58,11 +58,11 @@ function MessageChat() {
 	}
 
 	return (
-		<>
-			<div className='w-full page-container main-bg items-center mx-auto rounded-b-none'>
+		<div>
+			<div className='w-[375px] sm:w-full page-container main-bg items-center mx-auto rounded-b-none'>
 				<ProfileCard user={friendId} />
 			</div>
-			<div className='h-[770px] w-full page-container main-bg rounded-t-none gap-y-2 p-4 overflow-auto scroll'>
+			<div className='h-[770px] w-[375px] sm:w-full page-container main-bg rounded-t-none gap-y-2 p-4 overflow-auto scroll'>
 				{thread.threadArray && thread.threadArray.length > 0 ? (
 					thread.threadArray[0].map(message => (
 						<div
@@ -83,7 +83,7 @@ function MessageChat() {
 			<div className='block'>
 				<form
 					onSubmit={submitHandler}
-					className='flex mt-4 mx-auto w-[90%] min-w-[430px] max-w-[700px] space-x-2'
+					className='flex sm:mt-4 mx-auto w-[90%] min-w-[375px] max-w-[700px] space-x-2'
 				>
 					<input
 						className='input w-full'
@@ -96,7 +96,7 @@ function MessageChat() {
 					</button>
 				</form>
 			</div>
-		</>
+		</div>
 	)
 }
 
