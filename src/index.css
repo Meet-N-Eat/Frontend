@@ -353,45 +353,35 @@
 	}
 }
 
-/* Class name goes on wrapper div */
-.user-image {
-	@apply 
-		h-[50px] 
-		w-[50px] 
-		/* md:h-[65px] 
-		md:w-[65px]  */
-		inline-block 
-		relative 
-		overflow-hidden 
-		object-cover 
-		mx-auto
-	;
+/* NavBar */
+.nav-title {
+	font-family: 'Rubik Mono One', sans-serif;
+	@apply
+		text-3xl
+		md:text-5xl
+		text-white;
 }
 
-/* Targets image inside wrapper div */
-.user-image img {
-	@apply h-full w-auto rounded-[50%];
+.nav-N {
+	@apply
+		text-red-800
+		-mx-6
+		md:-mx-9;
 }
 
-
-body {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 300;
-	height: 100vh;
-	width: 100vw;
-	margin: 0px;
-	background-image: url('./assets/homeBgImage.jpg');
-	background-size: cover;
-	background-repeat: no-repeat;
-	background-position: center;
-	background-attachment: fixed;
+.nav-dropdown,
+.dropdown-toggle::after {
+	display: none;
 }
 
+/* Headers/Subheaders */
 .home-header {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
 	color: white;
-	@apply text-2xl;
+	@apply 
+		text-xl
+		md:text-2xl;
 }
 
 .red-header {
@@ -414,8 +404,37 @@ body {
 	@apply text-xl;
 }
 
-.nav-title {
-	font-family: 'Rubik Mono One', sans-serif;
+/* Class name goes on wrapper div */
+.user-image {
+	@apply 
+		h-[50px] 
+		w-[50px] 
+		/* md:h-[65px] 
+		md:w-[65px]  */
+		inline-block 
+		relative 
+		overflow-hidden 
+		object-cover 
+		mx-auto
+	;
+}
+
+/* Targets image inside wrapper div */
+.user-image img {
+	@apply h-full w-auto rounded-[50%];
+}
+
+body {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 300;
+	height: 100vh;
+	width: 100vw;
+	margin: 0px;
+	background-image: url('./assets/homeBgImage.jpg');
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
 }
 
 #root {
@@ -434,10 +453,7 @@ main {
 	grid-template-rows: repeat(6, 1fr);
 }
 
-.nav-dropdown,
-.dropdown-toggle::after {
-	display: none;
-}
+
 
 .message-backdrop:hover {
 	background-color: rgba(100, 0, 0, 0.8);

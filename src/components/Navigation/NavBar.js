@@ -13,7 +13,7 @@ const NavBar = () => {
 	let option = useRef('')
 	const navigate = useNavigate()
 
-	// Event handlers
+	// Functions and Event handlers
 	// ===========================================================================
 	function userAuthClick(e) {
 		switch (e.target.text) {
@@ -34,12 +34,14 @@ const NavBar = () => {
 		})
 	}
 
+	// Return
+	// ===========================================================================
 	return (
 		<div className='horizontal justify-between items-center p-3'>
 			<div>
 				<NavLink to='/'>
-					<h2 className='text-5xl text-white nav-title'>
-						MEET <span className='text-red-800 -mx-7'>N</span> EAT
+					<h2 className='nav-title'>
+						MEET <span className='nav-N'>N</span> EAT
 					</h2>
 				</NavLink>
 			</div>
