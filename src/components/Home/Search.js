@@ -53,7 +53,7 @@ const Search = () => {
 				<div className='w-8/12 mx-auto flex space-x-2'>
 					<div className='w-full'>
 						<input
-							className='input w-full border border-white'
+							className='input w-full border border-white base-text'
 							type='text'
 							placeholder='search by restaurant or category'
 							onChange={inputChange}
