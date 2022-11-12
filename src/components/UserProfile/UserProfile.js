@@ -86,7 +86,7 @@ const UserProfile = () => {
 					<form className='vertical text-white gap-y-2'>
 						<label className=' mx-auto'>profile picture</label>
 						<input
-							className='w-[90%] profileimg input'
+							className='profileimg w-[90%] input'
 							type='profile-image'
 							placeholder='paste a picture URL here'
 							onChange={inputChange}
