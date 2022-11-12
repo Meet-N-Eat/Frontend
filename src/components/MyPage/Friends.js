@@ -4,8 +4,11 @@ import ProfileCard from '../ProfileCard'
 import {Spinner} from 'react-bootstrap'
 
 const Friends = ({loggedInUser}) => {
+	// State Hooks and Variables
+	// ===========================================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
 	const [friends, dispatchFriends] = useReducer(axiosReducer, {})
+
 
 	useEffect(() => {
 		axiosAll(
@@ -16,10 +19,15 @@ const Friends = ({loggedInUser}) => {
 		)
 	}, [])
 
+	// Functions and Event Handlers
+	// ===========================================================================================
+
 	function searchChange(e) {
 		setSearchCharacters(e.target.value)
 	}
 
+	// Return
+	// ===========================================================================
 	return (
 		<div className='vertical flex-centered'>
 			<form>

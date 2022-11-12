@@ -153,7 +153,9 @@ const CoordinateMeetup = ({
 			error.submit = false
 		}
 	}, [error])
-	console.log(meetup)
+	
+	// Return
+	// ===========================================================================
 	return (
 		<div className='invite-container'>
 			<h1 className='white-header'>meet 'n eat with friends</h1>
