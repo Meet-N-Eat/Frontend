@@ -42,13 +42,13 @@ const RestaurantDetail = () => {
 	}
 
 	return (
-		<div className='grid-centered overflow-auto min-h-[820px] scroll'>
+		<div className='grid-centered min-h-[820px]'>
 			{resDetails.response && userLikes.response ? (
-				<div className='w-[450px] sm:w-3/4 grid-centered'>
-					<div className='w-full flex flex-col items-center justify-center main-bg'>
+				<div className='sm:w-3/4 grid-centered'>
+					<div className='flex flex-col items-center justify-center main-bg w-[335px] sm:w-full'>
 						<RestaurantCard restaurant={resDetails.response._id} />
 						<div className='flex justify-center items-center mb-2 text-black'>
-							<div className={'white-bg p-2 border-t-[1px] border-b-[1px] border-red-900 mt-3 flex w-[25rem] horizontal grid-centered rounded-full overflow-x-auto scroll'}>
+							<div className={'white-bg p-2 mt-3 flex w-[250px] sm:w-[25rem] horizontal grid-centered rounded-full overflow-x-auto scroll'}>
 								{loggedInUser.token ? (
 									userLikes.response.slice(0,limit).map(user => 
 									<UserLike key={user._id} user={user} />)
@@ -70,7 +70,7 @@ const RestaurantDetail = () => {
 							}}></FontAwesomeIcon> : ''}
 						</div>
 					</div>
-					<div className='w-full border-2 border-red-900 rounded-2xl m-2'>
+					<div className='w-[335px] sm:w-full border-2 border-red-900 rounded-2xl m-2 '>
 						<div>
 							<div>
 								{loggedInUser.token ? (
