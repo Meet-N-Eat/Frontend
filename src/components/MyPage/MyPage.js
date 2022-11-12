@@ -57,7 +57,7 @@ const MyPage = () => {
 		},
 	}
 
-	// Functions
+	// Functions and Event Handlers
 	// ===========================================================================
 
 	function slideHandler(direction) {
@@ -95,7 +95,7 @@ const MyPage = () => {
 		return tabArray
 	}
 
-	// FUNCTION RETURN
+	// Return
 	// ===========================================================================
 	return (
 		<div className='grid-centered'>

@@ -3,12 +3,16 @@ import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import Event from './Event'
 
 const Itinerary = ({loggedInUser}) => {
+	// State Hooks and Variables
+	// ===========================================================================================
 	const [events, dispatchEvents] = useReducer(axiosReducer, {})
+	let today = new Date().toLocaleDateString()
+
+	// Functions and Event Handlers
+	// ===========================================================================================
 	useEffect(() => {
 		updateEvents()
 	}, [])
-
-	let today = new Date().toLocaleDateString()
 
 	function updateEvents() {
 		axiosAll(
@@ -19,6 +23,8 @@ const Itinerary = ({loggedInUser}) => {
 		)
 	}
 
+	// Return
+	// ===========================================================================
 	return (
 		<div className='vertical items-center w-full min-h-[830px]'>
 			<div className='text-center space-y-1'>

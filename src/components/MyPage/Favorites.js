@@ -3,9 +3,13 @@ import RestaurantCard from '../RestaurantCard'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 
 const Favorites = ({loggedInUser}) => {
+	// State Hooks and Variables
+	// ===========================================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
 	const [favorites, dispatchFavorites] = useReducer(axiosReducer, {})
 
+	// Functions and Event Handlers
+	// ===========================================================================================
 	useEffect(() => {
 		axiosAll(
 			'GET',
@@ -15,6 +19,8 @@ const Favorites = ({loggedInUser}) => {
 		)
 	}, [])
 
+	// Return
+	// ===========================================================================
 	return (
 		<div className='likedRestaurants grid-centered w-full rounded-2xl'>
 			<form className='horizontal flex-centered border-slate-200/60 pb-2 mb-2 w-full'>
