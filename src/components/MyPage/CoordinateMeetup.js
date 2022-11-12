@@ -157,10 +157,11 @@ const CoordinateMeetup = ({
 	// Return
 	// ===========================================================================
 	return (
-		<div className='invite-container'>
+		<div className='main-bg vertical justify-evenly items-center h-full w-[335px] sm:invite-container'>
 			<h1 className='white-header'>meet 'n eat with friends</h1>
 			{error.restaurant && <h2>select a restaurant for this event</h2>}
 			<select
+				className='w-[320px]'
 				defaultValue={
 					(meetup.restaurant &&
 						favorites.response &&
@@ -180,8 +181,8 @@ const CoordinateMeetup = ({
 					))}
 			</select>
 			{error.date && <h2>pick a date and time for this event</h2>}
-			<input onChange={e => dateSelect(e, 'date')} type='date' value={date.date} />
-			<input onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
+			<input className='w-[320px]' onChange={e => dateSelect(e, 'date')} type='date' value={date.date} />
+			<input className='w-[320px]' onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
 			<button className='invite button' onClick={toggleModal}>
 				invite friends
 			</button>
