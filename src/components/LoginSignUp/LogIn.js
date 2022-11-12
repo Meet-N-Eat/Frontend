@@ -70,7 +70,7 @@ const LogIn = () => {
 	// ===========================================================================
 	return (
 		<div className=''>
-			<div className='start-container items-center white-bg w-60 md:w-96 p-4'>
+			<div className='start-container items-center white-bg w-72 md:w-96 p-4'>
 				<h1 className='red-header mx-auto pt-2'>LOG IN</h1>
 				{location.state !== null && (
 					<p className='text-center mx-auto text-xs md:text-sm'>
@@ -98,13 +98,13 @@ const LogIn = () => {
 						</h1>
 					)}
 					<Row>
-						<button className='account-button w-20 mb-4 mx-auto text-sm md:text-base' type='submit'>
+						<button className='account-button w-20 mb-4 mx-auto base-text' type='submit'>
 							Submit
 						</button>
 					</Row>
 				</form>
 				<Link
-					className='mx-auto text-xs md:text-lg hover:text-red-900 hover:font-normal'
+					className='mx-auto base-text hover:text-red-900 hover:font-normal'
 					to='/users/authentication/signup'
 				>
 					Not registered? Sign up here
