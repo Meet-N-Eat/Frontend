@@ -38,11 +38,11 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 			onClick={toggleModal}
 		>
 			<form className='modals-content standard-width max-w-[800px] p-3 vertical items-center space-y-3'>
-				<p className='text-red-600 text-2xl font-normal'>Filter Options</p>
-				<div className='flex space-x-1'>
+				<p className='white-header font-normal'>Filter Options</p>
+				<div className='flex vertical space-y-4 md:space-y-0 md:horizontal md:space-x-2'>
 					<select
 						defaultValue={city || 'select a city'}
-						className='city'
+						className='city base-text'
 						onChange={dropdownChoice}
 					>
 						<option value='select a city' disabled hidden>
@@ -56,7 +56,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 					</select>
 					<select
 						defaultValue={category || 'select a category'}
-						className='category'
+						className='category base-text'
 						onChange={dropdownChoice}
 					>
 						<option value='select a category' disabled hidden>
@@ -70,7 +70,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 					</select>
 					<select
 						defaultValue={price || 'select price range'}
-						className='price'
+						className='price base-text'
 						onChange={dropdownChoice}
 					>
 						<option value='select price range' disabled hidden>
@@ -83,7 +83,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 						))}
 					</select>
 				</div>
-				<div className='flex space-x-2 text-white'>
+				<div className='flex vertical space-y-2 md:space-y-0 md:horizontal md:space-x-2 text-white text-center base-text'>
 					<label>
 						<input
 							type='checkbox'

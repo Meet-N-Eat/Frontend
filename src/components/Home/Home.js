@@ -25,13 +25,13 @@ const Home = () => {
 
 
 	return (
-		<div className='main-bg start-container h-56 md:h-48 w-10/12 max-w-5xl space-y-5'>
+		<div className='main-bg start-container h-60 md:h-48 w-10/12 max-w-5xl space-y-5'>
 			<p className='home-header w-10/12 max-w-3xl mx-auto'>Find restaurants you like? Meet others who like them too.</p>
 			<Search />
 			{!loggedInUser.token && (
 				<>
 					<button 
-						className='button row-start-4 mx-auto'
+						className='button base-text row-start-4 mx-auto'
 						onClick={signUpShowHandler}>
 						Create account
 					</button>

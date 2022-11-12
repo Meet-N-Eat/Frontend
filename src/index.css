@@ -321,6 +321,7 @@
 
 	/* LogIn/SignUp */
 	.account-input {
+		border-color: var(--main-bg);
 		@apply 
 			w-full 
 			mx-auto 
@@ -353,6 +354,68 @@
 	}
 }
 
+/* NavBar */
+.nav-title {
+	font-family: 'Rubik Mono One', sans-serif;
+	@apply
+		text-3xl
+		md:text-5xl
+		text-white;
+}
+
+.nav-N {
+	@apply
+		text-red-800
+		-mx-6
+		md:-mx-9;
+}
+
+.nav-dropdown,
+.dropdown-toggle::after {
+	display: none;
+}
+
+/* Texts */
+.home-header {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 900;
+	color: white;
+	@apply 
+		text-xl
+		md:text-2xl
+		text-center;
+}
+
+.red-header {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	color:  var(--main-bg);
+	@apply 
+		text-xl
+		md:text-2xl;
+}
+
+.white-header {
+	font-family: 'Montserrat', sans-serif;
+	font-weight: 400;
+	color:  white;
+	@apply 
+		text-xl
+		md:text-2xl;
+}
+
+.white-subheader {
+	font-family: 'Montserrat', sans-serif;
+	color:  white;
+	@apply text-xl;
+}
+
+.base-text {
+	@apply 
+		text-sm
+		md:text-base;
+}
+
 /* Class name goes on wrapper div */
 .user-image {
 	@apply 
@@ -373,7 +436,6 @@
 	@apply h-full w-auto rounded-[50%];
 }
 
-
 body {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 300;
@@ -385,37 +447,6 @@ body {
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
-}
-
-.home-header {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 900;
-	color: white;
-	@apply text-2xl;
-}
-
-.red-header {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 400;
-	color:  var(--main-bg);
-	@apply text-2xl;
-}
-
-.white-header {
-	font-family: 'Montserrat', sans-serif;
-	font-weight: 400;
-	color:  white;
-	@apply text-2xl;
-}
-
-.white-subheader {
-	font-family: 'Montserrat', sans-serif;
-	color:  white;
-	@apply text-xl;
-}
-
-.nav-title {
-	font-family: 'Rubik Mono One', sans-serif;
 }
 
 #root {
@@ -434,10 +465,7 @@ main {
 	grid-template-rows: repeat(6, 1fr);
 }
 
-.nav-dropdown,
-.dropdown-toggle::after {
-	display: none;
-}
+
 
 .message-backdrop:hover {
 	background-color: rgba(100, 0, 0, 0.8);
