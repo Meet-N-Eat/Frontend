@@ -390,14 +390,18 @@
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
 	color:  var(--main-bg);
-	@apply text-2xl;
+	@apply 
+		text-xl
+		md:text-2xl;
 }
 
 .white-header {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
 	color:  white;
-	@apply text-2xl;
+	@apply 
+		text-xl
+		md:text-2xl;
 }
 
 .white-subheader {
