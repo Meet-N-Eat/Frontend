@@ -104,12 +104,12 @@ const MyPage = () => {
 					{slide}
 					{slideIndex.current !== 0 && (
 						<button id='left-btn' onClick={() => slideHandler('left')}>
-							<div className='arrow left'></div>
+							<div className='arrow left hidden sm:block'></div>
 						</button>
 					)}
 					{slideIndex.current !== 3 && (
 						<button id='right-btn' onClick={() => slideHandler('right')}>
-							<div className='arrow right'></div>
+							<div className='arrow right hidden sm:block'></div>
 						</button>
 					)}
 				</div>
