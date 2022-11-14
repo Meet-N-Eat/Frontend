@@ -59,8 +59,12 @@
 
 
 	/* MyPage containers */
-	.responsive-mypage{
-		@apply w-full h-[440px] sm:h-[630px] lg:h-[700px]
+	.responsive-mypage {
+		@apply 
+			h-[440px] 
+			sm:h-[630px] 
+			lg:h-[700px] 
+		;
 	}
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
@@ -319,7 +323,18 @@
 
 	/* Arrows */
 	.arrow {
-		@apply h-14 w-14 border-gray-500/80 border-r-4 border-b-4 rounded absolute top-1/2;
+		@apply 
+			h-14 
+			w-14 
+			border-gray-500/80 
+			border-r-4 
+			border-b-4 
+			rounded 
+			absolute 
+			top-1/2
+			hidden
+			sm:block
+		;
 	}
 
 	.right {

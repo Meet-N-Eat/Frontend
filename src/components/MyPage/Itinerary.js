@@ -27,7 +27,7 @@ const Itinerary = ({loggedInUser}) => {
 	// Return
 	// ===========================================================================
 	return (
-		<div className='vertical items-center w-full'>
+		<div className='vertical items-center w-[355px] md:w-[700px]'>
 			<div className='text-center space-y-1'>
 				<h2 className='white-header'>itinerary</h2>
 				<h2 className='text-white'> {today} </h2>
@@ -42,7 +42,7 @@ const Itinerary = ({loggedInUser}) => {
 					<p className='text-white base-text text-center'>Send an invite to create an event</p>
 				</div>
 			)}
-			<div className='responsive-mypage sm:max-w-[700px] gap-2 grid-centered mx-auto grid-cols-1 lg:grid-cols-2 overflow-auto scroll'>
+			<div className='responsive-mypage gap-2 grid-centered mx-auto grid-cols-1 md:grid-cols-2 overflow-auto scroll'>
 				{events.response && events.response.length > 0 && (
 					events.response.map(event => (
 						<Event event={event} updateEvents={updateEvents} key={event._id} />
