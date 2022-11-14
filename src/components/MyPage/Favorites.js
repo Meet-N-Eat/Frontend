@@ -42,6 +42,13 @@ const Favorites = ({loggedInUser}) => {
 				</div>
 			)}
 			</>
+			{favorites.response && favorites.response.length === 0 && (
+					<div className='main-bg mt-8 w-[350px] md:w-96 p-4'>
+						<Link to='/'>
+							<button className='button w-full base-text text-center'>Browse restaurants to add to favorites</button>
+						</Link>
+					</div>
+			)}
 			<div className='responsive-mypage sm:max-w-[1050px] gap-2 grid-centered mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3 overflow-y-auto scroll'>
 				{favorites.response && favorites.response.length > 0 && (
 					favorites.response
@@ -55,13 +62,6 @@ const Favorites = ({loggedInUser}) => {
 						))
 				)}
 			</div>
-			{favorites.response && favorites.response.length === 0 && (
-					<div className='main-bg w-[350px] md:w-96 p-4'>
-						<Link to='/'>
-							<button className='button w-full base-text text-center'>Browse restaurants to add to favorites</button>
-						</Link>
-					</div>
-			)}
 		</div>
 	)
 }
