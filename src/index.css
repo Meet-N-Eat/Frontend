@@ -93,7 +93,6 @@
 
 	.display-friends {
 		@apply
-			main-bg
 			w-[340px]
 			sm:w-[590px] 
 			md:w-[722px]
@@ -213,24 +212,25 @@
 	.button {
 		@apply 
 			h-11 
-			w-40 
+			w-40
 			font-normal 
 			text-black 
 			bg-white/90 
 			rounded-full 
 			shadow-md 
+			shadow-red-900
 			p-2 
 			
 			hover:text-white 
 			hover:bg-red-900/80
 			hover:border
-			shadow-red-900
 		;
 	}
 
 	.account-button {
 		@apply 
-			h-11 
+			h-11
+			w-40
 			text-white 
 			bg-red-900 
 			rounded-full 
@@ -263,7 +263,6 @@
 	/* Input boxes */
 	.input {
 		@apply 
-			font-normal
 			indent-2.5 
 			bg-gray-500/80 
 			text-white 
@@ -273,7 +272,7 @@
 			border 
 			border-white
 			shadow-sm 
-			p-1 
+			p-1
 
 			focus:bg-white/90 
 			focus:text-zinc-900 
@@ -300,6 +299,22 @@
 	input[type='date'],
 	input[type='time'] {
 		@apply border rounded text-center text-black;
+	}
+
+	.text-area {
+		@apply
+			resize-none
+			indent-0
+		;
+	}
+
+	/* Dropdowns */
+	.dropdowns {
+		@apply 
+			w-40
+			modal-bg
+			text-white
+		;
 	}
 
 	/* Arrows */
@@ -428,8 +443,6 @@
 	@apply 
 		h-[50px] 
 		w-[50px] 
-		/* md:h-[65px] 
-		md:w-[65px]  */
 		inline-block 
 		relative 
 		overflow-hidden 

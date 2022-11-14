@@ -42,7 +42,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 				<div className='flex vertical space-y-4 md:space-y-0 md:horizontal md:space-x-2'>
 					<select
 						defaultValue={city || 'select a city'}
-						className='city base-text'
+						className='city dropdowns base-text'
 						onChange={dropdownChoice}
 					>
 						<option value='select a city' disabled hidden>
@@ -56,7 +56,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 					</select>
 					<select
 						defaultValue={category || 'select a category'}
-						className='category base-text'
+						className='category dropdowns base-text'
 						onChange={dropdownChoice}
 					>
 						<option value='select a category' disabled hidden>
@@ -70,7 +70,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 					</select>
 					<select
 						defaultValue={price || 'select price range'}
-						className='price base-text'
+						className='price dropdowns base-text'
 						onChange={dropdownChoice}
 					>
 						<option value='select price range' disabled hidden>

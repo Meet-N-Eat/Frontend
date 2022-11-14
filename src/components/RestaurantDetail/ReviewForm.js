@@ -14,18 +14,14 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 
 	const [review, dispatchReview] = useReducer(axiosReducer, initialState)
 	const [validate, dispatchValidate] = useReducer(axiosReducer, {valid: false})
-	const starMenu = ['None', '1', '2', '3', '4', '5']
+	const starMenu = ['1', '2', '3', '4', '5']
 
-	function starClick(e) {
-		e.target.text !== 'None'
-			? dispatchReview({
-					key: 'stars',
-					value: e.target.text,
-			  })
-			: dispatchReview({
-					key: 'stars',
-					value: '',
-			  })
+	function dropdownChoice(e, key) {
+		console.log(e.target.text)
+		dispatchReview({
+			key: key,
+			value: e.target.text,
+		})
 	}
 
 	function reviewChange(e) {
@@ -58,33 +54,39 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 	}
 
 	return (
-		<div className='modal-bg modals-content standard-width'>
-			<form onSubmit={reviewSubmit}>
-				<div controlId='reviewBody' className='vertical'>
-					<Dropdown>
-						<label className='mr-2'>
-							{validate.missingStars
-								? 'Please add a star rating to this review'
-								: 'Give it some stars'}
-						</label>
-						<Dropdown.Toggle className='border border-white hover:bg-white hover:text-black'>
-							{review.stars || 'Stars'}
-						</Dropdown.Toggle>
-						<Dropdown.Menu>
-							{starMenu.map((menuItem, index) => (
-								<Dropdown.Item className='stars' onClick={starClick} key={index}>
-									{menuItem}
-								</Dropdown.Item>
-							))}
-						</Dropdown.Menu>
-					</Dropdown>
+		<div className='modals-content standard-width flex-centered'>
+			<form 
+				className='w-full flex-centered flex-col'
+				onSubmit={reviewSubmit}
+			>
+
+					<p className='mr-2'>
+						{validate.missingStars
+							? 'Please add a star rating to this review'
+							: 'Give it some stars'}
+					</p>
+					<select
+						className='dropdowns w-40'
+						defaultValue={review.stars || 'stars'}
+						onChange={e => dropdownChoice(e, 'stars')}
+					>
+						<option value='stars' disabled hidden>
+							stars
+						</option>
+						{starMenu.map(stars => (
+							<option key={stars} value={stars}>
+								{stars}
+							</option>
+						)
+						)}
+					</select>
 					<label>
 						{validate.missingBody
 							? 'Please enter something about your experience'
 							: 'Tell us your thoughts'}
 					</label>
 					<textarea
-						className='input rounded-[5px]'
+						className='input text-area scroll w-full rounded-[5px]'
 						rows={3}
 						onChange={reviewChange}
 						value={review.body}
@@ -92,7 +94,7 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 					<button className='account-button mt-2' type='submit'>
 						Submit
 					</button>
-				</div>
+
 			</form>
 		</div>
 	)
