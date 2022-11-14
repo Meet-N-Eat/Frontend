@@ -54,7 +54,7 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 	}
 
 	return (
-		<div className='modals-content standard-width flex-centered'>
+		<div className='modals-content standard-width flex-centered p-8'>
 			<form 
 				className='w-full flex-centered flex-col'
 				onSubmit={reviewSubmit}

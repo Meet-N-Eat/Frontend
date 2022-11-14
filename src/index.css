@@ -64,6 +64,7 @@
 			h-[440px] 
 			sm:h-[630px] 
 			lg:h-[700px] 
+			w-full
 		;
 	}
 
@@ -72,7 +73,7 @@
 		margin: 0px !important;
 		@apply 
 			h-screen 
-			w-screen 
+			w-full 
 			z-10 
 			fixed 
 			top-0 
@@ -88,20 +89,22 @@
 			modal-bg
 			rounded-2xl 
 			scroll
-			border 
-			mt-36 
+			border
+			mt-16
+			md:mt-36 
 			mx-auto 
-			p-8 
 		;
 	}
 
 	.display-friends {
 		@apply
-			w-[340px]
-			sm:w-[590px] 
-			md:w-[722px]
-			lg:w-[854px]
-			xl:w-[996px]
+			max-h-[268px]
+			md:max-h-[562px]
+			min-w-[300px]
+			sm:max-w-[550px] 
+			md:max-w-[682px]
+			lg:max-w-[814px]
+			xl:max-w-[956px]
 			flex 
 			flex-wrap 
 			gap-y-3 
@@ -315,7 +318,7 @@
 	/* Dropdowns */
 	.dropdowns {
 		@apply 
-			w-40
+			w-[170px]
 			modal-bg
 			text-white
 		;

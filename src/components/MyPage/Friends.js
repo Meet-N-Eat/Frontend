@@ -52,7 +52,7 @@ const Friends = ({loggedInUser}) => {
 			<form>
 				<input className='input mb-8' onChange={searchChange} placeholder='search by name' />
 			</form>
-			<div className='max-h-[600px] main-bg display-friends flex-centered scroll'>
+			<div className='main-bg display-friends flex-centered scroll'>
 				{!friends.response && (
 					<div className='py-4'>
 						<Spinner animation='border' variant="light" /> 
