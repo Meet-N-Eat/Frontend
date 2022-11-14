@@ -57,6 +57,12 @@
 		@apply bg-white/90;
 	}
 
+
+	/* MyPage containers */
+	.responsive-mypage{
+		@apply w-full h-[440px] sm:h-[630px] lg:h-[700px] max-w-[335px]
+	}
+
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
 	.modals {
 		margin: 0px !important;

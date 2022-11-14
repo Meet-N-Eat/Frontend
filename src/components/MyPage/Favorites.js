@@ -33,7 +33,7 @@ const Favorites = ({loggedInUser}) => {
 					aria-label="User's liked restaurants"
 				/>
 			</form>
-			<div className='w-full max-h-[720px] max-w-[335px] sm:max-w-[1050px] gap-2 grid-centered mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3 overflow-y-auto scroll'>
+			<div className='responsive-mypage sm:max-w-[1050px] gap-2 grid-centered mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3 overflow-y-auto scroll'>
 				{favorites.response && favorites.response.length > 0 ? (
 					favorites.response
 						.filter(
