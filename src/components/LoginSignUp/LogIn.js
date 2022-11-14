@@ -73,7 +73,7 @@ const LogIn = () => {
 			<div className='start-container items-center white-bg w-72 md:w-96 p-4'>
 				<h1 className='red-header mx-auto pt-2'>LOG IN</h1>
 				{location.state !== null && (
-					<p className='text-center mx-auto text-xs md:text-sm'>
+					<p className='account-error'>
 						Log in to access this feature!
 					</p>
 				)}
@@ -93,7 +93,7 @@ const LogIn = () => {
 						value={loggedInUser.password}
 					></input>
 					{login.badLogin && (
-						<h1 className='text-center mb-2 text-xs md:text-sm text-red-800'>
+						<h1 className='account-error mb-2'>
 							Incorrect username or password
 						</h1>
 					)}

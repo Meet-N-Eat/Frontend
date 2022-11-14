@@ -222,7 +222,8 @@
 			p-2 
 			
 			hover:text-white 
-			hover:bg-red-900/80 
+			hover:bg-red-900/80
+			hover:border
 			shadow-red-900
 		;
 	}

@@ -1,5 +1,5 @@
 import React, {useContext, useEffect, useReducer, useState} from 'react'
-import {Modal, Row} from 'react-bootstrap'
+import {Row} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import {Context} from '../../App'

@@ -5,6 +5,7 @@ import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import {messageThreads} from '../../data-and-functions/messageThreads'
 import ProfileCard from '../ProfileCard'
 import Message from './Message'
+import { Spinner } from 'react-bootstrap'
 
 function MessageChat() {
 	const {loggedInUser} = useContext(Context)
@@ -62,13 +63,18 @@ function MessageChat() {
 			<div className='w-[375px] sm:w-full page-container main-bg items-center mx-auto rounded-b-none'>
 				<ProfileCard user={friendId} />
 			</div>
-			<div className='h-[770px] w-[375px] sm:w-full page-container main-bg rounded-t-none gap-y-2 p-4 overflow-auto scroll'>
-				{thread.threadArray && thread.threadArray.length > 0 ? (
+			<div className='max-h-80 md:max-h-[60vh] w-[375px] sm:w-full page-container main-bg rounded-t-none gap-y-2 p-4 overflow-auto scroll'>
+				{(!thread.threadArray && (
+					<div className='pb-4 m-auto'>
+						<Spinner animation='border' variant="light" /> 
+					</div>
+				))}
+				{thread.threadArray && thread.threadArray.length > 0 && (
 					thread.threadArray[0].map(message => (
 						<div
 							key={message._id}
 							className={`${
-								message.sender == loggedInUser.response._id
+								message.sender === loggedInUser.response._id
 									? 'user chat-message'
 									: 'friend chat-message'
 							}`}
@@ -76,11 +82,14 @@ function MessageChat() {
 							<Message message={message} />
 						</div>
 					))
-				) : (
-					<div>no messages yet, say hi!</div>
+				)}
+				{thread.threadArray && thread.threadArray.length === 0 && (
+					<div className='m-auto'>
+						<p className='white-subheader'>no messages yet</p>
+					</div>
 				)}
 			</div>
-			<div className='block'>
+			<div className='block my-4 md:mt-0'>
 				<form
 					onSubmit={submitHandler}
 					className='flex sm:mt-4 mx-auto w-[90%] min-w-[375px] max-w-[700px] space-x-2'
@@ -91,7 +100,7 @@ function MessageChat() {
 						onChange={e => dispatchMessage({key: 'body', value: e.target.value})}
 						value={message.body}
 					/>
-					<button className='button' type='submit'>
+					<button className='button base-text' type='submit'>
 						send
 					</button>
 				</form>
