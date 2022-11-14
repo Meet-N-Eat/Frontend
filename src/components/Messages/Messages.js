@@ -61,6 +61,11 @@ function Messages() {
 					{toggle && (
 						<div className='modals' onClick={toggleModal}>
 							<div className='modals-content display-friends'>
+								{!loggedInUser.response && (
+									<div className='m-auto'>
+										<Spinner animation='border' variant="light" /> 
+									</div>
+								)}
 								{loggedInUser.response &&
 									loggedInUser.response.friends.map(friend => (
 										<Link key={friend} to={`/messages/${friend}`}>
@@ -76,14 +81,14 @@ function Messages() {
 								className='w-full message-thread rounded-2xl hover:text-white'
 								key={thread[thread.length - 1]._id}
 								to={`/messages/${
-									thread[0].sender != loggedInUser.response._id
+									thread[0].sender !== loggedInUser.response._id
 										? thread[0].sender
 										: thread[0].recipient
 								}`}
 							>
 								<div className="mx-auto">
 									<ProfileCard user={
-										thread[0].sender != loggedInUser.response._id
+										thread[0].sender !== loggedInUser.response._id
 											? thread[0].sender
 											: thread[0].recipient
 										}
