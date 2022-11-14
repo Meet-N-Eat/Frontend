@@ -1,6 +1,8 @@
 import {useState, useReducer, useEffect} from 'react'
+import {Link} from 'react-router-dom'
 import RestaurantCard from '../RestaurantCard'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import {Spinner} from 'react-bootstrap'
 
 const Favorites = ({loggedInUser}) => {
 	// State Hooks and Variables
@@ -30,24 +32,36 @@ const Favorites = ({loggedInUser}) => {
 					}}
 					className='input'
 					placeholder='search by name'
-					aria-label="User's liked restaurants"
+					aria-label="Search user's liked restaurants by name"
 				/>
 			</form>
+			<>
+			{!favorites.response && (
+				<div className='main-bg p-4'>
+					<Spinner animation='border' variant="light" /> 
+				</div>
+			)}
+			</>
 			<div className='w-full max-h-[720px] max-w-[335px] sm:max-w-[1050px] gap-2 grid-centered mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3 overflow-y-auto scroll'>
-				{favorites.response && favorites.response.length > 0 ? (
+				{favorites.response && favorites.response.length > 0 && (
 					favorites.response
 						.filter(
 							restaurant =>
-								searchCharacters == '' ||
+								searchCharacters === '' ||
 								restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase())
 						)
 						.map(restaurant => (
 							<RestaurantCard key={restaurant._id} restaurant={restaurant._id} />
 						))
-				) : (
-					<div>add favorites by clicking on the heart icon of a restaurant</div>
 				)}
 			</div>
+			{favorites.response && favorites.response.length === 0 && (
+					<div className='main-bg w-[350px] md:w-96 p-4'>
+						<Link to='/'>
+							<button className='button w-full base-text text-center'>Browse restaurants to add to favorites</button>
+						</Link>
+					</div>
+			)}
 		</div>
 	)
 }
