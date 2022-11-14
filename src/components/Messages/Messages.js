@@ -86,7 +86,7 @@ function Messages() {
 										: thread[0].recipient
 								}`}
 							>
-								<div className="mx-auto">
+								<div className="h-[100px] mx-auto">
 									<ProfileCard user={
 										thread[0].sender !== loggedInUser.response._id
 											? thread[0].sender
