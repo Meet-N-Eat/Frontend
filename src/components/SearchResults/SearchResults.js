@@ -49,15 +49,14 @@ const SearchResults = () => {
 		<div className='h-full w-full space-y-4'>
 			{restaurantsData.response && restaurantsData.response.length !== 0 && (
 				<>
-					<div className='max-h-[810px] max-w-[335px] sm:max-w-[665px] lg:max-w-[970px] mx-auto grid justify-items-start grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 mt-4 gap-2 overflow-y-auto overflow-x-hidden scroll'>
+					<div className='h-min max-h-[440px] sm:max-h-[728px] w-[350px] md:w-[695px] xl:w-[1024px] mx-auto grid justify-items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-4 gap-2 overflow-y-auto overflow-x-hidden scroll'>
 						{restaurantsData.response
 							.slice(indexOfFirstCard, indexOfLastCard)
 							.map(restaurant => (
-								<div className='main-bg h-[400px] w-[320px] p-2 grid place-items-center'>
+								<div className='main-bg grid-centered p-2 w-[335px] h-[360px]'>
 									<RestaurantCard restaurant={restaurant._id} key={restaurant._id} />
 								</div>
-							))
-						}
+							))}
 					</div>
 					<Pagination
 						cardsPerPage={cardsPerPage}
@@ -68,12 +67,14 @@ const SearchResults = () => {
 			)}
 			{!restaurantsData.response && (
 				<div className='standard-width max-w-[1080px] main-bg rounded-2xl m-auto grid-centered p-4 mt-4'>
-					<Spinner animation='border' variant="light" /> 
+					<Spinner animation='border' variant='light' />
 				</div>
 			)}
 			{restaurantsData.response && restaurantsData.response.length === 0 && (
 				<div className='grid-centered'>
-					<h1 className='text-white text-3xl'>No restaurants matching restaurants were found</h1>
+					<h1 className='text-white text-3xl'>
+						No restaurants matching restaurants were found
+					</h1>
 				</div>
 			)}
 		</div>

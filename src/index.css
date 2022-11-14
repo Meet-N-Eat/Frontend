@@ -9,13 +9,13 @@
 :root {
 	--main-bg: rgba(100, 0, 0, 0.8);
 	--modal-bg: rgba(50, 50, 50, 0.8);
-	--scroll-thumb: rgba(140, 0, 0, 0.8);
+	--scroll-thumb: rgba(140, 0, 0, 1);
 }
 
 @layer components {
 	/* Scrollbar */
 	.scroll::-webkit-scrollbar {
-		@apply w-3;
+		@apply w-3 h-3;
 	}
 
 	.scroll::-webkit-scrollbar-thumb {

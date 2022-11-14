@@ -98,8 +98,8 @@ const UserProfile = () => {
 						<h3>{userData.username}</h3>
 						<label className='mx-auto'>about me</label>
 						<textarea
-							rows='2'
-							className='about w-[90%] input rounded-[5px] indent-0 p-2'
+							rows='5'
+							className='about w-[90%] input text-area rounded-[5px] indent-0 p-2'
 							as='textarea'
 							divs={3}
 							type='about-me'

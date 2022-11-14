@@ -9,9 +9,13 @@ const Pagination = ({cardsPerPage, totalCards, paginate}) => {
 	}
 
 	return (
-		<ul className='text-white flex gap-x-2 w-[375px] overflow-auto mx-auto scroll'>
+		<ul className='text-white flex gap-x-2 h-11 w-[350px] overflow-auto mx-auto mb-2 scroll'>
 			{pageNumbers.map(number => (
-				<li key={number} className='cursor-pointer bg-red-900/80 p-1 rounded-circle mx-auto text-center' onClick={() => paginate(number)}>
+				<li
+					key={number}
+					className='h-[25px] min-w-[25px] cursor-pointer bg-red-900/80 focus:bg-white/90 flex-centered p-1 rounded-full mx-auto'
+					onClick={(e) => paginate(number)}
+				>
 					{number}
 				</li>
 			))}
