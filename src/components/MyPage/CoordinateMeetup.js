@@ -67,8 +67,8 @@ const CoordinateMeetup = ({
 	function toggleModal(e) {
 		if (toggle) {
 			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
-				setToggle(prev => !prev)
-		} else setToggle(prev => !prev)
+				setToggle(prevState => !prevState)
+		} else setToggle(prevState => !prevState)
 	}
 
 	function inviteHandler(friend) {

@@ -186,7 +186,7 @@
 	}
 
 	.standard-width {
-		@apply w-full md:w-4/5;
+		@apply w-full md:w-4/5 max-w-[1080px];
 	}
 	
 	/* Images */

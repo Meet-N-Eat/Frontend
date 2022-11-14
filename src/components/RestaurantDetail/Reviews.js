@@ -4,7 +4,7 @@ import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import Review from './Review'
 
-const Reviews = ({restaurantId, modalShow}) => {
+const Reviews = ({restaurantId, toggleModal}) => {
 	// State hooks and variable declarations
 	// ===========================================================================
 	const [reviews, dispatchReviews] = useReducer(axiosReducer, {})
@@ -13,7 +13,7 @@ const Reviews = ({restaurantId, modalShow}) => {
 	useEffect(() => {
 		axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatchReviews)
 		console.log('Get reviews')
-	}, [modalShow])
+	}, [toggleModal])
 
 	return (
 		<div className='w-full overflow-auto scroll'>
