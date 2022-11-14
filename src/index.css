@@ -60,7 +60,7 @@
 
 	/* MyPage containers */
 	.responsive-mypage{
-		@apply w-full h-[440px] sm:h-[630px] lg:h-[700px] max-w-[335px]
+		@apply w-full h-[440px] sm:h-[630px] lg:h-[700px]
 	}
 
 	/* Modals - s on the end is to avoid conflict with existing bootstrap classes, remove if bootstrap is uninstalled */
