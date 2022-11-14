@@ -37,7 +37,7 @@ const Favorites = ({loggedInUser}) => {
 			</form>
 			<>
 			{!favorites.response && (
-				<div className='main-bg p-4'>
+				<div className='main-bg mt-4 p-4'>
 					<Spinner animation='border' variant="light" /> 
 				</div>
 			)}
