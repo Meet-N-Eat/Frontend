@@ -9,7 +9,7 @@ const Pagination = ({cardsPerPage, totalCards, paginate}) => {
 	}
 
 	return (
-		<ul className='text-white flex gap-x-2 w-[375px] overflow-auto mx-auto'>
+		<ul className='text-white flex gap-x-2 w-[375px] overflow-auto mx-auto scroll'>
 			{pageNumbers.map(number => (
 				<li key={number} className='cursor-pointer bg-red-900/80 p-1 rounded-circle mx-auto text-center' onClick={() => paginate(number)}>
 					{number}
