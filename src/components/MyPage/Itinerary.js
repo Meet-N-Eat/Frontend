@@ -1,6 +1,7 @@
 import {useEffect, useReducer} from 'react'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import Event from './Event'
+import { Spinner } from 'react-bootstrap'
 
 const Itinerary = ({loggedInUser}) => {
 	// State Hooks and Variables
@@ -31,13 +32,21 @@ const Itinerary = ({loggedInUser}) => {
 				<h2 className='white-header'>itinerary</h2>
 				<h2 className='text-white'> {today} </h2>
 			</div>
+			{!events.response && (
+				<div className='main-bg mt-4 p-4'>
+					<Spinner animation='border' variant="light" /> 
+				</div>
+			)}
+			{events.response && events.response.length === 0 && (
+				<div className='main-bg mt-8 w-[350px] md:w-[450px] p-4'>
+					<p className='text-white base-text text-center'>Send an invite to create an event</p>
+				</div>
+			)}
 			<div className='responsive-mypage sm:max-w-[700px] gap-2 grid-centered mx-auto grid-cols-1 lg:grid-cols-2 overflow-auto scroll'>
-				{events.response && events.response.length > 0 ? (
+				{events.response && events.response.length > 0 && (
 					events.response.map(event => (
 						<Event event={event} updateEvents={updateEvents} key={event._id} />
 					))
-				) : (
-					<div>no events right now, send someone an invite!</div>
 				)}
 			</div>
 		</div>

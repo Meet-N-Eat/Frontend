@@ -88,7 +88,7 @@ const Friends = ({loggedInUser}) => {
 				{friends.response && friends.response.length === 0 && (
 					<p className='text-white base-text col-span-4 text-center py-4'>
 						No friends yet! Send friend requests by clicking on other people
-						who like the same restaurants you do.		
+						who like the same restaurants you do		
 					</p>
 				)}
 				
