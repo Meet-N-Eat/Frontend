@@ -161,16 +161,21 @@
 	/* Page containers */
 	.invite-container {
 		@apply 
-			main-bg 
+			main-bg
+			vertical
+			justify-evenly
+			items-center
+			h-[400px] 
+			w-[335px]
 			text-white 
-			h-[600px] 
-			w-[600px] 
-			rounded-full 
-			flex 
-			flex-col 
-			justify-center 
-			items-center 
-			space-y-4
+
+			sm:w-[400px]
+			sm:rounded-full 
+			sm:justify-center 
+			sm:space-y-4
+
+			md:h-[500px]
+			md:w-[500px]
 		;
 	}
 	.page-container {
