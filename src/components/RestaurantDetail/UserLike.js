@@ -32,7 +32,7 @@ function UserLike({user}) {
 			</div>
 			<Modal size='sm' show={show} onHide={() => setShow(false)}>
 				{!formSwitch ? (
-					<div className='h-60 w-72 modal-bg grid-centered border mt-36 mx-auto p-4'>
+					<div className='h-auto w-72 modal-bg grid-centered border mt-36 mx-auto p-4'>
 						<div className='grid place-content-center'>
 							<ProfileCard user={user._id} />
 						</div>
