@@ -38,7 +38,6 @@ const RestaurantDetail = () => {
 		// Get restaurant state
 		axiosAll('GET', `/restaurants/${restaurantId}`, null, dispatchRestaurant)
 		axiosAll('GET', `/restaurants/${restaurantId}/userLikes`, null, dispatchLikes)
-		console.log('Get restaurant state')
 	}, [])
 
 	// Event Handler

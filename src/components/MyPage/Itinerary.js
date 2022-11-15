@@ -24,7 +24,6 @@ const Itinerary = ({loggedInUser}) => {
 		)
 	}
 
-	console.log(events)
 	// Return
 	// ===========================================================================
 	return (

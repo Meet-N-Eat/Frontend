@@ -23,7 +23,7 @@ const UserProfile = () => {
 	useEffect(() => {
 		axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
 	}, [])
-	console.log(loggedInUser.response)
+	
 	useEffect(() => {
 		if (loggedInUser.response) {
 			const profileData = {
