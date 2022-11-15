@@ -58,7 +58,9 @@ const Favorites = ({loggedInUser}) => {
 								restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase())
 						)
 						.map(restaurant => (
-							<RestaurantCard key={restaurant._id} restaurant={restaurant._id} />
+							<div className='main-bg grid-centered p-2 w-[335px] h-[360px]'>
+								<RestaurantCard key={restaurant._id} restaurant={restaurant._id} />
+							</div>
 						))
 				)}
 			</div>
