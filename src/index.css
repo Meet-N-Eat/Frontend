@@ -468,6 +468,12 @@
 	@apply text-xl;
 }
 
+.red-subheader {
+	font-family: 'Montserrat', sans-serif;
+	color:  var(--main-bg);
+	@apply text-xl;
+}
+
 .base-text {
 	@apply 
 		text-sm
