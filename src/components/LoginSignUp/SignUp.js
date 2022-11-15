@@ -57,7 +57,7 @@ const SignUp = () => {
 					<div className='py-2'>
 						<div className='pb-3'>
 							<Link to='/profile'>
-								<button className='account-button text-xl'>Set up your profile</button>
+								<button className='account-button w-full white-subheader'>Set up your profile</button>
 							</Link>
 						</div>
 						<Link to='/'>
