@@ -59,7 +59,7 @@ const Event = ({event, updateEvents}) => {
 			<div className='w-full'>
 				<div className='horizontal justify-around items-center w-full'>
 					<>
-						<p className='text-white'>
+						<p className='text-white base-text'>
 							{formattedDate} at {formattedHourAMPM}
 						</p>
 						<NavDropdown
@@ -72,20 +72,20 @@ const Event = ({event, updateEvents}) => {
 							}
 						>
 							<NavDropdown.Item>
-								<button>edit</button>
+								<button className='base-text'>Edit</button>
 							</NavDropdown.Item>
 							<NavDropdown.Item>
-								<button onClick={handleShow}>Cancel Event</button>
+								<button className='base-text' onClick={handleShow}>Cancel Event</button>
 								<Modal show={show} onHide={handleClose}>
 									<div closeButton>
-										<h1>confirm cancelation</h1>
+										<h1 className='base-text'>Confirm cancelation</h1>
+									</div>
+									<div className='text-xs md:text-sm'>
+										Are you sure you don't want to meet a creep and get free food?
 									</div>
 									<div>
-										are you sure you don't want to meet a creep and get free food?
-									</div>
-									<div>
-										<button onClick={handleClose}> close </button>
-										<button onClick={handleCancel}> cancel event </button>
+										<button className='base-text' onClick={handleClose}>Close </button>
+										<button className='base-text' onClick={handleCancel}>Cancel event </button>
 									</div>
 								</Modal>
 							</NavDropdown.Item>
@@ -113,7 +113,9 @@ const Event = ({event, updateEvents}) => {
 						</Modal.Body>
 					</div>
 				</Modal>
-				<button className='account-button' onClick={showHandler}>who's going?</button>
+				<div className='py-2'>
+					<button className='button base-text' onClick={showHandler}>Who's going?</button>
+				</div>
 			</div>
 		</div>
 	)

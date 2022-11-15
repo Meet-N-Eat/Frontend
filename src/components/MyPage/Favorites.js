@@ -30,7 +30,7 @@ const Favorites = ({loggedInUser}) => {
 					onChange={e => {
 						setSearchCharacters(e.target.value)
 					}}
-					className='input'
+					className='input base-text'
 					placeholder='search by name'
 					aria-label="Search user's liked restaurants by name"
 				/>

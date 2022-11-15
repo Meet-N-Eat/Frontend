@@ -170,23 +170,23 @@ const CoordinateMeetup = ({
 				}
 				onChange={restaurantSelect}
 			>
-				<option value='choose restaurant' disabled hidden>
+				<option value='choose restaurant base-text' disabled hidden>
 					choose restaurant
 				</option>
 				{favorites.response &&
 					favorites.response.map(restaurant => (
 						<option key={restaurant._id} value={restaurant._id}>
-							{restaurant.name}
+							<p className='base-text'>{restaurant.name}</p>
 						</option>
 					))}
 			</select>
-			{error.date && <h2>pick a date and time for this event</h2>}
-			<input className='w-[320px]' onChange={e => dateSelect(e, 'date')} type='date' value={date.date} />
-			<input className='w-[320px]' onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
-			<button className='invite button' onClick={toggleModal}>
+			{error.date && <h2 className='base-text'>pick a date and time for this event</h2>}
+			<input className='w-[320px] base-text' onChange={e => dateSelect(e, 'date')} type='date' value={date.date}/>
+			<input className='w-[320px] base-text' onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
+			<button className='invite button base-text' onClick={toggleModal}>
 				invite friends
 			</button>
-			<button className='button' onClick={showEdit ? editEventHandler : createEventHandler}>
+			<button className='button base-text' onClick={showEdit ? editEventHandler : createEventHandler}>
 				{showEdit ? 'edit' : 'invite'}
 			</button>
 
