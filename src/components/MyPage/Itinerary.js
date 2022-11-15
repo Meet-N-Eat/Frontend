@@ -24,6 +24,7 @@ const Itinerary = ({loggedInUser}) => {
 		)
 	}
 
+	console.log(events)
 	// Return
 	// ===========================================================================
 	return (
@@ -44,7 +45,7 @@ const Itinerary = ({loggedInUser}) => {
 			)}
 			<div className='responsive-mypage gap-2 grid-centered mx-auto grid-cols-1 md:grid-cols-2 overflow-auto scroll'>
 				{events.response && events.response.length > 0 && (
-					events.response.map(event => (
+					events.response.sort((a, b) => new Date(a.date) - new Date(b.date)).map(event => (
 						<Event event={event} updateEvents={updateEvents} key={event._id} />
 					))
 				)}
