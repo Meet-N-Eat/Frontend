@@ -114,7 +114,7 @@ const MyPage = () => {
 					)}
 				</div>
 			)}
-			<ul className='w-full h-12 flex justify-center items-center fixed left-0 bottom-0'>
+			<ul className='w-full h-12 flex-centered fixed left-0 bottom-0'>
 				{generateTabs()}
 			</ul>
 		</div>

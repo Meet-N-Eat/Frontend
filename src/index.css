@@ -388,11 +388,11 @@
 	}
 
 	.hover-nav {
-		@apply hover:text-red-800 hover:font-normal hover:border-red-800;
+		@apply hover:text-red-900/80 hover:font-normal hover:border-red-900/80;
 	}
 
 	.hover-nav-small {
-		@apply hover:text-red-800 hover:font-normal hover:bg-white/80 rounded-2xl p-3;
+		@apply hover:text-red-900 hover:font-normal hover:bg-white/80 rounded-2xl p-3;
 	}
 
 	/* LogIn/SignUp */
