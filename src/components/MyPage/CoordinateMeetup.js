@@ -170,7 +170,7 @@ const CoordinateMeetup = ({
 				}
 				onChange={restaurantSelect}
 			>
-				<option value='choose restaurant base-text' disabled hidden>
+				<option value='choose restaurant' disabled hidden>
 					choose restaurant
 				</option>
 				{favorites.response &&
