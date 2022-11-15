@@ -14,7 +14,7 @@ const FriendRequest = ({friendRequest, dispatchRequests}) => {
 	// ===========================================================================
 	async function inviteHandler(choice) {
 		// if accept was clicked, add new friend
-		choice == 'accept' &&
+		choice === 'accept' &&
 			(await axiosAll(
 				'POST',
 				`/users/${loggedInUser.response._id}/friends/${friendRequest.sender}`,
@@ -22,7 +22,7 @@ const FriendRequest = ({friendRequest, dispatchRequests}) => {
 			))
 
 		// delete the friend request
-		choice != '' &&
+		choice !== '' &&
 			(await axiosAll(
 				'DELETE',
 				`/users/${loggedInUser.response._id}/friendInvites/${friendRequest._id}`,
@@ -41,17 +41,21 @@ const FriendRequest = ({friendRequest, dispatchRequests}) => {
 	// Return
 	// ===========================================================================
 	return (
-		<div className='white-bg rounded-2xl vertical md:flex-row p-2 h-80 md:h-40'>
-			<div className='mx-auto md:flex-1'>
+		<div className='white-bg rounded-2xl vertical md:flex-row p-2 max-h-[340px] md:h-52'>
+			<div className='m-auto md:flex-1 red-subheader font-normal'>
 				<ProfileCard user={friendRequest.sender} />
 			</div>
-			<div className='p-2 text-center space-y-4 md:space-y-2'>
-				<p className='max-h-7'>{friendRequest.body}</p>
-				<div className='vertical space-y-2 p-2'>
-					<button className='account-button' onClick={() => inviteHandler('accept')}>
+			<div className='p-2 w-3/4 space-y-3 md:space-y-2 m-auto'>
+				{friendRequest.body === '' ? (
+					<div></div>
+				) : (
+				<p className='px-2 py-1 base-text text-black shadow-inner shadow-red-900 rounded-2xl max-h-20 overflow-y-auto scroll'>{friendRequest.body}</p>
+				)}
+				<div className='vertical space-y-2 flex-centered mx-auto'>
+					<button className='account-button base-text text-center' onClick={() => inviteHandler('accept')}>
 						accept
 					</button>
-					<button className='account-button' onClick={() => inviteHandler('decline')}>
+					<button className='account-button base-text text-center' onClick={() => inviteHandler('decline')}>
 						decline
 					</button>
 				</div>
