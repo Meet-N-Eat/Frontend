@@ -80,7 +80,7 @@ const MyPage = () => {
 		for (const key in navTabs) {
 			tabArray.push (
 				<li
-					className='h-20 w-32 bg-red-700 text-white border-r border-black rounded-t-2xl grid items-center'
+					className='h-20 w-32 bg-red-800/90 shadow-2xl shadow-slate-800 text-white border-r border-black rounded-t-2xl grid items-center'
 					key={key} 
 					onClick={() => tabHandler(key)}>
 					<div className='text-center'>
