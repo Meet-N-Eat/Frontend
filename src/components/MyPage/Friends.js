@@ -50,7 +50,7 @@ const Friends = ({loggedInUser}) => {
 	return (
 		<div className='vertical flex-centered'>
 			<form>
-				<input className='input mb-8' onChange={searchChange} placeholder='search by name' />
+				<input className='input mb-8 base-text' onChange={searchChange} placeholder='search by name' />
 			</form>
 			<div className='main-bg display-friends flex-centered scroll'>
 				{!friends.response && (

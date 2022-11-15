@@ -118,7 +118,7 @@ const RestaurantDetail = () => {
 								<Reviews restaurantId={resDetails.response._id} toggle={toggle} />
 								<div>
 									<button
-										className='button my-2'
+										className='button my-2 base-text'
 										type='submit'
 										onClick={modalHandler}
 									>
