@@ -1,7 +1,7 @@
 import {createContext, useReducer} from "react"
 import {Routes, Route} from "react-router-dom"
 import {axiosReducer} from "./data-and-functions/axiosAll"
-import FAQ from "./components/FAQ/FAQ"
+import About from "./components/About"
 import Home from "./components/Home/Home"
 import Messages from "./components/Messages/Messages"
 import MessageChat from "./components/Messages/MessageChat"
@@ -42,7 +42,7 @@ function App() {
                   <Route path='/restaurants/:restaurantId' element={<RestaurantDetail />} />
                   <Route path='/messages' element={<Messages />} />
                   <Route path='/messages/:friendId' element={<MessageChat />} />
-                  <Route path='/faq' element={<FAQ />} />
+                  <Route path='/about' element={<About />} />
                   <Route path='/friendrequests' element={<FriendRequests />} />
                </Routes>
             </main>
