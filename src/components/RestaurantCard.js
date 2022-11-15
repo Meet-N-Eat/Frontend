@@ -2,17 +2,16 @@ import {useContext, useState, useEffect, useReducer} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
 import {Context} from '../App'
 import {axiosAll, axiosReducer} from '../data-and-functions/axiosAll'
+import {Spinner} from 'react-bootstrap'
 
 const RestaurantCard = ({restaurant, hideLikeButton}) => {
 	// State Hooks and Variables
-	// ===========================================================================
-
+	// ===========================================================================================
 	const likedImage =
 		'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png'
 	const notLikedImage = 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
-	const {colorTemplate, loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser} = useContext(Context)
 	const navigate = useNavigate()
-
 	const [resDetails, dispatchDetails] = useReducer(axiosReducer, {})
 	const [buttonIcon, setButtonIcon] = useState(liked() ? likedImage : notLikedImage)
 	const categories = []
@@ -23,8 +22,8 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 		axiosAll('GET', `/restaurants/${restaurant}`, null, dispatchDetails)
 	}, [restaurant])
 
-	// Functions
-	// ===========================================================================
+	// Functions and Event Handlers
+	// ===========================================================================================
 	function liked() {
 		if (
 			loggedInUser.response &&
@@ -57,10 +56,15 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 	}
 
 	// Return
-	// ===========================================================================
+	//===========================================================================================
 
 	return (
 		<div className='h-full w-[320px] relative'>
+			{!resDetails.response && (
+				<div className='text-center p-4'>
+					<Spinner animation='border' variant="light" />
+				</div>
+			)}
 			{resDetails.response && (
 				<>
 					<div className='absolute top-0 right-0'>
@@ -68,7 +72,11 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 							// Hide like button if hideLikeButton is true
 							!hideLikeButton && (
 								<button type='checkbox' variant='outline-light'>
-									<img width={50} src={buttonIcon} onClick={likeHandler} />
+									<img 
+									width={50} 
+									src={buttonIcon} 
+									onClick={likeHandler}
+									alt='like-button' />
 								</button>
 							)
 						}
@@ -81,16 +89,8 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 						<img
 							className='restaurant-image'
 							src={resDetails.response.image_url}
-							alt='restaurant-image'
+							alt='restaurant'
 						/>
-
-							{/* <ul>
-								<li>{resDetails.response.location.address1}</li>
-								<li>
-									{resDetails.response.location.city}, {resDetails.response.location.state}
-								</li>
-								<li>{resDetails.response.display_phone}</li>
-							</ul> */}
 						<div className='space-y-1'>
 							<ul>
 								{categories.map((category, index) => (
@@ -99,7 +99,6 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 							</ul>
 							<p>{resDetails.response.price || 'pricing unavailable'}</p>
 						</div>
-
 					</Link>
 				</>
 			)}
