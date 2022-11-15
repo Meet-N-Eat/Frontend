@@ -47,6 +47,11 @@ const SignUp = () => {
 		}
 	}, [success])
 
+	useEffect(() => {
+		const userName = document.querySelector('.username')
+		userName.focus()
+	},[])
+
 	// Return
 	// ===========================================================================
 	return (

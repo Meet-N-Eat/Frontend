@@ -66,6 +66,11 @@ const LogIn = () => {
 			: (component.isMounted = true)
 	}, [login.success])
 
+	useEffect(() => {
+		const userName = document.querySelector('.username')
+		userName.focus()
+	},[])
+
 	// Return
 	// ===========================================================================
 	return (
@@ -84,6 +89,7 @@ const LogIn = () => {
 						placeholder='Username'
 						onChange={changeHandler}
 						value={loggedInUser.username}
+						autoFocus
 					></input>
 					<input
 						className='password input my-4 account-input'
