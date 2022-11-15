@@ -1,6 +1,6 @@
 import {useContext, useEffect, useReducer, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import {Modal, Spinner} from 'react-bootstrap'
+import {Spinner} from 'react-bootstrap'
 import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import RestaurantCard from '../RestaurantCard'
@@ -49,38 +49,48 @@ const RestaurantDetail = () => {
 		} else setToggle(prevState => !prevState)
 	}
 
+	
 	return (
 		<div className='grid-centered min-h-[820px]'>
-			{resDetails.response && userLikes.response ? (
+			{!resDetails.response && (
+				<div className='p-4'>
+					<Spinner animation='border' variant="light" />
+				</div>
+			)}
+			{resDetails.response && userLikes.response && (
 				<div className='sm:w-3/4 grid-centered'>
 					<div className='flex flex-col items-center justify-center main-bg w-[335px] sm:w-full rounded-bl-[0] rounded-br-[0]'>
 						<RestaurantCard restaurant={resDetails.response._id} />
+						{userLikes.response.length === 0 ? (
+								<div className='main-bg'></div>
+						) : (
 						<div className='flex justify-center items-center mb-2 text-black'>
 							<div
 								className={
 									'white-bg p-2 mt-3 flex w-[250px] sm:w-[25rem] horizontal grid-centered rounded-full overflow-x-auto scroll'
 								}
 							>
-								{loggedInUser.token ? (
+								{loggedInUser.token && userLikes.response.length > 0 && (
 									userLikes.response
 										.slice(0, limit)
 										.map(user => <UserLike key={user._id} user={user} />)
-								) : (
+								)} 
+								{userLikes.response.length > 0 && !loggedInUser.token && (
 									<Link to='/users/authentication/login' state={{logInMessage: true}}>
-										{userLikes.response.length} users like this restaurant
+											<p className='base-text text-black hover:font-normal'>{userLikes.response.length} users like this restaurant</p>
 									</Link>
 								)}
 							</div>
 							{userLikes.response.length > 3 ? (
 								<FontAwesomeIcon
 									icon={showHideIcon}
-									className='text-red-900 hover:text-gray-900/80 text-4xl bg-white rounded-full'
+									className='text-red-900 hover:text-gray-900/80 text-4xl bg-white ml-1 rounded-full'
 									onClick={() => {
-										if (showHideIcon == faCircleMinus) {
+										if (showHideIcon === faCircleMinus) {
 											setLimit(3)
 											setShowHideIcon(faCirclePlus)
 										}
-										if (showHideIcon == faCirclePlus) {
+										if (showHideIcon === faCirclePlus) {
 											setLimit(userLikes.response.length)
 											setShowHideIcon(faCircleMinus)
 										}
@@ -90,6 +100,7 @@ const RestaurantDetail = () => {
 								''
 							)}
 						</div>
+						)}
 					</div>
 					<div className='w-[335px] sm:w-full main-bg rounded-tr-[0] rounded-tl-[0]'>
 						<div>
@@ -98,7 +109,7 @@ const RestaurantDetail = () => {
 									<h4 className='grid-centered white-header'>reviews</h4>
 								) : (
 									<Link to='/users/authentication/login' state={{logInMessage: true}}>
-										reviews
+										<p className='white-subheader grid-centered py-2 hover:font-normal'>See reviews</p>
 									</Link>
 								)}
 							</div>
@@ -127,8 +138,6 @@ const RestaurantDetail = () => {
 						)}
 					</div>
 				</div>
-			) : (
-				<Spinner animation='border' />
 			)}
 		</div>
 	)

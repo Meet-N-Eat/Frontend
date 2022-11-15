@@ -21,7 +21,10 @@ const Review = ({ review }) => {
                     <li className='w-full min-h-[70px] grid-centered text-white'>{review.body}</li>
                     <li className='min-h-[70px] float-right max-w-[100px] grid-centered text-white rounded-br-2xl rounded-tr-2xl'>{`${date} ${time}`}</li>
                 </ul>
-                : <Spinner animation="border" variant="light" />
+                : 
+                <div className='text-center p-4'>
+                    <Spinner animation="border" variant="light" />
+                </div>
             }
         </div>
     )

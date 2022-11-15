@@ -9,7 +9,7 @@ const Friends = ({loggedInUser}) => {
 	// ===========================================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
 	const [friends, dispatchFriends] = useReducer(axiosReducer, {})
-	const [formSwitch, setFormSwitch] = useState(false)
+	const [setFormSwitch] = useState(false)
 	const [show, setShow] = useState(false)
 	const [current, setCurrent] = useState({
 		_id: 123

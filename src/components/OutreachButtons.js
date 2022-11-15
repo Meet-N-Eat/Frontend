@@ -15,7 +15,7 @@ function OutreachButtons({user, friends, friendRequestHandler}) {
 			{user._id !== loggedInUser.response._id &&
 				(friends && friends === true ? (
 					<button className='outreach-button' onClick={handleMessage}>
-						<p className=''>Message {user.displayname || user.username}</p>
+						<p className='base-text'>Message {user.displayname || user.username}</p>
 					</button>
 				) : (
 					<button className='outreach-button' onClick={friendRequestHandler}>
