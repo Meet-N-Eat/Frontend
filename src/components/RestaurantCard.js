@@ -77,7 +77,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 						className='text-white hover:text-white text-center vertical items-center space-y-4'
 						to={`/restaurants/${restaurant}`}
 					>
-						<p className='font-bold text-center mt-4'>{resDetails.response.name}</p>
+						<p className='font-bold text-center mt-4 w-[210px]'>{resDetails.response.name}</p>
 						<img
 							className='restaurant-image'
 							src={resDetails.response.image_url}
