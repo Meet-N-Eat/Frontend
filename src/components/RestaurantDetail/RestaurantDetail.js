@@ -63,10 +63,10 @@ const RestaurantDetail = () => {
 						{userLikes.response.length === 0 ? (
 								<div className='main-bg'></div>
 						) : (
-						<div className='flex justify-center items-center mb-2 text-black'>
+						<div className='flex-centered mb-2 text-black'>
 							<div
 								className={
-									'white-bg p-2 mt-3 flex w-[250px] sm:w-[25rem] horizontal grid-centered rounded-full overflow-x-auto scroll'
+									'white-bg px-2 mt-3 flex w-[250px] sm:w-[25rem] horizontal grid-centered rounded-full overflow-x-auto scroll'
 								}
 							>
 								{loggedInUser.token && userLikes.response.length > 0 && (
@@ -118,7 +118,7 @@ const RestaurantDetail = () => {
 								<Reviews restaurantId={resDetails.response._id} toggle={toggle} />
 								<div>
 									<button
-										className='button mt-2'
+										className='button my-2'
 										type='submit'
 										onClick={modalHandler}
 									>

@@ -40,8 +40,8 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 			? dispatchValidate({key: 'missingBody', value: true})
 			: dispatchValidate({key: 'missingBody', value: false})
 
-		review.stars != '' &&
-			review.body != '' &&
+		review.stars !== '' &&
+			review.body !== '' &&
 			(await axiosAll(
 				'POST',
 				`/restaurants/${restaurantId}/reviews`,
