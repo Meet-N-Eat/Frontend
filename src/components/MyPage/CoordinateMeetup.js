@@ -67,8 +67,8 @@ const CoordinateMeetup = ({
 	function toggleModal(e) {
 		if (toggle) {
 			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
-				setToggle(prev => !prev)
-		} else setToggle(prev => !prev)
+				setToggle(prevState => !prevState)
+		} else setToggle(prevState => !prevState)
 	}
 
 	function inviteHandler(friend) {
@@ -157,7 +157,7 @@ const CoordinateMeetup = ({
 	// Return
 	// ===========================================================================
 	return (
-		<div className='main-bg vertical justify-evenly items-center h-full w-[335px] sm:invite-container'>
+		<div className='main-bg invite-container'>
 			<h1 className='white-header'>meet 'n eat with friends</h1>
 			{error.restaurant && <h2>select a restaurant for this event</h2>}
 			<select
