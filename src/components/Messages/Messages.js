@@ -38,70 +38,72 @@ function Messages() {
 	}
 
 	return (
-		<>
-			<div className='h-[73px] standard-width max-w-[1080px] flex-centered relative mx-auto main-bg rounded-b-none'>
+		<div>
+			<div className='h-[73px] standard-width flex-centered relative mx-auto main-bg rounded-b-none'>
 				<p className='white-header m-auto'>conversations</p>
 				<button className='absolute top-5 right-10 text-xl' onClick={toggleModal}>
 					<FontAwesomeIcon className='' icon={faMessage} />
 				</button>
 			</div>
-			{!messages.threadArray && (
-				<div className='main-bg rounded-2xl m-auto flex-centered p-8'>
-					<Spinner animation='border' variant="light" /> 
-				</div>
-			)}
-			{messages.threadArray && messages.threadArray.length === 0 && (
-				<div className='main-bg rounded-2xl mx-auto standard-width max-w-[1080px] flex-centered vertical space-y-2'>
-					<p className='white-subheader'>you don't have any messages</p>
-					<p className='text-center'>choose a friend from the list and start chatting</p>
-				</div>
-			)}
-			{messages.threadArray && messages.threadArray.length > 0 && (
-				<div className='h-max max-h-[80vh] standard-width max-w-[1080px] vertical main-bg mx-auto p-4 rounded-t-none overflow-y-auto overflow-x-hidden md:gap-y-2 scroll'>
-					{toggle && (
-						<div className='modals' onClick={toggleModal}>
-							<div className='modals-content display-friends'>
-								{!loggedInUser.response && (
-									<div className='m-auto'>
-										<Spinner animation='border' variant="light" /> 
-									</div>
-								)}
-								{loggedInUser.response &&
-									loggedInUser.response.friends.map(friend => (
-										<Link key={friend} to={`/messages/${friend}`}>
-											<ProfileCard user={friend} />
-										</Link>
-									))}
-							</div>
+			<div className='h-max max-h-[440px] standard-width vertical main-bg mx-auto p-4 rounded-t-none overflow-y-auto md:gap-y-2 scroll'>
+				{toggle && (
+					<div className='modals' onClick={toggleModal}>
+						<div className='modals-content display-friends'>
+							{!loggedInUser.response && (
+								<div className='m-auto'>
+									<Spinner animation='border' variant='light' />
+								</div>
+							)}
+							{loggedInUser.response &&
+								loggedInUser.response.friends.map(friend => (
+									<Link key={friend} to={`/messages/${friend}`}>
+										<ProfileCard user={friend} />
+									</Link>
+								))
+							}
 						</div>
-					)}
-					{messages.threadArray && messages.threadArray.length > 0 && (
-						messages.threadArray.map(thread => (
-							<Link
-								className='w-full message-thread rounded-2xl hover:text-white'
-								key={thread[thread.length - 1]._id}
-								to={`/messages/${
-									thread[0].sender !== loggedInUser.response._id
-										? thread[0].sender
-										: thread[0].recipient
-								}`}
-							>
-								<div className="h-[100px] mx-auto">
-									<ProfileCard user={
+					</div>
+				)}
+				{!messages.threadArray && (
+					<div className='m-auto flex-centered p-8'>
+						<Spinner animation='border' variant='light' />
+					</div>
+				)}
+				{messages.threadArray && messages.threadArray.length === 0 && (
+					<div className='mx-auto standard-width max-w-[1080px] flex-centered vertical space-y-2'>
+						<p className='white-subheader'>you don't have any messages</p>
+						<p className='text-center'>
+							choose a friend from the list and start chatting
+						</p>
+					</div>
+				)}
+				{messages.threadArray &&
+					messages.threadArray.length > 0 &&
+					messages.threadArray.map(thread => (
+						<Link
+							className='w-full message-thread rounded-2xl hover:text-white'
+							key={thread[thread.length - 1]._id}
+							to={`/messages/${
+								thread[0].sender !== loggedInUser.response._id
+									? thread[0].sender
+									: thread[0].recipient
+							}`}
+						>
+							<div className='h-[100px] mx-auto'>
+								<ProfileCard
+									user={
 										thread[0].sender !== loggedInUser.response._id
 											? thread[0].sender
 											: thread[0].recipient
-										}
-									/>
-								</div>
-								<Message message={thread[thread.length - 1]} />
-							</Link>
-						))
-					)}
-					</div>
-			)}
-			
-		</>
+									}
+								/>
+							</div>
+							<Message message={thread[thread.length - 1]} />
+						</Link>
+					))
+				}
+			</div>
+		</div>
 	)
 }
 

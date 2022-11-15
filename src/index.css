@@ -382,6 +382,7 @@
 			text-xs 
 			md:text-sm;
 	}
+	
 	/* Messages/Message/MessageChat */
 	.message-thread {
 		@apply flex flex-col gap-y-2;
