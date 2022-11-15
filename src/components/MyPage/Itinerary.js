@@ -33,7 +33,7 @@ const Itinerary = ({loggedInUser}) => {
 				<h2 className='text-white'> {today} </h2>
 			</div>
 			{!events.response && (
-				<div className='main-bg mt-4 p-4'>
+				<div className='mt-4 p-4'>
 					<Spinner animation='border' variant="light" /> 
 				</div>
 			)}
