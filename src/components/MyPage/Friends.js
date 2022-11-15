@@ -46,7 +46,7 @@ const Friends = ({loggedInUser}) => {
 	}
 
 	// Return
-	// ===========================================================================
+	//===========================================================================================
 	return (
 		<div className='vertical flex-centered'>
 			<form>
@@ -54,7 +54,7 @@ const Friends = ({loggedInUser}) => {
 			</form>
 			<div className='main-bg display-friends flex-centered scroll'>
 				{!friends.response && (
-					<div className='py-4'>
+					<div className='p-4'>
 						<Spinner animation='border' variant="light" /> 
 					</div>
 				)}
