@@ -9,7 +9,7 @@ const Friends = ({loggedInUser}) => {
 	// ===========================================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
 	const [friends, dispatchFriends] = useReducer(axiosReducer, {})
-	const [formSwitch, setFormSwitch] = useState(false)
+	const [setFormSwitch] = useState(false)
 	const [show, setShow] = useState(false)
 	const [current, setCurrent] = useState({
 		_id: 123
@@ -46,7 +46,7 @@ const Friends = ({loggedInUser}) => {
 	}
 
 	// Return
-	// ===========================================================================
+	//===========================================================================================
 	return (
 		<div className='vertical flex-centered'>
 			<form>
@@ -54,7 +54,7 @@ const Friends = ({loggedInUser}) => {
 			</form>
 			<div className='main-bg display-friends flex-centered scroll'>
 				{!friends.response && (
-					<div className='py-4'>
+					<div className='p-4'>
 						<Spinner animation='border' variant="light" /> 
 					</div>
 				)}
@@ -86,7 +86,7 @@ const Friends = ({loggedInUser}) => {
 					</div>
 				</Modal>
 				{friends.response && friends.response.length === 0 && (
-					<p className='text-white base-text col-span-4 text-center py-4'>
+					<p className='text-white base-text col-span-4 text-center p-4'>
 						No friends yet! Send friend requests by clicking on other people
 						who like the same restaurants you do		
 					</p>

@@ -12,20 +12,30 @@ const Reviews = ({restaurantId, toggleModal}) => {
 
 	useEffect(() => {
 		axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatchReviews)
-		console.log('Get reviews')
 	}, [toggleModal])
 
+	// Return
+	//===========================================================================================
 	return (
 		<div className='w-full overflow-auto scroll'>
-			{reviews.response ? (
+			{!reviews.response && (
+				<div className='grid-centered p-4'>
+					<Spinner animation='border' variant="light" />
+				</div>
+			)}
+			{reviews.response && reviews.response.reviews.length > 0 && (
 				<div>
 					{reviews.response.reviews &&
 						reviews.response.reviews.map(review => (
 							<Review review={review} key={review._id} />
 						))}
 				</div>
-			) : ( <Spinner animation='border' variant="light" /> )
-			}
+			)} 
+			{reviews.response && reviews.response.reviews.length === 0 && (
+				<div className='grid-centered'>
+					<p className='text-white base-text'>No reviews yet</p>
+				</div>
+			)}
 		</div>
 	)
 }

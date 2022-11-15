@@ -6,10 +6,14 @@ import OutreachButtons from '../OutreachButtons'
 import ProfileCard from '../ProfileCard'
 
 function UserLike({user}) {
+	// State Hooks and Variables
+	// ===========================================================================================
 	const {loggedInUser} = useContext(Context)
 	const [formSwitch, setFormSwitch] = useState(false)
 	const [show, setShow] = useState(false)
 
+	// Functions and Event Handlers
+	// ===========================================================================================
 	function modalHandler() {
 		setShow(prevState => !prevState)
 	}
@@ -23,12 +27,12 @@ function UserLike({user}) {
 		setFormSwitch(prevState => !prevState)
 	}
 
+	// Return
+	//===========================================================================================
 	return (
 		<div>
-			<div className=''>
-				<div onClick={modalHandler}>
-					<ProfileCard user={user._id} />
-				</div>
+			<div onClick={modalHandler}>
+				<ProfileCard user={user._id} />
 			</div>
 			<Modal size='sm' show={show} onHide={() => setShow(false)}>
 				{!formSwitch ? (
