@@ -66,14 +66,14 @@ const SearchResults = () => {
 				</>
 			)}
 			{!restaurantsData.response && (
-				<div className='standard-width max-w-[1080px] main-bg rounded-2xl m-auto grid-centered p-4 mt-4'>
+				<div className='grid-centered mt-[20vh]'>
 					<Spinner animation='border' variant='light' />
 				</div>
 			)}
 			{restaurantsData.response && restaurantsData.response.length === 0 && (
-				<div className='grid-centered'>
-					<h1 className='text-white text-3xl'>
-						No restaurants matching restaurants were found
+				<div className='h-12 main-bg grid-centered standard-width text-center mx-auto mt-[20vh]'>
+					<h1 className='text-white text-xl md:text-3xl mx-auto'>
+						No matching restaurants were found
 					</h1>
 				</div>
 			)}
