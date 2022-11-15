@@ -3,13 +3,15 @@ import {Link, useNavigate} from 'react-router-dom'
 import {Context} from '../App'
 import {axiosAll, axiosReducer} from '../data-and-functions/axiosAll'
 import {Spinner} from 'react-bootstrap'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faHeart } from '@fortawesome/free-solid-svg-icons'
+import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons'
 
 const RestaurantCard = ({restaurant, hideLikeButton}) => {
 	// State Hooks and Variables
 	// ===========================================================================================
-	const likedImage =
-		'https://upload.wikimedia.org/wikipedia/commons/thumb/f/f1/Heart_coraz%C3%B3n.svg/1200px-Heart_coraz%C3%B3n.svg.png'
-	const notLikedImage = 'https://www.iconpacks.net/icons/1/free-heart-icon-492-thumb.png'
+	const likedImage = <FontAwesomeIcon className='text-red-500/70' icon={faHeart} />
+	const notLikedImage = <FontAwesomeIcon className='text-red-500/70' icon={regularHeart} />
 	const {loggedInUser, dispatchUser} = useContext(Context)
 	const navigate = useNavigate()
 	const [resDetails, dispatchDetails] = useReducer(axiosReducer, {})
@@ -67,16 +69,16 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 			)}
 			{resDetails.response && (
 				<>
-					<div className='absolute top-0 right-0'>
+					<div className='absolute top-2 right-5'>
 						{
 							// Hide like button if hideLikeButton is true
 							!hideLikeButton && (
-								<button type='checkbox' variant='outline-light'>
-									<img 
-									width={50} 
-									src={buttonIcon} 
-									onClick={likeHandler}
-									alt='like-button' />
+								<button 
+									className='text-3xl'
+									type='checkbox'
+									onClick={likeHandler} 
+								>
+									{buttonIcon}
 								</button>
 							)
 						}
