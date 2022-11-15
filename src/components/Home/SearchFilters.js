@@ -37,9 +37,9 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 			id='filter-modal'
 			onClick={toggleModal}
 		>
-			<form className='modals-content standard-width max-w-[800px] p-3 vertical items-center space-y-3'>
+			<form className='modals-content filter-modals p-4 vertical items-center space-y-3'>
 				<p className='white-header font-normal'>Filter Options</p>
-				<div className='flex vertical space-y-4 md:space-y-0 md:horizontal md:space-x-2'>
+				<div className='vertical pt-2 md:pt-0 space-y-8 md:space-y-0 md:horizontal md:space-x-2'>
 					<select
 						defaultValue={city || 'select a city'}
 						className='city dropdowns base-text'
@@ -83,7 +83,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 						))}
 					</select>
 				</div>
-				<div className='flex vertical space-y-2 md:space-y-0 md:horizontal md:space-x-2 text-white text-center base-text'>
+				<div className='vertical pt-2 md:pt-0 space-y-4 md:space-y-0 md:horizontal md:space-x-2 text-white text-center base-text'>
 					<label>
 						<input
 							type='checkbox'
