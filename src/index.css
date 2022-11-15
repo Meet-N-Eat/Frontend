@@ -100,13 +100,14 @@
 		@apply
 			max-h-[268px]
 			md:max-h-[562px]
-			min-w-[300px]
+			max-w-[300px]
 			sm:max-w-[550px] 
 			md:max-w-[682px]
 			lg:max-w-[814px]
 			xl:max-w-[956px]
 			flex 
-			flex-wrap 
+			flex-wrap
+			justify-center
 			gap-y-3 
 			gap-x-1 
 			overflow-auto
@@ -382,7 +383,7 @@
 			text-xs 
 			md:text-sm;
 	}
-	
+
 	/* Messages/Message/MessageChat */
 	.message-thread {
 		@apply flex flex-col gap-y-2;
