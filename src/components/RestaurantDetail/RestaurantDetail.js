@@ -53,7 +53,7 @@ const RestaurantDetail = () => {
 		<div className='grid-centered min-h-[820px]'>
 			{resDetails.response && userLikes.response ? (
 				<div className='sm:w-3/4 grid-centered'>
-					<div className='flex flex-col items-center justify-center main-bg w-[335px] sm:w-full'>
+					<div className='flex flex-col items-center justify-center main-bg w-[335px] sm:w-full rounded-bl-[0] rounded-br-[0]'>
 						<RestaurantCard restaurant={resDetails.response._id} />
 						<div className='flex justify-center items-center mb-2 text-black'>
 							<div
@@ -91,7 +91,7 @@ const RestaurantDetail = () => {
 							)}
 						</div>
 					</div>
-					<div className='w-[335px] sm:w-full border-2 border-red-900 rounded-2xl m-2 '>
+					<div className='w-[335px] sm:w-full main-bg rounded-tr-[0] rounded-tl-[0]'>
 						<div>
 							<div>
 								{loggedInUser.token ? (
