@@ -17,7 +17,6 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 	const starMenu = ['1', '2', '3', '4', '5']
 
 	function dropdownChoice(e, key) {
-		console.log(e.target.text)
 		dispatchReview({
 			key: key,
 			value: e.target.text,

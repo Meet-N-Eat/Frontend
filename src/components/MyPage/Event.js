@@ -23,9 +23,6 @@ const Event = ({event, updateEvents}) => {
 		setModalShow(!modalShow)
 	}
 
-	useEffect(() => console.log('Event Rendered'))
-	useEffect(() => console.log(event))
-
 	// DATE AND HOUR FORMAT
 	let eventDate = moment(event.date)
 	const formattedDate = moment.utc(event.date).format('YYYY-MM-DD')
