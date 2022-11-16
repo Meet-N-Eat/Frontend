@@ -37,21 +37,19 @@ function FriendRequestForm( {user, modalHandler} ) {
         {user && user.username ? (
         <>
         <p className='white-header text-white text-center'>Add {user.username} as friend</p>
-		  <form onSubmit={modalHandler}>
-			<input
-			className='input w-full base-text'
-			as='textarea'
-			divs={3}
-			placeholder='Send an optional message'
-			maxlength='200'
-			onChange={handleChange}></input>
-			<p className='text-slate-300 p-2 text-xs md:text-sm'>maximum length: 200 characters</p>
-			<div className='grid-centered mb-4'>
-				<button
-				className='account-button'
-				onClick={handleSubmit}>Add friend</button>
-			</div>
-        </form>
+        <input
+        className='input w-full base-text'
+        as='textarea'
+        divs={3}
+        placeholder='Send an optional message'
+        maxlength='200'
+        onChange={handleChange}></input>
+        <p className='text-slate-300 p-2 text-xs md:text-sm'>maximum length: 200 characters</p>
+        <div className='grid-centered mb-4'>
+          <button
+          className='account-button'
+          onClick={handleSubmit}>Add friend</button>
+        </div>
 			</>
         ) : ( <Spinner animation='border' variant="light"/> )}
       </div>
