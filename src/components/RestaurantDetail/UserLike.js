@@ -40,7 +40,7 @@ function UserLike({user}) {
 						<div className='grid place-content-center'>
 							<ProfileCard user={user._id} />
 						</div>
-						<p className='text-white'>{user.about}</p>
+						<p className='text-white mb-2'>{user.about}</p>
 						<OutreachButtons
 							friends={friends()}
 							user={user}
