@@ -80,10 +80,10 @@ const Event = ({event, updateEvents}) => {
 							}
 						>
 							<NavDropdown.Item>
-								<button className='base-text' onClick={openEdit}>Edit</button>
+								<button className='base-text w-full' onClick={openEdit}>Edit</button>
 							</NavDropdown.Item>
 							<NavDropdown.Item>
-								<button className='base-text' onClick={handleShow}>Cancel Event</button>
+								<button className='base-text w-full' onClick={handleShow}>Cancel Event</button>
 								<Modal size='xl' show={show} onHide={handleClose}>
 									<div className='modals-content h-[200px] flex flex-col justify-around p-3'>
 										<div closeButton>
