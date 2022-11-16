@@ -3,9 +3,13 @@ import {citiesArray} from '../../data-and-functions/citiesArray'
 import {priceRangeArray} from '../../data-and-functions/priceRangeArray'
 
 const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
+	// State hooks and Variables
+	// ===========================================================================
 	const {city, category, price, wheelchairAccessible, openLate} = searchCriteria
 
-	// Handles click events for dropdown menus
+	// Event Handlers and Functions
+	// ===========================================================================
+
 	function dropdownChoice(e) {
 		e.target.value !== 'None'
 			? dispatch({
@@ -18,7 +22,6 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 			  })
 	}
 
-	// Handles click events for checkbox items
 	function checkboxClick(e) {
 		searchCriteria[e.target.classList[0]]
 			? dispatch({
@@ -31,6 +34,8 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 			  })
 	}
 
+	// Return
+	// ===========================================================================
 	return (
 		<div 
 			className='modals' 

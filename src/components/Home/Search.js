@@ -7,7 +7,7 @@ import { faSliders } from '@fortawesome/free-solid-svg-icons'
 import SearchFilters from './SearchFilters'
 
 const Search = () => {
-	// Initial state for searchCriteria
+	// State hooks and Variables
 	// ===========================================================================
 	const initialState = {
 		searchString: '',
@@ -18,13 +18,11 @@ const Search = () => {
 		openLate: '',
 	}
 
-	// State hooks and variable declarations
-	// ===========================================================================
 	const [searchCriteria, dispatch] = useReducer(searchCriteriaReducer, initialState)
 	const [toggle, setToggle] = useState(false)
 	const navigate = useNavigate()
 
-	// Event handlers
+	// Event Handlers and Functions
 	// ===========================================================================
 	function inputChange(e) {
 		dispatch({
@@ -47,6 +45,8 @@ const Search = () => {
 		else setToggle(prev => !prev)	
 	}
 
+	// Return
+	// ===========================================================================
 	return (
 		<div>
 			<form onSubmit={formSubmit}>

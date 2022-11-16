@@ -19,7 +19,7 @@ export const Context = createContext()
 
 function App() {
    // Context variables
-   const [loggedInUser, dispatchUser] = useReducer(axiosReducer, {username: "", password: ""})
+   const [loggedInUser, dispatchUser] = useReducer(axiosReducer, {username: "", password: "", confirmPassword: "", email: ""})
 
    return (
       <div className='App h-full'>

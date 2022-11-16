@@ -11,19 +11,18 @@ const Home = () => {
 	const {loggedInUser, dispatchUser} = useContext(Context)
 	const [show, setShow] = useState(false)
 
-	// Getting user data
+	// Event Handlers and Functions
 	// ===========================================================================
 	useEffect(()=> {
 		axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
 	},[])
 
-	// Event handlers
-	// ===========================================================================
 	function signUpShowHandler() {
 		setShow(prevState => !prevState)
 	}
 
-
+	// Return
+	// ===========================================================================
 	return (
 		<div className='main-bg start-container h-60 md:h-48 w-10/12 max-w-5xl space-y-5'>
 			<p className='home-header w-10/12 max-w-3xl mx-auto'>Find restaurants you like? Meet others who like them too.</p>
