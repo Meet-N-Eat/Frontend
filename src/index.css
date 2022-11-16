@@ -260,6 +260,19 @@
 	}
 
 	/* Buttons */
+	.active-page{
+		@apply 
+			h-[25px] 
+			min-w-[25px] 
+			cursor-pointer 
+			bg-red-900/80 
+			focus:bg-white/90 
+			flex-centered 
+			p-1 
+			rounded-full 
+			mx-auto
+	}
+
 	.button {
 		@apply 
 			h-11 
