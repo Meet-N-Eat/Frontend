@@ -17,10 +17,18 @@ const Event = ({event, updateEvents}) => {
 	const [showEdit, setShowEdit] = useState(false)
 	const [modalShow, setModalShow] = useState(false)
 
+
+	//cancel
 	const handleClose = () => setShow(false)
 	const handleShow = () => setShow(true)
 	const showHandler = () => {
 		setModalShow(!modalShow)
+	}
+
+	const closeEdit = () => setShowEdit(false)
+	const openEdit = () => setShowEdit(true)
+	const editHandler = () => {
+		setShowEdit(prevState => !prevState)
 	}
 
 	// DATE AND HOUR FORMAT
@@ -72,20 +80,22 @@ const Event = ({event, updateEvents}) => {
 							}
 						>
 							<NavDropdown.Item>
-								<button className='base-text'>Edit</button>
+								<button className='base-text w-full' onClick={openEdit}>Edit</button>
 							</NavDropdown.Item>
 							<NavDropdown.Item>
-								<button className='base-text' onClick={handleShow}>Cancel Event</button>
-								<Modal show={show} onHide={handleClose}>
-									<div closeButton>
-										<h1 className='base-text'>Confirm cancelation</h1>
-									</div>
-									<div className='text-xs md:text-sm'>
-										Are you sure you don't want to meet a creep and get free food?
-									</div>
-									<div>
-										<button className='base-text' onClick={handleClose}>Close </button>
-										<button className='base-text' onClick={handleCancel}>Cancel event </button>
+								<button className='base-text w-full' onClick={handleShow}>Cancel Event</button>
+								<Modal size='xl' show={show} onHide={handleClose}>
+									<div className='modals-content h-[200px] flex flex-col justify-around p-3'>
+										<div closeButton>
+											<h1 className='base-text'>Confirm cancelation</h1>
+										</div>
+										<div className='text-xs md:text-sm'>
+											Are you sure you want to cancel this event?
+										</div>
+										<div className='flex flex-row justify-between'>
+											<button className='base-text button mr-1' onClick={handleClose}>Close </button>
+											<button className='base-text account-button ml-1' onClick={handleCancel}>Cancel event </button>
+										</div>
 									</div>
 								</Modal>
 							</NavDropdown.Item>

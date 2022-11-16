@@ -1,5 +1,4 @@
 import {useContext, useReducer} from 'react'
-import {Dropdown} from 'react-bootstrap'
 import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 

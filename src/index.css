@@ -205,6 +205,18 @@
 			md:w-[500px]
 		;
 	}
+	
+	.edit-container {
+		@apply
+			main-bg
+			grid-centered
+			p-2
+			h-[460px]
+			w-[330px]
+			text-white
+			mt-2
+	}
+
 	.page-container {
 		@apply 
 			max-w-[800px] 
@@ -248,6 +260,19 @@
 	}
 
 	/* Buttons */
+	.active-page{
+		@apply 
+			h-[25px] 
+			min-w-[25px] 
+			cursor-pointer 
+			bg-red-900/80 
+			focus:bg-white/90 
+			flex-centered 
+			p-1 
+			rounded-full 
+			mx-auto
+	}
+
 	.button {
 		@apply 
 			h-11 

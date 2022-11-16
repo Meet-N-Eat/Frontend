@@ -77,7 +77,7 @@ const Friends = ({loggedInUser}) => {
 				<Modal size='sm' show={show} onHide={() => setShow(false)} >
 					<div className='h-auto w-72 modal-bg grid-centered border mt-36 mx-auto p-4'>
 						<ProfileCard key={current._id} user={current._id}/>
-						<p className='border-t-[1px] border-b-[1px] w-full pt-3 pb-3 mb-2 text-center'>{current.about}</p>
+						<p className='w-full pb-3 mb-2 text-center'>{current.about || 'new to meet-n-eat'}</p>
 						<OutreachButtons
 							friends={areFriends()}
 							user={current}
