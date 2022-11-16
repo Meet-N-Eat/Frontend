@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 
 const Pagination = ({cardsPerPage, totalCards, paginate}) => {
 	const pageNumbers = []
-	const [current, setCurrent] = useState(0)
+	const [current, setCurrent] = useState(1)
 
 	// To access the amount of page numbers, we use Math.ceil to round up the total total amount of cards divided by cards per page
 	for (let i = 1; i <= Math.ceil(totalCards / cardsPerPage); i++) {
