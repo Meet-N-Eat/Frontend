@@ -17,10 +17,18 @@ const Event = ({event, updateEvents}) => {
 	const [showEdit, setShowEdit] = useState(false)
 	const [modalShow, setModalShow] = useState(false)
 
+
+	//cancel
 	const handleClose = () => setShow(false)
 	const handleShow = () => setShow(true)
 	const showHandler = () => {
 		setModalShow(!modalShow)
+	}
+
+	const closeEdit = () => setShowEdit(false)
+	const openEdit = () => setShowEdit(true)
+	const editHandler = () => {
+		setShowEdit(prevState => !prevState)
 	}
 
 	// DATE AND HOUR FORMAT
@@ -72,7 +80,7 @@ const Event = ({event, updateEvents}) => {
 							}
 						>
 							<NavDropdown.Item>
-								<button className='base-text'>Edit</button>
+								<button className='base-text' onClick={openEdit}>Edit</button>
 							</NavDropdown.Item>
 							<NavDropdown.Item>
 								<button className='base-text' onClick={handleShow}>Cancel Event</button>
