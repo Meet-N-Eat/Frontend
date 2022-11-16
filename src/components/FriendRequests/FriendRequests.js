@@ -25,7 +25,7 @@ function FriendRequests() {
 	// ===========================================================================
 	return (
 		<div className='flex items-center justify-center row-start-2'>
-			<div className='main-bg opacity-90 rounded-2xl px-6 md:px-14 py-4 space-y-4 w-80 md:w-[36rem] max-h-96 md:max-h-[80vh] overflow-y-auto'>
+			<div className='main-bg opacity-90 rounded-2xl px-6 md:px-14 py-4 space-y-4 w-80 md:w-4/5 max-h-96 md:max-h-[80vh] overflow-y-auto'>
 				{loggedInUser.token && !friendRequests.response && (
 					<div className='main-bg grid-centered p-4'>
 						<Spinner animation='border' variant='light' />
