@@ -157,7 +157,7 @@ const CoordinateMeetup = ({
 	// Return
 	// ===========================================================================
 	return (
-		<div className='main-bg invite-container'>
+		<div className={showEdit === true ? 'edit-container' : 'main-bg invite-container'}>
 			<h1 className='white-header'>meet 'n eat with friends</h1>
 			{error.restaurant && <h2>select a restaurant for this event</h2>}
 			<select

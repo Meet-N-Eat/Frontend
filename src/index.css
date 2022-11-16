@@ -205,6 +205,18 @@
 			md:w-[500px]
 		;
 	}
+	
+	.edit-container {
+		@apply
+			main-bg
+			vertical
+			justify-evenly
+			items-center
+			h-[400px]
+			w-[335px]
+			text-white
+	}
+
 	.page-container {
 		@apply 
 			max-w-[800px] 
