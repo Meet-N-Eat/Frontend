@@ -36,33 +36,38 @@ const Favorites = ({loggedInUser}) => {
 				/>
 			</form>
 			<>
-			{!favorites.response && (
-				<div className='main-bg mt-4 p-4'>
-					<Spinner animation='border' variant="light" /> 
-				</div>
-			)}
+				{!favorites.response && (
+					<div className='main-bg mt-4 p-4'>
+						<Spinner animation='border' variant='light' />
+					</div>
+				)}
 			</>
 			{favorites.response && favorites.response.length === 0 && (
-					<div className='main-bg mt-8 w-[350px] md:w-96 p-4'>
-						<Link to='/'>
-							<button className='button w-full base-text text-center'>Browse restaurants to add to favorites</button>
-						</Link>
-					</div>
+				<div className='main-bg mt-8 w-[350px] md:w-96 p-4'>
+					<Link to='/'>
+						<button className='button w-full base-text text-center'>
+							Browse restaurants to add to favorites
+						</button>
+					</Link>
+				</div>
 			)}
 			<div className='responsive-mypage sm:max-w-[1050px] gap-2 grid-centered mx-auto grid-cols-1 md:grid-cols-2 lg:grid-cols-3 p-3 overflow-y-auto scroll'>
-				{favorites.response && favorites.response.length > 0 && (
+				{favorites.response &&
+					favorites.response.length > 0 &&
 					favorites.response
 						.filter(
 							restaurant =>
 								searchCharacters === '' ||
-								restaurant.name.toLowerCase().includes(searchCharacters.toLocaleLowerCase())
+								restaurant.name
+									.toLowerCase()
+									.includes(searchCharacters.toLocaleLowerCase())
 						)
 						.map(restaurant => (
 							<div className='main-bg grid-centered p-2 w-[335px] h-[360px]'>
 								<RestaurantCard key={restaurant._id} restaurant={restaurant._id} />
 							</div>
 						))
-				)}
+				}
 			</div>
 		</div>
 	)

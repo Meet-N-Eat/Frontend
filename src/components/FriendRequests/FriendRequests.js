@@ -10,6 +10,8 @@ function FriendRequests() {
 	const {loggedInUser} = useContext(Context)
 	const [friendRequests, dispatchRequests] = useReducer(axiosReducer, [])
 
+	// Event Handlers and Functions
+	// ===========================================================================
 	useEffect(() => {
 		axiosAll(
 			'GET',
@@ -26,23 +28,26 @@ function FriendRequests() {
 			<div className='main-bg opacity-90 rounded-2xl px-6 md:px-14 py-4 space-y-4 w-80 md:w-[36rem] max-h-96 md:max-h-[80vh] overflow-y-auto'>
 				{loggedInUser.token && !friendRequests.response && (
 					<div className='main-bg grid-centered p-4'>
-						<Spinner animation='border' variant="light" />
+						<Spinner animation='border' variant='light' />
 					</div>
 				)}
-				{loggedInUser.token && friendRequests.response && friendRequests.response.length > 0 && (
+				{loggedInUser.token &&
+					friendRequests.response &&
+					friendRequests.response.length > 0 &&
 					friendRequests.response.map(friendRequest => (
 						<FriendRequest
 							key={friendRequest._id}
 							friendRequest={friendRequest}
 							dispatchRequests={dispatchRequests}
 						/>
-					))
-				)}
-				{loggedInUser.token && friendRequests.response && friendRequests.response.length === 0 && (
-					<p className='text-center text-white text-sm md:text-base'>
-					No current friend requests
-				</p>
-				)}
+					))}
+				{loggedInUser.token &&
+					friendRequests.response &&
+					friendRequests.response.length === 0 && (
+						<p className='text-center text-white text-sm md:text-base'>
+							No current friend requests
+						</p>
+					)}
 			</div>
 		</div>
 	)

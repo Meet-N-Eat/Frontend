@@ -1,6 +1,7 @@
 import {createContext, useReducer} from "react"
 import {Routes, Route} from "react-router-dom"
 import {axiosReducer} from "./data-and-functions/axiosAll"
+import defaultImage from "./assets/defaultImage.png"
 import About from "./components/About"
 import Home from "./components/Home/Home"
 import Messages from "./components/Messages/Messages"
@@ -18,7 +19,7 @@ export const Context = createContext()
 
 function App() {
    // Context variables
-   const [loggedInUser, dispatchUser] = useReducer(axiosReducer, {username: "", password: ""})
+   const [loggedInUser, dispatchUser] = useReducer(axiosReducer, {username: "", password: "", confirmPassword: "", email: ""})
 
    return (
       <div className='App h-full'>
@@ -26,6 +27,7 @@ function App() {
             value={{
                'loggedInUser': loggedInUser,
                'dispatchUser': dispatchUser,
+               'defaultImage': defaultImage,
             }}
          >
             <header className="row-start-1 row-span-1">

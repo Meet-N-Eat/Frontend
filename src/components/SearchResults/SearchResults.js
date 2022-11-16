@@ -49,7 +49,7 @@ const SearchResults = () => {
 		<div className='h-full w-full space-y-4'>
 			{restaurantsData.response && restaurantsData.response.length !== 0 && (
 				<>
-					<div className='h-min max-h-[440px] sm:max-h-[728px] w-[350px] md:w-[695px] xl:w-[1024px] mx-auto grid justify-items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-4 gap-2 overflow-y-auto overflow-x-hidden scroll'>
+					<div className='h-[732px] max-h-[440px] sm:max-h-[732px] w-[350px] md:w-[695px] xl:w-[1024px] mx-auto grid justify-items-start grid-cols-1 md:grid-cols-2 xl:grid-cols-3 mt-4 gap-2 overflow-y-auto scroll'>
 						{restaurantsData.response
 							.slice(indexOfFirstCard, indexOfLastCard)
 							.map(restaurant => (
