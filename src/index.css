@@ -209,12 +209,12 @@
 	.edit-container {
 		@apply
 			main-bg
-			vertical
-			justify-evenly
-			items-center
-			h-[400px]
-			w-[335px]
+			grid-centered
+			p-2
+			h-[460px]
+			w-[330px]
 			text-white
+			mt-2
 	}
 
 	.page-container {
