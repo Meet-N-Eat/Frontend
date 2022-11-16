@@ -45,7 +45,7 @@ const FriendRequest = ({friendRequest, dispatchRequests}) => {
 			<div className='m-auto md:flex-1 red-subheader font-normal'>
 				<ProfileCard user={friendRequest.sender} />
 			</div>
-			<div className='p-2 w-3/4 space-y-3 md:space-y-2 m-auto'>
+			<div className='p-2 w-full space-y-3 md:space-y-2 m-auto'>
 				{friendRequest.body === '' ? (
 					<div></div>
 				) : (
