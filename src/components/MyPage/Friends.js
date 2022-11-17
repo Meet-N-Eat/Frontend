@@ -6,7 +6,7 @@ import OutreachButtons from '../OutreachButtons'
 
 const Friends = ({loggedInUser}) => {
 	// State Hooks and Variables
-	// ===========================================================================================
+	// ===========================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
 	const [friends, dispatchFriends] = useReducer(axiosReducer, {})
 	const [setFormSwitch] = useState(false)
@@ -25,8 +25,8 @@ const Friends = ({loggedInUser}) => {
 		)
 	}, [])
 
-	// Functions and Event Handlers
-	// ===========================================================================================
+	// Event Handlers and Functions
+	// ===========================================================================
 
 	function searchChange(e) {
 		setSearchCharacters(e.target.value)
@@ -46,7 +46,7 @@ const Friends = ({loggedInUser}) => {
 	}
 
 	// Return
-	//===========================================================================================
+	// ===========================================================================
 	return (
 		<div className='vertical flex-centered'>
 			<form>

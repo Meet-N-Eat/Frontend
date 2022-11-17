@@ -3,6 +3,8 @@ import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 
 const ReviewForm = ({restaurantId, handleShow}) => {
+	// State Hooks and Variables
+	// ===========================================================================	
 	const {loggedInUser} = useContext(Context)
 
 	const initialState = {
@@ -15,6 +17,8 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 	const [validate, dispatchValidate] = useReducer(axiosReducer, {valid: false})
 	const starMenu = ['1', '2', '3', '4', '5']
 
+	// Event Handlers and Functions
+	// ===========================================================================	
 	function dropdownChoice(e, key) {
 		dispatchReview({
 			key: key,
@@ -51,6 +55,8 @@ const ReviewForm = ({restaurantId, handleShow}) => {
 			handleShow()
 	}
 
+	// Return
+	// ===========================================================================	
 	return (
 		<div className='modals-content standard-width flex-centered p-8'>
 			<form 

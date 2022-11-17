@@ -11,7 +11,7 @@ import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCirclePlus, faCircleMinus} from '@fortawesome/free-solid-svg-icons'
 
 const RestaurantDetail = () => {
-	// State hooks and variable declarations
+	// State Hooks and Variables
 	// ===========================================================================
 	const [resDetails, dispatchRestaurant] = useReducer(axiosReducer, {})
 	const [userLikes, dispatchLikes] = useReducer(axiosReducer, [])
@@ -21,7 +21,7 @@ const RestaurantDetail = () => {
 	const [limit, setLimit] = useState(3)
 	const [showHideIcon, setShowHideIcon] = useState(faCirclePlus)
 
-	// Getting restaurant data by restaurantId
+	// Event Handlers and Functions
 	// ===========================================================================
 	useEffect(() => {
 		// Update user state
@@ -40,7 +40,6 @@ const RestaurantDetail = () => {
 		axiosAll('GET', `/restaurants/${restaurantId}/userLikes`, null, dispatchLikes)
 	}, [])
 
-	// Event Handler
 	function modalHandler(e) {
 		if (toggle) {
 			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
@@ -48,7 +47,8 @@ const RestaurantDetail = () => {
 		} else setToggle(prevState => !prevState)
 	}
 
-	
+	// Return
+	// ===========================================================================	
 	return (
 		<div className='grid-centered min-h-[820px]'>
 			{!resDetails.response && (

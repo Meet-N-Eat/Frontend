@@ -6,12 +6,12 @@ import {Spinner} from 'react-bootstrap'
 
 const Favorites = ({loggedInUser}) => {
 	// State Hooks and Variables
-	// ===========================================================================================
+	// ===========================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
 	const [favorites, dispatchFavorites] = useReducer(axiosReducer, {})
 
-	// Functions and Event Handlers
-	// ===========================================================================================
+	// Event Handlers and Functions
+	// ===========================================================================
 	useEffect(() => {
 		axiosAll(
 			'GET',

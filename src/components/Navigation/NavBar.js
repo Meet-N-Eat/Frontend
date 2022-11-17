@@ -15,14 +15,14 @@ import {
 import defaultImage from '../../assets/defaultImage.png'
 
 const NavBar = () => {
-	// State hooks and Variables
+	// State Hooks and Variables
 	// ===========================================================================
 	const {loggedInUser, dispatchUser} = useContext(Context)
 	let option = useRef('')
 	const navigate = useNavigate()
 	const [toggle, setToggle] = useState(false)
 
-	// Functions and Event handlers
+	// Event Handlers and Functions
 	// ===========================================================================
 	function userAuthClick(e) {
 		switch (e.target.text) {

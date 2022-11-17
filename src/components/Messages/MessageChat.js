@@ -8,6 +8,8 @@ import Message from './Message'
 import { Spinner } from 'react-bootstrap'
 
 function MessageChat() {
+	// State Hooks and Variables
+	// ===========================================================================
 	const {loggedInUser} = useContext(Context)
 	const {friendId} = useParams()
 
@@ -20,6 +22,8 @@ function MessageChat() {
 	const [message, dispatchMessage] = useReducer(axiosReducer, initialState)
 	const [thread, dispatchThread] = useReducer(axiosReducer, {})
 
+	// Event Handlers and Functions
+	// ===========================================================================	
 	useEffect(() => {
 		axiosAll(
 			'GET',
@@ -58,6 +62,8 @@ function MessageChat() {
 		)
 	}
 
+	// Return
+	// ===========================================================================	
 	return (
 		<div>
 			<div className='w-[375px] sm:w-full page-container main-bg items-center mx-auto rounded-b-none'>

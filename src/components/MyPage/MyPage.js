@@ -17,11 +17,7 @@ import Itinerary from './Itinerary'
 const MyPage = () => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser, dispatchUser} = useContext(Context)
-
-	useEffect(() => {
-		axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
-	}, [])
+	const {loggedInUser, dispatchUser} = useContext(Context)	
 
 	// Stating slideItems as an array of components
 	const slideItems = [
@@ -56,8 +52,12 @@ const MyPage = () => {
 		},
 	}
 
-	// Functions and Event Handlers
+	// Event Handlers and Functions
 	// ===========================================================================
+
+	useEffect(() => {
+		axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
+	}, [])
 
 	function slideHandler(direction) {
 		direction === 'right' ? (
@@ -93,7 +93,7 @@ const MyPage = () => {
 		}
 		return tabArray
 	}
-	console.log(slideIndex.current)
+
 	// Return
 	// ===========================================================================
 	return (
