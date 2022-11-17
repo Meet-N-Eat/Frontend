@@ -1,6 +1,7 @@
 import React, {useEffect, useReducer} from 'react'
 import {useState} from 'react'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import toggleModal from '../../data-and-functions/toggleModal'
 import ProfileCard from '../ProfileCard'
 
 const CoordinateMeetup = ({
@@ -31,6 +32,8 @@ const CoordinateMeetup = ({
 	})
 	const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
 
+	// Event Handlers and Functions
+	// ===========================================================================
 	useEffect(() => {
 		axiosAll(
 			'GET',
@@ -40,9 +43,6 @@ const CoordinateMeetup = ({
 		)
 	}, [])
 
-	// Event Handlers and Functions
-	// ===========================================================================
-
 	// Creates a date object from date and time inputs
 	function combineDate(date, time) {
 		const dateArr = date.split('-')
@@ -50,25 +50,6 @@ const CoordinateMeetup = ({
 		const newDate = new Date(dateArr[0], dateArr[1] - 1, dateArr[2], timeArr[0], timeArr[1])
 
 		return newDate
-	}
-
-	// Populates "who's invited?" modal
-	function participantsList() {
-		let participants = loggedInUser.response.friends
-			.filter(friend => meetup.participants.find(participant => participant === friend))
-			.map(friend => <ProfileCard key={friend} user={friend} />)
-
-		if (participants.length === 0)
-			participants = <h1>You're rollin' solo, invite some of your peeps!</h1>
-
-		return participants
-	}
-
-	function toggleModal(e) {
-		if (toggle) {
-			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
-				setToggle(prevState => !prevState)
-		} else setToggle(prevState => !prevState)
 	}
 
 	function inviteHandler(friend) {
@@ -183,7 +164,7 @@ const CoordinateMeetup = ({
 			{error.date && <h2 className='base-text'>pick a date and time for this event</h2>}
 			<input className='w-[320px] base-text ' onChange={e => dateSelect(e, 'date')} type='date' value={date.date}/>
 			<input className='w-[320px] base-text' onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
-			<button className='invite button base-text' onClick={toggleModal}>
+			<button className='invite button base-text' onClick={e => setToggle(toggleModal(e, toggle))}>
 				invite friends
 			</button>
 			<button className='button base-text' onClick={showEdit ? editEventHandler : createEventHandler}>
@@ -191,7 +172,7 @@ const CoordinateMeetup = ({
 			</button>
 
 			{toggle && (
-				<div className='modals' onClick={toggleModal}>
+				<div className='modals' onClick={e => setToggle(toggleModal(e, toggle))}>
 					<div className='modals-content display-friends'>
 						{loggedInUser.response.friends.map(friend => (
 							<div key={friend} className='text-center'>
