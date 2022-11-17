@@ -66,11 +66,11 @@ const Friends = ({loggedInUser}) => {
 								friend.username.toLowerCase().includes(searchCharacters.toLocaleLowerCase())
 						)
 						.map(friend => (
-								<div className='rounded-2xl' onClick={() => {
+								<div className='rounded-2xl' key={friend._id} onClick={() => {
 									modalHandler()
 									setCurrent(friend)
 								}}>
-									<ProfileCard key={friend._id} user={friend._id}/>
+									<ProfileCard user={friend._id}/>
 								</div>
 						))
 				)}

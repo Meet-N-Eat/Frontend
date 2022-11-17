@@ -31,7 +31,6 @@ const MyPage = () => {
 		<Itinerary loggedInUser={loggedInUser} />,
 	]
 
-	// slideIndex ref for event handlers
 	const slideIndex = useRef(0)
 
 	// Set first slide as initial state
@@ -94,7 +93,7 @@ const MyPage = () => {
 		}
 		return tabArray
 	}
-
+	console.log(slideIndex.current)
 	// Return
 	// ===========================================================================
 	return (
@@ -102,12 +101,12 @@ const MyPage = () => {
 			{loggedInUser && loggedInUser.response && (
 				<div className='h-full w-full max-w-[1200px] relative flex justify-center items-center'>
 					{slide}
-					{slideIndex.current !== 0 && (
+					{slideIndex.current != 0 && (
 						<button id='left-btn' onClick={() => slideHandler('left')}>
 							<div className='arrow left'></div>
 						</button>
 					)}
-					{slideIndex.current !== 3 && (
+					{slideIndex.current != 3 && (
 						<button id='right-btn' onClick={() => slideHandler('right')}>
 							<div className='arrow right'></div>
 						</button>

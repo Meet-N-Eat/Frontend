@@ -176,7 +176,7 @@ const CoordinateMeetup = ({
 				{favorites.response &&
 					favorites.response.map(restaurant => (
 						<option key={restaurant._id} value={restaurant._id}>
-							<p className='base-text'>{restaurant.name}</p>
+							{restaurant.name}
 						</option>
 					))}
 			</select>

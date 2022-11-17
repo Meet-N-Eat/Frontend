@@ -14,6 +14,7 @@ const Home = () => {
 	// Event Handlers and Functions
 	// ===========================================================================
 	useEffect(()=> {
+		loggedInUser.token &&
 		axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
 	},[])
 
