@@ -164,7 +164,7 @@ const CoordinateMeetup = ({
 			{error.date && <h2 className='base-text'>pick a date and time for this event</h2>}
 			<input className='w-[320px] base-text ' onChange={e => dateSelect(e, 'date')} type='date' value={date.date}/>
 			<input className='w-[320px] base-text' onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
-			<button className='invite button base-text' onClick={e => setToggle(toggleModal(e, toggle))}>
+			<button className='invite button base-text' onClick={e => setToggle(toggleModal(e))}>
 				invite friends
 			</button>
 			<button className='button base-text' onClick={showEdit ? editEventHandler : createEventHandler}>
@@ -172,7 +172,7 @@ const CoordinateMeetup = ({
 			</button>
 
 			{toggle && (
-				<div className='modals' onClick={e => setToggle(toggleModal(e, toggle))}>
+				<div className='modals' onClick={e => setToggle(toggleModal(e))}>
 					<div className='modals-content display-friends'>
 						{loggedInUser.response.friends.map(friend => (
 							<div key={friend} className='text-center'>
