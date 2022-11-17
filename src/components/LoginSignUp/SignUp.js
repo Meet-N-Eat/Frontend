@@ -77,7 +77,7 @@ const SignUp = () => {
 			dispatchError({key: 'confirmPassword', value: true})
 		}
 	}
-	console.log(success)
+
 	useEffect(() => {
 		if (success) {
 			axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
