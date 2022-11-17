@@ -41,26 +41,34 @@ const FriendRequest = ({friendRequest, dispatchRequests}) => {
 	// Return
 	// ===========================================================================
 	return (
-		<div className='white-bg rounded-2xl vertical md:flex-row p-2 max-h-92 md:h-52'>
-			<div className='m-auto md:flex-1 red-subheader font-normal'>
-				<ProfileCard user={friendRequest.sender} />
-			</div>
-			<div className='p-2 w-full space-y-3 md:space-y-2 m-auto'>
-				{friendRequest.body === '' ? (
-					<div></div>
-				) : (
-				<p className='px-2 py-1 base-text text-black shadow-inner shadow-red-900 rounded-2xl max-h-32 overflow-y-auto scroll'>{friendRequest.body}</p>
-				)}
-				<div className='vertical space-y-2 flex-centered mx-auto'>
-					<button className='account-button base-text text-center' onClick={() => inviteHandler('accept')}>
-						accept
-					</button>
-					<button className='account-button base-text text-center' onClick={() => inviteHandler('decline')}>
-						decline
-					</button>
+		<>
+			<div className='white-bg rounded-2xl vertical md:flex-row p-2 max-h-92 md:h-52'>
+				<div className='m-auto md:flex-1 red-subheader font-normal'>
+					<ProfileCard user={friendRequest.sender} />
+				</div>
+				<div className='p-2 w-full space-y-3 md:space-y-2 m-auto'>
+					<p className='px-2 py-1 base-text text-black shadow-inner shadow-red-900 rounded-2xl h-32 overflow-y-auto scroll'>
+						{friendRequest.body !== ''
+							? friendRequest.body
+							: "Hi, let's be friends!"}
+					</p>
 				</div>
 			</div>
-		</div>
+			<div className='space-x-2 flex-centered mx-auto'>
+				<button
+					className='account-button base-text text-center'
+					onClick={() => inviteHandler('accept')}
+				>
+					accept
+				</button>
+				<button
+					className='account-button base-text text-center'
+					onClick={() => inviteHandler('decline')}
+				>
+					decline
+				</button>
+			</div>
+		</>
 	)
 }
 

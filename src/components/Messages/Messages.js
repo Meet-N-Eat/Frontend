@@ -10,10 +10,14 @@ import ProfileCard from '../ProfileCard'
 import {Spinner} from 'react-bootstrap'
 
 function Messages() {
+	// State Hooks and Variables
+	// ===========================================================================	
 	const {loggedInUser} = useContext(Context)
 	const [messages, dispatchMessages] = useReducer(axiosReducer, {})
 	const [toggle, setToggle] = useState(false)
 
+	// Event Handlers and Functions
+	// ===========================================================================	
 	useEffect(() => {
 		axiosAll(
 			'GET',
@@ -37,6 +41,8 @@ function Messages() {
 		setToggle(prev => !prev)
 	}
 
+	// Return
+	// ===========================================================================	
 	return (
 		<div>
 			<div className='h-[73px] standard-width flex-centered relative mx-auto main-bg rounded-b-none'>

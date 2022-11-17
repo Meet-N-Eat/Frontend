@@ -1,8 +1,12 @@
 import {formatDateTime} from '../../data-and-functions/formatDateTime'
 
 const Message = ({message}) => {
+	// State Hooks and Variables
+	// ===========================================================================
 	const [date, time] = formatDateTime(message.createdAt)
 
+	// Return
+	// ===========================================================================
 	return (
 		<div className='modal-bg text-white rounded-2xl flex p-2'>
 			<div className='flex items-between w-full'>

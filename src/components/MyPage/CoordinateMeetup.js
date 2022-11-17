@@ -14,7 +14,7 @@ const CoordinateMeetup = ({
 	updateEvents,
 }) => {
 	// State Hooks and Variables
-	// ===========================================================================================
+	// ===========================================================================
 	const initialState = {
 		restaurant: null,
 		participants: [loggedInUser.response._id],
@@ -40,8 +40,8 @@ const CoordinateMeetup = ({
 		)
 	}, [])
 
-	// Functions and Event Handlers
-	// ===========================================================================================
+	// Event Handlers and Functions
+	// ===========================================================================
 
 	// Creates a date object from date and time inputs
 	function combineDate(date, time) {
@@ -176,7 +176,7 @@ const CoordinateMeetup = ({
 				{favorites.response &&
 					favorites.response.map(restaurant => (
 						<option key={restaurant._id} value={restaurant._id}>
-							<p className='base-text'>{restaurant.name}</p>
+							{restaurant.name}
 						</option>
 					))}
 			</select>

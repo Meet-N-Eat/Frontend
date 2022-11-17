@@ -5,12 +5,12 @@ import { Spinner } from 'react-bootstrap'
 
 const Itinerary = ({loggedInUser}) => {
 	// State Hooks and Variables
-	// ===========================================================================================
+	// ===========================================================================
 	const [events, dispatchEvents] = useReducer(axiosReducer, {})
 	let today = new Date().toLocaleDateString()
 
-	// Functions and Event Handlers
-	// ===========================================================================================
+	// Event Handlers and Functions
+	// ===========================================================================
 	useEffect(() => {
 		updateEvents()
 	}, [])

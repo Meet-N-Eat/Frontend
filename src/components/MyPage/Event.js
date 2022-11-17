@@ -11,7 +11,7 @@ import {faEllipsisVertical} from '@fortawesome/free-solid-svg-icons'
 
 const Event = ({event, updateEvents}) => {
 	// State Hooks and Variables
-	// ===========================================================================================
+	// ===========================================================================
 	const {loggedInUser, dispatchUser} = useContext(Context)
 	const [show, setShow] = useState(false)
 	const [showEdit, setShowEdit] = useState(false)
@@ -37,8 +37,8 @@ const Event = ({event, updateEvents}) => {
 	const formattedHour = eventDate.format('hh:mm')
 	const formattedHourAMPM = eventDate.format('hh:mm A')
 
-	// Functions and Event Handlers
-	// ===========================================================================================
+	// Event Handlers and Functions
+	// ===========================================================================
 	const handleCancel = async () => {
 		await axiosAll('DELETE', `/users/events/${event._id}`, loggedInUser.token, null)
 		updateEvents()

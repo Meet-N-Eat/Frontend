@@ -17,11 +17,7 @@ import Itinerary from './Itinerary'
 const MyPage = () => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser, dispatchUser} = useContext(Context)
-
-	useEffect(() => {
-		axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
-	}, [])
+	const {loggedInUser, dispatchUser} = useContext(Context)	
 
 	// Stating slideItems as an array of components
 	const slideItems = [
@@ -31,7 +27,6 @@ const MyPage = () => {
 		<Itinerary loggedInUser={loggedInUser} />,
 	]
 
-	// slideIndex ref for event handlers
 	const slideIndex = useRef(0)
 
 	// Set first slide as initial state
@@ -57,8 +52,12 @@ const MyPage = () => {
 		},
 	}
 
-	// Functions and Event Handlers
+	// Event Handlers and Functions
 	// ===========================================================================
+
+	useEffect(() => {
+		axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
+	}, [])
 
 	function slideHandler(direction) {
 		direction === 'right' ? (
@@ -102,12 +101,12 @@ const MyPage = () => {
 			{loggedInUser && loggedInUser.response && (
 				<div className='h-full w-full max-w-[1200px] relative flex justify-center items-center'>
 					{slide}
-					{slideIndex.current !== 0 && (
+					{slideIndex.current != 0 && (
 						<button id='left-btn' onClick={() => slideHandler('left')}>
 							<div className='arrow left'></div>
 						</button>
 					)}
-					{slideIndex.current !== 3 && (
+					{slideIndex.current != 3 && (
 						<button id='right-btn' onClick={() => slideHandler('right')}>
 							<div className='arrow right'></div>
 						</button>

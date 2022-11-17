@@ -14,24 +14,24 @@ function UserLike({user}) {
 
 	// Functions and Event Handlers
 	// ===========================================================================================
-	function modalHandler() {
-		setShow(prevState => !prevState)
-	}
 
 	function friends() {
 		if (loggedInUser.response.friends.find(friend => friend === user._id)) return true
 		else return false
 	}
 
-	function friendRequestHandler() {
-		setFormSwitch(prevState => !prevState)
+	function friendRequestHandler(e) {
+		if (formSwitch) {
+			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
+				setFormSwitch(prevState => !prevState)
+		} else setFormSwitch(prevState => !prevState)
 	}
 
 	// Return
 	//===========================================================================================
 	return (
 		<div>
-			<div onClick={modalHandler}>
+			<div onClick={() => setShow(true)}>
 				<ProfileCard user={user._id} />
 			</div>
 			<Modal size='sm' show={show} onHide={() => setShow(false)}>
@@ -48,7 +48,7 @@ function UserLike({user}) {
 						/>
 					</div>
 				) : (
-					<FriendRequestForm user={user} modalHandler={modalHandler} />
+					<FriendRequestForm user={user} friendRequestHandler={friendRequestHandler} />
 				)}
 			</Modal>
 		</div>

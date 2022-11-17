@@ -6,12 +6,12 @@ import {Spinner} from 'react-bootstrap'
 
 const Favorites = ({loggedInUser}) => {
 	// State Hooks and Variables
-	// ===========================================================================================
+	// ===========================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
 	const [favorites, dispatchFavorites] = useReducer(axiosReducer, {})
 
-	// Functions and Event Handlers
-	// ===========================================================================================
+	// Event Handlers and Functions
+	// ===========================================================================
 	useEffect(() => {
 		axiosAll(
 			'GET',
@@ -63,8 +63,8 @@ const Favorites = ({loggedInUser}) => {
 									.includes(searchCharacters.toLocaleLowerCase())
 						)
 						.map(restaurant => (
-							<div className='main-bg grid-centered p-2 w-[335px] h-[360px]'>
-								<RestaurantCard key={restaurant._id} restaurant={restaurant._id} />
+							<div className='main-bg grid-centered p-2 w-[335px] h-[360px]' key={restaurant._id}>
+								<RestaurantCard restaurant={restaurant._id} />
 							</div>
 						))
 				}

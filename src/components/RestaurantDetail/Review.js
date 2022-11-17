@@ -5,14 +5,20 @@ import { axiosAll, axiosReducer } from '../../data-and-functions/axiosAll'
 import { formatDateTime } from '../../data-and-functions/formatDateTime'
 
 const Review = ({ review }) => {
+	// State Hooks and Variables
+	// =========================================================================== 
     const [reviewer, dispatch] = useReducer(axiosReducer, { response: null })
     const { loggedInUser } = useContext(Context)
     const [date, time] = formatDateTime(review.createdAt)
 
+   	// Event Handlers and Functions
+	// =========================================================================== 
     useEffect(() => {
         axiosAll('GET', `/users/${review.reviewer}/profileCard`, loggedInUser.token, dispatch)
     },[])
 
+   	// Return
+	// =========================================================================== 
     return (
         <div>
             {reviewer.response ? 

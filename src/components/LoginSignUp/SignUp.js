@@ -31,20 +31,20 @@ const SignUp = () => {
 		e.preventDefault()
 		dispatchError({
 			key: 'initialize',
-			value: initialState
+			value: initialState,
 		})
 
 		if (loggedInUser.password === loggedInUser.confirmPassword) {
 			// Prevent submit with missing username or password
-			if(loggedInUser.username === '') {
+			if (loggedInUser.username === '') {
 				dispatchError({
 					key: 'username',
-					value: 'missing'
+					value: 'missing',
 				})
-			} else if(loggedInUser.email === '') {
+			} else if (loggedInUser.email === '') {
 				dispatchError({
 					key: 'email',
-					value: 'missing'
+					value: 'missing',
 				})
 			} else {
 				// Process signup request
@@ -57,7 +57,6 @@ const SignUp = () => {
 				)
 				// Check for error response
 				if (typeof response.data === 'string') {
-
 					dispatchError({
 						key: 'username',
 						value: response.data.indexOf('{ username:') !== -1 ? 'taken' : false,
@@ -67,17 +66,15 @@ const SignUp = () => {
 						value: response.data.indexOf('{ email:') !== -1 ? 'taken' : false,
 					})
 				} else {
-
 					setSuccess(true)
 					setShow(!show)
 				}
 			}
-
 		} else {
 			dispatchError({key: 'confirmPassword', value: true})
 		}
 	}
-	console.log(success)
+
 	useEffect(() => {
 		if (success) {
 			axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
@@ -113,7 +110,6 @@ const SignUp = () => {
 				<div className='signup start-container items-center white-bg w-72 md:w-96 p-5 space-y-4'>
 					<h1 className='red-header mx-auto pt-2'>SIGN UP</h1>
 					<form className='space-y-4' action='' onSubmit={submitHandler}>
-						
 						<input
 							className='username input account-input'
 							type='text'
@@ -121,14 +117,13 @@ const SignUp = () => {
 							onChange={changeHandler}
 							value={loggedInUser.username}
 						></input>
-						{error.username && 
+						{error.username && (
 							<p className='account-error'>
-								{error.username === 'taken' 
+								{error.username === 'taken'
 									? 'Username already exists'
-									: 'Username is required'
-								}
+									: 'Username is required'}
 							</p>
-						}
+						)}
 						<input
 							className='password input account-input'
 							type='password'
@@ -155,10 +150,9 @@ const SignUp = () => {
 						></input>
 						{error.email && (
 							<p className='account-error'>
-								{error.email === 'taken' 
+								{error.email === 'taken'
 									? 'Email address already exists'
-									: 'Email is required'
-								}
+									: 'Email is required'}
 							</p>
 						)}
 						<Row>
