@@ -21,9 +21,14 @@ const UserProfile = () => {
 	// ===========================================================================
 
 	useEffect(() => {
-		axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
+		axiosAll(
+			'GET',
+			`/users/username/${loggedInUser.username}`,
+			loggedInUser.token,
+			dispatchUser
+		)
 	}, [])
-	
+
 	useEffect(() => {
 		if (loggedInUser.response) {
 			const profileData = {
@@ -44,10 +49,10 @@ const UserProfile = () => {
 	// Event Handler and Functions
 	//===========================================================================
 	function inputChange(e) {
-		if(e.target.classList[0]==='about') {
+		if (e.target.classList[0] === 'about') {
 			dispatch({
 				key: 'about',
-				value: e.target.value.slice(0,501)
+				value: e.target.value.slice(0, 501),
 			})
 		} else {
 			dispatch({
@@ -68,7 +73,12 @@ const UserProfile = () => {
 		).then(res => {
 			typeof res.data === 'string' ? setError(true) : setError(false)
 
-			axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
+			axiosAll(
+				'GET',
+				`/users/${loggedInUser.response._id}`,
+				loggedInUser.token,
+				dispatchUser
+			)
 		})
 	}
 
@@ -99,12 +109,11 @@ const UserProfile = () => {
 						<label className='mx-auto'>about me</label>
 						<textarea
 							rows='5'
-							className='about w-[90%] input text-area rounded-[5px] indent-0 p-2'
+							className='about w-[90%] input text-area p-2'
 							as='textarea'
-							divs={3}
 							type='about-me'
 							placeholder='write your about me here for others to see'
-                            maxlength='500'
+							maxlength='500'
 							onChange={inputChange}
 							value={userData.about}
 						/>
@@ -141,9 +150,7 @@ const UserProfile = () => {
 								onChange={inputChange}
 								value={userData.email}
 							/>
-							{error && (
-								<p>this email address already exists, please enter another</p>
-							)}
+							{error && <p>this email address already exists, please enter another</p>}
 						</div>
 						<button
 							className='account-button w-1/2 mx-auto m-3'

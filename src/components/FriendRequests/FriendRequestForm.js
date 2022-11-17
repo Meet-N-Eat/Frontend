@@ -37,21 +37,21 @@ function FriendRequestForm({user, friendRequestHandler}) {
 	// ===========================================================================
 	return (
 		<div className='modals' onClick={friendRequestHandler}>
-			<div className='modals-content w-80 md:w-4/5 space-y-4 p-2'>
+			<div className='modals-content w-80 md:w-4/5 vertical space-y-4 p-2'>
 				{user && user.username ? (
 					<>
 						<p className='white-header text-white text-center'>
 							Add {user.username} as friend
 						</p>
-						<input
-							className='input w-full base-text'
+						<textarea
+							className='input text-area w-11/12 base-text'
 							as='textarea'
-							divs={3}
+							rows='5'
 							placeholder='Send an optional message'
 							maxlength='200'
 							onChange={handleChange}
-						></input>
-						<p className='text-slate-300 p-2 text-xs md:text-sm'>
+						></textarea>
+						<p className='text-slate-300 p-2 text-xs md:text-sm text-center'>
 							maximum length: 200 characters
 						</p>
 						<div className='grid-centered mb-4'>

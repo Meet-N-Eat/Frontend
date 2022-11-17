@@ -20,8 +20,11 @@ function UserLike({user}) {
 		else return false
 	}
 
-	function friendRequestHandler() {
-		setFormSwitch(prevState => !prevState)
+	function friendRequestHandler(e) {
+		if (formSwitch) {
+			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
+				setFormSwitch(prevState => !prevState)
+		} else setFormSwitch(prevState => !prevState)
 	}
 
 	// Return

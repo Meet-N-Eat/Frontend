@@ -369,6 +369,7 @@
 		@apply
 			resize-none
 			indent-0
+			rounded-[5px]
 		;
 	}
 
