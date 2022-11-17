@@ -1,22 +1,36 @@
 # Meet 'N Eat
 
-Ever found the perfect restaurant, but had no one to go with? Ever wanted to meet someone based on your love of food? Meet 'n Eat is an app that helps match people who have common tastes! The platform allows users to add friends and send DMs, as well as schedule and track meetups from their profile page. On top of that users can browse available restaurants and get information such as average user rating, general price point, and more.
+🤔 Ever found the perfect restaurant, but had no one to go with? Ever wanted to meet someone based on your love of food? 
 
-## Getting Started
+🍽 Meet 'n Eat is an app that helps match people who have common tastes! The platform allows users to add friends and send DMs, as well as schedule and track meetups from their profile page. On top of that users can browse available restaurants and get information such as reviews and other users who have liked that restaurant.
 
-Fork and clone the front and backend repositories from this link: [Front & Backend](https://github.com/Venus-she-s-got-it)
+## Deployed Website Link
+
+Head over to () to view more!
+
+# Planning 
+
+## 💡 Our Approach
+
+## 🧩 Entity-relationship model
+
+## 🔎 Component Heirarchy 
 
 
-### Installing
+## 🖌 Wireframes
 
-Run 'npm i' in your terminal after installing
 
-```
-npm i
+## 🧰 Tech Stack
+* [React.js](https://reactjs.org/)
+* [React Bootstrap](https://react-bootstrap.github.io/)
+* [Mongoose](https://mongoosejs.com/)
+* [MongoDB](https://www.mongodb.com/)
+* [Express](https://expressjs.com/) - Dependency Management
 
-```
+## 👀 Sreenshots
 
-## User Stories
+
+## 📝 User Stories
 
 These are a handful of the user stories we came up with:
 
@@ -33,17 +47,9 @@ These are a handful of the user stories we came up with:
 - As a User, I want to be able to send friend request to other people to keep track of the people I want to meet with
 
 
-## Built With
 
-* [React.js](https://reactjs.org/)
-* [React Bootstrap](https://react-bootstrap.github.io/)
-* [Mongoose](https://mongoosejs.com/)
-* [MongoDB](https://www.mongodb.com/)
-* [Express](https://expressjs.com/) - Dependency Management
-
-## Authors
+## 🧑🏼‍💻👩🏻‍💻🧑🏻‍💻 Authors
 
 * **Andrew Rethorford** - [GitHub](https://github.com/andrewretherford)
 * **Aimee Misaki** - [GitHub](https://github.com/aimeemisaki)
 * **David Sandoval** - [GitHub](https://github.com/DavidJoao)
-* **Hans Watkins** - [GitHub](https://github.com/hanswatkins)
