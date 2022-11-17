@@ -181,7 +181,7 @@ const CoordinateMeetup = ({
 					))}
 			</select>
 			{error.date && <h2 className='base-text'>pick a date and time for this event</h2>}
-			<input className='w-[320px] base-text' onChange={e => dateSelect(e, 'date')} type='date' value={date.date}/>
+			<input className='w-[320px] base-text ' onChange={e => dateSelect(e, 'date')} type='date' value={date.date}/>
 			<input className='w-[320px] base-text' onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
 			<button className='invite button base-text' onClick={toggleModal}>
 				invite friends
