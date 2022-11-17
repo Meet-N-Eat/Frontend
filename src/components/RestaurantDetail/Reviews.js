@@ -17,7 +17,7 @@ const Reviews = ({restaurantId, toggleModal}) => {
 	// Return
 	//===========================================================================================
 	return (
-		<div className='w-full overflow-auto scroll'>
+		<div className='w-full h-[300px] overflow-auto scroll'>
 			{!reviews.response && (
 				<div className='grid-centered p-4'>
 					<Spinner animation='border' variant="light" />
