@@ -86,10 +86,10 @@ const Event = ({event, updateEvents}) => {
 								<button className='base-text w-full' onClick={handleShow}>Cancel Event</button>
 								<Modal size='xl' show={show} onHide={handleClose}>
 									<div className='modals-content h-[200px] flex flex-col justify-around p-3'>
-										<div closeButton>
+										<div closeButton className='text-center'>
 											<h1 className='base-text'>Confirm cancelation</h1>
 										</div>
-										<div className='text-xs md:text-sm'>
+										<div className='text-xs md:text-sm text-center'>
 											Are you sure you want to cancel this event?
 										</div>
 										<div className='flex flex-row justify-between'>
