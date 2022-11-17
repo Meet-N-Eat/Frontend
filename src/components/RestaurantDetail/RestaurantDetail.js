@@ -47,6 +47,8 @@ const RestaurantDetail = () => {
 		} else setToggle(prevState => !prevState)
 	}
 
+
+	console.log(resDetails)
 	// Return
 	// ===========================================================================	
 	return (
@@ -59,7 +61,14 @@ const RestaurantDetail = () => {
 			{resDetails.response && userLikes.response && (
 				<div className='sm:w-3/4 grid-centered'>
 					<div className='flex flex-col items-center justify-center main-bg w-[335px] sm:w-full rounded-bl-[0] rounded-br-[0]'>
-						<RestaurantCard restaurant={resDetails.response._id} />
+						<div className='flex flex-col md:flex-row justify-center items-center'>
+							<RestaurantCard restaurant={resDetails.response._id} />
+							<div className='flex flex-col md:h-[250px] md:justify-center items-center'>
+								<p>{resDetails && resDetails.response.location.address1}</p>
+								<p className='md:m-4'>{resDetails.response.location.city}, {resDetails.response.location.state}</p>
+								<p>Phone: {resDetails.response.display_phone}</p>
+							</div>
+						</div>
 						{userLikes.response.length === 0 ? (
 								<div className='main-bg'></div>
 						) : (
