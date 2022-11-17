@@ -362,7 +362,12 @@
 	select,
 	input[type='date'],
 	input[type='time'] {
-		@apply border rounded text-center text-black;
+		@apply border modal-bg text-center text-white;
+	}
+
+	input::-webkit-calendar-picker-indicator {
+		color: red;
+		opacity: 1;
 	}
 
 	.text-area {

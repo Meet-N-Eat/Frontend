@@ -48,7 +48,7 @@ function FriendRequestForm({user, friendRequestHandler}) {
 							as='textarea'
 							rows='5'
 							placeholder='Send an optional message'
-							maxlength='200'
+							maxLength='200'
 							onChange={handleChange}
 						></textarea>
 						<p className='text-slate-300 p-2 text-xs md:text-sm text-center'>

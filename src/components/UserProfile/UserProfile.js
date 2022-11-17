@@ -113,7 +113,7 @@ const UserProfile = () => {
 							as='textarea'
 							type='about-me'
 							placeholder='write your about me here for others to see'
-							maxlength='500'
+							maxLength='500'
 							onChange={inputChange}
 							value={userData.about}
 						/>

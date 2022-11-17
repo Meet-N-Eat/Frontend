@@ -53,8 +53,8 @@ const SearchResults = () => {
 						{restaurantsData.response
 							.slice(indexOfFirstCard, indexOfLastCard)
 							.map(restaurant => (
-								<div className='main-bg grid-centered p-2 w-[335px] h-[360px]'>
-									<RestaurantCard restaurant={restaurant._id} key={restaurant._id} />
+								<div key={restaurant._id} className='main-bg grid-centered p-2 w-[335px] h-[360px]'>
+									<RestaurantCard restaurant={restaurant._id} />
 								</div>
 							))}
 					</div>
