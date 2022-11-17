@@ -25,35 +25,34 @@ Head over to () to view more!
 
 ## 🖌 Wireframes
 * Home
-* ![Wireframe_HomePage](https://user-images.githubusercontent.com/93743792/202347923-73a186c6-de0a-497e-ae0c-2ac1a9db97c0.png)
+![Wireframe_HomePage](https://user-images.githubusercontent.com/93743792/202347923-73a186c6-de0a-497e-ae0c-2ac1a9db97c0.png)
 
 * SignUp
-(https://user-images.githubusercontent.com/93743792/202347023-691e50af-c6aa-4dfc-b9cf-c261ddf109dc.png)
+![Wireframe_SignUp](https://user-images.githubusercontent.com/93743792/202348045-23c52884-238f-498f-a519-a6440bb6f010.png)
 
 * CoordinateMeetup (MyPage)
-(https://user-images.githubusercontent.com/93743792/202347074-b4a5875c-71ca-4019-b5ff-2638f7422c3a.png)
+![Wireframe_CoordinateMeetUp](https://user-images.githubusercontent.com/93743792/202348125-8122a11f-e7b1-4169-a8ef-cf385cc781ec.png)
 
 * Favorites (MyPage)
-(https://user-images.githubusercontent.com/93743792/202347103-7dc9f7a8-22e9-4133-a763-551d4e60404f.png)
+![Wireframe_Favorites](https://user-images.githubusercontent.com/93743792/202348136-41ffd50d-d26d-4353-a18d-93c5c8aa0f7d.png)
 
 * Friends (MyPage) 
-(https://user-images.githubusercontent.com/93743792/202347245-75848265-081d-488c-9640-1f6e829d08ca.png)
+![Wireframe_Friends](https://user-images.githubusercontent.com/93743792/202348179-1bb13a5a-d621-4bd2-99d3-c33c0719649b.png)
 
 * Itinerary (MyPage)
-(https://user-images.githubusercontent.com/93743792/202347330-26718836-8cec-417e-bf74-185e20b67c34.png)
+![Screen Shot 2022-11-17 at 12 12 31](https://user-images.githubusercontent.com/93743792/202348193-528d2d0e-f158-498d-959c-4412c2df992c.png)
 
 * Messages
-(https://user-images.githubusercontent.com/93743792/202347425-d217ffcc-34b5-4305-8de6-8d1248ec3b64.png)
+![Wireframe_Messages](https://user-images.githubusercontent.com/93743792/202348253-a85806c1-f354-4768-afa9-e1b4006d3426.png)
 
 * MessageChat
-(https://user-images.githubusercontent.com/93743792/202347512-2a9ddf5b-7974-4dd8-8419-a3826ad1a732.png)
+![Wireframe_MessageChat](https://user-images.githubusercontent.com/93743792/202348277-87598605-8bf9-4d22-8a7d-dc49c67698bc.png)
 
 * SearchResults
-(https://user-images.githubusercontent.com/93743792/202347569-ed6274b5-a328-4ee0-8236-7b3feac37674.png)
+![Wireframe_SearchResults](https://user-images.githubusercontent.com/93743792/202348293-d037cc09-fa42-4497-bd79-538188358e66.png)
 
 * FriendRequests
-(https://user-images.githubusercontent.com/93743792/202347376-cf394756-e343-4a26-b219-5a480d20fd40.png)
-
+![Wireframe_FriendRequests](https://user-images.githubusercontent.com/93743792/202348320-66bed14a-6a27-4d62-a40c-2fe2e9d912bc.png)
 
 
 ## 🧰 Tech Stack
