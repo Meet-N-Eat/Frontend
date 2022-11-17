@@ -25,7 +25,7 @@ Head over to () to view more!
 
 ## 🖌 Wireframes
 * Home
-![Wireframe_HomePage](https://user-images.githubusercontent.com/93743792/202347923-73a186c6-de0a-497e-ae0c-2ac1a9db97c0.png)
+![Wireframe_HomePage](https://user-images.githubusercontent.com/93743792/202348449-3619ed28-e3f8-4f62-b27e-6fcc70cab1c0.png)
 
 * SignUp
 ![Wireframe_SignUp](https://user-images.githubusercontent.com/93743792/202348045-23c52884-238f-498f-a519-a6440bb6f010.png)
