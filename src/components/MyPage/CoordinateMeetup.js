@@ -161,7 +161,7 @@ const CoordinateMeetup = ({
 			<h1 className='white-header'>meet 'n eat with friends</h1>
 			{error.restaurant && <h2>select a restaurant for this event</h2>}
 			<select
-				className='w-[320px]'
+				className='w-[320px] dropdowns'
 				defaultValue={
 					(meetup.restaurant &&
 						favorites.response &&
