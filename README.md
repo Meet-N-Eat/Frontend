@@ -85,11 +85,9 @@ These are a handful of the user stories we came up with:
 ![MyPage_Desktop](https://user-images.githubusercontent.com/93743792/202349587-633180dd-dacc-4be5-a73a-2712ca95b8fe.png)
 
 * Navigation (Mobile)
-<br/>
 ![NavBar_Mobile](https://user-images.githubusercontent.com/93743792/202349597-8b7fc9fa-e5c0-4cca-9a56-cebd4816ea5e.png)
 
 * MessageChat (Mobile)
-<br/>
 ![MessageChat_Mobile](https://user-images.githubusercontent.com/93743792/202349608-ecb51641-9a43-4b3f-878c-086dd7abb100.png)
 
 
