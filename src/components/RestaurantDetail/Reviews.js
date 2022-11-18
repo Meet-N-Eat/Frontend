@@ -4,7 +4,7 @@ import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
 import Review from './Review'
 
-const Reviews = ({restaurantId, toggleModal}) => {
+const Reviews = ({restaurantId, toggle}) => {
 	// State hooks and variable declarations
 	// ===========================================================================
 	const [reviews, dispatchReviews] = useReducer(axiosReducer, {})
@@ -12,7 +12,7 @@ const Reviews = ({restaurantId, toggleModal}) => {
 
 	useEffect(() => {
 		axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatchReviews)
-	}, [toggleModal])
+	}, [toggle])
 
 	// Return
 	//===========================================================================================
