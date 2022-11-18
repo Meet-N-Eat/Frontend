@@ -1,7 +1,7 @@
 import {useContext, useEffect, useState, useRef} from 'react'
+import {Link, Outlet} from 'react-router-dom'
 import {axiosAll} from '../../data-and-functions/axiosAll'
 import {Context} from '../../App'
-// import './MyProfile.css'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
 	faUtensils,
@@ -17,7 +17,8 @@ import Itinerary from './Itinerary'
 const MyPage = () => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser, dispatchUser} = useContext(Context)	
+	const {loggedInUser, dispatchUser} = useContext(Context)
+	const [currentPage, setCurrentPage] = useState('invite')
 
 	// Stating slideItems as an array of components
 	const slideItems = [
@@ -60,12 +61,10 @@ const MyPage = () => {
 	}, [])
 
 	function slideHandler(direction) {
-		direction === 'right' ? (
-			slideIndex.current < 3 && slideIndex.current++
-		) : (
-			slideIndex.current > 0 && slideIndex.current--
-		)
-		
+		direction === 'right'
+			? slideIndex.current < 3 && slideIndex.current++
+			: slideIndex.current > 0 && slideIndex.current--
+
 		setSlide(slideItems[slideIndex.current])
 	}
 
@@ -77,17 +76,29 @@ const MyPage = () => {
 	function generateTabs() {
 		const tabArray = []
 		for (const key in navTabs) {
-			tabArray.push (
+			tabArray.push(
 				<li
-					className='h-20 w-32 bg-red-800/90 shadow-2xl shadow-slate-800 text-white border-r border-black rounded-t-2xl grid items-center'
-					key={key} 
-					onClick={() => tabHandler(key)}>
-					<div className='text-center'>
+					className={
+						'h-20 w-32 bg-red-800/90 shadow-2xl shadow-slate-800 text-white border-r border-black rounded-t-2xl grid items-center' +
+						(navTabs[key].title === currentPage 
+							? ' bg-white' 
+							: ' hover:bg-white')
+					}
+					key={key}
+				>
+					<Link
+						to={navTabs[key].title}
+						className={
+							(navTabs[key].title === currentPage && ' text-red-800/90')
+							+ ' text-center no-underline hover:text-red-800/90'
+						}
+						onClick={() => setCurrentPage(navTabs[key].title)}
+					>
 						<div>
 							<FontAwesomeIcon icon={navTabs[key].icon} />
 						</div>
 						<div>{navTabs[key].title}</div>
-					</div>
+					</Link>
 				</li>
 			)
 		}
@@ -100,7 +111,7 @@ const MyPage = () => {
 		<div className='grid-centered'>
 			{loggedInUser && loggedInUser.response && (
 				<div className='h-full w-full max-w-[1200px] relative flex justify-center items-center'>
-					{slide}
+					<Outlet />
 					{slideIndex.current != 0 && (
 						<button id='left-btn' onClick={() => slideHandler('left')}>
 							<div className='arrow left'></div>
@@ -113,9 +124,7 @@ const MyPage = () => {
 					)}
 				</div>
 			)}
-			<ul className='w-full h-12 flex-centered fixed left-0 bottom-0'>
-				{generateTabs()}
-			</ul>
+			<ul className='w-full h-12 flex-centered fixed left-0 bottom-0'>{generateTabs()}</ul>
 		</div>
 	)
 }
