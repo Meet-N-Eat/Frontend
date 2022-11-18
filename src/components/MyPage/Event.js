@@ -111,8 +111,8 @@ const Event = ({event, updateEvents}) => {
 				</div>
 				<div className='grid-centered'>
 					<RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
-					<Modal show={modalShow} onHide={() => setModalShow(true)} aria-labelledby='whosgoing-modal'>
-						<div className='modals-content'>
+					<Modal className='w-full' show={modalShow} onHide={() => setModalShow(false)} aria-labelledby='whosgoing-modal'>
+						<div className='modals-content max-h-[500px] overflow-auto scroll'>
 							<Modal.Header>
 								<Modal.Title className='text-white mx-auto'>who's going?</Modal.Title>
 							</Modal.Header>
@@ -130,7 +130,7 @@ const Event = ({event, updateEvents}) => {
 						</div>
 					</Modal>
 					<div className='py-2'>
-						<button className='button base-text' onClick={() => setModalShow(false)}>
+						<button className='button base-text' onClick={() => setModalShow(true)}>
 							Who's going?
 						</button>
 					</div>
