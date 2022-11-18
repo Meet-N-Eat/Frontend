@@ -37,14 +37,6 @@ const Search = () => {
 		searchCriteria && navigate(searchString)
 	}
 
-	// function toggleModal(e) {
-	// 	if(toggle) {
-	// 		if(e.target.className.includes('modals') && !e.target.className.includes('content'))
-	// 			setToggle(prev => !prev)
-	// 	} 
-	// 	else setToggle(prev => !prev)	
-	// }
-
 	// Return
 	// ===========================================================================
 	return (

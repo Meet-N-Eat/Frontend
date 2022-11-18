@@ -2,12 +2,13 @@ import {useEffect, useContext, useReducer, useState} from 'react'
 import {Link} from 'react-router-dom'
 import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import toggleModal from '../../data-and-functions/toggleModal'
 import {messageThreads} from '../../data-and-functions/messageThreads'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faMessage} from '@fortawesome/free-solid-svg-icons'
+import {Spinner} from 'react-bootstrap'
 import Message from './Message'
 import ProfileCard from '../ProfileCard'
-import {Spinner} from 'react-bootstrap'
 
 function Messages() {
 	// State Hooks and Variables
@@ -37,23 +38,19 @@ function Messages() {
 			})
 	}, [messages.response])
 
-	function toggleModal() {
-		setToggle(prev => !prev)
-	}
-
 	// Return
 	// ===========================================================================	
 	return (
 		<div>
 			<div className='h-[73px] standard-width flex-centered relative mx-auto main-bg rounded-b-none'>
 				<p className='white-header m-auto'>conversations</p>
-				<button className='absolute top-5 right-10 text-xl' onClick={toggleModal}>
+				<button className='absolute top-5 right-10 text-xl' onClick={() => setToggle(toggleModal())}>
 					<FontAwesomeIcon className='' icon={faMessage} />
 				</button>
 			</div>
 			<div className='h-max max-h-[440px] standard-width vertical main-bg mx-auto p-4 rounded-t-none overflow-y-auto md:gap-y-2 scroll'>
 				{toggle && (
-					<div className='modals' onClick={toggleModal}>
+					<div className='modals' onClick={e => setToggle(toggleModal(e))}>
 						<div className='modals-content display-friends'>
 							{!loggedInUser.response && (
 								<div className='m-auto'>
@@ -62,7 +59,7 @@ function Messages() {
 							)}
 							{loggedInUser.response &&
 								loggedInUser.response.friends.map(friend => (
-									<Link key={friend} to={`/messages/${friend}`}>
+									<Link className='hover:text-red-600' key={friend} to={`/messages/${friend}`}>
 										<ProfileCard user={friend} />
 									</Link>
 								))
