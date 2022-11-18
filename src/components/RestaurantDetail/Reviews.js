@@ -14,6 +14,9 @@ const Reviews = ({restaurantId, toggle}) => {
 		axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatchReviews)
 	}, [toggle])
 
+
+	console.log(reviews)
+
 	// Return
 	//===========================================================================================
 	return (
