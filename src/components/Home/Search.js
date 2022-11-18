@@ -37,14 +37,6 @@ const Search = () => {
 		searchCriteria && navigate(searchString)
 	}
 
-	function toggleModal(e) {
-		if(toggle) {
-			if(e.target.className.includes('modals') && !e.target.className.includes('content'))
-				setToggle(prev => !prev)
-		} 
-		else setToggle(prev => !prev)	
-	}
-
 	// Return
 	// ===========================================================================
 	return (
@@ -61,7 +53,7 @@ const Search = () => {
 						/>
 					</div>
 					<div className='place-self-end'>
-						<button type='button' onClick={toggleModal}>
+						<button type='button' onClick={() => setToggle(true)}>
 							<FontAwesomeIcon icon={faSliders} className='icon h-8' />
 						</button>
 					</div>
@@ -71,7 +63,7 @@ const Search = () => {
 				<SearchFilters
 					searchCriteria={searchCriteria}
 					dispatch={dispatch}
-					toggleModal={toggleModal}
+					setToggle={setToggle}
 				/>
 			}
 		</div>

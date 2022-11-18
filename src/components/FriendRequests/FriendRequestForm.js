@@ -1,9 +1,10 @@
 import React, {useContext, useReducer} from 'react'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import toggleModal from '../../data-and-functions/toggleModal'
 import {Context} from '../../App'
 import {Spinner} from 'react-bootstrap'
 
-function FriendRequestForm({user, friendRequestHandler}) {
+function FriendRequestForm({user, setToggle}) {
 	// State Hooks and Variables
 	// ===========================================================================
 	const {loggedInUser} = useContext(Context)
@@ -30,14 +31,15 @@ function FriendRequestForm({user, friendRequestHandler}) {
 			null,
 			request
 		)
-		friendRequestHandler()
+
+		setToggle(false)
 	}
 
 	// Return
 	// ===========================================================================
 	return (
-		<div className='modals' onClick={friendRequestHandler}>
-			<div className='modals-content w-80 md:w-4/5 vertical space-y-4 p-2'>
+		<div className='modals' onClick={e => setToggle(toggleModal(e))}>
+			<div className='modals-content w-4/5 max-w-[1080px] vertical space-y-4 p-2'>
 				{user && user.username ? (
 					<>
 						<p className='white-header text-white text-center'>

@@ -9,7 +9,7 @@ function UserLike({user}) {
 	// State Hooks and Variables
 	// ===========================================================================================
 	const {loggedInUser} = useContext(Context)
-	const [formSwitch, setFormSwitch] = useState(false)
+	const [toggle, setToggle] = useState(false)
 	const [show, setShow] = useState(false)
 
 	// Functions and Event Handlers
@@ -19,14 +19,7 @@ function UserLike({user}) {
 		if (loggedInUser.response.friends.find(friend => friend === user._id)) return true
 		else return false
 	}
-
-	function friendRequestHandler(e) {
-		if (formSwitch && e) {
-			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
-				setFormSwitch(prevState => !prevState)
-		} else setFormSwitch(prevState => !prevState)
-	}
-
+console.log(toggle)
 	// Return
 	//===========================================================================================
 	return (
@@ -35,20 +28,16 @@ function UserLike({user}) {
 				<ProfileCard user={user._id} />
 			</div>
 			<Modal size='sm' show={show} onHide={() => setShow(false)}>
-				{!formSwitch ? (
+				{toggle ? (
+					<FriendRequestForm user={user} setToggle={setToggle} />
+				) : (
 					<div className='h-auto w-72 modal-bg grid-centered border mt-36 mx-auto p-4'>
 						<div className='grid place-content-center'>
 							<ProfileCard user={user._id} />
 						</div>
 						<p className='text-white mb-2'>{user.about}</p>
-						<OutreachButtons
-							friends={friends()}
-							user={user}
-							friendRequestHandler={friendRequestHandler}
-						/>
+						<OutreachButtons friends={friends()} user={user} setToggle={setToggle} />
 					</div>
-				) : (
-					<FriendRequestForm user={user} friendRequestHandler={friendRequestHandler} />
 				)}
 			</Modal>
 		</div>

@@ -3,12 +3,13 @@ import {Link, useParams} from 'react-router-dom'
 import {Spinner} from 'react-bootstrap'
 import {Context} from '../../App'
 import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import toggleModal from '../../data-and-functions/toggleModal'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faCirclePlus, faCircleMinus} from '@fortawesome/free-solid-svg-icons'
 import RestaurantCard from '../RestaurantCard'
 import Reviews from './Reviews'
 import ReviewForm from './ReviewForm'
 import UserLike from './UserLike'
-import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
-import {faCirclePlus, faCircleMinus} from '@fortawesome/free-solid-svg-icons'
 
 const RestaurantDetail = () => {
 	// State Hooks and Variables
@@ -32,23 +33,12 @@ const RestaurantDetail = () => {
 				loggedInUser.token,
 				dispatchUser
 			)
-	}, [])
 
-	useEffect(() => {
 		// Get restaurant state
 		axiosAll('GET', `/restaurants/${restaurantId}`, null, dispatchRestaurant)
 		axiosAll('GET', `/restaurants/${restaurantId}/userLikes`, null, dispatchLikes)
 	}, [])
 
-	function modalHandler(e) {
-		if (toggle) {
-			if (e.target.className.includes('modals') && !e.target.className.includes('content'))
-				setToggle(prevState => !prevState)
-		} else setToggle(prevState => !prevState)
-	}
-
-
-	console.log(resDetails)
 	// Return
 	// ===========================================================================	
 	return (
@@ -129,15 +119,15 @@ const RestaurantDetail = () => {
 									<button
 										className='button my-2 base-text'
 										type='submit'
-										onClick={modalHandler}
+										onClick={(e) => setToggle(toggleModal(e))}
 									>
 										write a review
 									</button>
 									{toggle && (
-										<div className='modals' onClick={modalHandler}>
+										<div className='modals' onClick={e => setToggle(toggleModal(e))}>
 											<ReviewForm
 												restaurantId={resDetails.response._id}
-												modalHandler={modalHandler}
+												setToggle={setToggle}
 											/>
 										</div>
 									)}

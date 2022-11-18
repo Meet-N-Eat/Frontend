@@ -46,7 +46,7 @@ These are a handful of the user stories we came up with:
  - As a User, I want to be able to search restaurants by certain attributes, such as genre, price, etc to help me narrow down the choices																
  - As a User, I want to be able to search by multiple attributes at once so that I don't have to search separately for each	
  - As a User, I want to be able to schedule meetups and invite other users to them from my profile in order to keep track of who I'm meeting, when I'm meeting them, and where we're going		
-- As a User, I want to be able to send friend request to other people to keep track of the people I want to meet with
+ - As a User, I want to be able to send friend request to other people to keep track of the people I want to meet with
 
 ## 🖌 Wireframes
 * Home

@@ -2,7 +2,7 @@ import {useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Context} from '../App'
 
-function OutreachButtons({user, friends, friendRequestHandler}) {
+function OutreachButtons({user, friends, setToggle}) {
 	const navigate = useNavigate()
 	const {loggedInUser} = useContext(Context)
 
@@ -13,12 +13,12 @@ function OutreachButtons({user, friends, friendRequestHandler}) {
 	return (
 		<div className='rounded-2xl'>
 			{user._id !== loggedInUser.response._id &&
-				(friends && friends === true ? (
+				(friends ? (
 					<button className='outreach-button' onClick={handleMessage}>
 						<p className='base-text'>Message {user.displayname || user.username}</p>
 					</button>
 				) : (
-					<button className='outreach-button' onClick={friendRequestHandler}>
+					<button className='outreach-button' onClick={() => setToggle(true)}>
 						Add {user.displayname || user.username} as friend
 					</button>
 				))}

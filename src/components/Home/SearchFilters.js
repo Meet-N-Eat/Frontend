@@ -1,8 +1,9 @@
 import {categoriesArray} from '../../data-and-functions/categoriesArray'
 import {citiesArray} from '../../data-and-functions/citiesArray'
 import {priceRangeArray} from '../../data-and-functions/priceRangeArray'
+import toggleModal from '../../data-and-functions/toggleModal'
 
-const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
+const SearchFilters = ({searchCriteria, dispatch, setToggle }) => {
 	// State hooks and Variables
 	// ===========================================================================
 	const {city, category, price, wheelchairAccessible, openLate} = searchCriteria
@@ -40,7 +41,7 @@ const SearchFilters = ({searchCriteria, dispatch, toggleModal }) => {
 		<div 
 			className='modals' 
 			id='filter-modal'
-			onClick={toggleModal}
+			onClick={e => setToggle(toggleModal(e))}
 		>
 			<form className='modals-content filter-modals p-4 vertical items-center space-y-3'>
 				<p className='white-header font-normal'>Filter Options</p>
