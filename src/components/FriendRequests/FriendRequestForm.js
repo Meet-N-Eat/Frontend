@@ -23,7 +23,8 @@ function FriendRequestForm({user, setToggle}) {
 		})
 	}
 
-	const handleSubmit = () => {
+	const handleSubmit = (e) => {
+		e.stopPropagation()
 		axiosAll(
 			'POST',
 			`/users/${user._id}/friendInvites`,
@@ -31,7 +32,6 @@ function FriendRequestForm({user, setToggle}) {
 			null,
 			request
 		)
-
 		setToggle(false)
 	}
 

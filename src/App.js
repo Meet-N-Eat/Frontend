@@ -14,6 +14,10 @@ import UserProfile from "./components/UserProfile/UserProfile"
 import FriendRequests from "./components/FriendRequests/FriendRequests"
 import LogIn from "./components/LoginSignUp/LogIn"
 import SignUp from "./components/LoginSignUp/SignUp"
+import CoordinateMeetup from "./components/MyPage/CoordinateMeetup"
+import Friends from "./components/MyPage/Friends"
+import Favorites from "./components/MyPage/Favorites"
+import Itinerary from "./components/MyPage/Itinerary"
 
 export const Context = createContext()
 
@@ -39,7 +43,13 @@ function App() {
                   <Route path='/users/authentication/login' element={<LogIn />} />
                   <Route path='/users/authentication/signup' element={<SignUp />} />
                   <Route path='/results/:searchString' element={<SearchResults />} />
-                  <Route path='/my-page' element={<MyPage />} />
+                  <Route path='/my-page' element={<MyPage />} >
+                     <Route index element={<CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} />} />
+                     <Route path='invite' element={<CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} />} />
+                     <Route path='friends' element={<Friends loggedInUser={loggedInUser} />} />
+                     <Route path='favorites' element={<Favorites loggedInUser={loggedInUser} />} />
+                     <Route path='itinerary' element={<Itinerary loggedInUser={loggedInUser} />} />
+                  </Route>
                   <Route path='/profile' element={<UserProfile />} />
                   <Route path='/restaurants/:restaurantId' element={<RestaurantDetail />} />
                   <Route path='/messages' element={<Messages />} />
