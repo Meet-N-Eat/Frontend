@@ -6,6 +6,7 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
       headers: {
          Authorization: `Bearer ${authToken}`,
       },
+      withCredentials: true
    }
    let res
    switch (method) {
