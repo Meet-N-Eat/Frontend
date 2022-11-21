@@ -27,6 +27,26 @@ Head over to () to view more!
 
 ## 💡 Our Approach
 
+Our group project application, for which we built our first version during our Software Engineering Intensive program at General Assembly, we utilized the Scrum methodology, assigning roles of Product Owner, Scrum Master and Development representatives to each of our project members. First, we began with each member coming up with his/her/their own user stories with the Product Owner's vision of the application in mind. We, then, conglomerated our ideas and organized our first draft of our project's user stories and general framework of the application's functionalities. 
+
+In order to cohesively plan our backend that could support our frontend, we created a spreasheet of schemas and backend routes - taking into consideration our use of Mongoose, MongoDB and Express - and subsequently built an entity-relationship model. 
+
+For our frontend planning, each member drafted wireframes, which we consolidated into one set of wireframes that we, especially the Product Owner, believed met the standards of the product's value. Furthermore, we constructed a component heirarchy, mapping out the network of parent, children and sibling components, and included a table of each component with its name, description, frontend route (if required) and whether it was a state or props (if applicable).
+
+**We completed our first version in less than two weeks, which included three sprints - one to build the backend, one to build the frontend functionalities and one to complete styling.**
+
+**_Although we passed not only the project's MVP set by our program's guidelines, but also a few of our own stretch goals, we were eager to further improve our application and see our own skills as fullstack software engineers to its fullest potential._**
+
+Thus, after the program ended, we first identified the frontend functionality and backend inefficiencies we did not have time to work on during our time at General Assembly and essentially began from scratch. We, then, began with a completely new set of wireframes that would embody everything we wanted for our application. Subsequently, we remodeled our component heirarchy and table according to our new frontend functionality requirements.  
+
+While maintaining most of our schemas/models in our backend, we reconfigured our controllers with more efficient ways to send back specific bodies of data to the frontend that were integral for each component. For our frontend, we built out all of the functionality we laid out in our component heirarchy and redesigned our whole styling, including responsive design, using Tailwind CSS. 
+
+Although we all had different schedules and oftentimes were in completely different timezones, we maintained the Scrum methodology and contributed our time and skills to build this application.
+
+**In total, we worked for over six weeks, compartmentalized by three sprints (one for MVP, one for polishing up all functionality and one for styling and error handling), with bi-weekly, if not daily, standup Zoom calls and continous Slack communication. We also organized our work by utilizing team boards via Trello to keep track of which components required work to be done on, which team member was currently working on which component and which component was finished.**
+
+**_Our general approach after the program ended was asking ourselves, "What is missing? What do we need to fix?" Ultimately, however, our approach to all of these questions relied on teamwork and each member's hard work and dedication to enhance our project. We are grateful for this experience and hope you all get to enjoy Meet N' Eat._**
+
 ## 🧩 Entity-relationship model
 
 ## 🔎 Component Heirarchy 
