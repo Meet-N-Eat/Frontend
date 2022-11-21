@@ -21,6 +21,7 @@ Head over to () to view more!
 * [Mongoose](https://mongoosejs.com/)
 * [MongoDB](https://www.mongodb.com/)
 * [Express](https://expressjs.com/) - Dependency Management
+* [TailwindCSS](https://tailwindcss.com/)
 
 
 # Planning 
@@ -39,7 +40,7 @@ For our frontend planning, each member drafted wireframes, which we consolidated
 
 Thus, after the program ended, we first identified the frontend functionality and backend inefficiencies we did not have time to work on during our time at General Assembly and essentially began from scratch. We, then, began with a completely new set of wireframes that would embody everything we wanted for our application. Subsequently, we remodeled our component heirarchy and table according to our new frontend functionality requirements.  
 
-While maintaining most of our schemas/models in our backend, we reconfigured our controllers with more efficient ways to send back specific bodies of data to the frontend that were integral for each component. For our frontend, we built out all of the functionality we laid out in our component heirarchy and redesigned our whole styling, including responsive design, using Tailwind CSS. 
+While maintaining most of our schemas/models in our backend, we reconfigured our controllers with more efficient ways to send back specific bodies of data to the frontend that were integral for each component. For our frontend, we built out all of the functionality we laid out in our component heirarchy and redesigned our whole styling, including responsive design, using TailwindCSS. 
 
 Although we all had different schedules and oftentimes were in completely different timezones, we maintained the Scrum methodology and contributed our time and skills to build this application.
 
