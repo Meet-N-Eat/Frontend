@@ -15,7 +15,6 @@ function AuthProvider({children}) {
 		JSON.parse(localStorage.getItem('loginStatus' || false))
 	)
 
-
 	return (
 		<AuthContext.Provider value={{loggedInUser, dispatchUser, loginStatus, setLoginStatus, defaultImage}}>
 			{children}

@@ -1,10 +1,9 @@
-import {useContext} from 'react'
 import {useNavigate} from 'react-router-dom'
-import {Context} from '../App'
+import useAuth from '../hooks/useAuth'
 
 function OutreachButtons({user, friends, setToggle}) {
 	const navigate = useNavigate()
-	const {loggedInUser} = useContext(Context)
+	const {loggedInUser} = useAuth()
 
 	const handleMessage = () => {
 		navigate(`/messages/${user.id}`)

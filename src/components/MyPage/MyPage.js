@@ -1,7 +1,7 @@
-import {useContext, useEffect, useState, useRef} from 'react'
+import {useEffect, useState, useRef} from 'react'
 import {Link, Outlet, useNavigate} from 'react-router-dom'
+import useAuth from '../../hooks/useAuth'
 import {axiosAll} from '../../data-and-functions/axiosAll'
-import {Context} from '../../App'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
 	faUtensils,
@@ -13,7 +13,7 @@ import {
 const MyPage = () => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser} = useAuth()
 	const [currentPage, setCurrentPage] = useState('invite')
 	const navigate = useNavigate()
 	const pageIndex = useRef(0)

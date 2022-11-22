@@ -1,13 +1,12 @@
-import {useContext} from 'react'
+import useAuth from '../../hooks/useAuth'
 import {formatDateTime} from '../../data-and-functions/formatDateTime'
 import {axiosAll} from '../../data-and-functions/axiosAll'
-import {Context} from '../../App'
 import ProfileCard from '../ProfileCard'
 
 const FriendRequest = ({friendRequest, dispatchRequests}) => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser} = useContext(Context)
+	const {loggedInUser} = useAuth()
 	const [date, time] = formatDateTime(friendRequest.createdAt)
 
 	// Event Handlers and Functions

@@ -1,7 +1,7 @@
 import moment from 'moment'
-import React, {useState, useEffect, useContext} from 'react'
+import React, {useState} from 'react'
 import {Modal, NavDropdown} from 'react-bootstrap'
-import {Context} from '../../App'
+import useAuth from '../../hooks/useAuth'
 import {axiosAll} from '../../data-and-functions/axiosAll'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faEllipsisVertical} from '@fortawesome/free-solid-svg-icons'
@@ -12,14 +12,10 @@ import ProfileCard from '../ProfileCard'
 const Event = ({event, updateEvents}) => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser} = useAuth()
 	const [show, setShow] = useState(false)
 	const [showEdit, setShowEdit] = useState(false)
 	const [modalShow, setModalShow] = useState(false)
-
-	const showHandler = () => {
-		setModalShow(!modalShow)
-	}
 
 	// DATE AND HOUR FORMAT
 	let eventDate = moment(event.date)

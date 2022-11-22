@@ -1,6 +1,6 @@
 import {useReducer} from 'react'
 
-function useGlobalReducer({initialState}) {
+function useGlobalReducer(initialState) {
 	function globalReducer(state, object) {
 		switch (object.key) {
 			case 'initialize':

@@ -1,7 +1,5 @@
-import {createContext, useReducer} from "react"
 import {Routes, Route} from "react-router-dom"
-import {axiosReducer} from "./data-and-functions/axiosAll"
-import defaultImage from "./assets/defaultImage.png"
+import useAuth from './hooks/useAuth'
 import About from "./components/About"
 import Home from "./components/Home/Home"
 import Messages from "./components/Messages/Messages"
@@ -20,6 +18,7 @@ import Favorites from "./components/MyPage/Favorites"
 import Itinerary from "./components/MyPage/Itinerary"
 
 function App() {
+   const {loggedInUser, dispatchUser} = useAuth()
 
    return (
       <div className='App h-full'>

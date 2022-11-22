@@ -1,7 +1,7 @@
-import {useReducer, useContext, useEffect, useRef} from 'react'
+import {useReducer, useEffect, useRef} from 'react'
 import {useNavigate, useLocation, Link} from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
-import {Context} from '../../App'
+import useAuth from '../../hooks/useAuth'
 import {axiosAll} from '../../data-and-functions/axiosAll'
 
 const LogIn = () => {
@@ -23,7 +23,7 @@ const LogIn = () => {
 		},
 		{success: false, badLogin: false}
 	)
-	const {loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser} = useAuth()
 	const navigate = useNavigate()
 	const location = useLocation()
 

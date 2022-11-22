@@ -1,14 +1,14 @@
-import {useContext, useState, useEffect} from 'react'
-import {Context} from '../../App'
+import {useState, useEffect} from 'react'
+import useAuth from '../../hooks/useAuth'
+import { axiosAll } from '../../data-and-functions/axiosAll'
+import { Modal } from 'react-bootstrap'
 import Search from './Search'
 import SignUp from '../LoginSignUp/SignUp'
-import { Modal } from 'react-bootstrap'
-import { axiosAll } from '../../data-and-functions/axiosAll'
 
 const Home = () => {
 	// State hooks and Variables
 	// ===========================================================================
-	const {loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser} = useAuth()
 	const [show, setShow] = useState(false)
 
 	// Event Handlers and Functions
