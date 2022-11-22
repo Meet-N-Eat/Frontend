@@ -14,9 +14,8 @@ const Home = () => {
 	// Event Handlers and Functions
 	// ===========================================================================
 	useEffect(()=> {
-		loggedInUser.token
-			? axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
-			: axiosAll('GET', '/users/refresh', null, dispatchUser)		
+		loggedInUser.token 
+			&& axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)	
 	},[])
 
 	function signUpShowHandler() {

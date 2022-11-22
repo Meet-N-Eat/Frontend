@@ -11,12 +11,12 @@ function AuthProvider({children}) {
 		confirmPassword: '',
 		email: '',
 	})
-	const [loggedIn, setLoggedIn] = useState(
-		JSON.parse(localStorage.getItem('loggedIn' || false))
+	const [persist, setPersist] = useState(
+		JSON.parse(localStorage.getItem('persist' || false))
 	)
 
 	return (
-		<AuthContext.Provider value={{loggedInUser, dispatchUser, loggedIn, setLoggedIn, defaultImage}}>
+		<AuthContext.Provider value={{loggedInUser, dispatchUser, persist, setPersist, defaultImage}}>
 			{children}
 		</AuthContext.Provider>
 	)
