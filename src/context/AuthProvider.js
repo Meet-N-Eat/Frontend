@@ -1,10 +1,10 @@
-import {useReducer} from 'react'
-import {createContext, useState, useReducer} from 'react'
+import {createContext, useState} from 'react'
+import useGlobalReducer from '../hooks/useGlobalReducer'
 
-const AuthContext = createContext({})
+export const AuthContext = createContext({})
 
 function AuthProvider({children}) {
-	const [loggedInUser, dispatchUser] = useReducer(axiosReducer, {
+	const [loggedInUser, dispatchUser] = useGlobalReducer({
 		username: '',
 		password: '',
 		confirmPassword: '',
@@ -21,4 +21,4 @@ function AuthProvider({children}) {
 	)
 }
 
-export default AuthContext
+export default AuthProvider
