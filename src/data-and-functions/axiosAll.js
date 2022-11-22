@@ -37,13 +37,3 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
 
    return res
 }
-
-export function axiosReducer(state, object) {
-   switch (object.key) {
-      case "initialize":
-         return object.value
-
-      default:
-         return {...state, [object.key]: object.value}
-   }
-}
