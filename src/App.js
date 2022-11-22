@@ -19,46 +19,34 @@ import Friends from "./components/MyPage/Friends"
 import Favorites from "./components/MyPage/Favorites"
 import Itinerary from "./components/MyPage/Itinerary"
 
-export const Context = createContext()
-
 function App() {
-   // Context variables
-   const [loggedInUser, dispatchUser] = useReducer(axiosReducer, {username: "", password: "", confirmPassword: "", email: ""})
 
    return (
       <div className='App h-full'>
-         <Context.Provider
-            value={{
-               'loggedInUser': loggedInUser,
-               'dispatchUser': dispatchUser,
-               'defaultImage': defaultImage,
-            }}
-         >
-            <header className="row-start-1 row-span-1">
-               <NavBar />
-            </header>
-            <main>
-               <Routes>
-                  <Route path='/' element={<Home />} />
-                  <Route path='/users/authentication/login' element={<LogIn />} />
-                  <Route path='/users/authentication/signup' element={<SignUp />} />
-                  <Route path='/results/:searchString' element={<SearchResults />} />
-                  <Route path='/my-page' element={<MyPage />} >
-                     <Route index element={<CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} />} />
-                     <Route path='invite' element={<CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} />} />
-                     <Route path='friends' element={<Friends loggedInUser={loggedInUser} />} />
-                     <Route path='favorites' element={<Favorites loggedInUser={loggedInUser} />} />
-                     <Route path='itinerary' element={<Itinerary loggedInUser={loggedInUser} />} />
-                  </Route>
-                  <Route path='/profile' element={<UserProfile />} />
-                  <Route path='/restaurants/:restaurantId' element={<RestaurantDetail />} />
-                  <Route path='/messages' element={<Messages />} />
-                  <Route path='/messages/:friendId' element={<MessageChat />} />
-                  <Route path='/about' element={<About />} />
-                  <Route path='/friendrequests' element={<FriendRequests />} />
-               </Routes>
-            </main>
-         </Context.Provider>
+         <header className="row-start-1 row-span-1">
+            <NavBar />
+         </header>
+         <main>
+            <Routes>
+               <Route path='/' element={<Home />} />
+               <Route path='/users/authentication/login' element={<LogIn />} />
+               <Route path='/users/authentication/signup' element={<SignUp />} />
+               <Route path='/results/:searchString' element={<SearchResults />} />
+               <Route path='/my-page' element={<MyPage />} >
+                  <Route index element={<CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} />} />
+                  <Route path='invite' element={<CoordinateMeetup loggedInUser={loggedInUser} dispatchUser={dispatchUser} />} />
+                  <Route path='friends' element={<Friends loggedInUser={loggedInUser} />} />
+                  <Route path='favorites' element={<Favorites loggedInUser={loggedInUser} />} />
+                  <Route path='itinerary' element={<Itinerary loggedInUser={loggedInUser} />} />
+               </Route>
+               <Route path='/profile' element={<UserProfile />} />
+               <Route path='/restaurants/:restaurantId' element={<RestaurantDetail />} />
+               <Route path='/messages' element={<Messages />} />
+               <Route path='/messages/:friendId' element={<MessageChat />} />
+               <Route path='/about' element={<About />} />
+               <Route path='/friendrequests' element={<FriendRequests />} />
+            </Routes>
+         </main>
       </div>
    )
 }

@@ -1,9 +1,10 @@
-import {useContext, useEffect, useReducer, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Link, useParams} from 'react-router-dom'
-import {Spinner} from 'react-bootstrap'
-import {Context} from '../../App'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import useAuth from '../../hooks/useAuth'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 import toggleModal from '../../data-and-functions/toggleModal'
+import {Spinner} from 'react-bootstrap'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {faCirclePlus, faCircleMinus} from '@fortawesome/free-solid-svg-icons'
 import RestaurantCard from '../RestaurantCard'
@@ -14,10 +15,10 @@ import UserLike from './UserLike'
 const RestaurantDetail = () => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const [resDetails, dispatchRestaurant] = useReducer(axiosReducer, {})
-	const [userLikes, dispatchLikes] = useReducer(axiosReducer, [])
-	const {loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser} = useAuth()
 	const {restaurantId} = useParams()
+	const [resDetails, dispatchRestaurant] = useGlobalReducer({})
+	const [userLikes, dispatchLikes] = useGlobalReducer([])
 	const [toggle, setToggle] = useState(false)
 	const [limit, setLimit] = useState(3)
 	const [showHideIcon, setShowHideIcon] = useState(faCirclePlus)

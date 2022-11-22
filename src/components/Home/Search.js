@@ -1,7 +1,7 @@
-import {useReducer, useState} from 'react'
+import {useState} from 'react'
 import {useNavigate} from 'react-router-dom'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
 import {getSearchParams} from '../../data-and-functions/searchParams'
-import { axiosReducer } from '../../data-and-functions/axiosAll'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faSliders } from '@fortawesome/free-solid-svg-icons'
 import SearchFilters from './SearchFilters'
@@ -18,7 +18,7 @@ const Search = () => {
 		openLate: '',
 	}
 
-	const [searchCriteria, dispatch] = useReducer(axiosReducer, initialState)
+	const [searchCriteria, dispatch] = useGlobalReducer(initialState)
 	const [toggle, setToggle] = useState(false)
 	const navigate = useNavigate()
 

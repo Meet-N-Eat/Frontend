@@ -1,8 +1,9 @@
-import React, {useContext, useEffect, useReducer, useState} from 'react'
+import React, {useEffect, useState} from 'react'
 import {Row} from 'react-bootstrap'
 import {Link} from 'react-router-dom'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
-import {Context} from '../../App'
+import {axiosAll} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import useAuth from '../../hooks/useAuth'
 
 const SignUp = () => {
 	// State Hooks and Variables
@@ -13,8 +14,8 @@ const SignUp = () => {
 		confirmPassword: false,
 	}
 
-	const {dispatchUser, loggedInUser} = useContext(Context)
-	const [error, dispatchError] = useReducer(axiosReducer, initialState)
+	const {dispatchUser, loggedInUser} = useAuth()
+	const [error, dispatchError] = useGlobalReducer(initialState)
 	const [show, setShow] = useState(false)
 	const [success, setSuccess] = useState(false)
 

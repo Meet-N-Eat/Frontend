@@ -1,6 +1,7 @@
-import {useReducer, useEffect, useContext, useState} from 'react'
-import {Context} from '../App'
-import {axiosAll, axiosReducer} from '../data-and-functions/axiosAll'
+import {useEffect, useState} from 'react'
+import {axiosAll} from '../data-and-functions/axiosAll'
+import useAuth from '../hooks/useAuth'
+import useGlobalReducer from '../hooks/useGlobalReducer'
 
 const UserProfile = () => {
 	// state hooks and variable declaration
@@ -13,8 +14,8 @@ const UserProfile = () => {
 		email: '',
 	}
 
-	const {defaultImage, loggedInUser, dispatchUser} = useContext(Context)
-	const [userData, dispatch] = useReducer(axiosReducer, initialState)
+	const {defaultImage, loggedInUser, dispatchUser} = useAuth()
+	const [userData, dispatch] = useGlobalReducer(initialState)
 	const [error, setError] = useState(false)
 
 	// Getting user data

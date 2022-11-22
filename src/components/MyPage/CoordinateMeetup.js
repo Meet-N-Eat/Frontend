@@ -1,6 +1,7 @@
-import React, {useEffect, useReducer} from 'react'
+import React, {useEffect} from 'react'
 import {useState} from 'react'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 import toggleModal from '../../data-and-functions/toggleModal'
 import ProfileCard from '../ProfileCard'
 
@@ -23,14 +24,14 @@ const CoordinateMeetup = ({
 		createdBy: loggedInUser.response._id,
 	}
 
-	const [meetup, dispatchMeetup] = useReducer(axiosReducer, event || initialState)
-	const [favorites, dispatchFavorites] = useReducer(axiosReducer, [])
-	const [toggle, setToggle] = useState(false)
-	const [date, dispatchDate] = useReducer(axiosReducer, {
+	const [meetup, dispatchMeetup] = useGlobalReducer(event || initialState)
+	const [favorites, dispatchFavorites] = useGlobalReducer([])
+	const [date, dispatchDate] = useGlobalReducer({
 		date: '' || formattedDate,
 		time: '' || formattedHour,
 	})
-	const [error, dispatchError] = useReducer(axiosReducer, {date: false, restaurant: false})
+	const [error, dispatchError] = useGlobalReducer({date: false, restaurant: false})
+	const [toggle, setToggle] = useState(false)
 
 	// Event Handlers and Functions
 	// ===========================================================================
