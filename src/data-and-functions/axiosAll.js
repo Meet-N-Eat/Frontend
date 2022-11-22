@@ -6,12 +6,16 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
       headers: {
          Authorization: `Bearer ${authToken}`,
       },
+      withCredentials: true
    }
    let res
+
    switch (method) {
       case "GET":
          res = await axios.get(`${baseURL}${path}`, headers)
-         dispatch({key: "response", value: res.data})
+         path === '/users/refresh'
+            ? dispatch({key: "token", value: res.data.token})
+            : dispatch({key: "response", value: res.data})
          break
 
       case "PUT":
