@@ -47,7 +47,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 			await axiosAll(method, path, loggedInUser.token)
 			await axiosAll(
 				'GET',
-				`/users/${loggedInUser.response._id}`,
+				`/users/id/${loggedInUser.response._id}`,
 				loggedInUser.token,
 				dispatchUser
 			)

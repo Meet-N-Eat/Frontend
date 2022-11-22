@@ -45,7 +45,7 @@ const NavBar = () => {
 	function toggleMenu() {
 		setToggle(prevState => !prevState)
 	}
-	console.log(loggedInUser)
+
 	// Return
 	// ===========================================================================
 	return (

@@ -44,7 +44,7 @@ const MyPage = () => {
 	useEffect(() => {
 		axiosAll(
 			'GET', 
-			`/users/${loggedInUser.response._id}`, 
+			`/users/id/${loggedInUser.response._id}`, 
 			loggedInUser.token, 
 			dispatchUser
 		)

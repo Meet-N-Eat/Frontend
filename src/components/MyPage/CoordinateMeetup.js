@@ -119,7 +119,7 @@ const CoordinateMeetup = ({
 				if (showEdit) axiosAll('PUT', `/users/events/edit`, loggedInUser.token, null, meetup)
 				else axiosAll('POST', `/users/events/create`, loggedInUser.token, null, meetup)
 
-				axiosAll('GET', `/users/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
+				axiosAll('GET', `/users/id/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
 
 				dispatchMeetup({
 					key: 'initialize',

@@ -18,7 +18,7 @@ const Home = () => {
 			? axiosAll('GET', `/users/username/${loggedInUser.username}`, loggedInUser.token, dispatchUser)
 			: axiosAll('GET', '/users/refresh', null, dispatchUser)		
 	},[])
-	console.log(loggedInUser.token)
+
 	function signUpShowHandler() {
 		setShow(prevState => !prevState)
 	}

@@ -19,7 +19,7 @@ function UserLike({user}) {
 		if (loggedInUser.response.friends.find(friend => friend === user._id)) return true
 		else return false
 	}
-console.log(toggle)
+
 	// Return
 	//===========================================================================================
 	return (
