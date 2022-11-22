@@ -40,7 +40,7 @@ const LogIn = () => {
 		e.preventDefault()
 		const response = await axiosAll(
 			'POST',
-			`/users/signin`,
+			`/users/login`,
 			null,
 			dispatchUser,
 			loggedInUser

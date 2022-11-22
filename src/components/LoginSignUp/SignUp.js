@@ -77,7 +77,7 @@ const SignUp = () => {
 
 	useEffect(() => {
 		if (success) {
-			axiosAll('POST', `/users/signin`, null, dispatchUser, loggedInUser)
+			axiosAll('POST', `/users/login`, null, dispatchUser, loggedInUser)
 		}
 	}, [success])
 
