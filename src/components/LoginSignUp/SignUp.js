@@ -35,7 +35,7 @@ const SignUp = () => {
 		})
 
 		if (loggedInUser.password === loggedInUser.confirmPassword) {
-			// Prevent submit with missing username or password
+			// Prevent submit with missing username or email
 			if (!loggedInUser.username) {
 				dispatchError({
 					key: 'username',

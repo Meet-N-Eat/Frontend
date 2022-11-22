@@ -1,6 +1,6 @@
 import {useReducer, useEffect, useContext, useState} from 'react'
-import {Context} from '../../App'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import {Context} from '../App'
+import {axiosAll, axiosReducer} from '../data-and-functions/axiosAll'
 
 const UserProfile = () => {
 	// state hooks and variable declaration
