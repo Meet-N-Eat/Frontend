@@ -1,14 +1,15 @@
-import {useEffect, useReducer, useContext} from 'react'
+import {useEffect} from 'react'
 import defaultImage from '../assets/defaultImage.png'
-import {axiosAll, axiosReducer} from '../data-and-functions/axiosAll'
-import {Context} from '../App'
+import {axiosAll} from '../data-and-functions/axiosAll'
 import {Spinner} from 'react-bootstrap'
+import useGlobalReducer from '../hooks/useGlobalReducer'
+import useAuth from '../hooks/useAuth'
 
 const ProfileCard = ({ user }) => {
 	// State Hooks and Variables
 	// ===========================================================================================
-	const {loggedInUser} = useContext(Context)
-	const [userInfo, dispatchUserInfo] = useReducer(axiosReducer, {})
+	const {loggedInUser} = useAuth()
+	const [userInfo, dispatchUserInfo] = useGlobalReducer({})
 
 	// Functions and Event Handlers
 	// ===========================================================================================

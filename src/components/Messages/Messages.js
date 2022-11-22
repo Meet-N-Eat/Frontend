@@ -1,7 +1,8 @@
-import {useEffect, useContext, useReducer, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {Link} from 'react-router-dom'
-import {Context} from '../../App'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import useAuth from '../../hooks/useAuth'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 import toggleModal from '../../data-and-functions/toggleModal'
 import {messageThreads} from '../../data-and-functions/messageThreads'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
@@ -13,8 +14,8 @@ import ProfileCard from '../ProfileCard'
 function Messages() {
 	// State Hooks and Variables
 	// ===========================================================================	
-	const {loggedInUser} = useContext(Context)
-	const [messages, dispatchMessages] = useReducer(axiosReducer, {})
+	const {loggedInUser} = useAuth()
+	const [messages, dispatchMessages] = useGlobalReducer({})
 	const [toggle, setToggle] = useState(false)
 
 	// Event Handlers and Functions

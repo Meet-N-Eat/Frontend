@@ -1,18 +1,18 @@
-import React, {useContext, useReducer} from 'react'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 import toggleModal from '../../data-and-functions/toggleModal'
-import {Context} from '../../App'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import useAuth from '../../hooks/useAuth'
 import {Spinner} from 'react-bootstrap'
 
 function FriendRequestForm({user, setToggle}) {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser} = useContext(Context)
+	const {loggedInUser} = useAuth()
 	const initialState = {
 		sender: loggedInUser.response._id,
 		body: '',
 	}
-	const [request, dispatch] = useReducer(axiosReducer, initialState)
+	const [request, dispatch] = useGlobalReducer(initialState)
 
 	// Event Handlers and Functions
 	// ===========================================================================

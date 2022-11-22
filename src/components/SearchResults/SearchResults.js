@@ -1,19 +1,20 @@
-import React, {useContext, useEffect, useReducer, useState} from 'react'
+import {useEffect, useState} from 'react'
 import {useParams, useSearchParams} from 'react-router-dom'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import useAuth from '../../hooks/useAuth'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 import {buildSearchParams} from '../../data-and-functions/searchParams'
-import {Context} from '../../App'
+import {Spinner} from 'react-bootstrap'
 import RestaurantCard from '../RestaurantCard'
 import Pagination from './Pagination'
-import {Spinner} from 'react-bootstrap'
 
 const SearchResults = () => {
 	// State Variables
 	// ===========================================================================================
+	const {loggedInUser} = useAuth()
 	const {searchString} = useParams()
 	const [searchParams] = useSearchParams()
-	const {loggedInUser} = useContext(Context)
-	const [restaurantsData, dispatchData] = useReducer(axiosReducer, {searchString: ''})
+	const [restaurantsData, dispatchData] = useGlobalReducer({searchString: ''})
 	const [currentPage, setCurrentPage] = useState(1)
 	const cardsPerPage = 6
 

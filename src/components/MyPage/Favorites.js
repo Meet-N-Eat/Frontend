@@ -1,14 +1,15 @@
-import {useState, useReducer, useEffect} from 'react'
+import {useState, useEffect} from 'react'
 import {Link} from 'react-router-dom'
-import RestaurantCard from '../RestaurantCard'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 import {Spinner} from 'react-bootstrap'
+import RestaurantCard from '../RestaurantCard'
 
 const Favorites = ({loggedInUser}) => {
 	// State Hooks and Variables
 	// ===========================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
-	const [favorites, dispatchFavorites] = useReducer(axiosReducer, {})
+	const [favorites, dispatchFavorites] = useGlobalReducer({})
 
 	// Event Handlers and Functions
 	// ===========================================================================

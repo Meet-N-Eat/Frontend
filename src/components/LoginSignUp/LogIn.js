@@ -1,29 +1,16 @@
-import {useReducer, useContext, useEffect, useRef} from 'react'
+import {useEffect, useRef} from 'react'
 import {useNavigate, useLocation, Link} from 'react-router-dom'
 import Row from 'react-bootstrap/Row'
-import {Context} from '../../App'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import useAuth from '../../hooks/useAuth'
 import {axiosAll} from '../../data-and-functions/axiosAll'
 
 const LogIn = () => {
 	// State Hooks and Variables
 	// ===========================================================================
 	const component = useRef({isMounted: false})
-	const [login, dispatch] = useReducer(
-		(state, object) => {
-			switch (object.key) {
-				case 'success':
-					return {...state, success: object.value}
-
-				case 'badLogin':
-					return {...state, badLogin: object.value}
-
-				default:
-					return state
-			}
-		},
-		{success: false, badLogin: false}
-	)
-	const {loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser, persist, setPersist} = useAuth()
+	const [login, dispatch] = useGlobalReducer({success: false, badLogin: false})
 	const navigate = useNavigate()
 	const location = useLocation()
 
@@ -78,6 +65,10 @@ const LogIn = () => {
 		userName.focus()
 	}, [])
 
+	useEffect(() => {
+		localStorage.setItem('persist', persist)
+	}, [persist])
+
 	// Return
 	// ===========================================================================
 	return (
@@ -106,11 +97,20 @@ const LogIn = () => {
 					{login.badLogin && (
 						<h1 className='account-error mb-2'>Incorrect username or password</h1>
 					)}
-					<Row>
+					<div className='flex-centered'>
 						<button className='account-button w-20 mb-4 mx-auto base-text' type='submit'>
 							Submit
 						</button>
-					</Row>
+					</div>
+					<div className='flex-centered mb-3'>
+						<input
+							type='checkbox'
+							id='trust-device'
+							onChange={() => setPersist(prevState => !prevState)}
+							checked={persist}
+						/>
+						<label htmlFor="trust-device">Trust this device?</label>
+					</div>
 				</form>
 				<Link
 					className='mx-auto base-text hover:text-red-900 hover:font-normal'

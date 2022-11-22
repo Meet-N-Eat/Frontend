@@ -1,7 +1,7 @@
-import {useContext, useRef, useState} from 'react'
+import {useRef, useState} from 'react'
 import {NavDropdown} from 'react-bootstrap'
 import {NavLink, useNavigate} from 'react-router-dom'
-import {Context} from '../../App'
+import useAuth from '../../hooks/useAuth'
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
 import {
 	faUserGroup,
@@ -12,12 +12,11 @@ import {
 	faBars,
 	faX,
 } from '@fortawesome/free-solid-svg-icons'
-import defaultImage from '../../assets/defaultImage.png'
 
 const NavBar = () => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser, defaultImage} = useAuth()
 	let option = useRef('')
 	const navigate = useNavigate()
 	const [toggle, setToggle] = useState(false)

@@ -1,16 +1,17 @@
-import {useEffect, useReducer, useContext} from 'react'
+import {useEffect} from 'react'
 import {useParams} from 'react-router-dom'
-import {Context} from '../../App'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 import {messageThreads} from '../../data-and-functions/messageThreads'
 import ProfileCard from '../ProfileCard'
 import Message from './Message'
 import { Spinner } from 'react-bootstrap'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import useAuth from '../../hooks/useAuth'
 
 function MessageChat() {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser} = useContext(Context)
+	const {loggedInUser} = useAuth()
 	const {friendId} = useParams()
 
 	const initialState = {
@@ -19,8 +20,8 @@ function MessageChat() {
 		body: '',
 	}
 
-	const [message, dispatchMessage] = useReducer(axiosReducer, initialState)
-	const [thread, dispatchThread] = useReducer(axiosReducer, {})
+	const [message, dispatchMessage] = useGlobalReducer(initialState)
+	const [thread, dispatchThread] = useGlobalReducer({})
 
 	// Event Handlers and Functions
 	// ===========================================================================	

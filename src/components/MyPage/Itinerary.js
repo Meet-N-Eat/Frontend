@@ -1,12 +1,13 @@
-import {useEffect, useReducer} from 'react'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
-import Event from './Event'
+import {useEffect} from 'react'
+import {axiosAll} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
 import { Spinner } from 'react-bootstrap'
+import Event from './Event'
 
 const Itinerary = ({loggedInUser}) => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const [events, dispatchEvents] = useReducer(axiosReducer, {})
+	const [events, dispatchEvents] = useGlobalReducer({})
 	let today = new Date().toLocaleDateString()
 
 	// Event Handlers and Functions

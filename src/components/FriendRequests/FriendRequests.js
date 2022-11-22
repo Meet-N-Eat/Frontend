@@ -1,14 +1,15 @@
-import {useContext, useEffect, useReducer} from 'react'
-import {Context} from '../../App'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
-import FriendRequest from './FriendRequest'
+import {useEffect} from 'react'
+import {axiosAll} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import useAuth from '../../hooks/useAuth'
 import {Spinner} from 'react-bootstrap'
+import FriendRequest from './FriendRequest'
 
 function FriendRequests() {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser} = useContext(Context)
-	const [friendRequests, dispatchRequests] = useReducer(axiosReducer, [])
+	const {loggedInUser} = useAuth()
+	const [friendRequests, dispatchRequests] = useGlobalReducer([])
 
 	// Event Handlers and Functions
 	// ===========================================================================

@@ -1,20 +1,21 @@
-import {useContext, useState, useEffect, useReducer} from 'react'
+import {useState, useEffect} from 'react'
 import {Link, useNavigate} from 'react-router-dom'
-import {Context} from '../App'
-import {axiosAll, axiosReducer} from '../data-and-functions/axiosAll'
+import {axiosAll} from '../data-and-functions/axiosAll'
+import useGlobalReducer from '../hooks/useGlobalReducer'
+import useAuth from '../hooks/useAuth'
 import {Spinner} from 'react-bootstrap'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faHeart } from '@fortawesome/free-solid-svg-icons'
-import { faHeart as regularHeart } from '@fortawesome/free-regular-svg-icons'
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome'
+import {faHeart} from '@fortawesome/free-solid-svg-icons'
+import {faHeart as regularHeart} from '@fortawesome/free-regular-svg-icons'
 
 const RestaurantCard = ({restaurant, hideLikeButton}) => {
 	// State Hooks and Variables
 	// ===========================================================================================
 	const likedImage = <FontAwesomeIcon className='text-red-500/70' icon={faHeart} />
 	const notLikedImage = <FontAwesomeIcon className='text-red-500/70' icon={regularHeart} />
-	const {loggedInUser, dispatchUser} = useContext(Context)
+	const {loggedInUser, dispatchUser} = useAuth()
 	const navigate = useNavigate()
-	const [resDetails, dispatchDetails] = useReducer(axiosReducer, {})
+	const [resDetails, dispatchDetails] = useGlobalReducer({})
 	const [buttonIcon, setButtonIcon] = useState(liked() ? likedImage : notLikedImage)
 	const categories = []
 	resDetails.response &&
@@ -46,7 +47,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 			await axiosAll(method, path, loggedInUser.token)
 			await axiosAll(
 				'GET',
-				`/users/${loggedInUser.response._id}`,
+				`/users/id/${loggedInUser.response._id}`,
 				loggedInUser.token,
 				dispatchUser
 			)
@@ -64,7 +65,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 		<div className='h-full w-[320px] relative'>
 			{!resDetails.response && (
 				<div className='text-center p-4'>
-					<Spinner animation='border' variant="light" />
+					<Spinner animation='border' variant='light' />
 				</div>
 			)}
 			{resDetails.response && (
@@ -73,11 +74,7 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 						{
 							// Hide like button if hideLikeButton is true
 							!hideLikeButton && (
-								<button 
-									className='text-3xl'
-									type='checkbox'
-									onClick={likeHandler} 
-								>
+								<button className='text-3xl' type='checkbox' onClick={likeHandler}>
 									{buttonIcon}
 								</button>
 							)
@@ -87,7 +84,9 @@ const RestaurantCard = ({restaurant, hideLikeButton}) => {
 						className='text-white hover:text-white text-center vertical items-center space-y-4'
 						to={`/restaurants/${restaurant}`}
 					>
-						<p className='font-bold text-center mt-4 w-[210px]'>{resDetails.response.name}</p>
+						<p className='font-bold text-center mt-4 w-[210px]'>
+							{resDetails.response.name}
+						</p>
 						<img
 							className='restaurant-image'
 							src={resDetails.response.image_url}

@@ -1,6 +1,6 @@
-import {useContext, useState} from 'react'
+import {useState} from 'react'
 import {Modal} from 'react-bootstrap'
-import {Context} from '../../App'
+import useAuth from '../../hooks/useAuth'
 import FriendRequestForm from '../FriendRequests/FriendRequestForm'
 import OutreachButtons from '../OutreachButtons'
 import ProfileCard from '../ProfileCard'
@@ -8,7 +8,7 @@ import ProfileCard from '../ProfileCard'
 function UserLike({user}) {
 	// State Hooks and Variables
 	// ===========================================================================================
-	const {loggedInUser} = useContext(Context)
+	const {loggedInUser} = useAuth()
 	const [toggle, setToggle] = useState(false)
 	const [show, setShow] = useState(false)
 
@@ -19,7 +19,7 @@ function UserLike({user}) {
 		if (loggedInUser.response.friends.find(friend => friend === user._id)) return true
 		else return false
 	}
-console.log(toggle)
+
 	// Return
 	//===========================================================================================
 	return (

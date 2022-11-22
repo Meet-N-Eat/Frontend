@@ -1,14 +1,15 @@
-import {useState, useReducer, useEffect} from 'react'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
-import ProfileCard from '../ProfileCard'
+import {useState, useEffect} from 'react'
+import {axiosAll} from '../../data-and-functions/axiosAll'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
 import {Spinner, Modal} from 'react-bootstrap'
+import ProfileCard from '../ProfileCard'
 import OutreachButtons from '../OutreachButtons'
 
 const Friends = ({loggedInUser}) => {
 	// State Hooks and Variables
 	// ===========================================================================
 	const [searchCharacters, setSearchCharacters] = useState('')
-	const [friends, dispatchFriends] = useReducer(axiosReducer, {})
+	const [friends, dispatchFriends] = useGlobalReducer({})
 	const [setFormSwitch] = useState(false)
 	const [show, setShow] = useState(false)
 	const [current, setCurrent] = useState({

@@ -1,21 +1,19 @@
-import {useContext, useEffect, useReducer} from 'react'
+import {useEffect} from 'react'
 import {Spinner} from 'react-bootstrap'
-import {Context} from '../../App'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import useAuth from '../../hooks/useAuth'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 import Review from './Review'
 
 const Reviews = ({restaurantId, toggle}) => {
 	// State hooks and variable declarations
 	// ===========================================================================
-	const [reviews, dispatchReviews] = useReducer(axiosReducer, {})
-	const {loggedInUser} = useContext(Context)
+	const {loggedInUser} = useAuth()
+	const [reviews, dispatchReviews] = useGlobalReducer({})
 
 	useEffect(() => {
 		axiosAll('GET', `/restaurants/${restaurantId}/reviews`, loggedInUser.token, dispatchReviews)
 	}, [toggle])
-
-
-	console.log(reviews)
 
 	// Return
 	//===========================================================================================

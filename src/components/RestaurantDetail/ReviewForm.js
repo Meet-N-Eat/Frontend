@@ -1,11 +1,11 @@
-import {useContext, useReducer} from 'react'
-import {Context} from '../../App'
-import {axiosAll, axiosReducer} from '../../data-and-functions/axiosAll'
+import useAuth from '../../hooks/useAuth'
+import useGlobalReducer from '../../hooks/useGlobalReducer'
+import {axiosAll} from '../../data-and-functions/axiosAll'
 
 const ReviewForm = ({restaurantId, setToggle}) => {
 	// State Hooks and Variables
 	// ===========================================================================
-	const {loggedInUser} = useContext(Context)
+	const {loggedInUser} = useAuth()
 
 	const initialState = {
 		reviewer: loggedInUser.response._id,
@@ -13,8 +13,8 @@ const ReviewForm = ({restaurantId, setToggle}) => {
 		body: '',
 	}
 
-	const [review, dispatchReview] = useReducer(axiosReducer, initialState)
-	const [validate, dispatchValidate] = useReducer(axiosReducer, {valid: false})
+	const [review, dispatchReview] = useGlobalReducer(initialState)
+	const [validate, dispatchValidate] = useGlobalReducer({valid: false})
 	const starMenu = ['1', '2', '3', '4', '5']
 
 	// Event Handlers and Functions
