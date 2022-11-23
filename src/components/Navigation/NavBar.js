@@ -12,6 +12,7 @@ import {
 	faBars,
 	faX,
 } from '@fortawesome/free-solid-svg-icons'
+import { axiosAll } from '../../data-and-functions/axiosAll'
 
 const NavBar = () => {
 	// State Hooks and Variables
@@ -36,10 +37,7 @@ const NavBar = () => {
 	}
 
 	function handleLogOut() {
-		dispatchUser({
-			key: 'initialize',
-			value: {username: '', password: ''},
-		})
+		axiosAll('GET', '/users/logout', null, dispatchUser)
 	}
 
 	function toggleMenu() {

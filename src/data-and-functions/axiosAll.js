@@ -13,12 +13,17 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
    switch (method) {
       case "GET":
          res = await axios.get(`${baseURL}${path}`, headers)
-         if(path === '/users/refresh') {
-            dispatch({key: "token", value: res.data.token})
-            dispatch({key: "username", value: res.data.user.username})
-            dispatch({key: "response", value: res.data.user})
-         } else {
-            dispatch({key: "response", value: res.data})
+         switch(path) {
+            case '/users/refresh':
+               dispatch({key: "token", value: res.data.token})
+               dispatch({key: "username", value: res.data.user.username})
+               dispatch({key: "response", value: res.data.user})
+               break
+            
+            case '/users/logout':
+               dispatch({key: "initialize", value: {}})
+            default:
+               dispatch({key: "response", value: res.data})
          }
          break
 
