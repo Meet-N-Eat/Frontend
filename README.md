@@ -16,16 +16,16 @@ Head over to () to view more!
 
 
 ## 🧰 Tech Stack
-<a href='https://developer.mozilla.org/en-US/docs/Glossary/HTML5'><img src='./planning/tech-icons/html5.png' alt='HTML5'/></a>
-<a href='https://developer.mozilla.org/en-US/docs/Web/CSS'><img src='./planning/tech-icons/css.png' alt='CSS'></a>
-<a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript'><img src='./planning/tech-icons/javascript.png' alt='Javascript'/></a>
-<a href='https://reactjs.org/'><img src='./planning/tech-icons/react.png' alt='React.js'></a>
-<a href='https://nodejs.org/en/about/'><img src='./planning/tech-icons/nodejs.png' alt='NodeJS'/></a>
-<a href='https://mongoosejs.com/'><img src='./planning/tech-icons/mongoose.png' alt='Mongoose JS'/></a>
-<a href='https://www.mongodb.com/'><img src='./planning/tech-icons/mongodb.png' alt='MongoDB'/></a>
-<a href='https://expressjs.com/'><img src='./planning/tech-icons/express.png' alt='Express'/></a>
-<a href='https://tailwindcss.com/'><img src='./planning/tech-icons/tailwindcss.png' alt='TailwindCSS'/></a>
-<a href='https://react-bootstrap.github.io/'><img src='./planning/tech-icons/reactbootstrap.png' alt='React Bootstrap'/></a>
+<a href='https://developer.mozilla.org/en-US/docs/Glossary/HTML5'><img src='./planning/tech-icons/html5.png' alt='HTML5' width=50/></a>
+<a href='https://developer.mozilla.org/en-US/docs/Web/CSS'><img src='./planning/tech-icons/css.png' alt='CSS' width=50></a>
+<a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript'><img src='./planning/tech-icons/javascript.png' alt='Javascript' width=50/></a>
+<a href='https://reactjs.org/'><img src='./planning/tech-icons/react.png' alt='React.js' width=50></a>
+<a href='https://nodejs.org/en/about/'><img src='./planning/tech-icons/nodejs.png' alt='NodeJS' width=50/></a>
+<a href='https://mongoosejs.com/'><img src='./planning/tech-icons/mongoose.png' alt='Mongoose JS' width=70/></a>
+<a href='https://www.mongodb.com/'><img src='./planning/tech-icons/mongodb.png' alt='MongoDB' width=50/></a>
+<a href='https://expressjs.com/'><img src='./planning/tech-icons/express.png' alt='Express' width=50/></a>
+<a href='https://tailwindcss.com/'><img src='./planning/tech-icons/tailwindcss.png' alt='TailwindCSS' width=50/></a>
+<a href='https://react-bootstrap.github.io/'><img src='./planning/tech-icons/reactbootstrap.png' alt='React Bootstrap' width=50/></a>
 
 ## Features
 * Create an account and sign back in with user authentication
