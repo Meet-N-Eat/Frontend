@@ -16,13 +16,29 @@ Head over to () to view more!
 
 
 ## 🧰 Tech Stack
-* [React.js](https://reactjs.org/)
-* [React Bootstrap](https://react-bootstrap.github.io/)
-* [Mongoose](https://mongoosejs.com/)
-* [MongoDB](https://www.mongodb.com/)
-* [Express](https://expressjs.com/) - Dependency Management
-* [TailwindCSS](https://tailwindcss.com/)
+<a href='https://developer.mozilla.org/en-US/docs/Glossary/HTML5'><img src='./planning/tech-icons/html5.png' alt='HTML5'/></a>
+<a href='https://developer.mozilla.org/en-US/docs/Web/CSS'><img src='./planning/tech-icons/css.png' alt='CSS'></a>
+<a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript'><img src='./planning/tech-icons/javascript.jpg' alt='Javascript'/></a>
+<a href='https://reactjs.org/'><img src='./planning/tech-icons/react.png' alt='React.js'></a>
+<a href='https://nodejs.org/en/about/'><img src='./planning/tech-icons/nodejs.png' alt='NodeJS'/></a>
+<a href='https://mongoosejs.com/'><img src='./planning/tech-icons/mongoose.png' alt='Mongoose JS'/></a>
+<a href='https://www.mongodb.com/'><img src='./planning/tech-icons/mongodb.png' alt='MongoDB'/></a>
+<a href='https://expressjs.com/'><img src='./planning/tech-icons/express.png' alt='Express'/></a>
+<a href='https://tailwindcss.com/'><img src='./planning/tech-icons/tailwindcss.png' alt='TailwindCSS'/></a>
+<a href='https://react-bootstrap.github.io/'><img src='./planning/tech-icons/reactbootstrap.png' alt='React Bootstrap'/></a>
 
+## Features
+* Create an account and sign back in with user authentication
+* Search restaurants with keywords and add various search filters
+* View restaurant information, reviews left by other users and send friend requests to other users who have favorited the restaurant
+* Add restaurant to favorites and add reviews
+* Accept/decline friend requests
+* Send event invites to other users with date/time and restaurant of choice
+* View and edit itinerary (events with other users)
+* View messages and send messages to friends in chat
+* View friends and their basic information
+* View and remove favorited restaurants
+* Edit user profile (incl. profile photo, 'About Me' section, etc.)
 
 # Planning 
 
@@ -54,8 +70,6 @@ Although we all had different schedules and oftentimes were in completely differ
 
 
 ## 📝 User Stories
-
-These are a handful of the user stories we came up with:
 
  - As a User, I want to be able to make a profile in order to store details about myself																
  - As a User, I want to be able to view other users who are interested in the restaurants that I like so that I can invite them to check it out				
