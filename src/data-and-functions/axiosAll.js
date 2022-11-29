@@ -22,6 +22,8 @@ export async function axiosAll(method, path, authToken, dispatch, body) {
             
             case '/users/logout':
                dispatch({key: "initialize", value: {}})
+               break
+               
             default:
                dispatch({key: "response", value: res.data})
          }
