@@ -18,7 +18,7 @@ Head over to () to view more!
 ## 🧰 Tech Stack
 <a href='https://developer.mozilla.org/en-US/docs/Glossary/HTML5'><img src='./planning/tech-icons/html5.png' alt='HTML5'/></a>
 <a href='https://developer.mozilla.org/en-US/docs/Web/CSS'><img src='./planning/tech-icons/css.png' alt='CSS'></a>
-<a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript'><img src='./planning/tech-icons/javascript.jpg' alt='Javascript'/></a>
+<a href='https://developer.mozilla.org/en-US/docs/Web/JavaScript'><img src='./planning/tech-icons/javascript.png' alt='Javascript'/></a>
 <a href='https://reactjs.org/'><img src='./planning/tech-icons/react.png' alt='React.js'></a>
 <a href='https://nodejs.org/en/about/'><img src='./planning/tech-icons/nodejs.png' alt='NodeJS'/></a>
 <a href='https://mongoosejs.com/'><img src='./planning/tech-icons/mongoose.png' alt='Mongoose JS'/></a>
