@@ -99,12 +99,12 @@ const MyPage = () => {
 			{loggedInUser && loggedInUser.response && (
 				<div className='h-full w-full max-w-[1200px] relative flex justify-center items-center'>
 					<Outlet />
-					{pageIndex.current != 0 && (
+					{pageIndex.current !== 0 && (
 						<button id='left-btn' onClick={() => slideHandler('left')}>
 							<div className='arrow left'></div>
 						</button>
 					)}
-					{pageIndex.current != 3 && (
+					{pageIndex.current !== 3 && (
 						<button id='right-btn' onClick={() => slideHandler('right')}>
 							<div className='arrow right'></div>
 						</button>
