@@ -3,10 +3,10 @@ import {useParams} from 'react-router-dom'
 import {axiosAll} from '../../data-and-functions/axiosAll'
 import {messageThreads} from '../../data-and-functions/messageThreads'
 import ProfileCard from '../ProfileCard'
-import Message from './Message'
 import { Spinner } from 'react-bootstrap'
 import useGlobalReducer from '../../hooks/useGlobalReducer'
 import useAuth from '../../hooks/useAuth'
+import Message from './Message'
 
 function MessageChat() {
 	// State Hooks and Variables

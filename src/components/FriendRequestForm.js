@@ -1,7 +1,7 @@
-import {axiosAll} from '../../data-and-functions/axiosAll'
-import toggleModal from '../../data-and-functions/toggleModal'
-import useGlobalReducer from '../../hooks/useGlobalReducer'
-import useAuth from '../../hooks/useAuth'
+import {axiosAll} from '../data-and-functions/axiosAll'
+import toggleModal from '../data-and-functions/toggleModal'
+import useGlobalReducer from '../hooks/useGlobalReducer'
+import useAuth from '../hooks/useAuth'
 import {Spinner} from 'react-bootstrap'
 
 function FriendRequestForm({user, setToggle}) {
