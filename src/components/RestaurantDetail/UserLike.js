@@ -1,7 +1,7 @@
 import {useState} from 'react'
 import {Modal} from 'react-bootstrap'
 import useAuth from '../../hooks/useAuth'
-import FriendRequestForm from '../FriendRequests/FriendRequestForm'
+import FriendRequestForm from '../FriendRequestForm'
 import OutreachButtons from '../OutreachButtons'
 import ProfileCard from '../ProfileCard'
 
