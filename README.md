@@ -26,6 +26,10 @@ Head over to () to view more!
 <a href='https://expressjs.com/'><img src='./planning/tech-icons/express.png' alt='Express' width=60/></a>
 <a href='https://tailwindcss.com/'><img src='./planning/tech-icons/tailwindcss.png' alt='TailwindCSS' width=60/></a>
 <a href='https://react-bootstrap.github.io/'><img src='./planning/tech-icons/reactbootstrap.png' alt='React Bootstrap' width=60/></a>
+<a href='https://aws.amazon.com/ec2/?nc2=type_a'><img src='./planning/tech-icons/aws.png' alt='AWS' width=60/></a>
+<a href='https://docs.nginx.com/nginx/admin-guide/load-balancer/http-load-balancer/'><img src='./planning/tech-icons/nginx.png' alt='Nginx' width=60/></a>
+<a href='https://pm2.keymetrics.io/docs/usage/quick-start/'><img src='./planning/tech-icons/pm2.png' alt='Pm2' width=90/></a>
+
 
 ## Features
 * Create an account and sign back in with user authentication
@@ -71,14 +75,14 @@ Although we all had different schedules and oftentimes were in completely differ
 
 ## 📝 User Stories
 
- - As a User, I want to be able to make a profile in order to store details about myself																
- - As a User, I want to be able to view other users who are interested in the restaurants that I like so that I can invite them to check it out				
- - As a User, I want to be able to view details about other users in their profile so that I can make better decisions about who to meet up with																
- - As a User, I want to be able to save a list of restaurants that I like so that I can keep track of them																
- - As a User, I want to see relevant details of restaurants such as ratings, prices, type of food on the menu, business hours, etc so that I can decide which ones I like																
- - As a User, I would like the ability to leave reviews for restaurants that I've been to in order to help the community with feedback																
- - As a User, I want to be able to search restaurants by location so that I can make decisions which restaurants to visit based on travel time																
- - As a User, I want to be able to search restaurants by certain attributes, such as genre, price, etc to help me narrow down the choices																
+ - As a User, I want to be able to create an account and log back in, in order to store details of my account. 															
+ - As a User, I want to be able to view other users who are interested in the restaurants that I like so that I can add users who are interested in the same restaurants as I am as friends.
+ - As a User, I want to be able to view details about other users in their profile so that I can make better decisions about who to meet up with.																
+ - As a User, I want to be able to save a list of restaurants that I like so that I can keep track of them and choose them as locations to meet other users. 															
+ - As a User, I want to see relevant details of restaurants such as ratings, prices, type of food on the menu, business hours, etc so that I can decide which ones I like.														
+ - As a User, I would like the ability to leave reviews for restaurants that I've been to in order to help the community with feedback. 															
+ - As a User, I want to be able to search restaurants by location so that I can make decisions which restaurants to visit based on travel time														
+ - As a User, I want to be able to search restaurants by certain attributes, such as genre, price, etc to help me narrow down my choices														
  - As a User, I want to be able to search by multiple attributes at once so that I don't have to search separately for each	
  - As a User, I want to be able to schedule meetups and invite other users to them from my profile in order to keep track of who I'm meeting, when I'm meeting them, and where we're going		
  - As a User, I want to be able to send friend request to other people to keep track of the people I want to meet with
