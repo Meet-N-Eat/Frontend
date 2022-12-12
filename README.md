@@ -76,16 +76,16 @@ Although we all had different schedules and oftentimes were in completely differ
 ## 📝 User Stories
 
  - As a User, I want to be able to create an account and log back in, in order to store details of my account. 															
- - As a User, I want to be able to view other users who are interested in the restaurants that I like so that I can add users who are interested in the same restaurants as I am as friends.
- - As a User, I want to be able to view details about other users in their profile so that I can make better decisions about who to meet up with.																
- - As a User, I want to be able to save a list of restaurants that I like so that I can keep track of them and choose them as locations to meet other users. 															
- - As a User, I want to see relevant details of restaurants such as ratings, prices, type of food on the menu, business hours, etc so that I can decide which ones I like.														
- - As a User, I would like the ability to leave reviews for restaurants that I've been to in order to help the community with feedback. 															
- - As a User, I want to be able to search restaurants by location so that I can make decisions which restaurants to visit based on travel time														
- - As a User, I want to be able to search restaurants by certain attributes, such as genre, price, etc to help me narrow down my choices														
- - As a User, I want to be able to search by multiple attributes at once so that I don't have to search separately for each	
- - As a User, I want to be able to schedule meetups and invite other users to them from my profile in order to keep track of who I'm meeting, when I'm meeting them, and where we're going		
- - As a User, I want to be able to send friend request to other people to keep track of the people I want to meet with
+ - As a User, I want to be able to search restaurants by certain attributes, such as genre, price, location, etc. to help me narrow down my choices while searching for restaurants.
+ - As a User, I want to be able to directly view other users who have added restaurants I am interested in in my search results, so that I can smoothy add users who are interested in the same restaurants as I am as friends.
+ - As a User, I want to be able to view details about other users in their profile when I hover over their user icon, so that I can easily and smoothly make better decisions about who to meet up with.
+ - As a User, I want to see a restaurant's details with one click, so that I can efficiently know more about the restaurant. 
+ - As a User, I want to be able to save a list of restaurants that I like so that I can keep track of them and choose them as locations to meet other users. 	
+ - As a User, I want to send directly send messages to my friends, so that I can efficiently further plan details about planned events or get to know them better. 																			
+ - As a User, I would like the ability to leave reviews for restaurants that I've been to in order to help the community with feedback. 																												
+ - As a User, I want to be able to view my friends list, my upcoming meetup events and favorite restaurants directly from my profile page, in order to keep track of all my saved information and edit them directly.
+- As a User, I want to schedule meetup events directly from my profile page that already has a list of my friends to invite and restaurants I've added to my favorites, in order to efficiently set up a meetup events.
+ - As a User, I want the ability to accept and decline frined requests, in order to ensure my security. 
 
 ## 🖌 Wireframes
 * Home

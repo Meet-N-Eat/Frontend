@@ -57,6 +57,12 @@
 		@apply bg-white/90;
 	}
 
+	.about-footer-bg {
+		background-color: var(--main-bg);
+		opacity: 0.7;
+		@apply
+			h-24;
+	}
 
 	/* MyPage containers */
 	.responsive-mypage {
@@ -266,6 +272,33 @@
 		filter: invert(1)
 	}
 
+	.frontend-github-icon{
+		filter:invert(1);
+	}
+
+	.frontend-github-icon2{
+		display: none;
+	}
+
+	.frontend-github-icon:hover{
+		display: none;
+	}
+
+	.frontend-github-icon:hover + .frontend-github-icon2{
+		display: block;
+	}
+
+	.backend-github-icon2{
+		display: none;
+	}
+	.backend-github-icon:hover{
+		display: none;
+	}
+
+	.backend-github-icon:hover + .backend-github-icon2{
+		display: block;
+	}
+	
 	/* Buttons */
 	.active-page{
 		@apply 
@@ -491,6 +524,14 @@
 }
 
 /* Texts */
+
+.about-header {
+	font-family: 'Rubik Mono One', sans-serif;
+	@apply 
+		text-base
+		md:text-2xl;
+
+}
 .home-header {
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 900;
@@ -535,6 +576,24 @@
 	@apply 
 		text-sm
 		md:text-base;
+}
+
+.about-text {
+	@apply 
+		text-xs
+		md:text-sm;
+}
+
+.about-footer-text {
+	@apply 
+		text-white
+		
+}
+
+.about-links:hover {
+	color: black;
+	text-shadow: -1px -1px 0 white, 1px -1px 0 white, -1px 1px 0 white, 1px 1px 0 white;
+	
 }
 
 /* Class name goes on wrapper div */
