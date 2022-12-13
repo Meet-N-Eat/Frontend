@@ -1,10 +1,8 @@
-import React, { useState } from "react";
-
 function About (){
 
   return (
     <>
-    <div className='main-bg start-container overflow-y-auto w-4/5 h-[40rem] md:h-[34rem] text-center md:pb-4 px-4 object-contain'>
+    <div className='about-container main-bg'>
       <p className='about-header md:pt-4'>About Meet N Eat</p>
       <p className='about-text pt-2'>Our group project application, for which we built our first version during our Software Engineering Intensive program at General Assembly, we utilized the Scrum methodology, assigning roles of Product Owner, Scrum Master and Development representatives to each of our project members. We completed our first version in less than two weeks, which included 3 sprints - one to build the backend, one to build the frontend functionalities and one to complete styling. <br/><br/>
 
