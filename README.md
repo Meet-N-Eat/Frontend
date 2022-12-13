@@ -6,7 +6,7 @@
 
 ## Deployed Website Link
 
-Head over to () to view more!
+Head over to our <a href='https://meetneat.tk/'>website</a> to view more! 👀
 
 ## 🧑🏼‍💻👩🏻‍💻🧑🏻‍💻 Authors
 
@@ -46,6 +46,15 @@ Head over to () to view more!
 
 # Planning 
 
+## 🧩 Entity-relationship diagram/model
+![ERD](https://user-images.githubusercontent.com/93743792/207257547-4ab10456-267b-444e-84b2-20860ac40bd9.png)
+
+## 🪜 Component Heirarchy 
+![ComponentHeirarchy](https://user-images.githubusercontent.com/93743792/207257756-fc3673be-b924-4937-acef-e24a0fdead92.png)
+
+## 🔎 Component Detail Roadmapping
+![ComponentRoadmapping](https://user-images.githubusercontent.com/93743792/207258157-44ed7256-fd80-4d22-833e-ec0afd749470.png)
+
 ## 💡 Our Approach
 
 Our group project application, for which we built our first version during our Software Engineering Intensive program at General Assembly, we utilized the Scrum methodology, assigning roles of Product Owner, Scrum Master and Development representatives to each of our project members. First, we began with each member coming up with his/her/their own user stories with the Product Owner's vision of the application in mind. We, then, conglomerated our ideas and organized our first draft of our project's user stories and general framework of the application's functionalities. 
@@ -68,11 +77,6 @@ Although we all had different schedules and oftentimes were in completely differ
 
 **_Our general approach after the program ended was asking ourselves, "What is missing? What do we need to fix?" Ultimately, however, our approach to all of these questions relied on teamwork and each member's hard work and dedication to enhance our project. We are grateful for this experience and hope you all get to enjoy Meet N' Eat._**
 
-## 🧩 Entity-relationship model
-
-## 🔎 Component Heirarchy 
-
-
 ## 📝 User Stories
 
  - As a User, I want to be able to create an account and log back in, in order to store details of my account. 															
@@ -82,7 +86,7 @@ Although we all had different schedules and oftentimes were in completely differ
  - As a User, I want to see a restaurant's details with one click, so that I can efficiently know more about the restaurant. 
  - As a User, I want to be able to save a list of restaurants that I like so that I can keep track of them and choose them as locations to meet other users. 	
  - As a User, I want to send directly send messages to my friends, so that I can efficiently further plan details about planned events or get to know them better. 																			
- - As a User, I would like the ability to leave reviews for restaurants that I've been to in order to help the community with feedback. 																												
+ - As a User, I would like the ability to leave reviews for restaurants that I've been to in order to help the community with feedback. 																		
  - As a User, I want to be able to view my friends list, my upcoming meetup events and favorite restaurants directly from my profile page, in order to keep track of all my saved information and edit them directly.
 - As a User, I want to schedule meetup events directly from my profile page that already has a list of my friends to invite and restaurants I've added to my favorites, in order to efficiently set up a meetup events.
  - As a User, I want the ability to accept and decline frined requests, in order to ensure my security. 
@@ -128,8 +132,3 @@ Although we all had different schedules and oftentimes were in completely differ
 
 * MessageChat (Mobile)
 ![MessageChat_Mobile](https://user-images.githubusercontent.com/93743792/202349608-ecb51641-9a43-4b3f-878c-086dd7abb100.png)
-
-
-## 🏃 Stretch Goals / Future Plans
-
-
