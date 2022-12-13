@@ -4,7 +4,7 @@
 
 🍽 Meet 'n Eat is an app that helps match people who have common tastes! The platform allows users to add friends and send DMs, as well as schedule and track meetups from their profile page. On top of that users can browse available restaurants and get information such as reviews and other users who have liked that restaurant.
 
-## Deployed Website Link
+## 🪄 Deployed Website Link
 
 Head over to our <a href='https://meetneat.tk/'>website</a> to view more! 👀
 
