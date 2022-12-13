@@ -241,6 +241,21 @@
 			justify-center;
 	}
 
+	.about-container{
+		@apply
+			max-w-[800px]
+			flex
+			flex-col
+			m-auto
+			overflow-y-scroll
+			h-[40rem]
+			md:h-[32rem]
+			text-center
+			py-4
+			px-4
+			text-white;
+	}
+
 	.standard-width {
 		@apply w-full md:w-4/5 max-w-[1080px];
 	}
