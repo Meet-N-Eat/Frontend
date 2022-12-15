@@ -85,7 +85,7 @@ function Messages() {
 					messages.threadArray.length > 0 &&
 					messages.threadArray.map(thread => (
 						<Link
-							className='w-full message-thread rounded-2xl hover:text-white hover:scale-110 hover:opacity-90 hover:m-3 hover:duration-700'
+							className='w-full message-thread rounded-2xl hover:text-white hover:opacity-90 hover:duration-700'
 							key={thread[thread.length - 1]._id}
 							to={`/messages/${
 								thread[0].sender !== loggedInUser.response._id
