@@ -16,6 +16,7 @@ const Event = ({event, updateEvents}) => {
 	const [show, setShow] = useState(false)
 	const [showEdit, setShowEdit] = useState(false)
 	const [modalShow, setModalShow] = useState(false)
+	const [ownEvent, setOwnEvent] = useState(event.createdBy === loggedInUser?.response.id)
 
 	// DATE AND HOUR FORMAT
 	let eventDate = moment(event.date)
@@ -55,59 +56,69 @@ const Event = ({event, updateEvents}) => {
 							<p className='text-white base-text'>
 								{formattedDate} at {formattedHourAMPM}
 							</p>
-							<NavDropdown
-								className='nav-dropdown d-inline-block'
-								title={
-									<FontAwesomeIcon
-										icon={faEllipsisVertical}
-										className='icon text-white w-1/2 float-right'
-									/>
-								}
-							>
-								<NavDropdown.Item>
-									<button
-										className='base-text w-full'
-										onClick={() => setShowEdit(true)}
-									>
-										Edit
-									</button>
-								</NavDropdown.Item>
-								<NavDropdown.Item>
-									<button className='base-text w-full' onClick={() => setShow(true)}>
-										Cancel Event
-									</button>
-									<Modal size='xl' show={show} onHide={() => setShow(false)}>
-										<div className='modals-content h-[200px] flex flex-col justify-around p-3'>
-											<div closeButton className='text-center'>
-												<h1 className='base-text'>Confirm cancelation</h1>
+							{ownEvent && (
+								<NavDropdown
+									className='nav-dropdown d-inline-block'
+									title={
+										<FontAwesomeIcon
+											icon={faEllipsisVertical}
+											className='icon text-white w-1/2 float-right'
+										/>
+									}
+								>
+									<NavDropdown.Item>
+										<button
+											className='base-text w-full'
+											onClick={() => setShowEdit(true)}
+										>
+											Edit
+										</button>
+									</NavDropdown.Item>
+									<NavDropdown.Item>
+										<button
+											className='base-text w-full'
+											onClick={() => setShow(true)}
+										>
+											Cancel Event
+										</button>
+										<Modal size='xl' show={show} onHide={() => setShow(false)}>
+											<div className='modals-content h-[200px] flex flex-col justify-around p-3'>
+												<div closeButton className='text-center'>
+													<h1 className='base-text'>Confirm cancelation</h1>
+												</div>
+												<div className='text-xs md:text-sm text-center'>
+													Are you sure you want to cancel this event?
+												</div>
+												<div className='flex flex-row justify-between'>
+													<button
+														className='base-text button mr-1'
+														onClick={() => setShow(false)}
+													>
+														Close{' '}
+													</button>
+													<button
+														className='base-text account-button ml-1'
+														onClick={handleCancel}
+													>
+														Cancel event{' '}
+													</button>
+												</div>
 											</div>
-											<div className='text-xs md:text-sm text-center'>
-												Are you sure you want to cancel this event?
-											</div>
-											<div className='flex flex-row justify-between'>
-												<button
-													className='base-text button mr-1'
-													onClick={() => setShow(false)}
-												>
-													Close{' '}
-												</button>
-												<button
-													className='base-text account-button ml-1'
-													onClick={handleCancel}
-												>
-													Cancel event{' '}
-												</button>
-											</div>
-										</div>
-									</Modal>
-								</NavDropdown.Item>
-							</NavDropdown>
+										</Modal>
+									</NavDropdown.Item>
+								</NavDropdown>
+							)}
 						</>
 					</div>
 				</div>
 				<div className='grid-centered'>
 					<RestaurantCard restaurant={event.restaurant} hideLikeButton={true} />
-					<Modal className='w-full' show={modalShow} onHide={() => setModalShow(false)} aria-labelledby='whosgoing-modal'>
+					<Modal
+						className='w-full'
+						show={modalShow}
+						onHide={() => setModalShow(false)}
+						aria-labelledby='whosgoing-modal'
+					>
 						<div className='modals-content max-h-[500px] overflow-auto scroll'>
 							<Modal.Header>
 								<Modal.Title className='text-white mx-auto'>who's going?</Modal.Title>
