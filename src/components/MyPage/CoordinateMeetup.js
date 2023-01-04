@@ -145,9 +145,9 @@ const CoordinateMeetup = ({
 			<select
 				className='w-[320px] dropdowns'
 				defaultValue={
-					(meetup.restaurant &&
+					meetup.restaurant &&
 						favorites.response &&
-						favorites.response.find(favorite => favorite._id === meetup.restaurant).name) ||
+						favorites.response.find(favorite => favorite._id == meetup.restaurant)?.name ||
 					'choose restaurant'
 				}
 				onChange={restaurantSelect}
