@@ -32,7 +32,7 @@ const CoordinateMeetup = ({
 	})
 	const [error, dispatchError] = useGlobalReducer({date: false, restaurant: false})
 	const [toggle, setToggle] = useState(false)
-
+	console.log(favorites.response?.find(favorite => favorite._id == meetup.restaurant)?.name)
 	// Event Handlers and Functions
 	// ===========================================================================
 	useEffect(() => {
@@ -116,10 +116,16 @@ const CoordinateMeetup = ({
 	useEffect(() => {
 		if (error.submit) {
 			if (!error.date && !error.restaurant) {
-				if (showEdit) axiosAll('PUT', `/users/events/edit`, loggedInUser.token, null, meetup)
+				if (showEdit)
+					axiosAll('PUT', `/users/events/edit`, loggedInUser.token, null, meetup)
 				else axiosAll('POST', `/users/events/create`, loggedInUser.token, null, meetup)
 
-				axiosAll('GET', `/users/id/${loggedInUser.response._id}`, loggedInUser.token, dispatchUser)
+				axiosAll(
+					'GET',
+					`/users/id/${loggedInUser.response._id}`,
+					loggedInUser.token,
+					dispatchUser
+				)
 
 				dispatchMeetup({
 					key: 'initialize',
@@ -135,7 +141,7 @@ const CoordinateMeetup = ({
 			error.submit = false
 		}
 	}, [error])
-	
+
 	// Return
 	// ===========================================================================
 	return (
@@ -144,12 +150,7 @@ const CoordinateMeetup = ({
 			{error.restaurant && <h2>select a restaurant for this event</h2>}
 			<select
 				className='w-[320px] dropdowns'
-				defaultValue={
-					meetup.restaurant &&
-						favorites.response &&
-						favorites.response.find(favorite => favorite._id == meetup.restaurant)?.name ||
-					'choose restaurant'
-				}
+				defaultValue='choose restaurant'
 				onChange={restaurantSelect}
 			>
 				<option value='choose restaurant' disabled hidden>
@@ -157,18 +158,31 @@ const CoordinateMeetup = ({
 				</option>
 				{favorites.response &&
 					favorites.response.map(restaurant => (
-						<option key={restaurant._id} value={restaurant._id}>
+						<option key={restaurant._id} value={restaurant._id} selected={restaurant._id === meetup.restaurant}>
 							{restaurant.name}
 						</option>
 					))}
 			</select>
 			{error.date && <h2 className='base-text'>pick a date and time for this event</h2>}
-			<input className='w-[320px] base-text ' onChange={e => dateSelect(e, 'date')} type='date' value={date.date}/>
-			<input className='w-[320px] base-text' onChange={e => dateSelect(e, 'time')} type='time' value={date.time} />
+			<input
+				className='w-[320px] base-text '
+				onChange={e => dateSelect(e, 'date')}
+				type='date'
+				value={date.date}
+			/>
+			<input
+				className='w-[320px] base-text'
+				onChange={e => dateSelect(e, 'time')}
+				type='time'
+				value={date.time}
+			/>
 			<button className='invite button base-text' onClick={e => setToggle(toggleModal(e))}>
 				invite friends
 			</button>
-			<button className='button base-text' onClick={showEdit ? editEventHandler : createEventHandler}>
+			<button
+				className='button base-text'
+				onClick={showEdit ? editEventHandler : createEventHandler}
+			>
 				{showEdit ? 'edit' : 'invite'}
 			</button>
 
@@ -179,8 +193,9 @@ const CoordinateMeetup = ({
 							<div key={friend} className='text-center'>
 								<div
 									className={
-										meetup.participants.find(participant => participant === friend) &&
-										'friend-invited'
+										meetup.participants.find(
+											participant => participant === friend
+										) && 'friend-invited'
 									}
 									onClick={() => inviteHandler(friend)}
 								>
